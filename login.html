@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - EducaFácil</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body id="page-body">
+    <div id="accessibility-widget" class="hidden">
+        <button id="accessibility-btn"><img src="https://api.iconify.design/material-symbols/accessibility-new.svg?color=%23ffffff" alt="Ícone de acessibilidade"></button>
+        <div class="accessibility-menu">
+            <button id="increase-font">Aumentar Fonte</button>
+            <button id="decrease-font">Diminuir Fonte</button>
+            <button id="high-contrast">Alto Contraste</button>
+            <button id="daltonism-toggle">Ajuste para Daltonismo</button>
+        </div>
+    </div>
+
+    <div class="login-container">
+        <div class="background-shape shape1"></div>
+        <div class="background-shape shape2"></div>
+        
+        <div class="login-box">
+            <img src="https://i.imgur.com/sk5Ie9J.png" alt="Logo EducaFácil" class="logo-form">
+            <form id="login-form">
+                <div class="input-group">
+                    <label for="username">Usuário</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="form-btn">Entrar</button>
+            </form>
+            <p class="form-link">Não tem uma conta? <a href="index.html">Cadastre-se</a></p>
+        </div>
+    </div>
+
+    <div id="chatbot-container" class="hidden">
+         <div class="bot-icon">🤖</div>
+         <p id="chatbot-message">Por favor, diga seu nome de usuário.</p>
+         <div class="sound-wave"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
