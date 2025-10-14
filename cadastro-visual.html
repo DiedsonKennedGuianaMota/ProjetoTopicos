@@ -11,19 +11,34 @@
 </head>
 <body id="page-body">
 
-    <div class="voice-assistant-container">
-        <div class="bot-icon-large">🤖</div>
-        <h1 id="chatbot-message">Iniciando assistente de voz...</h1>
-        <div class="sound-wave-large"></div>
-        <p class="voice-instructions">Aguarde as instruções por áudio para continuar.</p>
-        
-        <form id="register-form" class="hidden">
-            <input type="text" id="fullname" name="fullname">
-            <input type="email" id="email" name="email">
-            <input type="password" id="password-register" name="password-register">
-        </form>
-    </div>
+<div class="voice-assistant-container">
+    <div class="bot-icon-large">🤖</div>
+    <h1 id="chatbot-message">Iniciando assistente de voz...</h1>
+    <div class="sound-wave-large"></div>
+    <p class="voice-instructions">Aguarde as instruções por áudio para continuar ou digite diretamente.</p>
 
-    <script src="script.js"></script>
+    <form id="register-form" style="max-width: 400px; margin: 20px auto;">
+        <div class="input-group active-field">
+            <label for="fullname">Nome Completo</label>
+            <input type="text" id="fullname" name="fullname" aria-label="Digite seu nome completo">
+        </div>
+        <div class="input-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" aria-label="Digite seu e-mail">
+        </div>
+        <div class="input-group">
+            <label for="phone">Telefone</label>
+            <input type="tel" id="phone" name="phone" aria-label="Digite seu telefone">
+        </div>
+        <div class="input-group">
+            <label for="password-register">Crie uma Senha</label>
+            <input type="password" id="password-register" name="password-register" aria-label="Digite uma senha">
+        </div>
+        <button type="submit" class="form-btn" style="margin-top: 20px;">Finalizar Cadastro</button>
+    </form>
+
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>

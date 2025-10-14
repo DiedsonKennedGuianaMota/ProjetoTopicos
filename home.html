@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - EducaFácil</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body id="page-body">
+
+<div id="accessibility-widget" class="hidden">
+    <button id="accessibility-btn">
+        <img src="https://api.iconify.design/material-symbols/accessibility-new.svg?color=%23ffffff" alt="Ícone de acessibilidade">
+    </button>
+    <div class="accessibility-menu">
+        <button id="increase-font">Aumentar Fonte</button>
+        <button id="decrease-font">Diminuir Fonte</button>
+        <button id="high-contrast">Alto Contraste</button>
+        <button id="daltonism-toggle">Ajuste para Daltonismo</button>
+    </div>
+</div>
+
+<div class="dashboard-layout">
+    <div class="sidebar">
+        <div class="profile-box">
+            <img src="https://i.imgur.com/gKjG1o2.png" alt="Foto de perfil do Aluno">
+            <p class="aluno-name" style="font-weight: 600;">Aluno</p>
+            <p class="aluno-email">aluno.ic9@educ.edu.br</p>
+        </div>
+        <nav class="sidebar-nav">
+            <div class="nav-item active"><a href="home.html"><i class="icon">🏠</i>Home</a></div>
+            <div class="nav-item"><a href="forum.html"><i class="icon">💬</i>Fórum</a></div>
+            <div class="nav-item"><a href="aulas.html"><i class="icon">▶️</i>Aulas</a></div>
+            <div class="nav-item"><a href="conteudos.html"><i class="icon">📚</i>Conteúdos</a></div>
+            <div class="nav-item"><a href="exercicios.html"><i class="icon">📝</i>Exercícios</a></div>
+            <div class="nav-item"><a href="configuracoes.html"><i class="icon">⚙️</i>Configurações</a></div>
+            <div class="nav-item"><a href="certificados.html"><i class="icon">🏅</i>Certificados</a></div>
+        </nav>
+        <input type="text" placeholder="Pesquisar" aria-label="Pesquisar na plataforma" style="margin: 20px 15px; padding: 8px; border-radius: 10px; border: none; width: calc(100% - 30px); opacity: 0.8;">
+    </div>
+
+    <div class="main-content">
+        <div class="main-content-area">
+            <h1>Home</h1>
+
+            <div class="home-grid">
+
+                <div class="card-simple progress-card" tabindex="0" aria-label="Seu progresso de aprendizagem">
+                    <h3 style="margin-bottom: 15px;">Aprendizagem</h3>
+                    <div class="progress-item">
+                        <p>Memorização</p>
+                        <div class="progress-bar-container"><div class="progress-bar success" style="width: 80%;"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <p>Compreensão</p>
+                        <div class="progress-bar-container"><div class="progress-bar success" style="width: 90%;"></div></div>
+                    </div>
+                    <div class="progress-item">
+                        <p>Resolvendo Problema</p>
+                        <div class="progress-bar-container"><div class="progress-bar success" style="width: 70%;"></div></div>
+                    </div>
+                </div>
+
+                <div class="card-simple theories-card" tabindex="0" aria-label="Tópicos em andamento das Teorias da Aprendizagem">
+                    <h3 style="margin-bottom: 15px;">Teorias da Aprendizagem</h3>
+                    <p>Motivação e Processos Cognitivos</p>
+                    <p>Desenvolvimento Socioemocional e Inclusão</p>
+                </div>
+
+                <div class="card-simple highlight-card" tabindex="0" aria-label="Conteúdo em destaque: Introdução às Teorias da Aprendizagem, 45 por cento completo">
+                    <h2>Teorias da Aprendizagem</h2>
+                    <p>Introdução</p>
+                    <div class="progress-bar-container" style="margin-top: 10px;"><div class="progress-bar primary" style="width: 45%;"></div></div>
+                </div>
+
+                <div class="card-simple calendar-card" tabindex="0" aria-label="Calendário. Data de hoje é 17 de Janeiro de 2019">
+                    <h3 style="margin-bottom: 15px; text-align: right;">January 2019</h3>
+                    <p style="text-align: right; margin-bottom: 10px;">Calendário simulado...</p>
+                    <div class="calendar-grid">
+                        <span class="day-label">M</span><span class="day-label">T</span><span class="day-label">W</span><span class="day-label">T</span><span class="day-label">F</span><span class="day-label">S</span><span class="day-label">S</span>
+                        <span style="grid-column: 4;">31</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span>
+                        <span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span>
+                        <span>14</span><span>15</span><span>16</span><span class="today">17</span><span>18</span><span>19</span><span>20</span>
+                    </div>
+                </div>
+            </div>
+
+            <img src="https://i.imgur.com/6E5rYtB.png" alt="Assistente Virtual em LIBRAS" class="libras-avatar-img" style="position: fixed; bottom: 80px; right: 80px; width: 150px; z-index: 1000;">
+        </div>
+    </div>
+</div>
+
+<div id="talkback-container" class="hidden">
+    <div class="bot-icon">🔊</div>
+    <p id="talkback-message">Talkback ativado.</p>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

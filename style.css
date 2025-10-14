@@ -7,9 +7,37 @@
     --text-color: #334155;
     --heading-color: #1e293b;
     --white: #fff;
-    --shadow-color: rgba(79, 70, 229, 0.2);
+    --shadow-color: rgba(0, 0, 0, 0.1); /* Sombra mais suave */
     --font-size: 16px;
+    --border-radius-large: 20px;
+    --border-radius-small: 10px;
+    --success-color: #4ade80; /* Cor verde para progresso */
+    --info-color: #3b82f6;    /* Cor azul para info/botões */
 }
+/* TELAS DE LOGIN E CADASTRO */
+.login-container,.register-container,.voice-assistant-container{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem;overflow:hidden;position:relative;}
+
+/* Estilo para o cadastro COM assistente (Modos Visual e Auditivo) */
+.register-container:not(.standard-layout){
+    gap:5rem; /* Mantém o espaçamento lateral no modo com assistente */
+}
+
+.register-assistant{text-align:center;max-width:350px;}.register-assistant img{width:100%;margin-bottom:1rem;}.register-assistant h2,.register-assistant p{color:var(--heading-color);}
+
+/* NOVO: Layout Centralizado e Limpo para Cadastro Padrão */
+.register-container.standard-layout {
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+}
+.register-container.standard-layout .register-form-box {
+    /* Garante que o box não fique limitado a uma largura pequena demais se o container for grande */
+    max-width: 420px;
+    margin: auto; /* Garante centralização */
+}
+
+/* O restante do código CSS (style.css) permanece o mesmo. */
+/* ... (outros estilos como .register-form-box, .input-group, etc., permanecem) ... */
 
 /* TEMAS (ALTO CONTRASTE, DALTONISMO) */
 body.high-contrast{--primary-color:#000;--secondary-color:#3d3d3d;--background-color:#fff;--card-background:#fff;--text-color:#000;--heading-color:#000;--white:#000;border:2px solid #000;}.high-contrast input,.high-contrast button{border:2px solid #000!important;}
@@ -72,3 +100,263 @@ body { background-color: var(--background-color); color: var(--text-color); font
 /* RESPONSIVIDADE */
 @media (max-width:992px){.register-container{flex-direction:column;gap:2rem;}.register-assistant{display:none;}}
 @media (max-width:768px){.card-container{flex-direction:column;align-items:center;}.selection-main h1{font-size:2rem;}}
+}
+/* style.css - Adicione ou ajuste estas regras */
+
+/* Layout da Plataforma */
+.dashboard-layout {
+    display: flex;
+    min-height: 100vh;
+    background-color: var(--background-color);
+}
+.sidebar {
+    width: 250px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding-top: 20px;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+    transition: width 0.3s ease;
+}
+.main-content {
+    flex-grow: 1;
+    padding: 20px 40px;
+    transition: padding 0.3s ease;
+}
+
+/* Estilo da Navegação e Animação */
+.nav-item a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 25px;
+    text-decoration: none;
+    color: var(--white);
+    font-weight: 500;
+    transition: background-color 0.3s, color 0.3s;
+}
+.nav-item.active a {
+    background-color: var(--secondary-color); /* Fundo da aba ativa */
+}
+.nav-item a:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Efeito de hover suave */
+}
+
+/* Efeito de card dinâmico (já existe, mas garantir) */
+.card-simple {
+    background: var(--card-background);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-simple:hover {
+    transform: translateY(-5px); /* Animação leve ao passar o mouse */
+    box-shadow: 0 8px 20px var(--shadow-color);
+}
+
+
+
+/* ESTILOS DE ELEMENTOS GERAIS */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-size: var(--font-size);
+    transition: background-color 0.3s, color 0.3s;
+    /* Garante que o body não tem padding para o dashboard ocupar a tela */
+}
+.hidden { display: none !important; }
+
+/* LAYOUT DO DASHBOARD (Home, Aulas, etc.) */
+.dashboard-layout {
+    display: flex;
+    min-height: 100vh;
+}
+.sidebar {
+    width: 250px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 20px 0;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.15);
+    transition: width 0.3s ease;
+}
+.profile-box {
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.profile-box img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 3px solid var(--white);
+    object-fit: cover;
+}
+.aluno-name, .aluno-email { margin: 5px 0; }
+.aluno-email { font-size: 0.8em; opacity: 0.8; }
+
+.sidebar-nav { padding: 0 15px; }
+.nav-item a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 15px;
+    text-decoration: none;
+    color: var(--white);
+    font-weight: 500;
+    transition: background-color 0.3s, border-radius 0.3s;
+    border-radius: var(--border-radius-small);
+    margin-bottom: 8px;
+}
+.nav-item.active a {
+    background-color: var(--secondary-color);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.nav-item a:hover:not(.active) {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 30px; /* Padding interno do conteúdo */
+    background-color: var(--background-color);
+}
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    gap: 20px;
+}
+
+/* CARDS E WIDGETS */
+.card-simple {
+    background: var(--card-background);
+    border-radius: var(--border-radius-large); /* Arredondamento Grande */
+    padding: 25px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-simple:hover {
+    transform: translateY(-3px); /* Animação suave */
+    box-shadow: 0 8px 20px rgba(79, 70, 229, 0.15);
+}
+
+/* HOME LAYOUT ESPECÍFICO */
+.home-grid {
+    display: grid;
+    gap: 25px;
+    grid-template-areas:
+        "progress theories calendar"
+        "highlight highlight calendar"
+        "highlight highlight calendar";
+    grid-template-columns: 2fr 2fr 1.5fr; /* Ajusta as colunas para telas maiores */
+
+}
+.home-grid > .progress-card { grid-area: progress; max-width: 400px; }
+.home-grid > .theories-card { grid-area: theories; max-width: 400px; }
+.home-grid > .highlight-card { grid-area: highlight; }
+.home-grid > .calendar-card {
+    grid-area: calendar;
+    max-width: 300px;
+    /* Remove a sombra dos cards laterais para a beleza da imagem de referência */
+    box-shadow: none;
+}
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    gap: 5px;
+    font-weight: 600;
+}
+.calendar-grid span { padding: 5px; border-radius: 5px; }
+.calendar-grid .day-label { color: var(--text-color); font-weight: 400; }
+.calendar-grid .today { background-color: var(--primary-color); color: var(--white); }
+
+/* BARRAS DE PROGRESSO */
+.progress-item { margin-bottom: 10px; }
+.progress-bar-container {
+    height: 10px;
+    background-color: #e5e7eb;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 5px;
+}
+.progress-bar {
+    height: 100%;
+    transition: width 0.5s ease-in-out;
+    border-radius: 5px;
+}
+.progress-bar.success { background-color: var(--success-color); }
+.progress-bar.info { background-color: var(--info-color); }
+.progress-bar.primary { background-color: var(--primary-color); }
+
+
+/* CHATBOT / TALKBACK BARRA INFERIOR */
+/* Deixei o Talkback na barra inferior para centralizar e melhorar o design */
+#talkback-container, #chatbot-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(180deg,var(--primary-color),var(--secondary-color));
+    color:var(--white);
+    padding:1.5rem;
+    text-align:center;
+    z-index:2000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:1rem;
+    border-top-left-radius: var(--border-radius-large);
+    border-top-right-radius: var(--border-radius-large);
+}
+
+/* WIDGET DE ACESSIBILIDADE (FLUTUANTE) */
+#accessibility-widget {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 2000; /* Mantenha no topo */
+}
+#accessibility-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* ... (Mantenha o restante do estilo do widget) ... */
+
+
+/* RESPONSIVIDADE (PARA DEIXAR MAIOR/DIFERENTE EM TELAS MENORES) */
+@media (max-width: 1200px) {
+    .home-grid {
+        grid-template-areas:
+            "progress theories"
+            "highlight highlight"
+            "calendar calendar";
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media (max-width: 768px) {
+    .dashboard-layout { flex-direction: column; }
+    .sidebar { width: 100%; height: auto; padding: 0; }
+    .sidebar-nav { display: flex; overflow-x: auto; padding: 10px 0; justify-content: space-around;}
+    .nav-item a { margin: 0 5px; padding: 10px 15px; }
+    .main-content { padding: 20px; }
+    .dashboard-header { flex-direction: column; align-items: flex-start; }
+    .home-grid {
+        grid-template-areas:
+            "progress"
+            "theories"
+            "calendar"
+            "highlight";
+        grid-template-columns: 1fr;
+    }
+}

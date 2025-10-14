@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <title>Exercícios - EducaFácil</title>
+</head>
+<body id="page-body">
+<div class="dashboard-layout">
+    <div class="main-content">
+        <div class="main-content-area" style="display: flex; gap: 40px;">
+            <div class="exercise-list" style="flex: 1;">
+                <input type="text" placeholder="Pesquisar">
+                <h1>Exercício 1</h1>
+                <div class="card-simple exercise-item" tabindex="0" aria-label="Exercício 1, clique para expandir">Exercício 1</div>
+                <div class="card-simple exercise-item" tabindex="0" aria-label="Exercício 2, clique para expandir">Exercício 2</div>
+                <button class="form-btn ranking-btn">Ranking</button>
+            </div>
+
+            <div class="question-area" style="flex: 2;">
+                <h2 style="font-size: 2.5rem;">Teoria da Aprendizagem</h2>
+                <div class="card-simple question-box">
+                    <p class="instruction">Assinale a Alternativa Correta</p>
+
+                    <div class="voice-icon" title="Ativar Resposta por Voz">🎤</div>
+
+                    <p class="question-text" role="alert" aria-live="assertive">
+                        Como as teorias da aprendizagem podem influenciar o design de uma plataforma educacional acessível para estudantes com deficiência?
+                    </p>
+
+                    <div class="options-group" role="radiogroup" aria-labelledby="question-text">
+                        <button class="option-btn" role="radio" aria-checked="false" tabindex="0" onclick="selectAnswer(this)">Ajudam a compreender as necessidades cognitivas dos estudantes, permitindo criar recursos personalizados e acessíveis para diferentes deficiências.</button>
+                        <button class="option-btn" role="radio" aria-checked="false" tabindex="0" onclick="selectAnswer(this)">Servem apenas como base teórica sem impacto direto na acessibilidade da plataforma.</button>
+                    </div>
+
+                    <button class="form-btn next-question-btn" tabindex="0" aria-label="Próxima Questão">Próxima Questão</button>
+                </div>
+
+                <img src="... link da sua avatar de libras ..." alt="Assistente Virtual em LIBRAS" class="libras-avatar-img">
+            </div>
+        </div>
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

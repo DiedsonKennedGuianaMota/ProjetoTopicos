@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fórum - EducaFácil</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body id="page-body">
+
+<div id="accessibility-widget" class="hidden">
+    <button id="accessibility-btn">
+        <img src="https://api.iconify.design/material-symbols/accessibility-new.svg?color=%23ffffff" alt="Ícone de acessibilidade">
+    </button>
+    <div class="accessibility-menu">
+        <button id="increase-font">Aumentar Fonte</button>
+        <button id="decrease-font">Diminuir Fonte</button>
+        <button id="high-contrast">Alto Contraste</button>
+        <button id="daltonism-toggle">Ajuste para Daltonismo</button>
+    </div>
+</div>
+
+<div class="dashboard-layout">
+    <div class="sidebar">
+        <div class="profile-box">
+            <img src="https://i.imgur.com/gKjG1o2.png" alt="Foto de perfil do Aluno">
+            <p class="aluno-name" style="font-weight: 600;">Aluno</p>
+            <p class="aluno-email">aluno.ic9@educ.edu.br</p>
+        </div>
+        <nav class="sidebar-nav">
+            <div class="nav-item active"><a href="home.html"><i class="icon">🏠</i>Home</a></div>
+            <div class="nav-item"><a href="forum.html"><i class="icon">💬</i>Fórum</a></div>
+            <div class="nav-item"><a href="aulas.html"><i class="icon">▶️</i>Aulas</a></div>
+            <div class="nav-item"><a href="conteudos.html"><i class="icon">📚</i>Conteúdos</a></div>
+            <div class="nav-item"><a href="exercicios.html"><i class="icon">📝</i>Exercícios</a></div>
+            <div class="nav-item"><a href="configuracoes.html"><i class="icon">⚙️</i>Configurações</a></div>
+            <div class="nav-item"><a href="certificados.html"><i class="icon">🏅</i>Certificados</a></div>
+        </nav>
+        <input type="text" placeholder="Pesquisar" aria-label="Pesquisar na plataforma" style="margin: 20px 15px; padding: 8px; border-radius: 10px; border: none; width: calc(100% - 30px); opacity: 0.8;">
+    </div>
+    <div class="main-content">
+        <div class="main-content-area">
+            <h1>Fórum de Discussão</h1>
+            <p style="margin-bottom: 25px;">Aqui você pode interagir com outros alunos e professores sobre os temas de Psicologia da Educação. O VLibras está disponível para traduzir todo o conteúdo da página.</p>
+
+            <div class="card-simple" style="padding: 30px;">
+                <h2 style="font-size: 1.5rem; color: var(--heading-color); margin-bottom: 5px;">Tópico Principal: Acessibilidade na EAD</h2>
+                <p style="color: var(--text-color); margin-bottom: 20px;">Última resposta: Há 5 minutos.</p>
+
+                <button class="form-btn" style="width: 100%; max-width: 300px; padding: 12px 0;" tabindex="0" aria-label="Ver a discussão completa sobre Acessibilidade na EAD">Ver Discussão</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div id="talkback-container" class="hidden">...</div>
+
+<script src="script.js"></script>
+</body>
+</html>

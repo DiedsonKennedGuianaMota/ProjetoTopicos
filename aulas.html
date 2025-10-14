@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <title>Aulas - EducaFácil</title>
+</head>
+<body id="page-body">
+<div class="dashboard-layout">
+    <div class="main-content">
+        <div class="main-content-area">
+            <h1>Aulas</h1>
+            <p aria-live="polite">Página de vídeos e conteúdos para assistir. O avatar de LIBRAS está disponível para traduzir legendas.</p>
+
+            <div class="video-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+
+                <div class="card-simple video-card" tabindex="0" role="button" aria-label="Abrir Aula 1: Teorias da Aprendizagem. Conteúdos introdução e pedagogia.">
+                    <img src="..." alt="Thumbnail do vídeo de Teorias da Aprendizagem">
+                    <h3>Aula 1: Teorias da Aprendizagem</h3>
+                    <p>Conteúdos: introdução, pedagogia.</p>
+                    <button class="play-btn" onclick="playVideo('aula1')">Assistir</button>
+                </div>
+
+                <div class="card-simple video-card" tabindex="0" role="button" aria-label="Abrir Aula 2: Teorias da Aprendizagem. Conteúdos conceitos básicos.">
+                    <img src="..." alt="Thumbnail do vídeo de Teorias da Aprendizagem">
+                    <h3>Aula 2: Teorias da Aprendizagem</h3>
+                    <p>Conteúdos: conceitos básicos.</p>
+                    <button class="play-btn" onclick="playVideo('aula2')">Assistir</button>
+                </div>
+
+                <div class="card-simple video-card" tabindex="0" role="button" aria-label="Abrir Aula 1: Motivação e Processos Cognitivos.">
+                    <img src="..." alt="Thumbnail do vídeo de Motivação">
+                    <h3>Aula 1: Motivação e Processos Cognitivos</h3>
+                    <p>Conteúdos: Neurologia do aprendizado.</p>
+                    <button class="play-btn" onclick="playVideo('motivacao1')">Assistir</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
