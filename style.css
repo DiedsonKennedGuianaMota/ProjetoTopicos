@@ -1,467 +1,178 @@
-/* GERAL E VARIÁVEIS */
+/* ===========================
+   ESTILOS GERAIS (SEUS)
+   =========================== */
+
 :root {
-    --primary-color: #4f46e5;
-    --secondary-color: #6366f1;
-    --background-color: #f8fafc;
-    --card-background: #ffffff;
-    --text-color: #334155;
-    --heading-color: #1e293b;
-    --white: #fff;
-    --shadow-color: rgba(0, 0, 0, 0.1); /* Sombra mais suave */
-    --font-size: 16px;
-    --border-radius-large: 20px;
-    --border-radius-small: 10px;
-    --success-color: #4ade80; /* Cor verde para progresso */
-    --info-color: #3b82f6;    /* Cor azul para info/botões */
-}
-/* TELAS DE LOGIN E CADASTRO */
-.login-container,.register-container,.voice-assistant-container{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem;overflow:hidden;position:relative;}
-
-/* Estilo para o cadastro COM assistente (Modos Visual e Auditivo) */
-.register-container:not(.standard-layout){
-    gap:5rem; /* Mantém o espaçamento lateral no modo com assistente */
+    --bg-color: #f5f7fb;
+    --primary-color: #4a4ae6;
+    --sidebar-bg: #ffffff;
+    --card-bg: #ffffff;
+    --text-color: #333333;
+    --border-radius: 16px;
+    --font-size-base: 16px;
+    --shadow-soft: 0 4px 12px rgba(0,0,0,0.06);
 }
 
-.register-assistant{text-align:center;max-width:350px;}.register-assistant img{width:100%;margin-bottom:1rem;}.register-assistant h2,.register-assistant p{color:var(--heading-color);}
-
-/* NOVO: Layout Centralizado e Limpo para Cadastro Padrão */
-.register-container.standard-layout {
-    justify-content: center;
-    align-items: center;
-    gap: 0;
-}
-.register-container.standard-layout .register-form-box {
-    /* Garante que o box não fique limitado a uma largura pequena demais se o container for grande */
-    max-width: 420px;
-    margin: auto; /* Garante centralização */
-}
-#acessibility-widget,
-#acessibility-widget * { box-sizing: border-box; }
-
-.ac-widget {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 320px;
-    height: 100vh;
-    background: #f5f5f7;
-    box-shadow: 2px 0 8px rgba(0,0,0,0.1);
-    padding: 10px 12px;
-    display: flex;
-    flex-direction: column;
-    z-index: 1000;
-    font-family: 'Poppins', sans-serif;
-    font-size: 13px;
-}
-.ac-hidden { display: none; }
-
-.ac-header { margin-bottom: 8px; }
-.ac-header-top { display: flex; justify-content: space-between; align-items: center; }
-
-.ac-title { font-weight: 600; font-size: 13px; }
-
-.ac-icon-btn {
-    border: none;
-    background: transparent;
-    font-size: 18px;
-    cursor: pointer;
+* {
+    box-sizing: border-box;
 }
 
-.ac-select-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 4px;
-}
-
-.ac-pill {
-    border-radius: 20px;
-    border: 1px solid #ccc;
-    padding: 4px 10px;
-    background: #fff;
-    font-size: 11px;
-    cursor: default;
-}
-
-.ac-pill-active {
-    border-color: #e63946;
-    background: #ffe7ea;
-}
-
-.ac-pill-xl { width: 100%; text-align: left; }
-
-.ac-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 6px;
-    margin-top: 8px;
-    overflow-y: auto;
-    padding-right: 4px;
-}
-
-.ac-item {
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    background: #fff;
-    padding: 8px 6px;
-    font-size: 11px;
-    cursor: pointer;
-    text-align: left;
-}
-
-.ac-item-active {
-    border-color: #e63946;
-    background: #ffe7ea;
-}
-
-.ac-item-title { display: block; }
-
-.ac-footer {
-    margin-top: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-
-.ac-reset-btn {
-    width: 100%;
-    border-radius: 6px;
-    border: none;
-    background: #e63946;
-    color: #fff;
-    padding: 6px 8px;
-    font-size: 12px;
-    cursor: pointer;
-}
-
-.ac-move-btn {
-    width
-
-/* O restante do código CSS (style.css) permanece o mesmo. */
-/* ... (outros estilos como .register-form-box, .input-group, etc., permanecem) ... */
-
-/* TEMAS (ALTO CONTRASTE, DALTONISMO) */
-body.high-contrast{--primary-color:#000;--secondary-color:#3d3d3d;--background-color:#fff;--card-background:#fff;--text-color:#000;--heading-color:#000;--white:#000;border:2px solid #000;}.high-contrast input,.high-contrast button{border:2px solid #000!important;}
-body.daltonism{--primary-color:#005f73;--secondary-color:#0a9396;--shadow-color:rgba(0,95,115,0.2);}
-
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-body { background-color: var(--background-color); color: var(--text-color); font-size: var(--font-size); transition: background-color 0.3s, color 0.3s; }
-.hidden { display: none !important; }
-
-/* TELA DE SELEÇÃO (index.html) */
-.selection-container{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:2rem;text-align:center;}
-.main-header{width:100%;max-width:1200px;display:flex;justify-content:space-between;align-items:center;padding:1rem 0;margin-bottom:2rem;}.main-header .logo{max-width:200px;}
-.login-btn-header{background-color:var(--primary-color);color:var(--white);padding:0.6rem 1.5rem;border-radius:10px;text-decoration:none;font-weight:600;transition:background-color .3s;}
-.login-btn-header:hover{background-color:var(--secondary-color);}
-.selection-main h1{font-size:2.5rem;color:var(--heading-color);margin-bottom:.5rem;}
-.selection-main p{font-size:1.1rem;margin-bottom:3rem;}
-.card-container{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;}
-.card{background:var(--card-background);border-radius:20px;padding:2rem;width:300px;box-shadow:0 10px 25px var(--shadow-color);cursor:pointer;transition:transform .3s,box-shadow .3s;border:2px solid transparent;}
-.card:hover{transform:translateY(-10px);box-shadow:0 15px 30px var(--shadow-color);border-color:var(--primary-color);}
-.card-img{width:150px;height:150px;margin-bottom:1.5rem;}
-.card h3{color:var(--heading-color);font-size:1.5rem;margin-bottom:.5rem;}
-
-/* TELAS DE LOGIN E CADASTRO */
-.login-container,.register-container,.voice-assistant-container{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem;overflow:hidden;position:relative;}
-.background-shape{position:absolute;border-radius:50%;opacity:.1;filter:blur(50px);background:var(--primary-color);}.shape1{width:400px;height:400px;top:-100px;left:-100px;}.shape2{width:500px;height:500px;bottom:-150px;right:-150px;background:#a78bfa;}
-.login-box,.register-form-box{background:rgba(255,255,255,.8);backdrop-filter:blur(10px);padding:3rem;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,.1);width:100%;max-width:420px;text-align:center;z-index:1;}
-.logo-form{max-width:180px;margin-bottom:1.5rem;}
-.input-group{text-align:left;margin-bottom:1.5rem;}
-.input-group label{display:block;margin-bottom:.5rem;font-weight:600;color:var(--heading-color);}
-.input-group input{width:100%;padding:.8rem 1rem;border-radius:10px;border:1px solid #ddd;font-size:1rem;}
-.form-btn{width:100%;padding:1rem;border:none;border-radius:10px;background-color:var(--primary-color);color:var(--white);font-size:1rem;font-weight:600;cursor:pointer;transition:background-color .3s;}
-.form-btn:hover{background-color:var(--secondary-color);}
-.form-link{margin-top:1.5rem;}.form-link a{color:var(--primary-color);text-decoration:none;font-weight:600;}
-.register-container{gap:5rem;}
-.register-assistant{text-align:center;max-width:350px;}.register-assistant img{width:100%;margin-bottom:1rem;}.register-assistant h2,.register-assistant p{color:var(--heading-color);}
-
-/* TELA DE CADASTRO VISUAL */
-.voice-assistant-container { flex-direction: column; text-align: center; color: var(--heading-color); background: radial-gradient(circle, #e0e7ff, var(--background-color)); }
-.bot-icon-large { font-size: 6rem; margin-bottom: 1rem; }
-.voice-assistant-container h1 { font-size: 2rem; }
-.sound-wave-large { width: 200px; height: 60px; margin: 1rem 0; background-image: url('https://i.imgur.com/2yZ6kY6.gif'); background-size: contain; background-repeat: no-repeat; background-position: center; }
-.voice-instructions { font-size: 1.1rem; color: var(--text-color); }
-
-
-/* WIDGET DE ACESSIBILIDADE */
-#accessibility-widget{position:fixed;top:20px;right:20px;z-index:1000;}
-#accessibility-btn{width:50px;height:50px;border-radius:50%;background-color:var(--primary-color);border:none;cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,.2);display:flex;align-items:center;justify-content:center;}
-#accessibility-btn img{width:30px;height:30px;}
-.accessibility-menu{display:none;position:absolute;right:0;top:60px;background:var(--card-background);border-radius:10px;box-shadow:0 4px 20px rgba(0,0,0,.15);width:220px;overflow:hidden;}
-#accessibility-widget.active .accessibility-menu{display:block;}
-.accessibility-menu button{display:block;width:100%;padding:.8rem 1rem;border:none;background:none;text-align:left;font-size:.95rem;cursor:pointer;}
-.accessibility-menu button:hover{background-color:#f0f0f0;}
-
-/* CHATBOT DE VOZ (LOGIN) */
-#chatbot-container{position:fixed;bottom:0;left:0;width:100%;background:linear-gradient(180deg,var(--primary-color),var(--secondary-color));color:var(--white);padding:1.5rem;text-align:center;z-index:2000;display:flex;align-items:center;justify-content:center;gap:1rem;}
-.bot-icon{font-size:2.5rem;}
-#chatbot-message{font-size:1.2rem;font-weight:600;}
-.sound-wave{width:80px;height:25px;background-image:url('https://i.imgur.com/2yZ6kY6.gif');background-size:contain;background-repeat:no-repeat;background-position:center;}
-
-/* RESPONSIVIDADE */
-@media (max-width:992px){.register-container{flex-direction:column;gap:2rem;}.register-assistant{display:none;}}
-@media (max-width:768px){.card-container{flex-direction:column;align-items:center;}.selection-main h1{font-size:2rem;}}
-}
-/* style.css - Adicione ou ajuste estas regras */
-
-/* Layout da Plataforma */
-.dashboard-layout {
-    display: flex;
-    min-height: 100vh;
-    background-color: var(--background-color);
-}
-.sidebar {
-    width: 250px;
-    background-color: var(--primary-color);
-    color: var(--white);
-    padding-top: 20px;
-    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
-    transition: width 0.3s ease;
-}
-.main-content {
-    flex-grow: 1;
-    padding: 20px 40px;
-    transition: padding 0.3s ease;
-}
-
-/* Estilo da Navegação e Animação */
-.nav-item a {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 15px 25px;
-    text-decoration: none;
-    color: var(--white);
-    font-weight: 500;
-    transition: background-color 0.3s, color 0.3s;
-}
-.nav-item.active a {
-    background-color: var(--secondary-color); /* Fundo da aba ativa */
-}
-.nav-item a:hover {
-    background-color: rgba(255, 255, 255, 0.1); /* Efeito de hover suave */
-}
-
-/* Efeito de card dinâmico (já existe, mas garantir) */
-.card-simple {
-    background: var(--card-background);
-    border-radius: 15px;
-    padding: 20px;
-    box-shadow: 0 4px 15px var(--shadow-color);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.card-simple:hover {
-    transform: translateY(-5px); /* Animação leve ao passar o mouse */
-    box-shadow: 0 8px 20px var(--shadow-color);
-}
-
-
-
-/* ESTILOS DE ELEMENTOS GERAIS */
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 body {
-    background-color: var(--background-color);
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg-color);
     color: var(--text-color);
-    font-size: var(--font-size);
-    transition: background-color 0.3s, color 0.3s;
-    /* Garante que o body não tem padding para o dashboard ocupar a tela */
+    font-size: var(--font-size-base);
 }
-.hidden { display: none !important; }
 
-/* LAYOUT DO DASHBOARD (Home, Aulas, etc.) */
 .dashboard-layout {
     display: flex;
     min-height: 100vh;
 }
-.sidebar {
-    width: 250px;
-    background-color: var(--primary-color);
-    color: var(--white);
-    padding: 20px 0;
-    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.15);
-    transition: width 0.3s ease;
-}
-.profile-box {
-    padding: 20px;
-    text-align: center;
-    margin-bottom: 20px;
-}
-.profile-box img {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    border: 3px solid var(--white);
-    object-fit: cover;
-}
-.aluno-name, .aluno-email { margin: 5px 0; }
-.aluno-email { font-size: 0.8em; opacity: 0.8; }
 
-.sidebar-nav { padding: 0 15px; }
+/* SIDEBAR */
+
+.sidebar {
+    width: 260px;
+    background: var(--sidebar-bg);
+    box-shadow: 2px 0 8px rgba(0,0,0,0.06);
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-box {
+    text-align: center;
+    padding: 0 20px 10px;
+}
+
+.profile-box img {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    margin-bottom: 6px;
+}
+
+.aluno-email {
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+.sidebar-nav {
+    margin-top: 20px;
+}
+
 .nav-item a {
     display: flex;
     align-items: center;
-    gap: 15px;
-    padding: 12px 15px;
+    gap: 8px;
+    padding: 10px 20px;
+    color: #444;
     text-decoration: none;
-    color: var(--white);
-    font-weight: 500;
-    transition: background-color 0.3s, border-radius 0.3s;
-    border-radius: var(--border-radius-small);
-    margin-bottom: 8px;
+    font-size: 14px;
 }
+
 .nav-item.active a {
-    background-color: var(--secondary-color);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    background: rgba(74,74,230,0.08);
+    border-left: 3px solid var(--primary-color);
 }
-.nav-item a:hover:not(.active) {
-    background-color: rgba(255, 255, 255, 0.15);
-}
+
+/* CONTEÚDO PRINCIPAL */
 
 .main-content {
-    flex-grow: 1;
-    padding: 30px; /* Padding interno do conteúdo */
-    background-color: var(--background-color);
-}
-.dashboard-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
-    gap: 20px;
+    flex: 1;
+    padding: 24px 32px;
 }
 
-/* CARDS E WIDGETS */
-.card-simple {
-    background: var(--card-background);
-    border-radius: var(--border-radius-large); /* Arredondamento Grande */
-    padding: 25px;
-    box-shadow: 0 4px 15px var(--shadow-color);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.card-simple:hover {
-    transform: translateY(-3px); /* Animação suave */
-    box-shadow: 0 8px 20px rgba(79, 70, 229, 0.15);
+.main-content-area h1 {
+    margin: 0 0 16px;
 }
 
-/* HOME LAYOUT ESPECÍFICO */
 .home-grid {
     display: grid;
-    gap: 25px;
-    grid-template-areas:
-        "progress theories calendar"
-        "highlight highlight calendar"
-        "highlight highlight calendar";
-    grid-template-columns: 2fr 2fr 1.5fr; /* Ajusta as colunas para telas maiores */
+    grid-template-columns: 2fr 1.3fr;
+    grid-template-rows: auto auto;
+    gap: 16px;
+}
 
+.card-simple {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 18px 16px;
+    box-shadow: var(--shadow-soft);
 }
-.home-grid > .progress-card { grid-area: progress; max-width: 400px; }
-.home-grid > .theories-card { grid-area: theories; max-width: 400px; }
-.home-grid > .highlight-card { grid-area: highlight; }
-.home-grid > .calendar-card {
-    grid-area: calendar;
-    max-width: 300px;
-    /* Remove a sombra dos cards laterais para a beleza da imagem de referência */
-    box-shadow: none;
+
+.progress-bar-container {
+    width: 100%;
+    height: 8px;
+    border-radius: 999px;
+    background: #e8ecf5;
+    overflow: hidden;
 }
+
+.progress-bar {
+    height: 100%;
+    border-radius: inherit;
+}
+
+.progress-bar.success {
+    background: #27ae60;
+}
+
+.progress-bar.primary {
+    background: var(--primary-color);
+}
+
 .calendar-grid {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    font-size: 11px;
     text-align: center;
-    gap: 5px;
+}
+
+.day-label {
     font-weight: 600;
+    opacity: 0.7;
 }
-.calendar-grid span { padding: 5px; border-radius: 5px; }
-.calendar-grid .day-label { color: var(--text-color); font-weight: 400; }
-.calendar-grid .today { background-color: var(--primary-color); color: var(--white); }
 
-/* BARRAS DE PROGRESSO */
-.progress-item { margin-bottom: 10px; }
-.progress-bar-container {
-    height: 10px;
-    background-color: #e5e7eb;
-    border-radius: 5px;
-    overflow: hidden;
-    margin-top: 5px;
+.today {
+    background: var(--primary-color);
+    color: #fff;
+    border-radius: 50%;
 }
-.progress-bar {
-    height: 100%;
-    transition: width 0.5s ease-in-out;
-    border-radius: 5px;
+
+/* LIBRAS AVATAR */
+
+.libras-avatar-img {
+    pointer-events: none;
 }
-.progress-bar.success { background-color: var(--success-color); }
-.progress-bar.info { background-color: var(--info-color); }
-.progress-bar.primary { background-color: var(--primary-color); }
 
+/* TALKBACK */
 
-/* CHATBOT / TALKBACK BARRA INFERIOR */
-/* Deixei o Talkback na barra inferior para centralizar e melhorar o design */
-#talkback-container, #chatbot-container {
+#talkback-container {
     position: fixed;
     bottom: 0;
     left: 0;
-    width: 100%;
-    background: linear-gradient(180deg,var(--primary-color),var(--secondary-color));
-    color:var(--white);
-    padding:1.5rem;
-    text-align:center;
-    z-index:2000;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:1rem;
-    border-top-left-radius: var(--border-radius-large);
-    border-top-right-radius: var(--border-radius-large);
-}
-
-/* WIDGET DE ACESSIBILIDADE (FLUTUANTE) */
-#accessibility-widget {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 2000; /* Mantenha no topo */
-}
-#accessibility-btn {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: var(--primary-color);
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    right: 0;
+    background: #222;
+    color: #fff;
+    padding: 6px 10px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 8px;
+    font-size: 13px;
+    z-index: 1050;
 }
-/* ... (Mantenha o restante do estilo do widget) ... */
 
-
-/* RESPONSIVIDADE (PARA DEIXAR MAIOR/DIFERENTE EM TELAS MENORES) */
-@media (max-width: 1200px) {
-    .home-grid {
-        grid-template-areas:
-            "progress theories"
-            "highlight highlight"
-            "calendar calendar";
-        grid-template-columns: 1fr 1fr;
-    }
+#talkback-container.hidden {
+    display: none;
 }
-@media (max-width: 768px) {
-    .dashboard-layout { flex-direction: column; }
-    .sidebar { width: 100%; height: auto; padding: 0; }
-    .sidebar-nav { display: flex; overflow-x: auto; padding: 10px 0; justify-content: space-around;}
-    .nav-item a { margin: 0 5px; padding: 10px 15px; }
-    .main-content { padding: 20px; }
-    .dashboard-header { flex-direction: column; align-items: flex-start; }
-    .home-grid {
-        grid-template-areas:
-            "progress"
-            "theories"
-            "calendar"
-            "highlight";
-        grid-template-columns: 1fr;
-    }
 
+.bot-icon {
+    font-size: 18px;
 }
+
 /* ===========================
    WIDGET DE ACESSIBILIDADE
    =========================== */
@@ -471,14 +182,15 @@ body {
     box-sizing: border-box;
 }
 
+/* Barra lateral do widget */
 .ac-widget {
     position: fixed;
     top: 0;
     left: 0;
-    width: 320px;
+    width: 340px;
     height: 100vh;
     background: #ffffff;
-    box-shadow: 2px 0 8px rgba(0,0,0,0.15);
+    box-shadow: 2px 0 12px rgba(0,0,0,0.18);
     padding: 10px 12px;
     display: flex;
     flex-direction: column;
@@ -491,8 +203,10 @@ body {
     display: none;
 }
 
+/* Cabeçalho */
+
 .ac-header {
-    margin-bottom: 6px;
+    margin-bottom: 4px;
 }
 
 .ac-header-top {
@@ -540,7 +254,43 @@ body {
     text-align: left;
 }
 
-/* GRID DE BOTÕES */
+/* Perfis de acessibilidade */
+
+.ac-profiles-section {
+    margin-top: 6px;
+    padding-top: 4px;
+    border-top: 1px solid #e3e3e3;
+}
+
+.ac-profiles-header {
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.ac-profiles-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+}
+
+.ac-profile {
+    border-radius: 10px;
+    border: 1px solid #dddddd;
+    background: #fafafa;
+    padding: 6px 8px;
+    font-size: 11px;
+    cursor: pointer;
+    text-align: left;
+}
+
+.ac-profile-active {
+    border-color: #c62828;
+    background: #ffe7ea;
+}
+
+/* Grid de opções individuais */
+
 .ac-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -548,6 +298,7 @@ body {
     margin-top: 8px;
     padding-right: 4px;
     overflow-y: auto;
+    max-height: 55vh;
 }
 
 .ac-item {
@@ -574,8 +325,148 @@ body {
     display: block;
 }
 
-/* RODAPÉ */
+/* Rodapé */
+
 .ac-footer {
-    margin-top
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-top: 6px;
+    border-top: 1px solid #e3e3e3;
+}
 
+.ac-reset-btn {
+    width: 100%;
+    border-radius: 6px;
+    border: none;
+    background: #c62828;
+    color: #ffffff;
+    padding: 6px 8px;
+    font-size: 12px;
+    cursor: pointer;
+}
 
+.ac-move-btn {
+    width: 100%;
+    border-radius: 6px;
+    border: 1px solid #d0d0d0;
+    background: #ffffff;
+    padding: 6px 8px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+/* Botão flutuante */
+
+.ac-fab {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: none;
+    background: #4a4ae6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1200;
+}
+
+.ac-fab img {
+    width: 28px;
+    height: 28px;
+}
+
+/* ===========================
+   EFEITOS DAS OPÇÕES ATIVADAS
+   =========================== */
+
+/* Contraste forte */
+body.ac-contraste-mais {
+    background: #000000;
+    color: #ffffff;
+}
+body.ac-contraste-mais .sidebar,
+body.ac-contraste-mais .card-simple {
+    background: #111111;
+    color: #ffffff;
+}
+body.ac-contraste-mais a {
+    color: #ffeb3b;
+}
+
+/* Contraste inteligente (daltônico) */
+body.ac-contraste-inteligente {
+    filter: contrast(1.2) saturate(1.1);
+}
+body.ac-contraste-inteligente a,
+body.ac-contraste-inteligente .primary {
+    color: #005bff;
+}
+
+/* Texto maior */
+body.ac-texto-maior {
+    font-size: 18px;
+}
+
+/* Espaçamento de texto */
+body.ac-espacamento-texto p,
+body.ac-espacamento-texto li,
+body.ac-espacamento-texto a {
+    letter-spacing: 0.06em;
+}
+
+/* Altura da linha */
+body.ac-altura-linha p,
+body.ac-altura-linha li {
+    line-height: 1.8;
+}
+
+/* Alinhamento de texto (centralizar parágrafos) */
+body.ac-alinhamento-texto p {
+    text-align: justify;
+}
+
+/* Links destacados */
+body.ac-links-destacados a {
+    outline: 2px solid #ff9100;
+    background: rgba(255,145,0,0.15);
+    border-radius: 4px;
+}
+
+/* Dislexia amigável (use uma fonte adequada se tiver) */
+body.ac-dislexia {
+    font-family: 'OpenDyslexic', 'Poppins', sans-serif;
+}
+
+/* Cursor grande (exemplo simples) */
+body.ac-cursor-grande * {
+    cursor: default;
+}
+
+/* Ocultar imagens */
+body.ac-sem-imagens img {
+    display: none !important;
+}
+
+/* Sem animações (convulsão/epilepsia) */
+body.ac-sem-animacoes * {
+    animation: none !important;
+    transition: none !important;
+}
+
+/* Saturação baixa */
+body.ac-saturacao-baixa {
+    filter: saturate(0.4);
+}
+
+/* Barra de ferramentas / estrutura */
+body.ac-barra-ferramentas .sidebar {
+    border-right: 4px solid #4a4ae6;
+}
+body.ac-estrutura-pagina .card-simple {
+    border: 2px dashed #999999;
+}
