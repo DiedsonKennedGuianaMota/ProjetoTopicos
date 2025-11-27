@@ -1,44 +1,288 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <meta charset="UTF-8">
     <title>Exercícios - EducaFácil</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body id="page-body">
+
+<!-- WIDGET DE ACESSIBILIDADE -->
+<div id="accessibility-widget" class="ac-widget ac-hidden" aria-hidden="true">
+    <div class="ac-header">
+        <div class="ac-header-top">
+            <span class="ac-title">Menu Acessibilidade (CTRL+U)</span>
+            <button id="ac-close-btn" class="ac-icon-btn" aria-label="Fechar menu de acessibilidade">×</button>
+        </div>
+
+        <div class="ac-select-row">
+            <button class="ac-pill" id="ac-lang-btn">Português (Brasil)</button>
+            <button class="ac-pill ac-pill-active" id="ac-profile-btn">Dislexia perfil ativo</button>
+        </div>
+
+        <div class="ac-select-row">
+            <button class="ac-pill ac-pill-xl ac-pill-active" id="ac-widget-size-btn">
+                XL Widget superdimensionado
+            </button>
+        </div>
+    </div>
+
+    <div class="ac-profiles-section">
+        <div class="ac-profiles-header">
+            <span>Perfis de acessibilidade</span>
+        </div>
+        <div class="ac-profiles-grid">
+            <button class="ac-profile" data-profile="deficiencia-motora">Deficiência Motora</button>
+            <button class="ac-profile" data-profile="cego">Cego</button>
+            <button class="ac-profile" data-profile="daltonico">Daltônico</button>
+            <button class="ac-profile" data-profile="dislexia">Dislexia</button>
+            <button class="ac-profile" data-profile="baixa-visao">Baixa visão</button>
+            <button class="ac-profile" data-profile="cognitivo">Cognitivo e Aprendizagem</button>
+            <button class="ac-profile" data-profile="convulsao">Convulsão e epilepsia</button>
+            <button class="ac-profile" data-profile="tdah">TDAH</button>
+        </div>
+    </div>
+
+    <div class="ac-grid">
+        <button id="ac-ler-pagina" class="ac-item"><span class="ac-item-title">Ler a página</span></button>
+        <button id="ac-contraste-mais" class="ac-item"><span class="ac-item-title">Contraste +</span></button>
+        <button id="ac-contraste-inteligente" class="ac-item"><span class="ac-item-title">Contraste inteligente</span></button>
+        <button id="ac-links-destacados" class="ac-item"><span class="ac-item-title">Links destacados</span></button>
+        <button id="ac-texto-maior" class="ac-item"><span class="ac-item-title">Texto maior</span></button>
+        <button id="ac-espacamento-texto" class="ac-item"><span class="ac-item-title">Espaçamento de texto</span></button>
+        <button id="ac-animacoes" class="ac-item"><span class="ac-item-title">Reproduzir animações</span></button>
+        <button id="ac-ocultar-imagens" class="ac-item"><span class="ac-item-title">Ocultar imagens</span></button>
+        <button id="ac-dislexia" class="ac-item"><span class="ac-item-title">Df Dislexia amigável</span></button>
+        <button id="ac-cursor" class="ac-item"><span class="ac-item-title">Cursor</span></button>
+        <button id="ac-barra-ferramentas" class="ac-item"><span class="ac-item-title">Barra de ferramentas</span></button>
+        <button id="ac-estrutura-pagina" class="ac-item"><span class="ac-item-title">Estrutura da página</span></button>
+        <button id="ac-altura-linha" class="ac-item"><span class="ac-item-title">Altura da linha</span></button>
+        <button id="ac-alinhamento-texto" class="ac-item"><span class="ac-item-title">Alinhamento de texto</span></button>
+        <button id="ac-saturacao" class="ac-item"><span class="ac-item-title">Saturação</span></button>
+    </div>
+
+    <div class="ac-footer">
+        <button id="ac-reset" class="ac-reset-btn">Redefinir todas as configurações de acessibilidade</button>
+        <button id="ac-toggle-visibility" class="ac-move-btn">Mover/ocultar widget</button>
+    </div>
+</div>
+
+<!-- BOTÃO FLUTUANTE -->
+<button id="accessibility-btn" class="ac-fab" aria-label="Abrir menu de acessibilidade">
+    <img src="https://api.iconify.design/material-symbols/accessibility-new.svg?color=%23ffffff"
+         alt="Ícone de acessibilidade">
+</button>
+
 <div class="dashboard-layout">
+    <div class="sidebar">
+        <div class="profile-box">
+            <img src="https://i.imgur.com/gKjG1o2.png" alt="Foto de perfil do Aluno">
+            <p class="aluno-name" style="font-weight: 600;">Aluno</p>
+            <p class="aluno-email">aluno.ic9@educ.edu.br</p>
+        </div>
+        <nav class="sidebar-nav">
+            <div class="nav-item"><a href="home.html"><i class="icon">🏠</i>Home</a></div>
+            <div class="nav-item"><a href="forum.html"><i class="icon">💬</i>Fórum</a></div>
+            <div class="nav-item"><a href="aulas.html"><i class="icon">▶️</i>Aulas</a></div>
+            <div class="nav-item"><a href="conteudos.html"><i class="icon">📚</i>Conteúdos</a></div>
+            <div class="nav-item active"><a href="exercicios.html"><i class="icon">📝</i>Exercícios</a></div>
+            <div class="nav-item"><a href="configuracoes.html"><i class="icon">⚙️</i>Configurações</a></div>
+            <div class="nav-item"><a href="certificados.html"><i class="icon">🏅</i>Certificados</a></div>
+        </nav>
+        <input type="text" placeholder="Pesquisar" aria-label="Pesquisar na plataforma"
+               style="margin: 20px 15px; padding: 8px; border-radius: 10px; border: none;
+                      width: calc(100% - 30px); opacity: 0.8;">
+    </div>
+
     <div class="main-content">
-        <div class="main-content-area" style="display: flex; gap: 40px;">
-            <div class="exercise-list" style="flex: 1;">
-                <input type="text" placeholder="Pesquisar">
-                <h1>Exercício 1</h1>
-                <div class="card-simple exercise-item" tabindex="0" aria-label="Exercício 1, clique para expandir">Exercício 1</div>
-                <div class="card-simple exercise-item" tabindex="0" aria-label="Exercício 2, clique para expandir">Exercício 2</div>
-                <button class="form-btn ranking-btn">Ranking</button>
-            </div>
+        <div class="main-content-area">
+            <h1>Exercícios de Programação de Computadores e Algoritmos</h1>
+            <p>Para cada aula: assista à vídeo-aula, responda ao exercício de alternativas com feedback imediato
+               e, em seguida, pratique escrevendo um código em C sobre o mesmo tema.</p>
 
-            <div class="question-area" style="flex: 2;">
-                <h2 style="font-size: 2.5rem;">Teoria da Aprendizagem</h2>
-                <div class="card-simple question-box">
-                    <p class="instruction">Assinale a Alternativa Correta</p>
+            <!-- EXERCÍCIOS AULA 1 -->
+            <div class="card-simple" style="margin-bottom: 20px;">
+                <h2>Aula 1 – Introdução a Algoritmos</h2>
+                <p>Status do vídeo: <span id="status-video-a1">Vídeo não verificado</span> 
+                    (<a href="aulas.html#intro_algoritmos">abrir aula</a>)</p>
 
-                    <div class="voice-icon" title="Ativar Resposta por Voz">🎤</div>
-
-                    <p class="question-text" role="alert" aria-live="assertive">
-                        Como as teorias da aprendizagem podem influenciar o design de uma plataforma educacional acessível para estudantes com deficiência?
-                    </p>
-
-                    <div class="options-group" role="radiogroup" aria-labelledby="question-text">
-                        <button class="option-btn" role="radio" aria-checked="false" tabindex="0" onclick="selectAnswer(this)">Ajudam a compreender as necessidades cognitivas dos estudantes, permitindo criar recursos personalizados e acessíveis para diferentes deficiências.</button>
-                        <button class="option-btn" role="radio" aria-checked="false" tabindex="0" onclick="selectAnswer(this)">Servem apenas como base teórica sem impacto direto na acessibilidade da plataforma.</button>
-                    </div>
-
-                    <button class="form-btn next-question-btn" tabindex="0" aria-label="Próxima Questão">Próxima Questão</button>
+                <!-- Exercício 1: alternativa -->
+                <div class="card-simple" style="margin-top: 12px;">
+                    <h3>Exercício 1 – Múltipla escolha</h3>
+                    <p>Pergunta: O que melhor descreve um algoritmo em programação de computadores?</p>
+                    <form id="ex1-a1-form">
+                        <label><input type="radio" name="ex1-a1" value="a">
+                            a) Um programa já compilado e executável.</label><br>
+                        <label><input type="radio" name="ex1-a1" value="b">
+                            b) Uma sequência finita de passos bem definidos para resolver um problema.</label><br>
+                        <label><input type="radio" name="ex1-a1" value="c">
+                            c) Um conjunto aleatório de instruções sem ordem específica.</label><br>
+                        <label><input type="radio" name="ex1-a1" value="d">
+                            d) Apenas o código escrito em uma linguagem de alto nível.</label><br>
+                        <button type="button" class="play-btn" onclick="corrigirAlternativa('a1','b')">
+                            Verificar resposta
+                        </button>
+                    </form>
+                    <p id="ex1-a1-feedback" aria-live="polite"></p>
                 </div>
 
-                <img src="... link da sua avatar de libras ..." alt="Assistente Virtual em LIBRAS" class="libras-avatar-img">
+                <!-- Exercício 2: código em C (bloqueado até acertar) -->
+                <div id="ex2-a1-bloco" class="card-simple ex-bloqueado" style="margin-top: 12px;">
+                    <h3>Exercício 2 – Código em C</h3>
+                    <p id="ex2-a1-status"><strong>Bloqueado.</strong> Acerte o exercício 1 para desbloquear.</p>
+                    <div id="ex2-a1-conteudo" style="display:none;">
+                        <p>Escreva um programa em C que leia dois números inteiros, calcule a média aritmética
+                           simples e mostre o resultado na tela.</p>
+                        <textarea id="ex2-a1-code" rows="10" style="width:100%; font-family: 'Courier New', monospace;"></textarea>
+                        <button type="button" class="play-btn" onclick="enviarCodigo('a1')">
+                            Enviar código (simulação)
+                        </button>
+                        <p id="ex2-a1-feedback" aria-live="polite"></p>
+                    </div>
+                </div>
             </div>
+
+            <!-- EXERCÍCIOS AULA 2 -->
+            <div class="card-simple" style="margin-bottom: 20px;">
+                <h2>Aula 2 – Variáveis e Operadores</h2>
+                <p>Status do vídeo: <span id="status-video-a2">Vídeo não verificado</span> 
+                    (<a href="aulas.html#variaveis_operadores">abrir aula</a>)</p>
+
+                <!-- Exercício 1: alternativa -->
+                <div class="card-simple" style="margin-top: 12px;">
+                    <h3>Exercício 1 – Múltipla escolha</h3>
+                    <p>Pergunta: Qual opção representa corretamente a declaração de uma variável inteira chamada
+                       <code>idade</code> em C?</p>
+                    <form id="ex1-a2-form">
+                        <label><input type="radio" name="ex1-a2" value="a">
+                            a) inteiro idade;</label><br>
+                        <label><input type="radio" name="ex1-a2" value="b">
+                            b) int idade;</label><br>
+                        <label><input type="radio" name="ex1-a2" value="c">
+                            c) idade int;</label><br>
+                        <label><input type="radio" name="ex1-a2" value="d">
+                            d) var idade = inteiro;</label><br>
+                        <button type="button" class="play-btn" onclick="corrigirAlternativa('a2','b')">
+                            Verificar resposta
+                        </button>
+                    </form>
+                    <p id="ex1-a2-feedback" aria-live="polite"></p>
+                </div>
+
+                <!-- Exercício 2: código em C (bloqueado até acertar) -->
+                <div id="ex2-a2-bloco" class="card-simple ex-bloqueado" style="margin-top: 12px;">
+                    <h3>Exercício 2 – Código em C</h3>
+                    <p id="ex2-a2-status"><strong>Bloqueado.</strong> Acerte o exercício 1 para desbloquear.</p>
+                    <div id="ex2-a2-conteudo" style="display:none;">
+                        <p>Escreva um programa em C que leia o nome de um aluno, sua nota 1 e nota 2, calcule a média
+                           e mostre se ele está aprovado (média ≥ 6).</p>
+                        <textarea id="ex2-a2-code" rows="12" style="width:100%; font-family: 'Courier New', monospace;"></textarea>
+                        <button type="button" class="play-btn" onclick="enviarCodigo('a2')">
+                            Enviar código (simulação)
+                        </button>
+                        <p id="ex2-a2-feedback" aria-live="polite"></p>
+                    </div>
+                </div>
+            </div>
+
+            <img src="https://i.imgur.com/6E5rYtB.png" alt="Assistente Virtual em LIBRAS"
+                 class="libras-avatar-img"
+                 style="position: fixed; bottom: 80px; right: 80px; width: 150px; z-index: 1000;">
+
         </div>
     </div>
 </div>
+
+<div id="talkback-container" class="hidden">
+    <div class="bot-icon">🔊</div>
+    <p id="talkback-message">Talkback ativado.</p>
+</div>
+
 <script src="script.js"></script>
+<script>
+    // ---------- ESTADO INICIAL (desbloqueios salvos) ----------
+    document.addEventListener('DOMContentLoaded', () => {
+        // vídeo assistido (no futuro pode ser marcado na tela de aulas)
+        const v1 = localStorage.getItem('video_a1_assistido') === 'true';
+        const v2 = localStorage.getItem('video_a2_assistido') === 'true';
+        document.getElementById('status-video-a1').textContent = v1 ? 'Vídeo marcado como assistido' : 'Vídeo não verificado';
+        document.getElementById('status-video-a2').textContent = v2 ? 'Vídeo marcado como assistido' : 'Vídeo não verificado';
+
+        // desbloqueios de exercícios 2
+        if (localStorage.getItem('ex_a1_ok') === 'true') desbloquearEx2('a1');
+        if (localStorage.getItem('ex_a2_ok') === 'true') desbloquearEx2('a2');
+
+        // carregar códigos salvos
+        const c1 = localStorage.getItem('code_a1');
+        if (c1) document.getElementById('ex2-a1-code').value = c1;
+        const c2 = localStorage.getItem('code_a2');
+        if (c2) document.getElementById('ex2-a2-code').value = c2;
+    });
+
+    // ---------- EXERCÍCIO DE ALTERNATIVAS ----------
+    function corrigirAlternativa(aulaId, correta) {
+        const formId = aulaId === 'a1' ? 'ex1-a1-form' : 'ex1-a2-form';
+        const feedbackId = aulaId === 'a1' ? 'ex1-a1-feedback' : 'ex1-a2-feedback';
+
+        const form = document.getElementById(formId);
+        const selecionada = form.querySelector('input[type="radio"]:checked');
+        const feedback = document.getElementById(feedbackId);
+
+        if (!selecionada) {
+            feedback.textContent = 'Selecione uma alternativa antes de verificar.';
+            feedback.style.color = '#c62828';
+            return;
+        }
+
+        if (selecionada.value === correta) {
+            feedback.textContent = 'Correto! Você desbloqueou o exercício de código desta aula.';
+            feedback.style.color = '#2e7d32';
+            localStorage.setItem('ex_' + aulaId + '_ok', 'true');
+            desbloquearEx2(aulaId);
+        } else {
+            feedback.textContent = 'Resposta incorreta. Releia o enunciado e tente novamente.';
+            feedback.style.color = '#c62828';
+        }
+    }
+
+    function desbloquearEx2(aulaId) {
+        const blocoId = aulaId === 'a1' ? 'ex2-a1-bloco' : 'ex2-a2-bloco';
+        const statusId = aulaId === 'a1' ? 'ex2-a1-status' : 'ex2-a2-status';
+        const conteudoId = aulaId === 'a1' ? 'ex2-a1-conteudo' : 'ex2-a2-conteudo';
+
+        const bloco = document.getElementById(blocoId);
+        const status = document.getElementById(statusId);
+        const conteudo = document.getElementById(conteudoId);
+
+        bloco.classList.remove('ex-bloqueado');
+        status.textContent = 'Liberado. Escreva seu código no editor abaixo e clique em "Enviar código".';
+        conteudo.style.display = 'block';
+    }
+
+    // ---------- EXERCÍCIO DE CÓDIGO ----------
+    function enviarCodigo(aulaId) {
+        const textareaId = aulaId === 'a1' ? 'ex2-a1-code' : 'ex2-a2-code';
+        const feedbackId = aulaId === 'a1' ? 'ex2-a1-feedback' : 'ex2-a2-feedback';
+
+        const codeEl = document.getElementById(textareaId);
+        const feedback = document.getElementById(feedbackId);
+
+        const code = codeEl.value.trim();
+        if (!code) {
+            feedback.textContent = 'Digite seu código em C antes de enviar.';
+            feedback.style.color = '#c62828';
+            return;
+        }
+
+        // salva no navegador (simular envio)
+        localStorage.setItem('code_' + aulaId, code);
+
+        feedback.textContent = 'Código recebido! Este editor é uma simulação; o professor poderá avaliar sua solução. Dica: teste o algoritmo em um compilador C real também.';
+        feedback.style.color = '#2e7d32';
+    }
+</script>
 </body>
 </html>
