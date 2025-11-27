@@ -462,3 +462,120 @@ body {
     }
 
 }
+/* ===========================
+   WIDGET DE ACESSIBILIDADE
+   =========================== */
+
+#acessibility-widget,
+#acessibility-widget * {
+    box-sizing: border-box;
+}
+
+.ac-widget {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 320px;
+    height: 100vh;
+    background: #ffffff;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.15);
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    z-index: 1100;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+}
+
+.ac-hidden {
+    display: none;
+}
+
+.ac-header {
+    margin-bottom: 6px;
+}
+
+.ac-header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ac-title {
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.ac-icon-btn {
+    border: none;
+    background: transparent;
+    font-size: 18px;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.ac-select-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 4px;
+}
+
+.ac-pill {
+    border-radius: 20px;
+    border: 1px solid #d0d0d0;
+    padding: 4px 10px;
+    background: #f9f9fb;
+    font-size: 11px;
+    cursor: default;
+}
+
+.ac-pill-active {
+    border-color: #c62828;
+    background: #ffe7ea;
+}
+
+.ac-pill-xl {
+    width: 100%;
+    text-align: left;
+}
+
+/* GRID DE BOTÕES */
+.ac-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-top: 8px;
+    padding-right: 4px;
+    overflow-y: auto;
+}
+
+.ac-item {
+    border-radius: 8px;
+    border: 1px solid #dddddd;
+    background: #ffffff;
+    padding: 6px 6px;
+    font-size: 11px;
+    cursor: pointer;
+    text-align: left;
+    line-height: 1.2;
+}
+
+.ac-item:hover {
+    border-color: #c62828;
+}
+
+.ac-item-active {
+    border-color: #c62828;
+    background: #ffe7ea;
+}
+
+.ac-item-title {
+    display: block;
+}
+
+/* RODAPÉ */
+.ac-footer {
+    margin-top
+
+
