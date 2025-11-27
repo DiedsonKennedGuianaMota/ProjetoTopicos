@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!body) return;
 
         if (dashboardPages.includes(page) || page === 'login.html' || page.startsWith('cadastro-')) {
-            setupAccessibilityWidget(); // NOVO MENU
+            setupAccessibilityWidget();
         }
 
         switch (mode) {
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- 3. FUNÇÕES GERAIS DE VOZ ---
+    // --- 3. FUNÇÕES DE VOZ ---
     function speak(text, callback) {
         window.speechSynthesis.cancel();
         const utterance = new SpeechSynthesisUtterance(text);
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- 4. WIDGET COMPLETO DE ACESSIBILIDADE (NOVO) ---
+    // --- 4. WIDGET DE ACESSIBILIDADE COMPLETO ---
     function setupAccessibilityWidget() {
         const widget = document.getElementById('accessibility-widget');
         const fabBtn = document.getElementById('accessibility-btn');
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const body = document.body;
 
-        // Mapeamento de opções -> classe no body
+        // opções individuais -> classe no body
         const optionsMap = {
             'ac-ler-pagina': 'ac-ler-pagina',
             'ac-contraste-mais': 'ac-contraste-mais',
@@ -99,7 +99,19 @@ document.addEventListener('DOMContentLoaded', () => {
             'ac-saturacao': 'ac-saturacao-baixa'
         };
 
-        // Carrega estado salvo
+        // perfis -> lista de classes no body
+        const profilesMap = {
+            'deficiencia-motora': ['ac-cursor-grande', 'ac-barra-ferramentas'],
+            'cego': ['ac-ler-pagina', 'ac-estrutura-pagina', 'ac-altura-linha'],
+            'daltonico': ['ac-contraste-inteligente'],
+            'dislexia': ['ac-dislexia', 'ac-texto-maior', 'ac-espacamento-texto'],
+            'baixa-visao': ['ac-texto-maior', 'ac-contraste-mais'],
+            'cognitivo': ['ac-espacamento-texto', 'ac-altura-linha'],
+            'convulsao': ['ac-sem-animacoes', 'ac-saturacao-baixa'],
+            'tdah': ['ac-links-destacados', 'ac-espacamento-texto']
+        };
+
+        // restaura estado salvo das opções
         Object.keys(optionsMap).forEach(id => {
             const btn = document.getElementById(id);
             if (!btn) return;
@@ -110,19 +122,73 @@ document.addEventListener('DOMContentLoaded', () => {
                 body.classList.add(optionsMap[id]);
             }
             btn.addEventListener('click', () => {
-                const isActive = btn.classList.toggle('ac-item-active');
+                let isActive = btn.classList.toggle('ac-item-active');
+
+                // comportamento especial “Ler a página”
+                if (id === 'ac-ler-pagina') {
+                    if (isActive) {
+                        const main = document.querySelector('.main-content-area') || document.body;
+                        const textToRead = main.innerText || main.textContent || '';
+                        speak(textToRead);
+                    } else {
+                        window.speechSynthesis.cancel();
+                    }
+                    localStorage.setItem(storageKey, String(isActive));
+                    return;
+                }
+
                 body.classList.toggle(optionsMap[id], isActive);
                 localStorage.setItem(storageKey, String(isActive));
-
-                // comportamento especial para "Ler a página"
-                if (id === 'ac-ler-pagina' && isActive) {
-                    const textToRead = document.body.innerText || document.body.textContent;
-                    speak(textToRead);
-                }
             });
         });
 
-        // Abrir / fechar com botão flutuante
+        // PERFIS DE ACESSIBILIDADE
+        const profileButtons = document.querySelectorAll('.ac-profile');
+
+        profileButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const profile = btn.getAttribute('data-profile');
+
+                // limpa perfis anteriores
+                profileButtons.forEach(b => b.classList.remove('ac-profile-active'));
+                Object.values(optionsMap).forEach(cls => body.classList.remove(cls));
+                Object.keys(optionsMap).forEach(id => {
+                    const el = document.getElementById(id);
+                    if (el) el.classList.remove('ac-item-active');
+                    localStorage.removeItem('ac_' + id);
+                });
+
+                // aplica perfil atual
+                btn.classList.add('ac-profile-active');
+                const classesToApply = profilesMap[profile] || [];
+                classesToApply.forEach(cls => body.classList.add(cls));
+
+                // sincroniza com botões individuais
+                Object.entries(optionsMap).forEach(([id, cls]) => {
+                    const el = document.getElementById(id);
+                    if (!el) return;
+                    const active = body.classList.contains(cls);
+                    if (active) {
+                        el.classList.add('ac-item-active');
+                        localStorage.setItem('ac_' + id, 'true');
+                    } else {
+                        el.classList.remove('ac-item-active');
+                        localStorage.removeItem('ac_' + id);
+                    }
+                });
+
+                localStorage.setItem('ac_profile', profile);
+            });
+        });
+
+        // restaura perfil salvo
+        const savedProfile = localStorage.getItem('ac_profile');
+        if (savedProfile && profilesMap[savedProfile]) {
+            const btn = document.querySelector('.ac-profile[data-profile="' + savedProfile + '"]');
+            if (btn) btn.click();
+        }
+
+        // abrir / fechar widget
         function openWidget() {
             widget.classList.remove('ac-hidden');
             widget.setAttribute('aria-hidden', 'false');
@@ -137,13 +203,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (isHidden) openWidget(); else closeWidget();
         });
 
-        // Botão fechar interno
         const closeBtn = document.getElementById('ac-close-btn');
         if (closeBtn) {
             closeBtn.addEventListener('click', () => closeWidget());
         }
 
-        // Atalho CTRL+U
+        // atalho CTRL+U
         document.addEventListener('keydown', (e) => {
             if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) {
                 e.preventDefault();
@@ -152,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Reset geral
+        // reset geral
         const resetBtn = document.getElementById('ac-reset');
         if (resetBtn) {
             resetBtn.addEventListener('click', () => {
@@ -163,10 +228,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     body.classList.remove(optionsMap[id]);
                     localStorage.removeItem('ac_' + id);
                 });
+                profileButtons.forEach(b => b.classList.remove('ac-profile-active'));
+                localStorage.removeItem('ac_profile');
+                window.speechSynthesis.cancel();
             });
         }
 
-        // Mostrar/ocultar widget na tela
+        // mostrar/ocultar botão flutuante
         const moveBtn = document.getElementById('ac-toggle-visibility');
         if (moveBtn) {
             const visibilityKey = 'ac_widget_visible';
@@ -187,7 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- 5. VLIBRAS ---
+    // --- 5. VLIBRAS (MODO AUDITIVO) ---
     function setupAuditoryMode() {
         const vlibrasDiv = document.createElement('div');
         vlibrasDiv.id = 'vlibras-plugin';
@@ -391,7 +459,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- 8. SUBMISSÃO DE FORMULÁRIOS (PADRÃO/AUDITIVO) ---
+    // --- 8. SUBMISSÃO DE FORMULÁRIOS ---
     if (registerForm && !currentPage.includes('visual')) {
         registerForm.addEventListener('submit', function (event) {
             event.preventDefault();
