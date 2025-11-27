@@ -134,11 +134,106 @@
 
 <script src="script.js"></script>
 <script>
-    function playVideo(id) {
-        alert('Aqui você pode abrir o player para a aula: ' + id);
-        // depois podemos trocar para abrir um modal ou redirecionar para a página do vídeo
+    <script>
+    const lessons = {
+        intro_algoritmos: {
+            title: 'Aula 1: Introdução a Algoritmos',
+            description: 'Conceitos básicos de algoritmo, problema computável e passos de resolução.',
+            videoUrl: 'https://www.youtube.com/embed/8mei6uVttho', // exemplo
+            pdfs: [
+                { label: 'PDF - Conceitos de Algoritmos', url: 'pdfs/algoritmos_conceitos.pdf' },
+                { label: 'Lista de exercícios 1', url: 'pdfs/lista1_algoritmos.pdf' }
+            ]
+        },
+        variaveis_operadores: {
+            title: 'Aula 2: Variáveis e Operadores',
+            description: 'Tipos de dados, declaração de variáveis e operadores aritméticos e lógicos.',
+            videoUrl: 'https://www.youtube.com/embed/MQMm7JuCJCc',
+            pdfs: [
+                { label: 'PDF - Variáveis e Tipos de Dados', url: 'pdfs/variaveis_tipos.pdf' }
+            ]
+        },
+        estruturas_decisao: {
+            title: 'Aula 3: Estruturas de Decisão',
+            description: 'Uso de condições simples e compostas em algoritmos de decisão.',
+            videoUrl: 'https://www.youtube.com/embed/D9DsLAoHt5U',
+            pdfs: [
+                { label: 'PDF - Estruturas de decisão', url: 'pdfs/estruturas_decisao.pdf' }
+            ]
+        },
+        estruturas_repeticao: {
+            title: 'Aula 4: Estruturas de Repetição',
+            description: 'Laços contados e condicionais aplicados a problemas de repetição.',
+            videoUrl: 'https://www.youtube.com/embed/rTq13xgI_fA',
+            pdfs: [
+                { label: 'PDF - Laços de repetição', url: 'pdfs/estruturas_repeticao.pdf' }
+            ]
+        },
+        vetores_matrizes: {
+            title: 'Aula 5: Vetores e Matrizes',
+            description: 'Representação de coleções de dados em vetores e matrizes.',
+            videoUrl: 'https://www.youtube.com/embed/A-mzU40uolc',
+            pdfs: [
+                { label: 'PDF - Vetores e Matrizes', url: 'pdfs/vetores_matrizes.pdf' }
+            ]
+        },
+        resolucao_problemas: {
+            title: 'Aula 6: Resolução de Problemas',
+            description: 'Integração de estruturas de controle e vetores em pequenos projetos.',
+            videoUrl: 'https://www.youtube.com/embed/A-mzU40uolc',
+            pdfs: [
+                { label: 'PDF - Resolução de problemas', url: 'pdfs/resolucao_problemas.pdf' }
+            ]
+        }
+    };
+
+    function openLesson(id) {
+        const data = lessons[id];
+        if (!data) return;
+
+        const modal = document.getElementById('video-modal');
+        const titleEl = document.getElementById('modal-title');
+        const descEl = document.getElementById('modal-description');
+        const videoEl = document.getElementById('modal-video');
+        const pdfsEl = document.getElementById('modal-pdfs');
+
+        titleEl.textContent = data.title;
+        descEl.textContent = data.description;
+        videoEl.src = data.videoUrl;
+
+        // limpa PDFs antigos
+        pdfsEl.innerHTML = '';
+        data.pdfs.forEach(pdf => {
+            const link = document.createElement('a');
+            link.href = pdf.url;
+            link.target = '_blank';
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.textContent = pdf.label;
+            link.appendChild(btn);
+            pdfsEl.appendChild(link);
+        });
+
+        modal.classList.remove('hidden');
     }
+
+    function closeModal() {
+        const modal = document.getElementById('video-modal');
+        const videoEl = document.getElementById('modal-video');
+        videoEl.src = ''; // parar o vídeo
+        modal.classList.add('hidden');
+    }
+
+    // acessibilidade: fechar com ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeModal();
+        }
+    });
+</script>
+
 </script>
 </body>
 </html>
+
 
