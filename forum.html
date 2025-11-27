@@ -2,7 +2,6 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fórum - EducaFácil</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,17 +10,75 @@
 </head>
 <body id="page-body">
 
-<div id="accessibility-widget" class="hidden">
-    <button id="accessibility-btn">
-        <img src="https://api.iconify.design/material-symbols/accessibility-new.svg?color=%23ffffff" alt="Ícone de acessibilidade">
-    </button>
-    <div class="accessibility-menu">
-        <button id="increase-font">Aumentar Fonte</button>
-        <button id="decrease-font">Diminuir Fonte</button>
-        <button id="high-contrast">Alto Contraste</button>
-        <button id="daltonism-toggle">Ajuste para Daltonismo</button>
+<!-- WIDGET DE ACESSIBILIDADE (MESMO DAS OUTRAS TELAS) -->
+<div id="accessibility-widget" class="ac-widget ac-hidden" aria-hidden="true">
+    <div class="ac-header">
+        <div class="ac-header-top">
+            <span class="ac-title">Menu Acessibilidade (CTRL+U)</span>
+            <button id="ac-close-btn" class="ac-icon-btn" aria-label="Fechar menu de acessibilidade">×</button>
+        </div>
+
+        <div class="ac-select-row">
+            <button class="ac-pill" id="ac-lang-btn">Português (Brasil)</button>
+            <button class="ac-pill ac-pill-active" id="ac-profile-btn">Dislexia perfil ativo</button>
+        </div>
+
+        <div class="ac-select-row">
+            <button class="ac-pill ac-pill-xl ac-pill-active" id="ac-widget-size-btn">
+                XL Widget superdimensionado
+            </button>
+        </div>
+    </div>
+
+    <div class="ac-profiles-section">
+        <div class="ac-profiles-header">
+            <span>Perfis de acessibilidade</span>
+        </div>
+        <div class="ac-profiles-grid">
+            <button class="ac-profile" data-profile="deficiencia-motora">Deficiência Motora</button>
+            <button class="ac-profile" data-profile="cego">Cego</button>
+            <button class="ac-profile" data-profile="daltonico">Daltônico</button>
+            <button class="ac-profile" data-profile="dislexia">Dislexia</button>
+            <button class="ac-profile" data-profile="baixa-visao">Baixa visão</button>
+            <button class="ac-profile" data-profile="cognitivo">Cognitivo e Aprendizagem</button>
+            <button class="ac-profile" data-profile="convulsao">Convulsão e epilepsia</button>
+            <button class="ac-profile" data-profile="tdah">TDAH</button>
+        </div>
+    </div>
+
+    <div class="ac-grid">
+        <button id="ac-ler-pagina" class="ac-item"><span class="ac-item-title">Ler a página</span></button>
+        <button id="ac-contraste-mais" class="ac-item"><span class="ac-item-title">Contraste +</span></button>
+        <button id="ac-contraste-inteligente" class="ac-item"><span class="ac-item-title">Contraste inteligente</span></button>
+        <button id="ac-links-destacados" class="ac-item"><span class="ac-item-title">Links destacados</span></button>
+        <button id="ac-texto-maior" class="ac-item"><span class="ac-item-title">Texto maior</span></button>
+        <button id="ac-espacamento-texto" class="ac-item"><span class="ac-item-title">Espaçamento de texto</span></button>
+        <button id="ac-animacoes" class="ac-item"><span class="ac-item-title">Reproduzir animações</span></button>
+        <button id="ac-ocultar-imagens" class="ac-item"><span class="ac-item-title">Ocultar imagens</span></button>
+        <button id="ac-dislexia" class="ac-item"><span class="ac-item-title">Df Dislexia amigável</span></button>
+        <button id="ac-cursor" class="ac-item"><span class="ac-item-title">Cursor</span></button>
+        <button id="ac-barra-ferramentas" class="ac-item"><span class="ac-item-title">Barra de ferramentas</span></button>
+        <button id="ac-estrutura-pagina" class="ac-item"><span class="ac-item-title">Estrutura da página</span></button>
+        <button id="ac-altura-linha" class="ac-item"><span class="ac-item-title">Altura da linha</span></button>
+        <button id="ac-alinhamento-texto" class="ac-item"><span class="ac-item-title">Alinhamento de texto</span></button>
+        <button id="ac-saturacao" class="ac-item"><span class="ac-item-title">Saturação</span></button>
+    </div>
+
+    <div class="ac-footer">
+        <button id="ac-reset" class="ac-reset-btn">
+            Redefinir todas as configurações de acessibilidade
+        </button>
+        <button id="ac-toggle-visibility" class="ac-move-btn">
+            Mover/ocultar widget
+        </button>
     </div>
 </div>
+
+<!-- BOTÃO FLUTUANTE -->
+<button id="accessibility-btn" class="ac-fab" aria-label="Abrir menu de acessibilidade">
+    <img src="https://api.iconify.design/material-symbols/accessibility-new.svg?color=%23ffffff"
+         alt="Ícone de acessibilidade">
+</button>
 
 <div class="dashboard-layout">
     <div class="sidebar">
@@ -31,34 +88,135 @@
             <p class="aluno-email">aluno.ic9@educ.edu.br</p>
         </div>
         <nav class="sidebar-nav">
-            <div class="nav-item active"><a href="home.html"><i class="icon">🏠</i>Home</a></div>
-            <div class="nav-item"><a href="forum.html"><i class="icon">💬</i>Fórum</a></div>
+            <div class="nav-item"><a href="home.html"><i class="icon">🏠</i>Home</a></div>
+            <div class="nav-item active"><a href="forum.html"><i class="icon">💬</i>Fórum</a></div>
             <div class="nav-item"><a href="aulas.html"><i class="icon">▶️</i>Aulas</a></div>
             <div class="nav-item"><a href="conteudos.html"><i class="icon">📚</i>Conteúdos</a></div>
             <div class="nav-item"><a href="exercicios.html"><i class="icon">📝</i>Exercícios</a></div>
             <div class="nav-item"><a href="configuracoes.html"><i class="icon">⚙️</i>Configurações</a></div>
             <div class="nav-item"><a href="certificados.html"><i class="icon">🏅</i>Certificados</a></div>
         </nav>
-        <input type="text" placeholder="Pesquisar" aria-label="Pesquisar na plataforma" style="margin: 20px 15px; padding: 8px; border-radius: 10px; border: none; width: calc(100% - 30px); opacity: 0.8;">
+        <input type="text" placeholder="Pesquisar" aria-label="Pesquisar na plataforma"
+               style="margin: 20px 15px; padding: 8px; border-radius: 10px; border: none;
+                      width: calc(100% - 30px); opacity: 0.8;">
     </div>
+
     <div class="main-content">
         <div class="main-content-area">
-            <h1>Fórum de Discussão</h1>
-            <p style="margin-bottom: 25px;">Aqui você pode interagir com outros alunos e professores sobre os temas de Psicologia da Educação. O VLibras está disponível para traduzir todo o conteúdo da página.</p>
+            <h1>Fórum de Programação de Computadores e Algoritmos</h1>
+            <p aria-live="polite">
+                Espaço para tirar dúvidas, compartilhar soluções e discutir os conteúdos das aulas de Programação
+                de Computadores e Algoritmos.
+            </p>
 
-            <div class="card-simple" style="padding: 30px;">
-                <h2 style="font-size: 1.5rem; color: var(--heading-color); margin-bottom: 5px;">Tópico Principal: Acessibilidade na EAD</h2>
-                <p style="color: var(--text-color); margin-bottom: 20px;">Última resposta: Há 5 minutos.</p>
+            <div class="home-grid">
 
-                <button class="form-btn" style="width: 100%; max-width: 300px; padding: 12px 0;" tabindex="0" aria-label="Ver a discussão completa sobre Acessibilidade na EAD">Ver Discussão</button>
+                <!-- Lista de tópicos -->
+                <div class="card-simple" tabindex="0"
+                     aria-label="Lista de tópicos do fórum">
+                    <h3 style="margin-bottom: 10px;">Tópicos recentes</h3>
+
+                    <div class="forum-topic" tabindex="0">
+                        <h4>Dúvida na média com laço de repetição</h4>
+                        <p>Alguém conseguiu fazer o algoritmo que lê várias notas e calcula a média geral usando <code>while</code>?</p>
+                        <p class="forum-meta">Postado por Ana · Aula 4 – Estruturas de Repetição</p>
+                    </div>
+
+                    <div class="forum-topic" tabindex="0">
+                        <h4>Vetores: como encontrar o maior valor?</h4>
+                        <p>Estou com dificuldade para percorrer um vetor e descobrir o maior elemento. Podem dar um exemplo?</p>
+                        <p class="forum-meta">Postado por Bruno · Aula 5 – Vetores e Matrizes</p>
+                    </div>
+
+                    <div class="forum-topic" tabindex="0">
+                        <h4>Diferença entre <code>if</code> e <code>switch</code></h4>
+                        <p>Quando é melhor usar <code>if/else</code> e quando usar <code>switch</code> em C?</p>
+                        <p class="forum-meta">Postado por Carla · Aula 3 – Estruturas de Decisão</p>
+                    </div>
+
+                    <p style="margin-top: 8px; font-size: 13px; opacity: 0.8;">
+                        Novos tópicos que você criar aparecem aqui em cima desta lista.
+                    </p>
+                </div>
+
+                <!-- Novo tópico / resposta -->
+                <div class="card-simple" tabindex="0"
+                     aria-label="Formulário para criar novo tópico ou resposta">
+                    <h3 style="margin-bottom: 10px;">Criar novo tópico</h3>
+
+                    <form id="forum-form">
+                        <label for="forum-title">Título do tópico</label>
+                        <input id="forum-title" type="text" required
+                               style="width:100%; padding:8px; border-radius:8px; border:1px solid #ccc; margin-bottom:8px;">
+
+                        <label for="forum-aula">Relacionado à aula</label>
+                        <select id="forum-aula" style="width:100%; padding:8px; border-radius:8px; border:1px solid #ccc; margin-bottom:8px;">
+                            <option value="geral">Geral</option>
+                            <option value="a1">Aula 1 – Introdução a Algoritmos</option>
+                            <option value="a2">Aula 2 – Variáveis e Operadores</option>
+                            <option value="a3">Aula 3 – Estruturas de Decisão</option>
+                            <option value="a4">Aula 4 – Estruturas de Repetição</option>
+                            <option value="a5">Aula 5 – Vetores e Matrizes</option>
+                            <option value="a6">Aula 6 – Resolução de Problemas</option>
+                        </select>
+
+                        <label for="forum-message">Mensagem</label>
+                        <textarea id="forum-message" rows="5" required
+                                  style="width:100%; padding:8px; border-radius:8px; border:1px solid #ccc; margin-bottom:10px;"></textarea>
+
+                        <button type="submit" class="play-btn">Publicar tópico</button>
+                    </form>
+
+                    <p id="forum-feedback" aria-live="polite" style="margin-top:8px;"></p>
+                </div>
+
             </div>
 
+            <img src="https://i.imgur.com/6E5rYtB.png" alt="Assistente Virtual em LIBRAS"
+                 class="libras-avatar-img"
+                 style="position: fixed; bottom: 80px; right: 80px; width: 150px; z-index: 1000;">
         </div>
     </div>
 </div>
 
-<div id="talkback-container" class="hidden">...</div>
+<div id="talkback-container" class="hidden">
+    <div class="bot-icon">🔊</div>
+    <p id="talkback-message">Talkback ativado.</p>
+</div>
 
 <script src="script.js"></script>
+<script>
+    // Salva tópicos simples no localStorage e mostra feedback
+    document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('forum-form');
+        const feedback = document.getElementById('forum-feedback');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const titulo = document.getElementById('forum-title').value.trim();
+            const aula   = document.getElementById('forum-aula').value;
+            const msg    = document.getElementById('forum-message').value.trim();
+
+            if (!titulo || !msg) {
+                feedback.textContent = 'Preencha título e mensagem antes de publicar.';
+                feedback.style.color = '#c62828';
+                return;
+            }
+
+            const topicos = JSON.parse(localStorage.getItem('forum_topicos') || '[]');
+            topicos.unshift({
+                titulo,
+                aula,
+                msg,
+                data: new Date().toLocaleString('pt-BR')
+            });
+            localStorage.setItem('forum_topicos', JSON.stringify(topicos));
+
+            feedback.textContent = 'Tópico publicado! Ele será mostrado na próxima versão dinâmica do fórum.';
+            feedback.style.color = '#2e7d32';
+            form.reset();
+        });
+    });
+</script>
 </body>
 </html>
