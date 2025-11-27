@@ -111,6 +111,26 @@
     <div class="bot-icon">🔊</div>
     <p id="talkback-message">Talkback ativado.</p>
 </div>
+<!-- MODAL DE VÍDEO E MATERIAIS -->
+<div id="video-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-backdrop" onclick="closeModal()"></div>
+    <div class="modal-content">
+        <button class="modal-close" aria-label="Fechar" onclick="closeModal()">×</button>
+
+        <h2 id="modal-title">Título da aula</h2>
+        <p id="modal-description">Descrição da aula.</p>
+
+        <div class="modal-video-wrapper">
+            <iframe id="modal-video" src="" title="Player da vídeo aula"
+                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+        </div>
+
+        <div id="modal-pdfs" class="modal-pdfs">
+            <!-- botões de PDF entram aqui via JS -->
+        </div>
+    </div>
+</div>
 
 <script src="script.js"></script>
 <script>
@@ -121,3 +141,4 @@
 </script>
 </body>
 </html>
+
