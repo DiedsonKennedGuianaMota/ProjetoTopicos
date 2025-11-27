@@ -73,187 +73,243 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- 4. WIDGET DE ACESSIBILIDADE COMPLETO ---
-    function setupAccessibilityWidget() {
-        const widget = document.getElementById('accessibility-widget');
-        const fabBtn = document.getElementById('accessibility-btn');
-        if (!widget || !fabBtn) return;
+    // --- 4. WIDGET DE ACESSIBILIDADE COMPLETO ---
+function setupAccessibilityWidget() {
+    const widget = document.getElementById('accessibility-widget');
+    const fabBtn = document.getElementById('accessibility-btn');
+    if (!widget || !fabBtn) return;
 
-        const body = document.body;
+    const body = document.body;
 
-        // opções individuais -> classe no body
-        const optionsMap = {
-            'ac-ler-pagina': 'ac-ler-pagina',
-            'ac-contraste-mais': 'ac-contraste-mais',
-            'ac-contraste-inteligente': 'ac-contraste-inteligente',
-            'ac-links-destacados': 'ac-links-destacados',
-            'ac-texto-maior': 'ac-texto-maior',
-            'ac-espacamento-texto': 'ac-espacamento-texto',
-            'ac-animacoes': 'ac-sem-animacoes',
-            'ac-ocultar-imagens': 'ac-sem-imagens',
-            'ac-dislexia': 'ac-dislexia',
-            'ac-cursor': 'ac-cursor-grande',
-            'ac-barra-ferramentas': 'ac-barra-ferramentas',
-            'ac-estrutura-pagina': 'ac-estrutura-pagina',
-            'ac-altura-linha': 'ac-altura-linha',
-            'ac-alinhamento-texto': 'ac-alinhamento-texto',
-            'ac-saturacao': 'ac-saturacao-baixa'
-        };
+    // estados internos para opções com múltiplos níveis
+    let contrastState = parseInt(localStorage.getItem('ac_contrastState') || '0', 10); // 0=normal,1=invertido,2=escuro,3=claro
+    let textLevel = parseInt(localStorage.getItem('ac_textLevel') || '0', 10);        // 0..4
+    let saturationState = parseInt(localStorage.getItem('ac_saturationState') || '0', 10); // 0=normal,1=baixa,2=alta,3=zero
 
-        // perfis -> lista de classes no body
-        const profilesMap = {
-            'deficiencia-motora': ['ac-cursor-grande', 'ac-barra-ferramentas'],
-            'cego': ['ac-ler-pagina', 'ac-estrutura-pagina', 'ac-altura-linha'],
-            'daltonico': ['ac-contraste-inteligente'],
-            'dislexia': ['ac-dislexia', 'ac-texto-maior', 'ac-espacamento-texto'],
-            'baixa-visao': ['ac-texto-maior', 'ac-contraste-mais'],
-            'cognitivo': ['ac-espacamento-texto', 'ac-altura-linha'],
-            'convulsao': ['ac-sem-animacoes', 'ac-saturacao-baixa'],
-            'tdah': ['ac-links-destacados', 'ac-espacamento-texto']
-        };
+    // mapeamento simples (on/off)
+    const optionsMap = {
+        'ac-links-destacados': 'ac-links-destacados',
+        'ac-espacamento-texto': 'ac-espacamento-texto',
+        'ac-ocultar-imagens': 'ac-sem-imagens'
+    };
 
-        // restaura estado salvo das opções
-        Object.keys(optionsMap).forEach(id => {
-            const btn = document.getElementById(id);
-            if (!btn) return;
-            const storageKey = 'ac_' + id;
-            const saved = localStorage.getItem(storageKey) === 'true';
-            if (saved) {
-                btn.classList.add('ac-item-active');
-                body.classList.add(optionsMap[id]);
+    // PERFIS (mantém o que já estava, se quiser; opcional)
+    const profilesMap = {
+        'deficiencia-motora': ['ac-cursor-grande', 'ac-barra-ferramentas'],
+        'cego': ['ac-estrutura-pagina', 'ac-altura-linha'],
+        'daltonico': [],
+        'dislexia': ['ac-dislexia'],
+        'baixa-visao': [],
+        'cognitivo': ['ac-espacamento-texto'],
+        'convulsao': [],
+        'tdah': ['ac-links-destacados']
+    };
+
+    /* ---------- APLICAR ESTADOS SALVOS (CONTRASTE, TEXTO, SATURAÇÃO) ---------- */
+
+    function applyContrastState() {
+        body.classList.remove('ac-contraste-invertido', 'ac-contraste-escuro', 'ac-contraste-claro');
+        if (contrastState === 1) body.classList.add('ac-contraste-invertido');
+        if (contrastState === 2) body.classList.add('ac-contraste-escuro');
+        if (contrastState === 3) body.classList.add('ac-contraste-claro');
+        localStorage.setItem('ac_contrastState', String(contrastState));
+    }
+
+    function applyTextLevel() {
+        body.classList.remove('ac-texto-n1','ac-texto-n2','ac-texto-n3','ac-texto-n4');
+        if (textLevel >= 1 && textLevel <= 4) {
+            body.classList.add('ac-texto-n' + textLevel);
+        }
+        localStorage.setItem('ac_textLevel', String(textLevel));
+    }
+
+    function applySaturationState() {
+        body.classList.remove('ac-saturacao-baixa','ac-saturacao-alta','ac-saturacao-zero');
+        if (saturationState === 1) body.classList.add('ac-saturacao-baixa');
+        if (saturationState === 2) body.classList.add('ac-saturacao-alta');
+        if (saturationState === 3) body.classList.add('ac-saturacao-zero');
+        localStorage.setItem('ac_saturationState', String(saturationState));
+    }
+
+    applyContrastState();
+    applyTextLevel();
+    applySaturationState();
+
+    /* ---------- BOTÕES INDIVIDUAIS ---------- */
+
+    // LER PÁGINA
+    const btnLer = document.getElementById('ac-ler-pagina');
+    if (btnLer) {
+        btnLer.addEventListener('click', () => {
+            const active = btnLer.classList.toggle('ac-item-active');
+            if (active) {
+                const main = document.querySelector('.main-content-area') || document.body;
+                const textToRead = main.innerText || main.textContent || '';
+                speak(textToRead);
+            } else {
+                window.speechSynthesis.cancel();
             }
-            btn.addEventListener('click', () => {
-                let isActive = btn.classList.toggle('ac-item-active');
-
-                // comportamento especial “Ler a página”
-                if (id === 'ac-ler-pagina') {
-                    if (isActive) {
-                        const main = document.querySelector('.main-content-area') || document.body;
-                        const textToRead = main.innerText || main.textContent || '';
-                        speak(textToRead);
-                    } else {
-                        window.speechSynthesis.cancel();
-                    }
-                    localStorage.setItem(storageKey, String(isActive));
-                    return;
-                }
-
-                body.classList.toggle(optionsMap[id], isActive);
-                localStorage.setItem(storageKey, String(isActive));
-            });
         });
+    }
 
-        // PERFIS DE ACESSIBILIDADE
-        const profileButtons = document.querySelectorAll('.ac-profile');
-
-        profileButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const profile = btn.getAttribute('data-profile');
-
-                // limpa perfis anteriores
-                profileButtons.forEach(b => b.classList.remove('ac-profile-active'));
-                Object.values(optionsMap).forEach(cls => body.classList.remove(cls));
-                Object.keys(optionsMap).forEach(id => {
-                    const el = document.getElementById(id);
-                    if (el) el.classList.remove('ac-item-active');
-                    localStorage.removeItem('ac_' + id);
-                });
-
-                // aplica perfil atual
-                btn.classList.add('ac-profile-active');
-                const classesToApply = profilesMap[profile] || [];
-                classesToApply.forEach(cls => body.classList.add(cls));
-
-                // sincroniza com botões individuais
-                Object.entries(optionsMap).forEach(([id, cls]) => {
-                    const el = document.getElementById(id);
-                    if (!el) return;
-                    const active = body.classList.contains(cls);
-                    if (active) {
-                        el.classList.add('ac-item-active');
-                        localStorage.setItem('ac_' + id, 'true');
-                    } else {
-                        el.classList.remove('ac-item-active');
-                        localStorage.removeItem('ac_' + id);
-                    }
-                });
-
-                localStorage.setItem('ac_profile', profile);
-            });
+    // CONTRASTE (3 níveis + volta ao normal)
+    const btnContraste = document.getElementById('ac-contraste-mais');
+    if (btnContraste) {
+        btnContraste.addEventListener('click', () => {
+            contrastState = (contrastState + 1) % 4; // 0->1->2->3->0
+            applyContrastState();
+            btnContraste.classList.toggle('ac-item-active', contrastState !== 0);
         });
+        // estado visual inicial
+        btnContraste.classList.toggle('ac-item-active', contrastState !== 0);
+    }
 
-        // restaura perfil salvo
-        const savedProfile = localStorage.getItem('ac_profile');
-        if (savedProfile && profilesMap[savedProfile]) {
-            const btn = document.querySelector('.ac-profile[data-profile="' + savedProfile + '"]');
-            if (btn) btn.click();
+    // LINKS DESTACADOS, ESPAÇAMENTO, IMAGENS (on/off simples)
+    Object.keys(optionsMap).forEach(id => {
+        const btn = document.getElementById(id);
+        if (!btn) return;
+        const cls = optionsMap[id];
+        const storageKey = 'ac_' + id;
+        const saved = localStorage.getItem(storageKey) === 'true';
+        if (saved) {
+            body.classList.add(cls);
+            btn.classList.add('ac-item-active');
         }
+        btn.addEventListener('click', () => {
+            const active = btn.classList.toggle('ac-item-active');
+            body.classList.toggle(cls, active);
+            localStorage.setItem(storageKey, String(active));
+        });
+    });
 
-        // abrir / fechar widget
-        function openWidget() {
-            widget.classList.remove('ac-hidden');
-            widget.setAttribute('aria-hidden', 'false');
-        }
-        function closeWidget() {
-            widget.classList.add('ac-hidden');
-            widget.setAttribute('aria-hidden', 'true');
-        }
+    // TEXTO MAIOR (4 níveis + volta ao normal)
+    const btnTexto = document.getElementById('ac-texto-maior');
+    if (btnTexto) {
+        btnTexto.addEventListener('click', () => {
+            textLevel = (textLevel + 1) % 5; // 0..4
+            applyTextLevel();
+            btnTexto.classList.toggle('ac-item-active', textLevel !== 0);
+        });
+        btnTexto.classList.toggle('ac-item-active', textLevel !== 0);
+    }
 
-        fabBtn.addEventListener('click', () => {
+    // SATURAÇÃO (baixa, alta, zero, normal)
+    const btnSat = document.getElementById('ac-saturacao');
+    if (btnSat) {
+        btnSat.addEventListener('click', () => {
+            saturationState = (saturationState + 1) % 4; // 0..3
+            applySaturationState();
+            btnSat.classList.toggle('ac-item-active', saturationState !== 0);
+        });
+        btnSat.classList.toggle('ac-item-active', saturationState !== 0);
+    }
+
+    /* ---------- PERFIS (OPCIONAL, MANTENDO SUA LÓGICA) ---------- */
+
+    const profileButtons = document.querySelectorAll('.ac-profile');
+    profileButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const profile = btn.getAttribute('data-profile');
+
+            // limpa perfis anteriores
+            profileButtons.forEach(b => b.classList.remove('ac-profile-active'));
+            Object.values(optionsMap).forEach(cls => body.classList.remove(cls));
+            profileButtons.forEach(b => b.classList.remove('ac-profile-active'));
+
+            // limpa estados especiais
+            contrastState = 0; textLevel = 0; saturationState = 0;
+            applyContrastState(); applyTextLevel(); applySaturationState();
+
+            // aplica perfil
+            btn.classList.add('ac-profile-active');
+            const classesToApply = profilesMap[profile] || [];
+            classesToApply.forEach(cls => body.classList.add(cls));
+
+            localStorage.setItem('ac_profile', profile);
+        });
+    });
+
+    const savedProfile = localStorage.getItem('ac_profile');
+    if (savedProfile && document.querySelector('.ac-profile[data-profile="' + savedProfile + '"]')) {
+        document.querySelector('.ac-profile[data-profile="' + savedProfile + '"]').click();
+    }
+
+    /* ---------- ABRIR / FECHAR / RESET / WIDGET VISÍVEL ---------- */
+
+    function openWidget() {
+        widget.classList.remove('ac-hidden');
+        widget.setAttribute('aria-hidden', 'false');
+    }
+    function closeWidget() {
+        widget.classList.add('ac-hidden');
+        widget.setAttribute('aria-hidden', 'true');
+    }
+
+    fabBtn.addEventListener('click', () => {
+        const isHidden = widget.classList.contains('ac-hidden');
+        if (isHidden) openWidget(); else closeWidget();
+    });
+
+    const closeBtn = document.getElementById('ac-close-btn');
+    if (closeBtn) closeBtn.addEventListener('click', closeWidget);
+
+    // CTRL+U
+    document.addEventListener('keydown', e => {
+        if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) {
+            e.preventDefault();
             const isHidden = widget.classList.contains('ac-hidden');
             if (isHidden) openWidget(); else closeWidget();
-        });
-
-        const closeBtn = document.getElementById('ac-close-btn');
-        if (closeBtn) {
-            closeBtn.addEventListener('click', () => closeWidget());
         }
+    });
 
-        // atalho CTRL+U
-        document.addEventListener('keydown', (e) => {
-            if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) {
-                e.preventDefault();
-                const isHidden = widget.classList.contains('ac-hidden');
-                if (isHidden) openWidget(); else closeWidget();
-            }
-        });
-
-        // reset geral
-        const resetBtn = document.getElementById('ac-reset');
-        if (resetBtn) {
-            resetBtn.addEventListener('click', () => {
-                Object.keys(optionsMap).forEach(id => {
-                    const btn = document.getElementById(id);
-                    if (!btn) return;
-                    btn.classList.remove('ac-item-active');
-                    body.classList.remove(optionsMap[id]);
-                    localStorage.removeItem('ac_' + id);
-                });
-                profileButtons.forEach(b => b.classList.remove('ac-profile-active'));
-                localStorage.removeItem('ac_profile');
-                window.speechSynthesis.cancel();
+    // Reset geral
+    const resetBtn = document.getElementById('ac-reset');
+    if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+            // simples
+            Object.keys(optionsMap).forEach(id => {
+                const btn = document.getElementById(id);
+                if (!btn) return;
+                btn.classList.remove('ac-item-active');
+                body.classList.remove(optionsMap[id]);
+                localStorage.removeItem('ac_' + id);
             });
-        }
-
-        // mostrar/ocultar botão flutuante
-        const moveBtn = document.getElementById('ac-toggle-visibility');
-        if (moveBtn) {
-            const visibilityKey = 'ac_widget_visible';
-            const savedVisible = localStorage.getItem(visibilityKey);
-            if (savedVisible === 'false') {
-                fabBtn.style.display = 'none';
-            }
-            moveBtn.addEventListener('click', () => {
-                const isVisible = fabBtn.style.display !== 'none';
-                if (isVisible) {
-                    fabBtn.style.display = 'none';
-                    localStorage.setItem(visibilityKey, 'false');
-                } else {
-                    fabBtn.style.display = 'flex';
-                    localStorage.setItem(visibilityKey, 'true');
-                }
-            });
-        }
+            // especiais
+            contrastState = 0; textLevel = 0; saturationState = 0;
+            applyContrastState(); applyTextLevel(); applySaturationState();
+            const btnContr = document.getElementById('ac-contraste-mais');
+            const btnTxt = document.getElementById('ac-texto-maior');
+            const btnS = document.getElementById('ac-saturacao');
+            if (btnContr) btnContr.classList.remove('ac-item-active');
+            if (btnTxt) btnTxt.classList.remove('ac-item-active');
+            if (btnS) btnS.classList.remove('ac-item-active');
+            profileButtons.forEach(b => b.classList.remove('ac-profile-active'));
+            localStorage.removeItem('ac_profile');
+            window.speechSynthesis.cancel();
+        });
     }
+
+    // mostrar/ocultar botão flutuante
+    const moveBtn = document.getElementById('ac-toggle-visibility');
+    if (moveBtn) {
+        const visibilityKey = 'ac_widget_visible';
+        const savedVisible = localStorage.getItem(visibilityKey);
+        if (savedVisible === 'false') {
+            fabBtn.style.display = 'none';
+        }
+        moveBtn.addEventListener('click', () => {
+            const isVisible = fabBtn.style.display !== 'none';
+            if (isVisible) {
+                fabBtn.style.display = 'none';
+                localStorage.setItem(visibilityKey, 'false');
+            } else {
+                fabBtn.style.display = 'flex';
+                localStorage.setItem(visibilityKey, 'true');
+            }
+        });
+    }
+}
+
 
     // --- 5. VLIBRAS (MODO AUDITIVO) ---
     function setupAuditoryMode() {
@@ -521,3 +577,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 });
+
