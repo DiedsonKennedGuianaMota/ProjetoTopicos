@@ -101,12 +101,12 @@
         <div class="main-content-area">
             <h1>Exercícios de Programação de Computadores e Algoritmos</h1>
             <p>Para cada aula: assista à vídeo-aula, responda ao exercício de alternativas com feedback imediato
-               e, em seguida, pratique escrevendo um código em C sobre o mesmo tema.</p>
+               e, depois de acertar, pratique escrevendo e executando código C no compilador online.</p>
 
             <!-- EXERCÍCIOS AULA 1 -->
             <div class="card-simple" style="margin-bottom: 20px;">
                 <h2>Aula 1 – Introdução a Algoritmos</h2>
-                <p>Status do vídeo: <span id="status-video-a1">Vídeo não verificado</span> 
+                <p>Status do vídeo: <span id="status-video-a1">Vídeo não verificado</span>
                     (<a href="aulas.html#intro_algoritmos">abrir aula</a>)</p>
 
                 <!-- Exercício 1: alternativa -->
@@ -129,35 +129,26 @@
                     <p id="ex1-a1-feedback" aria-live="polite"></p>
                 </div>
 
-                <!-- Exercício 2: código em C (bloqueado até acertar) -->
+                <!-- Exercício 2: compilador C online (bloqueado até acertar) -->
                 <div id="ex2-a1-bloco" class="card-simple ex-bloqueado" style="margin-top: 12px;">
                     <h3>Exercício 2 – Código em C</h3>
                     <p id="ex2-a1-status"><strong>Bloqueado.</strong> Acerte o exercício 1 para desbloquear.</p>
                     <div id="ex2-a1-conteudo" style="display:none;">
-                        <p>Escreva um programa em C que leia dois números inteiros, calcule a média aritmética
-                           simples e mostre o resultado na tela.</p>
-                        <div id="ex2-a1-conteudo" style="display:none;">
-    <p>Teste seus algoritmos diretamente no compilador online abaixo. O código já está em C.</p>
-
-    <iframe
-        src="https://onecompiler.com/embed/c?theme=light"
-        frameborder="0"
-        width="100%"
-        height="420"
-        style="border-radius: 8px; background:#1e1e1e;"
-        title="Compilador C online - OneCompiler"
-        allow="fullscreen">
-    </iframe>
-
-    <p style="margin-top:8px;font-size:13px;">
-        Dica: escreva o programa pedido no enunciado usando o editor acima e clique em “Run” para ver a saída.
-    </p>
-</div>
-
-                        <button type="button" class="play-btn" onclick="enviarCodigo('a1')">
-                            Enviar código (simulação)
-                        </button>
-                        <p id="ex2-a1-feedback" aria-live="polite"></p>
+                        <p>Use o compilador abaixo para escrever um programa em C que leia dois inteiros,
+                           calcule a média aritmética simples e imprima o resultado.</p>
+                        <iframe
+                            id="compiler-a1"
+                            src="https://onecompiler.com/embed/c?theme=light"
+                            frameborder="0"
+                            width="100%"
+                            height="420"
+                            style="border-radius: 8px; background:#1e1e1e;"
+                            title="Compilador C online - Aula 1"
+                            allow="fullscreen">
+                        </iframe>
+                        <p style="margin-top:8px;font-size:13px;">
+                            Dica: clique em “Run” dentro do editor para compilar e executar seu código.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -165,14 +156,14 @@
             <!-- EXERCÍCIOS AULA 2 -->
             <div class="card-simple" style="margin-bottom: 20px;">
                 <h2>Aula 2 – Variáveis e Operadores</h2>
-                <p>Status do vídeo: <span id="status-video-a2">Vídeo não verificado</span> 
+                <p>Status do vídeo: <span id="status-video-a2">Vídeo não verificado</span>
                     (<a href="aulas.html#variaveis_operadores">abrir aula</a>)</p>
 
                 <!-- Exercício 1: alternativa -->
                 <div class="card-simple" style="margin-top: 12px;">
                     <h3>Exercício 1 – Múltipla escolha</h3>
                     <p>Pergunta: Qual opção representa corretamente a declaração de uma variável inteira chamada
-                       <code>idade</code> em C?</p>
+                        <code>idade</code> em C?</p>
                     <form id="ex1-a2-form">
                         <label><input type="radio" name="ex1-a2" value="a">
                             a) inteiro idade;</label><br>
@@ -189,18 +180,26 @@
                     <p id="ex1-a2-feedback" aria-live="polite"></p>
                 </div>
 
-                <!-- Exercício 2: código em C (bloqueado até acertar) -->
+                <!-- Exercício 2: compilador C online (bloqueado até acertar) -->
                 <div id="ex2-a2-bloco" class="card-simple ex-bloqueado" style="margin-top: 12px;">
                     <h3>Exercício 2 – Código em C</h3>
                     <p id="ex2-a2-status"><strong>Bloqueado.</strong> Acerte o exercício 1 para desbloquear.</p>
                     <div id="ex2-a2-conteudo" style="display:none;">
-                        <p>Escreva um programa em C que leia o nome de um aluno, sua nota 1 e nota 2, calcule a média
-                           e mostre se ele está aprovado (média ≥ 6).</p>
-                        <textarea id="ex2-a2-code" rows="12" style="width:100%; font-family: 'Courier New', monospace;"></textarea>
-                        <button type="button" class="play-btn" onclick="enviarCodigo('a2')">
-                            Enviar código (simulação)
-                        </button>
-                        <p id="ex2-a2-feedback" aria-live="polite"></p>
+                        <p>Use o compilador abaixo para escrever um programa em C que leia o nome de um aluno,
+                           sua nota 1 e nota 2, calcule a média e informe se está aprovado (média ≥ 6).</p>
+                        <iframe
+                            id="compiler-a2"
+                            src="https://onecompiler.com/embed/c?theme=light"
+                            frameborder="0"
+                            width="100%"
+                            height="420"
+                            style="border-radius: 8px; background:#1e1e1e;"
+                            title="Compilador C online - Aula 2"
+                            allow="fullscreen">
+                        </iframe>
+                        <p style="margin-top:8px;font-size:13px;">
+                            Dica: teste entradas diferentes para conferir se a lógica funciona corretamente.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -220,23 +219,15 @@
 
 <script src="script.js"></script>
 <script>
-    // ---------- ESTADO INICIAL (desbloqueios salvos) ----------
+    // ---------- ESTADO INICIAL ----------
     document.addEventListener('DOMContentLoaded', () => {
-        // vídeo assistido (no futuro pode ser marcado na tela de aulas)
         const v1 = localStorage.getItem('video_a1_assistido') === 'true';
         const v2 = localStorage.getItem('video_a2_assistido') === 'true';
         document.getElementById('status-video-a1').textContent = v1 ? 'Vídeo marcado como assistido' : 'Vídeo não verificado';
         document.getElementById('status-video-a2').textContent = v2 ? 'Vídeo marcado como assistido' : 'Vídeo não verificado';
 
-        // desbloqueios de exercícios 2
         if (localStorage.getItem('ex_a1_ok') === 'true') desbloquearEx2('a1');
         if (localStorage.getItem('ex_a2_ok') === 'true') desbloquearEx2('a2');
-
-        // carregar códigos salvos
-        const c1 = localStorage.getItem('code_a1');
-        if (c1) document.getElementById('ex2-a1-code').value = c1;
-        const c2 = localStorage.getItem('code_a2');
-        if (c2) document.getElementById('ex2-a2-code').value = c2;
     });
 
     // ---------- EXERCÍCIO DE ALTERNATIVAS ----------
@@ -266,41 +257,18 @@
     }
 
     function desbloquearEx2(aulaId) {
-        const blocoId = aulaId === 'a1' ? 'ex2-a1-bloco' : 'ex2-a2-bloco';
-        const statusId = aulaId === 'a1' ? 'ex2-a1-status' : 'ex2-a2-status';
-        const conteudoId = aulaId === 'a1' ? 'ex2-a1-conteudo' : 'ex2-a2-conteudo';
+        const blocoId   = aulaId === 'a1' ? 'ex2-a1-bloco'   : 'ex2-a2-bloco';
+        const statusId  = aulaId === 'a1' ? 'ex2-a1-status'  : 'ex2-a2-status';
+        const conteudoId= aulaId === 'a1' ? 'ex2-a1-conteudo': 'ex2-a2-conteudo';
 
-        const bloco = document.getElementById(blocoId);
-        const status = document.getElementById(statusId);
-        const conteudo = document.getElementById(conteudoId);
+        const bloco   = document.getElementById(blocoId);
+        const status  = document.getElementById(statusId);
+        const conteudo= document.getElementById(conteudoId);
 
         bloco.classList.remove('ex-bloqueado');
-        status.textContent = 'Liberado. Escreva seu código no editor abaixo e clique em "Enviar código".';
+        status.textContent = 'Liberado. Use o compilador abaixo para escrever e executar seu código em C.';
         conteudo.style.display = 'block';
-    }
-
-    // ---------- EXERCÍCIO DE CÓDIGO ----------
-    function enviarCodigo(aulaId) {
-        const textareaId = aulaId === 'a1' ? 'ex2-a1-code' : 'ex2-a2-code';
-        const feedbackId = aulaId === 'a1' ? 'ex2-a1-feedback' : 'ex2-a2-feedback';
-
-        const codeEl = document.getElementById(textareaId);
-        const feedback = document.getElementById(feedbackId);
-
-        const code = codeEl.value.trim();
-        if (!code) {
-            feedback.textContent = 'Digite seu código em C antes de enviar.';
-            feedback.style.color = '#c62828';
-            return;
-        }
-
-        // salva no navegador (simular envio)
-        localStorage.setItem('code_' + aulaId, code);
-
-        feedback.textContent = 'Código recebido! Este editor é uma simulação; o professor poderá avaliar sua solução. Dica: teste o algoritmo em um compilador C real também.';
-        feedback.style.color = '#2e7d32';
     }
 </script>
 </body>
 </html>
-
