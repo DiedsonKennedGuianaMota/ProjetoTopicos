@@ -1,42 +1,123 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <meta charset="UTF-8">
     <title>Aulas - EducaFácil</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body id="page-body">
+
+<!-- WIDGET DE ACESSIBILIDADE (mesma estrutura da home) -->
+<div id="accessibility-widget" class="ac-widget ac-hidden" aria-hidden="true">
+    <!-- aqui dentro vai o mesmo conteúdo do widget da home -->
+</div>
+<button id="accessibility-btn" class="ac-fab" aria-label="Abrir menu de acessibilidade">
+    <img src="https://api.iconify.design/material-symbols/accessibility-new.svg?color=%23ffffff"
+         alt="Ícone de acessibilidade">
+</button>
+
 <div class="dashboard-layout">
+    <div class="sidebar">
+        <div class="profile-box">
+            <img src="https://i.imgur.com/gKjG1o2.png" alt="Foto de perfil do Aluno">
+            <p class="aluno-name" style="font-weight: 600;">Aluno</p>
+            <p class="aluno-email">aluno.ic9@educ.edu.br</p>
+        </div>
+        <nav class="sidebar-nav">
+            <div class="nav-item"><a href="home.html"><i class="icon">🏠</i>Home</a></div>
+            <div class="nav-item"><a href="forum.html"><i class="icon">💬</i>Fórum</a></div>
+            <div class="nav-item active"><a href="aulas.html"><i class="icon">▶️</i>Aulas</a></div>
+            <div class="nav-item"><a href="conteudos.html"><i class="icon">📚</i>Conteúdos</a></div>
+            <div class="nav-item"><a href="exercicios.html"><i class="icon">📝</i>Exercícios</a></div>
+            <div class="nav-item"><a href="configuracoes.html"><i class="icon">⚙️</i>Configurações</a></div>
+            <div class="nav-item"><a href="certificados.html"><i class="icon">🏅</i>Certificados</a></div>
+        </nav>
+        <input type="text" placeholder="Pesquisar" aria-label="Pesquisar na plataforma"
+               style="margin: 20px 15px; padding: 8px; border-radius: 10px; border: none;
+                      width: calc(100% - 30px); opacity: 0.8;">
+    </div>
+
     <div class="main-content">
         <div class="main-content-area">
-            <h1>Aulas</h1>
-            <p aria-live="polite">Página de vídeos e conteúdos para assistir. O avatar de LIBRAS está disponível para traduzir legendas.</p>
+            <h1>Aulas de Programação de Computadores e Algoritmos</h1>
+            <p aria-live="polite">
+                Página com vídeos e materiais de apoio sobre algoritmos, lógica de programação e estruturas de dados básicas.
+                O avatar de LIBRAS está disponível para traduzir legendas.
+            </p>
 
             <div class="video-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
 
-                <div class="card-simple video-card" tabindex="0" role="button" aria-label="Abrir Aula 1: Teorias da Aprendizagem. Conteúdos introdução e pedagogia.">
-                    <img src="..." alt="Thumbnail do vídeo de Teorias da Aprendizagem">
-                    <h3>Aula 1: Teorias da Aprendizagem</h3>
-                    <p>Conteúdos: introdução, pedagogia.</p>
-                    <button class="play-btn" onclick="playVideo('aula1')">Assistir</button>
+                <div class="card-simple video-card" tabindex="0" role="button"
+                     aria-label="Abrir Aula 1: Introdução a algoritmos. Conceitos básicos de algoritmo e programação de computadores.">
+                    <img src="https://i.imgur.com/4ZQZQ3B.png" alt="Thumbnail da aula de introdução a algoritmos">
+                    <h3>Aula 1: Introdução a Algoritmos</h3>
+                    <p>Conceitos de algoritmo, problema computável e passos de resolução.</p>
+                    <button class="play-btn" onclick="playVideo('intro_algoritmos')">Assistir</button>
                 </div>
 
-                <div class="card-simple video-card" tabindex="0" role="button" aria-label="Abrir Aula 2: Teorias da Aprendizagem. Conteúdos conceitos básicos.">
-                    <img src="..." alt="Thumbnail do vídeo de Teorias da Aprendizagem">
-                    <h3>Aula 2: Teorias da Aprendizagem</h3>
-                    <p>Conteúdos: conceitos básicos.</p>
-                    <button class="play-btn" onclick="playVideo('aula2')">Assistir</button>
+                <div class="card-simple video-card" tabindex="0" role="button"
+                     aria-label="Abrir Aula 2: Variáveis, tipos de dados e operadores.">
+                    <img src="https://i.imgur.com/8p4vRsk.png" alt="Thumbnail da aula sobre variáveis e operadores">
+                    <h3>Aula 2: Variáveis e Operadores</h3>
+                    <p>Tipos de dados, declaração de variáveis e uso de operadores aritméticos e lógicos.</p>
+                    <button class="play-btn" onclick="playVideo('variaveis_operadores')">Assistir</button>
                 </div>
 
-                <div class="card-simple video-card" tabindex="0" role="button" aria-label="Abrir Aula 1: Motivação e Processos Cognitivos.">
-                    <img src="..." alt="Thumbnail do vídeo de Motivação">
-                    <h3>Aula 1: Motivação e Processos Cognitivos</h3>
-                    <p>Conteúdos: Neurologia do aprendizado.</p>
-                    <button class="play-btn" onclick="playVideo('motivacao1')">Assistir</button>
+                <div class="card-simple video-card" tabindex="0" role="button"
+                     aria-label="Abrir Aula 3: Estruturas de decisão.">
+                    <img src="https://i.imgur.com/0ZJ3B0I.png" alt="Thumbnail da aula sobre estruturas de decisão">
+                    <h3>Aula 3: Estruturas de Decisão</h3>
+                    <p>Uso de condições simples e compostas para tomada de decisão em algoritmos.</p>
+                    <button class="play-btn" onclick="playVideo('estruturas_decisao')">Assistir</button>
+                </div>
+
+                <div class="card-simple video-card" tabindex="0" role="button"
+                     aria-label="Abrir Aula 4: Estruturas de repetição.">
+                    <img src="https://i.imgur.com/1v5JxvQ.png" alt="Thumbnail da aula sobre laços de repetição">
+                    <h3>Aula 4: Estruturas de Repetição</h3>
+                    <p>Laços contados e condicionais aplicados a problemas de repetição.</p>
+                    <button class="play-btn" onclick="playVideo('estruturas_repeticao')">Assistir</button>
+                </div>
+
+                <div class="card-simple video-card" tabindex="0" role="button"
+                     aria-label="Abrir Aula 5: Vetores e matrizes.">
+                    <img src="https://i.imgur.com/7qKxVb9.png" alt="Thumbnail da aula sobre vetores e matrizes">
+                    <h3>Aula 5: Vetores e Matrizes</h3>
+                    <p>Representação e varredura de coleções de dados em memória.</p>
+                    <button class="play-btn" onclick="playVideo('vetores_matrizes')">Assistir</button>
+                </div>
+
+                <div class="card-simple video-card" tabindex="0" role="button"
+                     aria-label="Abrir Aula 6: Resolução de problemas com algoritmos.">
+                    <img src="https://i.imgur.com/9gK4W2y.png" alt="Thumbnail da aula de resolução de problemas">
+                    <h3>Aula 6: Resolução de Problemas</h3>
+                    <p>Integração de estruturas de controle e vetores em pequenos projetos.</p>
+                    <button class="play-btn" onclick="playVideo('resolucao_problemas')">Assistir</button>
                 </div>
 
             </div>
+
+            <img src="https://i.imgur.com/6E5rYtB.png" alt="Assistente Virtual em LIBRAS"
+                 class="libras-avatar-img"
+                 style="position: fixed; bottom: 80px; right: 80px; width: 150px; z-index: 1000;">
         </div>
     </div>
 </div>
+
+<div id="talkback-container" class="hidden">
+    <div class="bot-icon">🔊</div>
+    <p id="talkback-message">Talkback ativado.</p>
+</div>
+
 <script src="script.js"></script>
+<script>
+    function playVideo(id) {
+        alert('Aqui você pode abrir o player para a aula: ' + id);
+        // depois podemos trocar para abrir um modal ou redirecionar para a página do vídeo
+    }
+</script>
 </body>
 </html>
