@@ -7,18 +7,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const accessibilityMode = localStorage.getItem('accessibilityMode');
     const dashboardPages = ['home.html', 'forum.html', 'aulas.html', 'conteudos.html', 'exercicios.html', 'configuracoes.html', 'certificados.html'];
 
-    // Variáveis para o MODO VISUAL E TALKBACK
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     let recognition;
     let chatbotState = {
         currentPage: '',
         currentField: 'fullname',
-        registerFields: ['fullname', 'email', 'phone', 'password-register'], // 'phone' adicionado
+        registerFields: ['fullname', 'email', 'phone', 'password-register'],
         loginFields: ['username', 'password']
     };
 
-
-    // --- 2. FUNÇÃO INICIALIZADORA PRINCIPAL ---
+    // --- 2. INICIALIZAÇÃO PRINCIPAL ---
     if (accessibilityMode) {
         initializePage(accessibilityMode, currentPage);
     }
@@ -27,23 +25,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const body = document.getElementById('page-body');
         if (!body) return;
 
-        // INICIALIZAÇÃO OBRIGATÓRIA DO WIDGET DE ACESSIBILIDADE FLUTUANTE
         if (dashboardPages.includes(page) || page === 'login.html' || page.startsWith('cadastro-')) {
-            setupStandardWidget();
+            setupAccessibilityWidget(); // NOVO MENU
         }
 
-        // Configuração dos assistentes por modo
         switch (mode) {
             case 'visual':
                 if (page.includes('cadastro-visual') || page === 'login.html') {
-                    setupVisualMode(page); // Configura voz, digitação e setas
+                    setupVisualMode(page);
                 }
-                // Adicione a lógica de Talkback/Leitura Contextual para o dashboard visual aqui
                 break;
-
             case 'auditory':
-                setupAuditoryMode(); // VLibras em todas as telas
-                // Ativa o Talkback auxiliar em todas as páginas do dashboard e formulários
+                setupAuditoryMode();
                 if (dashboardPages.includes(page) || page.includes('cadastro-auditivo')) {
                     setupAuditoryTalkback();
                 }
@@ -51,22 +44,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-
-    // --- 3. FUNÇÕES GERAIS DE ACESSIBILIDADE ---
-
-    // A. SPEAK: Função central de voz
+    // --- 3. FUNÇÕES GERAIS DE VOZ ---
     function speak(text, callback) {
         window.speechSynthesis.cancel();
         const utterance = new SpeechSynthesisUtterance(text);
         utterance.lang = 'pt-BR';
         utterance.onend = () => { if (callback) callback(); };
 
-        // Determina o elemento de mensagem correto (Visual, Auditivo, ou barra inferior)
         let messageElement = document.getElementById('chatbot-message');
         if (!messageElement) {
             messageElement = document.getElementById('talkback-message');
         }
-
         if (messageElement) {
             messageElement.textContent = text;
         }
@@ -74,38 +62,132 @@ document.addEventListener('DOMContentLoaded', () => {
         window.speechSynthesis.speak(utterance);
     }
 
-    // B. LISTEN: Inicia a escuta do microfone
     function listen() {
         if (recognition) {
             try {
                 recognition.start();
             } catch (e) {
-                console.error("Reconhecimento já iniciado.");
+                console.error('Reconhecimento já iniciado.');
             }
         }
     }
 
-    // C. WIDGET PADRÃO (Botão Flutuante)
-    function setupStandardWidget() {
+    // --- 4. WIDGET COMPLETO DE ACESSIBILIDADE (NOVO) ---
+    function setupAccessibilityWidget() {
         const widget = document.getElementById('accessibility-widget');
-        if (widget) {
-            widget.classList.remove('hidden');
-            const accessibilityBtn = document.getElementById('accessibility-btn');
-            const increaseFontBtn = document.getElementById('increase-font');
-            const decreaseFontBtn = document.getElementById('decrease-font');
-            const highContrastBtn = document.getElementById('high-contrast');
-            const daltonismBtn = document.getElementById('daltonism-toggle');
+        const fabBtn = document.getElementById('accessibility-btn');
+        if (!widget || !fabBtn) return;
 
-            accessibilityBtn.addEventListener('click', () => widget.classList.toggle('active'));
-            increaseFontBtn.addEventListener('click', () => changeFontSize(1));
-            decreaseFontBtn.addEventListener('click', () => changeFontSize(-1));
-            highContrastBtn.addEventListener('click', () => document.body.classList.toggle('high-contrast'));
-            daltonismBtn.addEventListener('click', () => document.body.classList.toggle('daltonism'));
+        const body = document.body;
+
+        // Mapeamento de opções -> classe no body
+        const optionsMap = {
+            'ac-ler-pagina': 'ac-ler-pagina',
+            'ac-contraste-mais': 'ac-contraste-mais',
+            'ac-contraste-inteligente': 'ac-contraste-inteligente',
+            'ac-links-destacados': 'ac-links-destacados',
+            'ac-texto-maior': 'ac-texto-maior',
+            'ac-espacamento-texto': 'ac-espacamento-texto',
+            'ac-animacoes': 'ac-sem-animacoes',
+            'ac-ocultar-imagens': 'ac-sem-imagens',
+            'ac-dislexia': 'ac-dislexia',
+            'ac-cursor': 'ac-cursor-grande',
+            'ac-barra-ferramentas': 'ac-barra-ferramentas',
+            'ac-estrutura-pagina': 'ac-estrutura-pagina',
+            'ac-altura-linha': 'ac-altura-linha',
+            'ac-alinhamento-texto': 'ac-alinhamento-texto',
+            'ac-saturacao': 'ac-saturacao-baixa'
+        };
+
+        // Carrega estado salvo
+        Object.keys(optionsMap).forEach(id => {
+            const btn = document.getElementById(id);
+            if (!btn) return;
+            const storageKey = 'ac_' + id;
+            const saved = localStorage.getItem(storageKey) === 'true';
+            if (saved) {
+                btn.classList.add('ac-item-active');
+                body.classList.add(optionsMap[id]);
+            }
+            btn.addEventListener('click', () => {
+                const isActive = btn.classList.toggle('ac-item-active');
+                body.classList.toggle(optionsMap[id], isActive);
+                localStorage.setItem(storageKey, String(isActive));
+
+                // comportamento especial para "Ler a página"
+                if (id === 'ac-ler-pagina' && isActive) {
+                    const textToRead = document.body.innerText || document.body.textContent;
+                    speak(textToRead);
+                }
+            });
+        });
+
+        // Abrir / fechar com botão flutuante
+        function openWidget() {
+            widget.classList.remove('ac-hidden');
+            widget.setAttribute('aria-hidden', 'false');
+        }
+        function closeWidget() {
+            widget.classList.add('ac-hidden');
+            widget.setAttribute('aria-hidden', 'true');
+        }
+
+        fabBtn.addEventListener('click', () => {
+            const isHidden = widget.classList.contains('ac-hidden');
+            if (isHidden) openWidget(); else closeWidget();
+        });
+
+        // Botão fechar interno
+        const closeBtn = document.getElementById('ac-close-btn');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => closeWidget());
+        }
+
+        // Atalho CTRL+U
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && (e.key === 'u' || e.key === 'U')) {
+                e.preventDefault();
+                const isHidden = widget.classList.contains('ac-hidden');
+                if (isHidden) openWidget(); else closeWidget();
+            }
+        });
+
+        // Reset geral
+        const resetBtn = document.getElementById('ac-reset');
+        if (resetBtn) {
+            resetBtn.addEventListener('click', () => {
+                Object.keys(optionsMap).forEach(id => {
+                    const btn = document.getElementById(id);
+                    if (!btn) return;
+                    btn.classList.remove('ac-item-active');
+                    body.classList.remove(optionsMap[id]);
+                    localStorage.removeItem('ac_' + id);
+                });
+            });
+        }
+
+        // Mostrar/ocultar widget na tela
+        const moveBtn = document.getElementById('ac-toggle-visibility');
+        if (moveBtn) {
+            const visibilityKey = 'ac_widget_visible';
+            const savedVisible = localStorage.getItem(visibilityKey);
+            if (savedVisible === 'false') {
+                fabBtn.style.display = 'none';
+            }
+            moveBtn.addEventListener('click', () => {
+                const isVisible = fabBtn.style.display !== 'none';
+                if (isVisible) {
+                    fabBtn.style.display = 'none';
+                    localStorage.setItem(visibilityKey, 'false');
+                } else {
+                    fabBtn.style.display = 'flex';
+                    localStorage.setItem(visibilityKey, 'true');
+                }
+            });
         }
     }
-    function changeFontSize(step){const root=document.documentElement;const currentSize=parseFloat(getComputedStyle(root).getPropertyValue('--font-size'));const newSize=currentSize+step;if(newSize>=12&&newSize<=24){root.style.setProperty('--font-size',`${newSize}px`);}}
 
-    // D. VLIBRAS
+    // --- 5. VLIBRAS ---
     function setupAuditoryMode() {
         const vlibrasDiv = document.createElement('div');
         vlibrasDiv.id = 'vlibras-plugin';
@@ -116,9 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.appendChild(vlibrasScript);
     }
 
-
-    // --- 4. FUNÇÕES DO MODO VISUAL (CEGOS) ---
-
+    // --- 6. MODO VISUAL (CEGOS) ---
     function setupVisualMode(page) {
         const chatbotContainer = page === 'login.html' ? document.getElementById('chatbot-container') : null;
         if (chatbotContainer) chatbotContainer.classList.remove('hidden');
@@ -138,22 +218,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function initializeVisualForm() {
-        // 1. FOCA NO PRIMEIRO CAMPO E FALA A INSTRUÇÃO
         const currentFieldElement = document.getElementById(chatbotState.currentField);
         if (currentFieldElement) {
             currentFieldElement.focus();
-            startConversation(chatbotState.currentPage); // Inicia a conversa de voz
+            startConversation(chatbotState.currentPage);
         }
 
-        // 2. OUVINTE GERAL DE TECLADO PARA DIGITAÇÃO E NAVEGAÇÃO
         document.addEventListener('keydown', handleKeyboardInput);
 
-        // 3. Adiciona o listener de submissão do formulário visual
         const form = document.getElementById('register-form') || document.getElementById('login-form');
         if (form) {
-            form.addEventListener('submit', function(event) {
+            form.addEventListener('submit', function (event) {
                 event.preventDefault();
-                // O envio por enter é tratado aqui, o fluxo de voz já chamou advanceToNextField
                 if (chatbotState.currentField === '') {
                     alert('Formulário enviado com sucesso! Redirecionando...');
                     window.location.href = form.id === 'register-form' ? 'login.html' : 'home.html';
@@ -169,13 +245,12 @@ document.addEventListener('DOMContentLoaded', () => {
         let welcomeMessage = '';
 
         if (page.startsWith('cadastro-visual')) {
-            welcomeMessage = `Olá! Bem-vindo ao cadastro acessível do EducaFácil. Você pode digitar ou falar. Use as setas para avançar ou retornar. Vamos começar. Por favor, diga ou digite seu nome completo.`;
+            welcomeMessage = 'Olá! Bem-vindo ao cadastro acessível do EducaFácil. Você pode digitar ou falar. Use as setas para avançar ou retornar. Vamos começar. Por favor, diga ou digite seu nome completo.';
         } else if (page === 'login.html') {
             welcomeMessage = 'Você está na tela de login. Por favor, diga ou digite seu nome de usuário. Use as setas para avançar.';
         }
 
         chatbotState.currentField = initialField;
-
         speak(welcomeMessage, () => {
             if (SpeechRecognition) listen();
         });
@@ -184,7 +259,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function handleKeyboardInput(event) {
         const fields = chatbotState.currentPage.startsWith('cadastro') ? chatbotState.registerFields : chatbotState.loginFields;
 
-        // -- 1. NAVEGAÇÃO POR SETAS --
         if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
             event.preventDefault();
             advanceToNextField(chatbotState.currentPage, chatbotState.currentField);
@@ -196,18 +270,13 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // -- 2. TALKBACK POR LETRA --
         if (event.key.length === 1) {
-            // Fala apenas letras, números e símbolos comuns
             if (event.key.match(/^[a-zA-Z0-9\s@\.]*$/)) {
                 speak(event.key);
             }
-        }
-        else if (event.key === 'Backspace') {
+        } else if (event.key === 'Backspace') {
             speak('Apagar');
-        }
-        else if (event.key === 'Enter' || event.key === 'Tab') {
-            // Permite o Enter/Tab para submeter ou avançar
+        } else if (event.key === 'Enter' || event.key === 'Tab') {
             if (fields.indexOf(chatbotState.currentField) < fields.length - 1) {
                 event.preventDefault();
                 advanceToNextField(chatbotState.currentPage, chatbotState.currentField);
@@ -240,7 +309,6 @@ document.addEventListener('DOMContentLoaded', () => {
             chatbotState.currentField = nextFieldId;
             switchFieldFocus(nextFieldId);
         } else {
-            // Último campo
             chatbotState.currentField = '';
             speak('Excelente! Formulário preenchido. Você pode pressionar Enter ou o botão para finalizar.');
         }
@@ -263,15 +331,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const newFieldElement = document.getElementById(newFieldId);
 
         document.querySelectorAll('.input-group').forEach(group => group.classList.remove('active-field'));
-        if (newFieldElement.parentElement.classList.contains('input-group')) {
+        if (newFieldElement && newFieldElement.parentElement.classList.contains('input-group')) {
             newFieldElement.parentElement.classList.add('active-field');
         }
 
         if (newFieldElement) {
             newFieldElement.focus();
-
             let labelText = newFieldElement.previousElementSibling.textContent;
-            let finalMessage = prefixMessage + `Campo atual: ${labelText}.`;
+            let finalMessage = prefixMessage + 'Campo atual: ' + labelText + '.';
 
             speak(finalMessage, () => {
                 if (SpeechRecognition) listen();
@@ -279,9 +346,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-
-    // --- 5. FUNÇÕES DO TALKBACK AUDITIVO (FOCUS/MOUSEOVER) ---
-
+    // --- 7. TALKBACK AUDITIVO ---
     function setupAuditoryTalkback() {
         const talkbackContainer = document.getElementById('talkback-container');
         if (talkbackContainer) {
@@ -301,17 +366,17 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (el.getAttribute('aria-label')) {
                             textToSpeak = el.getAttribute('aria-label');
                         } else if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-                            const label = document.querySelector(`label[for="${el.id}"]`)?.textContent;
-                            textToSpeak = label ? `Campo: ${label}.` : `Campo de entrada.`;
+                            const label = document.querySelector('label[for="' + el.id + '"]')?.textContent;
+                            textToSpeak = label ? 'Campo: ' + label + '.' : 'Campo de entrada.';
                         } else if (el.tagName === 'BUTTON') {
-                            textToSpeak = `Botão: ${el.textContent}.`;
+                            textToSpeak = 'Botão: ' + el.textContent + '.';
                         } else if (el.tagName === 'A') {
-                            textToSpeak = `Link: ${el.textContent}.`;
+                            textToSpeak = 'Link: ' + el.textContent + '.';
                         } else if (el.classList.contains('card-simple')) {
                             const title = el.querySelector('h2, h3')?.textContent;
-                            textToSpeak = title ? `Bloco de conteúdo: ${title}.` : `Bloco de informações.`;
+                            textToSpeak = title ? 'Bloco de conteúdo: ' + title + '.' : 'Bloco de informações.';
                         } else if (el.classList.contains('nav-item')) {
-                            textToSpeak = `Menu de navegação: ${el.textContent.trim()}`;
+                            textToSpeak = 'Menu de navegação: ' + el.textContent.trim();
                         }
 
                         if (textToSpeak) { speak(textToSpeak); }
@@ -326,25 +391,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-
-    // --- 6. SUBMISSÃO DE FORMULÁRIO (PADRÃO/AUDITIVO) ---
-
-    // Cadastro Padrão/Auditivo
+    // --- 8. SUBMISSÃO DE FORMULÁRIOS (PADRÃO/AUDITIVO) ---
     if (registerForm && !currentPage.includes('visual')) {
-        registerForm.addEventListener('submit', function(event) {
+        registerForm.addEventListener('submit', function (event) {
             event.preventDefault();
             const fullname = document.getElementById('fullname').value;
             const email = document.getElementById('email').value;
             const password = document.getElementById('password-register').value;
 
             if (!fullname || !email || !password) {
-                const message = "Por favor, preencha todos os campos do cadastro.";
+                const message = 'Por favor, preencha todos os campos do cadastro.';
                 alert(message);
                 if (accessibilityMode === 'auditory') { speak(message); }
                 return;
             }
 
-            const successMessage = "Cadastro efetuado com sucesso! Redirecionando para a área de login...";
+            const successMessage = 'Cadastro efetuado com sucesso! Redirecionando para a área de login...';
             alert(successMessage);
 
             if (accessibilityMode === 'auditory') {
@@ -355,21 +417,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Login Padrão/Auditivo
     if (loginForm && !currentPage.includes('visual')) {
-        loginForm.addEventListener('submit', function(event) {
+        loginForm.addEventListener('submit', function (event) {
             event.preventDefault();
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
 
             if (!username || !password) {
-                const message = "Por favor, preencha seu usuário e senha.";
+                const message = 'Por favor, preencha seu usuário e senha.';
                 alert(message);
                 if (accessibilityMode === 'auditory') { speak(message); }
                 return;
             }
 
-            const successMessage = "Login efetuado com sucesso! Bem-vindo(a) ao EducaFácil.";
+            const successMessage = 'Login efetuado com sucesso! Bem-vindo(a) ao EducaFácil.';
             alert(successMessage);
 
             if (accessibilityMode === 'auditory') {
@@ -380,7 +441,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 7. FUNÇÃO DE SELEÇÃO DE MODO (index.html) ---
+    // --- 9. SELEÇÃO DE MODO (index.html) ---
     window.selectAccessibility = (mode) => {
         localStorage.setItem('accessibilityMode', mode);
         if (mode === 'visual') {
