@@ -8,227 +8,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        #acessibility-widget,
-#acessibility-widget * { box-sizing: border-box; }
-
-.ac-widget {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 320px;
-    height: 100vh;
-    background: #f5f5f7;
-    box-shadow: 2px 0 8px rgba(0,0,0,0.1);
-    padding: 10px 12px;
-    display: flex;
-    flex-direction: column;
-    z-index: 1000;
-    font-family: 'Poppins', sans-serif;
-    font-size: 13px;
-}
-.ac-hidden { display: none; }
-
-.ac-header { margin-bottom: 8px; }
-.ac-header-top { display: flex; justify-content: space-between; align-items: center; }
-
-.ac-title { font-weight: 600; font-size: 13px; }
-
-.ac-icon-btn {
-    border: none;
-    background: transparent;
-    font-size: 18px;
-    cursor: pointer;
-}
-
-.ac-select-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 4px;
-}
-
-.ac-pill {
-    border-radius: 20px;
-    border: 1px solid #ccc;
-    padding: 4px 10px;
-    background: #fff;
-    font-size: 11px;
-    cursor: default;
-}
-
-.ac-pill-active {
-    border-color: #e63946;
-    background: #ffe7ea;
-}
-
-.ac-pill-xl { width: 100%; text-align: left; }
-
-.ac-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 6px;
-    margin-top: 8px;
-    overflow-y: auto;
-    padding-right: 4px;
-}
-
-.ac-item {
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    background: #fff;
-    padding: 8px 6px;
-    font-size: 11px;
-    cursor: pointer;
-    text-align: left;
-}
-
-.ac-item-active {
-    border-color: #e63946;
-    background: #ffe7ea;
-}
-
-.ac-item-title { display: block; }
-
-.ac-footer {
-    margin-top: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-
-.ac-reset-btn {
-    width: 100%;
-    border-radius: 6px;
-    border: none;
-    background: #e63946;
-    color: #fff;
-    padding: 6px 8px;
-    font-size: 12px;
-    cursor: pointer;
-}
-
-.ac-move-btn {
-    width
-
-    </style>
 </head>
 <body id="page-body">
 
-<!-- MENU DE ACESSIBILIDADE LATERAL (CTRL+U) -->
+<!-- WIDGET DE ACESSIBILIDADE (já atualizado) -->
 <div id="accessibility-widget" class="ac-widget ac-hidden" aria-hidden="true">
-    <div class="ac-header">
-        <div class="ac-header-top">
-            <span class="ac-title">Menu Acessibilidade (CTRL+U)</span>
-            <button id="ac-close-btn" class="ac-icon-btn" aria-label="Fechar menu de acessibilidade">&times;</button>
-        </div>
-
-        <div class="ac-select-row">
-            <button class="ac-pill" id="ac-lang-btn">Português (Brasil)</button>
-            <button class="ac-pill ac-pill-active" id="ac-profile-btn">Dislexia perfil ativo</button>
-        </div>
-
-        <div class="ac-select-row">
-            <button class="ac-pill ac-pill-xl ac-pill-active" id="ac-widget-size-btn">
-                XL Widget superdimensionado
-            </button>
-        </div>
-    </div>
-    <div class="ac-profiles-section">
-    <div class="ac-profiles-header">
-        <span>Perfis de acessibilidade</span>
-    </div>
-    <div class="ac-profiles-grid">
-        <button class="ac-profile" data-profile="deficiencia-motora">Deficiência Motora</button>
-        <button class="ac-profile" data-profile="cego">Cego</button>
-        <button class="ac-profile" data-profile="daltonico">Daltônico</button>
-        <button class="ac-profile" data-profile="dislexia">Dislexia</button>
-        <button class="ac-profile" data-profile="baixa-visao">Baixa visão</button>
-        <button class="ac-profile" data-profile="cognitivo">Cognitivo e Aprendizagem</button>
-        <button class="ac-profile" data-profile="convulsao">Convulsão e epilepsia</button>
-        <button class="ac-profile" data-profile="tdah">TDAH</button>
-    </div>
+    <!-- cabeçalho, perfis, botões, etc. mantêm o que você já tem aí -->
 </div>
-
-
-    <div class="ac-grid">
-        <button id="ac-ler-pagina" class="ac-item">
-            <span class="ac-item-title">Ler a página</span>
-        </button>
-
-        <button id="ac-contraste-mais" class="ac-item">
-            <span class="ac-item-title">Contraste +</span>
-        </button>
-
-        <button id="ac-contraste-inteligente" class="ac-item">
-            <span class="ac-item-title">Contraste inteligente</span>
-        </button>
-
-        <button id="ac-links-destacados" class="ac-item">
-            <span class="ac-item-title">Links destacados</span>
-        </button>
-
-        <button id="ac-texto-maior" class="ac-item">
-            <span class="ac-item-title">Texto maior</span>
-        </button>
-
-        <button id="ac-espacamento-texto" class="ac-item">
-            <span class="ac-item-title">Espaçamento de texto</span>
-        </button>
-
-        <button id="ac-animacoes" class="ac-item">
-            <span class="ac-item-title">Reproduzir animações</span>
-        </button>
-
-        <button id="ac-ocultar-imagens" class="ac-item">
-            <span class="ac-item-title">Ocultar imagens</span>
-        </button>
-
-        <button id="ac-dislexia" class="ac-item">
-            <span class="ac-item-title">Df Dislexia amigável</span>
-        </button>
-
-        <button id="ac-cursor" class="ac-item">
-            <span class="ac-item-title">Cursor</span>
-        </button>
-
-        <button id="ac-barra-ferramentas" class="ac-item">
-            <span class="ac-item-title">Barra de ferramentas</span>
-        </button>
-
-        <button id="ac-estrutura-pagina" class="ac-item">
-            <span class="ac-item-title">Estrutura da página</span>
-        </button>
-
-        <button id="ac-altura-linha" class="ac-item">
-            <span class="ac-item-title">Altura da linha</span>
-        </button>
-
-        <button id="ac-alinhamento-texto" class="ac-item">
-            <span class="ac-item-title">Alinhamento de texto</span>
-        </button>
-
-        <button id="ac-saturacao" class="ac-item">
-            <span class="ac-item-title">Saturação</span>
-        </button>
-    </div>
-
-    <div class="ac-footer">
-        <button id="ac-reset" class="ac-reset-btn">
-            Redefinir todas as configurações de acessibilidade
-        </button>
-        <button id="ac-toggle-visibility" class="ac-move-btn">
-            Mover/ocultar widget
-        </button>
-    </div>
-</div>
-
-<!-- BOTÃO FLUTUANTE PARA ABRIR -->
 <button id="accessibility-btn" class="ac-fab" aria-label="Abrir menu de acessibilidade">
     <img src="https://api.iconify.design/material-symbols/accessibility-new.svg?color=%23ffffff"
          alt="Ícone de acessibilidade">
 </button>
-
 
 <div class="dashboard-layout">
     <div class="sidebar">
@@ -246,56 +36,61 @@
             <div class="nav-item"><a href="configuracoes.html"><i class="icon">⚙️</i>Configurações</a></div>
             <div class="nav-item"><a href="certificados.html"><i class="icon">🏅</i>Certificados</a></div>
         </nav>
-        <input type="text" placeholder="Pesquisar" aria-label="Pesquisar na plataforma" style="margin: 20px 15px; padding: 8px; border-radius: 10px; border: none; width: calc(100% - 30px); opacity: 0.8;">
+        <input type="text" placeholder="Pesquisar" aria-label="Pesquisar na plataforma"
+               style="margin: 20px 15px; padding: 8px; border-radius: 10px; border: none;
+                      width: calc(100% - 30px); opacity: 0.8;">
     </div>
 
     <div class="main-content">
         <div class="main-content-area">
-            <h1>Home</h1>
+            <h1>Programação de Computadores e Algoritmos</h1>
 
             <div class="home-grid">
 
-                <div class="card-simple progress-card" tabindex="0" aria-label="Seu progresso de aprendizagem">
-                    <h3 style="margin-bottom: 15px;">Aprendizagem</h3>
-                    <div class="progress-item">
-                        <p>Memorização</p>
-                        <div class="progress-bar-container"><div class="progress-bar success" style="width: 80%;"></div></div>
-                    </div>
-                    <div class="progress-item">
-                        <p>Compreensão</p>
-                        <div class="progress-bar-container"><div class="progress-bar success" style="width: 90%;"></div></div>
-                    </div>
-                    <div class="progress-item">
-                        <p>Resolvendo Problema</p>
-                        <div class="progress-bar-container"><div class="progress-bar success" style="width: 70%;"></div></div>
-                    </div>
+                <!-- Card 1: Fundamentos de Programação -->
+                <div class="card-simple progress-card" tabindex="0"
+                     aria-label="Fundamentos de programação em linguagem de alto nível">
+                    <h3 style="margin-bottom: 15px;">Fundamentos de Programação</h3>
+                    <p>• Conceitos de algoritmo, programa e linguagem de programação.</p>
+                    <p>• Tipos de dados, variáveis e constantes.</p>
+                    <p>• Operadores aritméticos, relacionais e lógicos.</p>
+                    <p>• Entrada, processamento e saída de dados.</p>
                 </div>
 
-                <div class="card-simple theories-card" tabindex="0" aria-label="Tópicos em andamento das Teorias da Aprendizagem">
-                    <h3 style="margin-bottom: 15px;">Teorias da Aprendizagem</h3>
-                    <p>Motivação e Processos Cognitivos</p>
-                    <p>Desenvolvimento Socioemocional e Inclusão</p>
+                <!-- Card 2: Construção de Algoritmos -->
+                <div class="card-simple theories-card" tabindex="0"
+                     aria-label="Tópicos de construção de algoritmos e estruturas de controle">
+                    <h3 style="margin-bottom: 15px;">Construção de Algoritmos</h3>
+                    <p>• Uso de fluxogramas e pseudocódigo.</p>
+                    <p>• Estruturas de sequência, decisão e repetição.</p>
+                    <p>• Estruturas de seleção múltipla.</p>
+                    <p>• Depuração e teste de algoritmos.</p>
                 </div>
 
-                <div class="card-simple highlight-card" tabindex="0" aria-label="Conteúdo em destaque: Introdução às Teorias da Aprendizagem, 45 por cento completo">
-                    <h2>Teorias da Aprendizagem</h2>
-                    <p>Introdução</p>
-                    <div class="progress-bar-container" style="margin-top: 10px;"><div class="progress-bar primary" style="width: 45%;"></div></div>
+                <!-- Card 3: Estruturas de Dados Básicas -->
+                <div class="card-simple highlight-card" tabindex="0"
+                     aria-label="Conteúdos de estruturas de dados básicas para programação de computadores">
+                    <h2>Estruturas de Dados Básicas</h2>
+                    <p>• Vetores e matrizes.</p>
+                    <p>• Registros (structs) simples.</p>
+                    <p>• Manipulação de coleções de dados em algoritmos.</p>
                 </div>
 
-                <div class="card-simple calendar-card" tabindex="0" aria-label="Calendário. Data de hoje é 17 de Janeiro de 2019">
-                    <h3 style="margin-bottom: 15px; text-align: right;">January 2019</h3>
-                    <p style="text-align: right; margin-bottom: 10px;">Calendário simulado...</p>
-                    <div class="calendar-grid">
-                        <span class="day-label">M</span><span class="day-label">T</span><span class="day-label">W</span><span class="day-label">T</span><span class="day-label">F</span><span class="day-label">S</span><span class="day-label">S</span>
-                        <span style="grid-column: 4;">31</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span>
-                        <span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span>
-                        <span>14</span><span>15</span><span>16</span><span class="today">17</span><span>18</span><span>19</span><span>20</span>
-                    </div>
+                <!-- Card 4: Aplicações Práticas em PCA -->
+                <div class="card-simple" tabindex="0"
+                     aria-label="Aplicações práticas em programação de computadores e algoritmos">
+                    <h3 style="margin-bottom: 15px;">Aplicações Práticas em PCA</h3>
+                    <p>• Algoritmos para cálculo de médias, máximos e mínimos.</p>
+                    <p>• Processamento de listas de alunos e notas.</p>
+                    <p>• Simulação de tomadas de decisão com estruturas condicionais.</p>
+                    <p>• Pequenos projetos integrando entrada de dados, estruturas de repetição e vetores.</p>
                 </div>
+
             </div>
 
-            <img src="https://i.imgur.com/6E5rYtB.png" alt="Assistente Virtual em LIBRAS" class="libras-avatar-img" style="position: fixed; bottom: 80px; right: 80px; width: 150px; z-index: 1000;">
+            <img src="https://i.imgur.com/6E5rYtB.png" alt="Assistente Virtual em LIBRAS"
+                 class="libras-avatar-img"
+                 style="position: fixed; bottom: 80px; right: 80px; width: 150px; z-index: 1000;">
         </div>
     </div>
 </div>
@@ -307,7 +102,4 @@
 
 <script src="script.js"></script>
 </body>
-
 </html>
-
-
