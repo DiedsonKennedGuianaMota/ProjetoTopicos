@@ -229,6 +229,18 @@
 <script>
     // Carrega e salva preferências simples no localStorage para configurar a experiência do usuário
     document.addEventListener('DOMContentLoaded', () => {
+        function salvarPerfil() {
+    localStorage.setItem('perfil_nome', document.getElementById('perfil-nome').value.trim());
+    localStorage.setItem('perfil_email', document.getElementById('perfil-email').value.trim());
+    localStorage.setItem('perfil_turma', document.getElementById('perfil-turma').value.trim());
+    localStorage.setItem('perfil_objetivo', document.getElementById('perfil-objetivo').value.trim());
+    localStorage.setItem('perfil_foto', document.getElementById('perfil-foto').value.trim());
+
+    document.getElementById('perfil-feedback').textContent =
+        'Dados do perfil salvos somente neste navegador.';
+    document.getElementById('perfil-feedback').style.color = '#2e7d32';
+}
+
         // Acessibilidade
         const prof = localStorage.getItem('pref_profile_mode');
         const voice = localStorage.getItem('pref_voice_mode');
@@ -290,7 +302,20 @@
             'Outras configurações salvas.';
         document.getElementById('outras-feedback').style.color = '#2e7d32';
     }
+    function salvarPerfil() {
+    localStorage.setItem('perfil_nome', document.getElementById('perfil-nome').value.trim());
+    localStorage.setItem('perfil_email', document.getElementById('perfil-email').value.trim());
+    localStorage.setItem('perfil_turma', document.getElementById('perfil-turma').value.trim());
+    localStorage.setItem('perfil_objetivo', document.getElementById('perfil-objetivo').value.trim());
+    localStorage.setItem('perfil_foto', document.getElementById('perfil-foto').value.trim());
+
+    document.getElementById('perfil-feedback').textContent =
+        'Dados do perfil salvos somente neste navegador.';
+    document.getElementById('perfil-feedback').style.color = '#2e7d32';
+}
+
 </script>
 </body>
 </html>
+
 
