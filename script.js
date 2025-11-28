@@ -1,20 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
     // --- PERFIL NO DASHBOARD (NOME, EMAIL, FOTO) ---
-(function atualizarPerfilDashboard() {
-    const nome = localStorage.getItem('perfil_nome');
+function atualizarPerfilDashboard() {
+    const nome  = localStorage.getItem('perfil_nome');
     const email = localStorage.getItem('perfil_email');
-    const foto = localStorage.getItem('perfil_foto');
+    const foto  = localStorage.getItem('perfil_foto');
 
-    const nomeEl = document.getElementById('aluno-nome');
+    const nomeEl  = document.getElementById('aluno-nome');
     const emailEl = document.getElementById('aluno-email');
-    const fotoEl = document.getElementById('aluno-foto');
+    const fotoEl  = document.getElementById('aluno-foto');
 
-    if (nome && nomeEl) nomeEl.textContent = nome;
+    if (nome && nomeEl)  nomeEl.textContent  = nome;
     if (email && emailEl) emailEl.textContent = email;
     if (foto && fotoEl && foto.trim() !== '') {
         fotoEl.src = foto;
     }
 })();
+
 
     // --- 1. DECLARAÇÕES DE VARIÁVEIS GLOBAIS ---
     const registerForm = document.getElementById('register-form');
@@ -593,5 +594,6 @@ function setupAccessibilityWidget() {
         }
     };
 });
+
 
 
