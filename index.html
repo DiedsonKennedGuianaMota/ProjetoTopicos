@@ -18,28 +18,46 @@
 
         <main class="selection-main">
             <h1>Como você gostaria de se cadastrar?</h1>
-            <p>Escolha uma opção para uma experiência personalizada.</p>
+            <p>Escolha uma opção para uma experiência personalizada e mais acessível.</p>
+
             <div class="card-container">
-                <div class="card" onclick="selectAccessibility('visual')">
-                    <img src="acessibilidade-visual.png" alt="Ilustração de um homem cego com óculos escuros e bengala." class="card-img">
+                <div class="card" tabindex="0" role="button"
+                     onclick="selectAccessibility('visual')"
+                     aria-label="Cadastro para pessoa com deficiência visual, guiado por voz">
+                    <img src="acessibilidade-visual.png"
+                         alt="Ilustração de um homem cego com óculos escuros e bengala."
+                         class="card-img">
                     <h3>Deficiente Visual</h3>
-                    <p>Cadastro guiado por assistente de voz.</p>
+                    <p>Cadastro guiado por assistente de voz e navegação por teclado.</p>
                 </div>
 
-                <div class="card" onclick="selectAccessibility('auditory')">
-                    <img src="acessibilidade-auditiva.png" alt="Ilustração de uma mulher fazendo o sinal de 'eu te amo' em libras." class="card-img">
+                <div class="card" tabindex="0" role="button"
+                     onclick="selectAccessibility('auditory')"
+                     aria-label="Cadastro para pessoa com deficiência auditiva, com tradução em Libras">
+                    <img src="acessibilidade-auditiva.png"
+                         alt="Ilustração de uma mulher fazendo o sinal de eu te amo em Libras."
+                         class="card-img">
                     <h3>Deficiente Auditivo</h3>
-                    <p>Assistente virtual com tradução em LIBRAS.</p>
+                    <p>Assistente virtual com tradução em LIBRAS e legendas reforçadas.</p>
                 </div>
 
-                <div class="card" onclick="selectAccessibility('standard')">
-                    <img src="sem-acessibilidade.png"Ilustração de um homem sorrindo." class="card-img">
+                <div class="card" tabindex="0" role="button"
+                     onclick="selectAccessibility('standard')"
+                     aria-label="Cadastro padrão com ferramentas de acessibilidade opcionais">
+                    <img src="sem-acessibilidade.png"
+                         alt="Ilustração de um estudante sorrindo em frente a um computador."
+                         class="card-img">
                     <h3>Cadastro Padrão</h3>
-                    <p>Navegação com ferramentas de acessibilidade opcionais.</p>
+                    <p>Navegação tradicional com acesso ao menu de acessibilidade.</p>
                 </div>
             </div>
+
+            <p style="margin-top:20px; font-size:13px; opacity:0.8;">
+                Você poderá alterar suas opções de acessibilidade a qualquer momento no menu Configurações.
+            </p>
         </main>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
