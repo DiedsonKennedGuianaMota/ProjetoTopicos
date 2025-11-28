@@ -219,6 +219,15 @@
 
 <script src="script.js"></script>
 <script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const nome = localStorage.getItem("aluno_nome");
+    const email = localStorage.getItem("aluno_email");
+    const foto = localStorage.getItem("aluno_foto");
+
+    if (nome) document.getElementById("aluno-nome").textContent = nome;
+    if (email) document.getElementById("aluno-email").textContent = email;
+    if (foto) document.getElementById("aluno-foto").src = foto;
+});
     // ---------- ESTADO INICIAL ----------
     document.addEventListener('DOMContentLoaded', () => {
         const v1 = localStorage.getItem('video_a1_assistido') === 'true';
@@ -272,3 +281,4 @@
 </script>
 </body>
 </html>
+
