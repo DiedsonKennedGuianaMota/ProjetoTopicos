@@ -10,43 +10,117 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body id="page-body">
-    <div id="accessibility-widget" class="hidden">
-        <button id="accessibility-btn"><img src="https://api.iconify.design/material-symbols/accessibility-new.svg?color=%23ffffff" alt="Ícone de acessibilidade"></button>
-        <div class="accessibility-menu">
-            <button id="increase-font">Aumentar Fonte</button>
-            <button id="decrease-font">Diminuir Fonte</button>
-            <button id="high-contrast">Alto Contraste</button>
-            <button id="daltonism-toggle">Ajuste para Daltonismo</button>
+
+<!-- WIDGET DE ACESSIBILIDADE (NOVO) -->
+<div id="accessibility-widget" class="ac-widget ac-hidden" aria-hidden="true">
+    <div class="ac-header">
+        <div class="ac-header-top">
+            <span class="ac-title">Menu Acessibilidade (CTRL+U)</span>
+            <button id="ac-close-btn" class="ac-icon-btn" aria-label="Fechar menu de acessibilidade">×</button>
+        </div>
+
+        <div class="ac-select-row">
+            <button class="ac-pill" id="ac-lang-btn">Português (Brasil)</button>
+            <button class="ac-pill ac-pill-active" id="ac-profile-btn">Dislexia perfil ativo</button>
+        </div>
+
+        <div class="ac-select-row">
+            <button class="ac-pill ac-pill-xl ac-pill-active" id="ac-widget-size-btn">
+                XL Widget superdimensionado
+            </button>
         </div>
     </div>
 
-    <div class="login-container">
-        <div class="background-shape shape1"></div>
-        <div class="background-shape shape2"></div>
-        
-        <div class="login-box">
-            <img src="logo.png" alt="Logo EducaFácil" class="logo-form">
-            <form id="login-form">
-                <div class="input-group">
-                    <label for="username">Usuário</label>
-                    <input type="text" id="username" name="username" required>
-                </div>
-                <div class="input-group">
-                    <label for="password">Senha</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                <button type="submit" class="form-btn">Entrar</button>
-            </form>
-            <p class="form-link">Não tem uma conta? <a href="index.html">Cadastre-se</a></p>
+    <div class="ac-profiles-section">
+        <div class="ac-profiles-header">
+            <span>Perfis de acessibilidade</span>
+        </div>
+        <div class="ac-profiles-grid">
+            <button class="ac-profile" data-profile="deficiencia-motora">Deficiência Motora</button>
+            <button class="ac-profile" data-profile="cego">Cego</button>
+            <button class="ac-profile" data-profile="daltonico">Daltônico</button>
+            <button class="ac-profile" data-profile="dislexia">Dislexia</button>
+            <button class="ac-profile" data-profile="baixa-visao">Baixa visão</button>
+            <button class="ac-profile" data-profile="cognitivo">Cognitivo e Aprendizagem</button>
+            <button class="ac-profile" data-profile="convulsao">Convulsão e epilepsia</button>
+            <button class="ac-profile" data-profile="tdah">TDAH</button>
         </div>
     </div>
 
-    <div id="chatbot-container" class="hidden">
-         <div class="bot-icon">🤖</div>
-         <p id="chatbot-message">Por favor, diga seu nome de usuário.</p>
-         <div class="sound-wave"></div>
+    <div class="ac-grid">
+        <button id="ac-ler-pagina" class="ac-item"><span class="ac-item-title">Ler a página</span></button>
+        <button id="ac-contraste-mais" class="ac-item"><span class="ac-item-title">Contraste +</span></button>
+        <button id="ac-contraste-inteligente" class="ac-item"><span class="ac-item-title">Contraste inteligente</span></button>
+        <button id="ac-links-destacados" class="ac-item"><span class="ac-item-title">Links destacados</span></button>
+        <button id="ac-texto-maior" class="ac-item"><span class="ac-item-title">Texto maior</span></button>
+        <button id="ac-espacamento-texto" class="ac-item"><span class="ac-item-title">Espaçamento de texto</span></button>
+        <button id="ac-animacoes" class="ac-item"><span class="ac-item-title">Reproduzir animações</span></button>
+        <button id="ac-ocultar-imagens" class="ac-item"><span class="ac-item-title">Ocultar imagens</span></button>
+        <button id="ac-dislexia" class="ac-item"><span class="ac-item-title">Df Dislexia amigável</span></button>
+        <button id="ac-cursor" class="ac-item"><span class="ac-item-title">Cursor</span></button>
+        <button id="ac-barra-ferramentas" class="ac-item"><span class="ac-item-title">Barra de ferramentas</span></button>
+        <button id="ac-estrutura-pagina" class="ac-item"><span class="ac-item-title">Estrutura da página</span></button>
+        <button id="ac-altura-linha" class="ac-item"><span class="ac-item-title">Altura da linha</span></button>
+        <button id="ac-alinhamento-texto" class="ac-item"><span class="ac-item-title">Alinhamento de texto</span></button>
+        <button id="ac-saturacao" class="ac-item"><span class="ac-item-title">Saturação</span></button>
     </div>
 
-    <script src="script.js"></script>
+    <div class="ac-footer">
+        <button id="ac-reset" class="ac-reset-btn">
+            Redefinir todas as configurações de acessibilidade
+        </button>
+        <button id="ac-toggle-visibility" class="ac-move-btn">
+            Mover/ocultar widget
+        </button>
+    </div>
+</div>
+
+<!-- BOTÃO FLUTUANTE -->
+<button id="accessibility-btn" class="ac-fab" aria-label="Abrir menu de acessibilidade">
+    <img src="https://api.iconify.design/material-symbols/accessibility-new.svg?color=%23ffffff"
+         alt="Ícone de acessibilidade">
+</button>
+
+<!-- CONTAINER DO LOGIN -->
+<div class="login-container">
+    <div class="background-shape shape1"></div>
+    <div class="background-shape shape2"></div>
+
+    <div class="login-box login-card">
+        <img src="logo.png" alt="Logo EducaFácil" class="login-logo">
+        <h2 class="login-title">Entrar</h2>
+        <p class="login-subtitle">
+            Use seus dados de acesso para continuar seus estudos em Programação de Computadores e Algoritmos.
+        </p>
+
+        <form id="login-form" class="login-form">
+            <div class="login-input-group">
+                <label for="username">Usuário</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="login-input-group">
+                <label for="password">Senha</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" class="login-btn">
+                Entrar
+            </button>
+        </form>
+
+        <p class="login-link">
+            Não tem uma conta?
+            <a href="index.html">Cadastre-se</a>
+        </p>
+    </div>
+</div>
+
+<!-- CONTÊINER DO CHATBOT (MODO VISUAL) -->
+<div id="chatbot-container" class="hidden">
+    <div class="bot-icon">🤖</div>
+    <p id="chatbot-message">Por favor, diga seu nome de usuário.</p>
+    <div class="sound-wave"></div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
