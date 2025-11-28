@@ -61,6 +61,33 @@ function atualizarPerfilDashboard() {
                 break;
         }
     }
+// --- 6. SUBMISSÃO LOGIN PADRÃO/AUDITIVO ---
+if (loginForm && !currentPage.includes('visual')) {
+    loginForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value.trim();
+
+        if (!username || !password) {
+            const message = 'Por favor, preencha seu usuário e senha.';
+            alert(message);
+            if (accessibilityMode === 'auditory') {
+                speak(message);
+            }
+            return;
+        }
+
+        const successMessage = 'Login efetuado com sucesso! Bem-vindo(a) ao EducaFácil.';
+        alert(successMessage);
+
+        if (accessibilityMode === 'auditory') {
+            speak(successMessage, () => { window.location.href = 'home.html'; });
+        } else {
+            window.location.href = 'home.html';
+        }
+    });
+}
 
     // --- 3. FUNÇÕES DE VOZ ---
     function speak(text, callback) {
@@ -631,6 +658,7 @@ window.selectAccessibility = (mode) => {
         window.location.href = 'cadastro-padrao.html';
     }
 };
+
 
 
 
