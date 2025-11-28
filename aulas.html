@@ -231,6 +231,15 @@
 
 <script src="script.js"></script>
 <script>
+    document.addEventListener("DOMContentLoaded", () => {
+    const nome = localStorage.getItem("aluno_nome");
+    const email = localStorage.getItem("aluno_email");
+    const foto = localStorage.getItem("aluno_foto");
+
+    if (nome) document.getElementById("aluno-nome").textContent = nome;
+    if (email) document.getElementById("aluno-email").textContent = email;
+    if (foto) document.getElementById("aluno-foto").src = foto;
+});
     const lessons = {
         intro_algoritmos: {
             title: 'Aula 1: Introdução a Algoritmos',
@@ -326,3 +335,4 @@
 </script>
 </body>
 </html>
+
