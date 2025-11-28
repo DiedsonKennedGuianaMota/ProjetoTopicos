@@ -1,63 +1,100 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EducaFácil - Bem-vindo(a)</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
-    <div class="selection-container">
-        <header class="main-header">
-            <img src="logo.png" alt="Logo EducaFácil" class="logo">
-            <a href="login.html" class="login-btn-header">Entrar</a>
-        </header>
+.index-body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #ffffff;
+}
 
-        <main class="selection-main">
-            <h1>Como você gostaria de se cadastrar?</h1>
-            <p>Escolha uma opção para uma experiência personalizada e mais acessível.</p>
+.index-main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 16px 28px;
+}
 
-            <div class="card-container">
-                <div class="card" tabindex="0" role="button"
-                     onclick="selectAccessibility('visual')"
-                     aria-label="Cadastro para pessoa com deficiência visual, guiado por voz">
-                    <img src="acessibilidade-visual.png"
-                         alt="Ilustração de um homem cego com óculos escuros e bengala."
-                         class="card-img">
-                    <h3>Deficiente Visual</h3>
-                    <p>Cadastro guiado por assistente de voz e navegação por teclado.</p>
-                </div>
+.index-header {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
 
-                <div class="card" tabindex="0" role="button"
-                     onclick="selectAccessibility('auditory')"
-                     aria-label="Cadastro para pessoa com deficiência auditiva, com tradução em Libras">
-                    <img src="acessibilidade-auditiva.png"
-                         alt="Ilustração de uma mulher fazendo o sinal de eu te amo em Libras."
-                         class="card-img">
-                    <h3>Deficiente Auditivo</h3>
-                    <p>Assistente virtual com tradução em LIBRAS e legendas reforçadas.</p>
-                </div>
+.index-logo {
+    max-width: 260px;
+}
 
-                <div class="card" tabindex="0" role="button"
-                     onclick="selectAccessibility('standard')"
-                     aria-label="Cadastro padrão com ferramentas de acessibilidade opcionais">
-                    <img src="sem-acessibilidade.png"
-                         alt="Ilustração de um estudante sorrindo em frente a um computador."
-                         class="card-img">
-                    <h3>Cadastro Padrão</h3>
-                    <p>Navegação tradicional com acesso ao menu de acessibilidade.</p>
-                </div>
-            </div>
+/* Botão acessibilidade topo direito */
+.index-access-btn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: none;
+    background: #0057b8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 100;
+}
+.index-access-btn img {
+    width: 24px;
+    height: 24px;
+}
 
-            <p style="margin-top:20px; font-size:13px; opacity:0.8;">
-                Você poderá alterar suas opções de acessibilidade a qualquer momento no menu Configurações.
-            </p>
-        </main>
-    </div>
+/* Cards centrais */
+.index-cards-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
 
-    <script src="script.js"></script>
-</body>
-</html>
+.index-card {
+    width: 210px;
+    height: 230px;
+    background: #251b64;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    text-align: center;
+    padding: 12px 8px;
+}
+
+.index-card-img {
+    width: 120px;
+    height: auto;
+    margin-bottom: 8px;
+}
+
+.index-card-title {
+    font-weight: 600;
+    font-size: 15px;
+}
+
+/* Rodapé ícones */
+.index-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.index-audio-icon img {
+    height: 32px;
+}
+
+.index-bot-icon img {
+    height: 42px;
+}
