@@ -1,44 +1,79 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro para Deficientes Visuais - EducaFácil</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-</head>
-<body id="page-body">
+/* ===== CADASTRO VISUAL (CEGOS) ===== */
 
-<div class="voice-assistant-container">
-    <div class="bot-icon-large">🤖</div>
-    <h1 id="chatbot-message">Iniciando assistente de voz...</h1>
-    <div class="sound-wave-large"></div>
-    <p class="voice-instructions">Aguarde as instruções por áudio para continuar ou digite diretamente.</p>
+.visual-register-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+    background: radial-gradient(circle at top, #000428 0, #004e92 55%);
+}
 
-    <form id="register-form" style="max-width: 400px; margin: 20px auto;">
-        <div class="input-group active-field">
-            <label for="fullname">Nome Completo</label>
-            <input type="text" id="fullname" name="fullname" aria-label="Digite seu nome completo">
-        </div>
-        <div class="input-group">
-            <label for="email">E-mail</label>
-            <input type="email" id="email" name="email" aria-label="Digite seu e-mail">
-        </div>
-        <div class="input-group">
-            <label for="phone">Telefone</label>
-            <input type="tel" id="phone" name="phone" aria-label="Digite seu telefone">
-        </div>
-        <div class="input-group">
-            <label for="password-register">Crie uma Senha</label>
-            <input type="password" id="password-register" name="password-register" aria-label="Digite uma senha">
-        </div>
-        <button type="submit" class="form-btn" style="margin-top: 20px;">Finalizar Cadastro</button>
-    </form>
+.visual-register-card {
+    max-width: 420px;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 22px;
+    padding: 26px 24px 22px;
+    box-shadow: 0 16px 32px rgba(0,0,0,0.4);
+    text-align: center;
+}
 
-</div>
+.visual-logo {
+    width: 150px;
+    margin-bottom: 10px;
+}
 
-<script src="script.js"></script>
-</body>
-</html>
+.visual-title {
+    margin: 0 0 6px;
+    font-size: 1.4rem;
+}
+
+.visual-subtitle {
+    margin: 0 0 18px;
+    font-size: 13px;
+    opacity: 0.85;
+}
+
+.visual-register-form {
+    text-align: left;
+}
+
+.visual-register-form .input-group {
+    margin-bottom: 14px;
+}
+
+.visual-register-form label {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+.visual-register-form input {
+    width: 100%;
+    padding: 9px 11px;
+    border-radius: 10px;
+    border: 1px solid #d0d3e6;
+    font-size: 14px;
+    background: #f7f7ff;
+}
+
+.visual-register-form input:focus {
+    outline: none;
+    border-color: #4a4ae6;
+    box-shadow: 0 0 0 2px rgba(74,74,230,0.35);
+    background: #ffffff;
+}
+
+.visual-btn {
+    width: 100%;
+    margin-top: 6px;
+    border: none;
+    border-radius: 999px;
+    padding: 10px 0;
+    background: linear-gradient(135deg, #4a4ae6, #6366f1);
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
