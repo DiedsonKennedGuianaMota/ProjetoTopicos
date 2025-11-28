@@ -10,7 +10,7 @@
 </head>
 <body id="page-body">
 
-<!-- WIDGET DE ACESSIBILIDADE (MESMO DAS OUTRAS TELAS) -->
+<!-- WIDGET DE ACESSIBILIDADE -->
 <div id="accessibility-widget" class="ac-widget ac-hidden" aria-hidden="true">
     <div class="ac-header">
         <div class="ac-header-top">
@@ -40,8 +40,8 @@
             <button class="ac-profile" data-profile="daltonico">Daltônico</button>
             <button class="ac-profile" data-profile="dislexia">Dislexia</button>
             <button class="ac-profile" data-profile="baixa-visao">Baixa visão</button>
-            <button class="ac-profile" data-profile="cognitivo">Cognitivo e Aprendizagem</button>
-            <button class="ac-profile" data-profile="convulsao">Convulsão e epilepsia</button>
+            <button class="ac-profile" data-profile="cognitivo">Cognitivo</button>
+            <button class="ac-profile" data-profile="convulsao">Convulsão</button>
             <button class="ac-profile" data-profile="tdah">TDAH</button>
         </div>
     </div>
@@ -65,153 +65,128 @@
     </div>
 
     <div class="ac-footer">
-        <button id="ac-reset" class="ac-reset-btn">
-            Redefinir todas as configurações de acessibilidade
-        </button>
-        <button id="ac-toggle-visibility" class="ac-move-btn">
-            Mover/ocultar widget
-        </button>
+        <button id="ac-reset" class="ac-reset-btn">Redefinir todas as configurações</button>
+        <button id="ac-toggle-visibility" class="ac-move-btn">Mover/ocultar widget</button>
     </div>
 </div>
 
 <!-- BOTÃO FLUTUANTE -->
 <button id="accessibility-btn" class="ac-fab" aria-label="Abrir menu de acessibilidade">
-    <img src="https://api.iconify.design/material-symbols/accessibility-new.svg?color=%23ffffff"
-         alt="Ícone de acessibilidade">
+    <img src="https://api.iconify.design/material-symbols/accessibility-new.svg?color=%23ffffff" alt="Ícone de acessibilidade">
 </button>
 
 <div class="dashboard-layout">
+
+    <!-- SIDEBAR CORRIGIDA -->
     <div class="sidebar">
-       <div class="sidebar">
         <div class="profile-box">
-    <img id="aluno-foto" src="https://i.imgur.com/gKjG1o2.png" alt="Foto de perfil do Aluno">
-    <p id="aluno-nome" class="aluno-name" style="font-weight: 600;">Aluno</p>
-    <p id="aluno-email" class="aluno-email">aluno.ic9@educ.edu.br</p>
-</div>
+            <img id="aluno-foto" src="https://i.imgur.com/gKjG1o2.png" alt="Foto do aluno">
+            <p id="aluno-nome" class="aluno-name">Carregando...</p>
+            <p id="aluno-email" class="aluno-email">Carregando...</p>
+        </div>
+
         <nav class="sidebar-nav">
-            <div class="nav-item"><a href="home.html"><i class="icon">🏠</i>Home</a></div>
-            <div class="nav-item active"><a href="forum.html"><i class="icon">💬</i>Fórum</a></div>
-            <div class="nav-item"><a href="aulas.html"><i class="icon">▶️</i>Aulas</a></div>
-            <div class="nav-item"><a href="conteudos.html"><i class="icon">📚</i>Conteúdos</a></div>
-            <div class="nav-item"><a href="exercicios.html"><i class="icon">📝</i>Exercícios</a></div>
-            <div class="nav-item"><a href="configuracoes.html"><i class="icon">⚙️</i>Configurações</a></div>
-            <div class="nav-item"><a href="certificados.html"><i class="icon">🏅</i>Certificados</a></div>
+            <div class="nav-item"><a href="home.html">🏠 Home</a></div>
+            <div class="nav-item active"><a href="forum.html">💬 Fórum</a></div>
+            <div class="nav-item"><a href="aulas.html">▶️ Aulas</a></div>
+            <div class="nav-item"><a href="conteudos.html">📚 Conteúdos</a></div>
+            <div class="nav-item"><a href="exercicios.html">📝 Exercícios</a></div>
+            <div class="nav-item"><a href="configuracoes.html">⚙️ Configurações</a></div>
+            <div class="nav-item"><a href="certificados.html">🏅 Certificados</a></div>
         </nav>
-        <input type="text" placeholder="Pesquisar" aria-label="Pesquisar na plataforma"
-               style="margin: 20px 15px; padding: 8px; border-radius: 10px; border: none;
-                      width: calc(100% - 30px); opacity: 0.8;">
+
+        <input type="text" placeholder="Pesquisar">
     </div>
 
+    <!-- MAIN CONTENT -->
     <div class="main-content">
         <div class="main-content-area">
             <h1>Fórum de Programação de Computadores e Algoritmos</h1>
-            <p aria-live="polite">
-                Espaço para tirar dúvidas, compartilhar soluções e discutir os conteúdos das aulas de Programação
-                de Computadores e Algoritmos.
-            </p>
+            <p aria-live="polite">Espaço para tirar dúvidas, compartilhar soluções e discutir conteúdos.</p>
 
             <div class="home-grid">
+                <div class="card-simple">
+                    <h3>Tópicos recentes</h3>
 
-                <!-- Lista de tópicos -->
-                <div class="card-simple" tabindex="0"
-                     aria-label="Lista de tópicos do fórum">
-                    <h3 style="margin-bottom: 10px;">Tópicos recentes</h3>
-
-                    <div class="forum-topic" tabindex="0">
+                    <div class="forum-topic">
                         <h4>Dúvida na média com laço de repetição</h4>
-                        <p>Alguém conseguiu fazer o algoritmo que lê várias notas e calcula a média geral usando <code>while</code>?</p>
-                        <p class="forum-meta">Postado por Ana · Aula 4 – Estruturas de Repetição</p>
+                        <p>Como calcular média usando while?</p>
+                        <p class="forum-meta">Ana · Aula 4</p>
                     </div>
 
-                    <div class="forum-topic" tabindex="0">
-                        <h4>Vetores: como encontrar o maior valor?</h4>
-                        <p>Estou com dificuldade para percorrer um vetor e descobrir o maior elemento. Podem dar um exemplo?</p>
-                        <p class="forum-meta">Postado por Bruno · Aula 5 – Vetores e Matrizes</p>
+                    <div class="forum-topic">
+                        <h4>Vetores: maior valor</h4>
+                        <p>Exemplo para achar maior número do vetor?</p>
+                        <p class="forum-meta">Bruno · Aula 5</p>
                     </div>
-
-                    <div class="forum-topic" tabindex="0">
-                        <h4>Diferença entre <code>if</code> e <code>switch</code></h4>
-                        <p>Quando é melhor usar <code>if/else</code> e quando usar <code>switch</code> em C?</p>
-                        <p class="forum-meta">Postado por Carla · Aula 3 – Estruturas de Decisão</p>
-                    </div>
-
-                    <p style="margin-top: 8px; font-size: 13px; opacity: 0.8;">
-                        Novos tópicos que você criar aparecem aqui em cima desta lista.
-                    </p>
                 </div>
 
-                <!-- Novo tópico / resposta -->
-                <div class="card-simple" tabindex="0"
-                     aria-label="Formulário para criar novo tópico ou resposta">
-                    <h3 style="margin-bottom: 10px;">Criar novo tópico</h3>
+                <div class="card-simple">
+                    <h3>Criar novo tópico</h3>
 
                     <form id="forum-form">
-                        <label for="forum-title">Título do tópico</label>
-                        <input id="forum-title" type="text" required
-                               style="width:100%; padding:8px; border-radius:8px; border:1px solid #ccc; margin-bottom:8px;">
+                        <label>Título</label>
+                        <input id="forum-title" required>
 
-                        <label for="forum-aula">Relacionado à aula</label>
-                        <select id="forum-aula" style="width:100%; padding:8px; border-radius:8px; border:1px solid #ccc; margin-bottom:8px;">
+                        <label>Aula</label>
+                        <select id="forum-aula">
                             <option value="geral">Geral</option>
-                            <option value="a1">Aula 1 – Introdução a Algoritmos</option>
-                            <option value="a2">Aula 2 – Variáveis e Operadores</option>
-                            <option value="a3">Aula 3 – Estruturas de Decisão</option>
-                            <option value="a4">Aula 4 – Estruturas de Repetição</option>
-                            <option value="a5">Aula 5 – Vetores e Matrizes</option>
-                            <option value="a6">Aula 6 – Resolução de Problemas</option>
+                            <option value="a4">Aula 4</option>
+                            <option value="a5">Aula 5</option>
                         </select>
 
-                        <label for="forum-message">Mensagem</label>
-                        <textarea id="forum-message" rows="5" required
-                                  style="width:100%; padding:8px; border-radius:8px; border:1px solid #ccc; margin-bottom:10px;"></textarea>
+                        <label>Mensagem</label>
+                        <textarea id="forum-message" required></textarea>
 
-                        <button type="submit" class="play-btn">Publicar tópico</button>
+                        <button class="play-btn">Publicar</button>
                     </form>
 
-                    <p id="forum-feedback" aria-live="polite" style="margin-top:8px;"></p>
+                    <p id="forum-feedback"></p>
                 </div>
 
             </div>
-
         </div>
     </div>
+
 </div>
 
-
 <script src="script.js"></script>
+
 <script>
-    // Salva tópicos simples no localStorage e mostra feedback
-    document.addEventListener('DOMContentLoaded', () => {
-        const form = document.getElementById('forum-form');
-        const feedback = document.getElementById('forum-feedback');
+// CARREGAR INFORMAÇÕES DO ALUNO LOGADO
+document.addEventListener("DOMContentLoaded", () => {
+    const nome = localStorage.getItem("aluno_nome");
+    const email = localStorage.getItem("aluno_email");
+    const foto = localStorage.getItem("aluno_foto");
 
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const titulo = document.getElementById('forum-title').value.trim();
-            const aula   = document.getElementById('forum-aula').value;
-            const msg    = document.getElementById('forum-message').value.trim();
+    if (nome) document.getElementById("aluno-nome").textContent = nome;
+    if (email) document.getElementById("aluno-email").textContent = email;
+    if (foto) document.getElementById("aluno-foto").src = foto;
+});
 
-            if (!titulo || !msg) {
-                feedback.textContent = 'Preencha título e mensagem antes de publicar.';
-                feedback.style.color = '#c62828';
-                return;
-            }
+// SALVAR TÓPICO (simples)
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById('forum-form');
+    const feedback = document.getElementById('forum-feedback');
 
-            const topicos = JSON.parse(localStorage.getItem('forum_topicos') || '[]');
-            topicos.unshift({
-                titulo,
-                aula,
-                msg,
-                data: new Date().toLocaleString('pt-BR')
-            });
-            localStorage.setItem('forum_topicos', JSON.stringify(topicos));
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
 
-            feedback.textContent = 'Tópico publicado! Ele será mostrado na próxima versão dinâmica do fórum.';
-            feedback.style.color = '#2e7d32';
-            form.reset();
-        });
+        const title = forum-title.value.trim();
+        const message = forum-message.value.trim();
+
+        if (!title || !message) {
+            feedback.textContent = "Preencha tudo antes de publicar.";
+            feedback.style.color = "red";
+            return;
+        }
+
+        feedback.textContent = "Tópico publicado!";
+        feedback.style.color = "green";
+        form.reset();
     });
+});
 </script>
+
 </body>
 </html>
-
