@@ -11,17 +11,75 @@
 </head>
 <body id="page-body">
 
-<div id="accessibility-widget" class="hidden">
-    <button id="accessibility-btn">
-        <img src="https://api.iconify.design/material-symbols/accessibility-new.svg?color=%23ffffff" alt="Ícone de acessibilidade">
-    </button>
-    <div class="accessibility-menu">
-        <button id="increase-font">Aumentar Fonte</button>
-        <button id="decrease-font">Diminuir Fonte</button>
-        <button id="high-contrast">Alto Contraste</button>
-        <button id="daltonism-toggle">Ajuste para Daltonismo</button>
+<!-- WIDGET DE ACESSIBILIDADE (NOVO) -->
+<div id="accessibility-widget" class="ac-widget ac-hidden" aria-hidden="true">
+    <div class="ac-header">
+        <div class="ac-header-top">
+            <span class="ac-title">Menu Acessibilidade (CTRL+U)</span>
+            <button id="ac-close-btn" class="ac-icon-btn" aria-label="Fechar menu de acessibilidade">×</button>
+        </div>
+
+        <div class="ac-select-row">
+            <button class="ac-pill" id="ac-lang-btn">Português (Brasil)</button>
+            <button class="ac-pill ac-pill-active" id="ac-profile-btn">Dislexia perfil ativo</button>
+        </div>
+
+        <div class="ac-select-row">
+            <button class="ac-pill ac-pill-xl ac-pill-active" id="ac-widget-size-btn">
+                XL Widget superdimensionado
+            </button>
+        </div>
+    </div>
+
+    <div class="ac-profiles-section">
+        <div class="ac-profiles-header">
+            <span>Perfis de acessibilidade</span>
+        </div>
+        <div class="ac-profiles-grid">
+            <button class="ac-profile" data-profile="deficiencia-motora">Deficiência Motora</button>
+            <button class="ac-profile" data-profile="cego">Cego</button>
+            <button class="ac-profile" data-profile="daltonico">Daltônico</button>
+            <button class="ac-profile" data-profile="dislexia">Dislexia</button>
+            <button class="ac-profile" data-profile="baixa-visao">Baixa visão</button>
+            <button class="ac-profile" data-profile="cognitivo">Cognitivo e Aprendizagem</button>
+            <button class="ac-profile" data-profile="convulsao">Convulsão e epilepsia</button>
+            <button class="ac-profile" data-profile="tdah">TDAH</button>
+        </div>
+    </div>
+
+    <div class="ac-grid">
+        <button id="ac-ler-pagina" class="ac-item"><span class="ac-item-title">Ler a página</span></button>
+        <button id="ac-contraste-mais" class="ac-item"><span class="ac-item-title">Contraste +</span></button>
+        <button id="ac-contraste-inteligente" class="ac-item"><span class="ac-item-title">Contraste inteligente</span></button>
+        <button id="ac-links-destacados" class="ac-item"><span class="ac-item-title">Links destacados</span></button>
+        <button id="ac-texto-maior" class="ac-item"><span class="ac-item-title">Texto maior</span></button>
+        <button id="ac-espacamento-texto" class="ac-item"><span class="ac-item-title">Espaçamento de texto</span></button>
+        <button id="ac-animacoes" class="ac-item"><span class="ac-item-title">Reproduzir animações</span></button>
+        <button id="ac-ocultar-imagens" class="ac-item"><span class="ac-item-title">Ocultar imagens</span></button>
+        <button id="ac-dislexia" class="ac-item"><span class="ac-item-title">Df Dislexia amigável</span></button>
+        <button id="ac-cursor" class="ac-item"><span class="ac-item-title">Cursor</span></button>
+        <button id="ac-barra-ferramentas" class="ac-item"><span class="ac-item-title">Barra de ferramentas</span></button>
+        <button id="ac-estrutura-pagina" class="ac-item"><span class="ac-item-title">Estrutura da página</span></button>
+        <button id="ac-altura-linha" class="ac-item"><span class="ac-item-title">Altura da linha</span></button>
+        <button id="ac-alinhamento-texto" class="ac-item"><span class="ac-item-title">Alinhamento de texto</span></button>
+        <button id="ac-saturacao" class="ac-item"><span class="ac-item-title">Saturação</span></button>
+    </div>
+
+    <div class="ac-footer">
+        <button id="ac-reset" class="ac-reset-btn">
+            Redefinir todas as configurações de acessibilidade
+        </button>
+        <button id="ac-toggle-visibility" class="ac-move-btn">
+            Mover/ocultar widget
+        </button>
     </div>
 </div>
+
+<!-- BOTÃO FLUTUANTE -->
+<button id="accessibility-btn" class="ac-fab" aria-label="Abrir menu de acessibilidade">
+    <img src="https://api.iconify.design/material-symbols/accessibility-new.svg?color=%23ffffff"
+         alt="Ícone de acessibilidade">
+</button>
 
 <div class="dashboard-layout">
     <div class="sidebar">
@@ -31,26 +89,84 @@
             <p class="aluno-email">aluno.ic9@educ.edu.br</p>
         </div>
         <nav class="sidebar-nav">
-            <div class="nav-item active"><a href="home.html"><i class="icon">🏠</i>Home</a></div>
+            <div class="nav-item"><a href="home.html"><i class="icon">🏠</i>Home</a></div>
             <div class="nav-item"><a href="forum.html"><i class="icon">💬</i>Fórum</a></div>
             <div class="nav-item"><a href="aulas.html"><i class="icon">▶️</i>Aulas</a></div>
             <div class="nav-item"><a href="conteudos.html"><i class="icon">📚</i>Conteúdos</a></div>
             <div class="nav-item"><a href="exercicios.html"><i class="icon">📝</i>Exercícios</a></div>
             <div class="nav-item"><a href="configuracoes.html"><i class="icon">⚙️</i>Configurações</a></div>
-            <div class="nav-item"><a href="certificados.html"><i class="icon">🏅</i>Certificados</a></div>
+            <div class="nav-item active"><a href="certificados.html"><i class="icon">🏅</i>Certificados</a></div>
         </nav>
-        <input type="text" placeholder="Pesquisar" aria-label="Pesquisar na plataforma" style="margin: 20px 15px; padding: 8px; border-radius: 10px; border: none; width: calc(100% - 30px); opacity: 0.8;">
+        <input type="text" placeholder="Pesquisar" aria-label="Pesquisar na plataforma"
+               style="margin: 20px 15px; padding: 8px; border-radius: 10px; border: none;
+                      width: calc(100% - 30px); opacity: 0.8;">
     </div>
+
     <div class="main-content">
         <div class="main-content-area">
             <h1 style="margin-bottom: 10px;">Meus Certificados</h1>
-            <p style="color: var(--text-color); margin-bottom: 30px;">Parabéns por sua dedicação! Aqui estão os certificados que você conquistou.</p>
+            <p style="margin-bottom: 30px;">
+                Parabéns por sua dedicação! Aqui você encontra os certificados emitidos pelas atividades
+                de Programação de Computadores e Algoritmos e por outros módulos concluídos.
+            </p>
 
-            <div class="card-simple" style="padding: 30px;">
-                <h2 style="font-size: 1.5rem; color: var(--heading-color); margin-bottom: 5px;">Certificado: Introdução à Psicologia da Educação</h2>
-                <p style="color: var(--text-color); margin-bottom: 20px;">Concluído em: 17 de Janeiro de 2019</p>
+            <!-- Resumo de progresso -->
+            <div class="card-simple" style="margin-bottom: 20px;">
+                <h2 style="font-size:1.4rem; margin-bottom:8px;">Resumo de conclusão</h2>
+                <p>Certificados conquistados: <strong>1</strong> de <strong>6</strong> módulos planejados.</p>
+                <div class="progress-bar-container" style="margin-top:8px;">
+                    <div class="progress-bar primary" style="width: 16%;"></div>
+                </div>
+            </div>
 
-                <button class="form-btn" style="width: 100%; background-color: var(--success-color); padding: 12px 0;" tabindex="0" aria-label="Baixar Certificado em PDF">Baixar Certificado (PDF)</button>
+            <!-- Certificado 1 - exemplo antigo adaptado -->
+            <div class="card-simple" style="padding: 24px; margin-bottom: 20px;">
+                <h2 style="font-size: 1.4rem; margin-bottom: 5px;">
+                    Certificado: Introdução à Psicologia da Educação
+                </h2>
+                <p style="margin-bottom: 8px;">Concluído em: 17 de janeiro de 2019</p>
+                <p style="font-size: 14px; margin-bottom: 16px;">
+                    Carga horária: 20h · Situação: Concluído.
+                </p>
+                <button class="form-btn"
+                        style="width: 100%; padding: 12px 0;"
+                        type="button"
+                        onclick="window.open('certificados/psicologia_educacao.pdf','_blank')"
+                        aria-label="Baixar certificado de Introdução à Psicologia da Educação em PDF">
+                    Baixar Certificado (PDF)
+                </button>
+            </div>
+
+            <!-- Certificado PCA - quando concluir todos os módulos -->
+            <div class="card-simple" style="padding: 24px; margin-bottom: 20px;">
+                <h2 style="font-size: 1.4rem; margin-bottom: 5px;">
+                    Certificado: Programação de Computadores e Algoritmos
+                </h2>
+                <p id="cert-pca-status" style="margin-bottom: 8px;">
+                    Situação: Em andamento. Conclua todas as aulas e exercícios para liberar o certificado.
+                </p>
+                <p style="font-size: 14px; margin-bottom: 16px;">
+                    Carga horária prevista: 40h · Requisitos: assistir às 6 aulas, atingir 70% ou mais
+                    nos exercícios e entregar pelo menos 2 códigos práticos.
+                </p>
+                <button id="cert-pca-btn" class="form-btn"
+                        style="width: 100%; padding: 12px 0;"
+                        type="button"
+                        disabled
+                        aria-disabled="true"
+                        aria-label="Certificado de Programação de Computadores e Algoritmos ainda não liberado">
+                    Certificado ainda não disponível
+                </button>
+            </div>
+
+            <!-- Orientações de acessibilidade do certificado -->
+            <div class="card-simple" style="padding: 20px;">
+                <h2 style="font-size: 1.3rem; margin-bottom: 6px;">Dicas de acessibilidade para certificados</h2>
+                <ul style="font-size: 14px; margin-top:4px;">
+                    <li>Use o botão de contraste no menu de acessibilidade se o certificado estiver difícil de ler.</li>
+                    <li>Ative “Ler a página” para que o texto do certificado seja lido em voz alta.</li>
+                    <li>Se preferir, você pode imprimir em papel com alto contraste ou ampliar a visualização no leitor de PDF.</li>
+                </ul>
             </div>
 
         </div>
@@ -63,5 +179,24 @@
 </div>
 
 <script src="script.js"></script>
+<script>
+    // Exemplo simples: liberar certificado PCA quando um flag é salvo no localStorage
+    document.addEventListener('DOMContentLoaded', () => {
+        const concluidoPCA = localStorage.getItem('pca_concluido') === 'true';
+
+        const statusEl = document.getElementById('cert-pca-status');
+        const btn = document.getElementById('cert-pca-btn');
+
+        if (concluidoPCA) {
+            statusEl.textContent = 'Situação: Concluído. Seu certificado está disponível para download.';
+            btn.textContent = 'Baixar Certificado PCA (PDF)';
+            btn.disabled = false;
+            btn.removeAttribute('aria-disabled');
+            btn.onclick = () => {
+                window.open('certificados/pca_concluido.pdf','_blank');
+            };
+        }
+    });
+</script>
 </body>
 </html>
