@@ -1,79 +1,60 @@
-/* ===== CADASTRO VISUAL (CEGOS) ===== */
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Visual - EducaFácil</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body id="page-body">
 
-.visual-register-container {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 24px 16px;
-    background: radial-gradient(circle at top, #000428 0, #004e92 55%);
-}
+<div class="visual-register-container">
+    <div class="visual-register-card">
+        <img src="logo.png" alt="Logo EducaFácil" class="visual-logo">
+        <h2 class="visual-title">Cadastro Acessível para Pessoas Cegas</h2>
+        <p class="visual-subtitle">
+            Você pode preencher falando ou digitando. Use as setas para avançar ou voltar entre os campos.
+            Pressione Control + D para ligar ou desligar o Talkback de digitação.
+        </p>
 
-.visual-register-card {
-    max-width: 420px;
-    width: 100%;
-    background: #ffffff;
-    border-radius: 22px;
-    padding: 26px 24px 22px;
-    box-shadow: 0 16px 32px rgba(0,0,0,0.4);
-    text-align: center;
-}
+        <form id="register-form" class="visual-register-form">
+            <div class="input-group">
+                <label for="fullname">Nome completo</label>
+                <input type="text" id="fullname" name="fullname" autocomplete="name" required>
+            </div>
 
-.visual-logo {
-    width: 150px;
-    margin-bottom: 10px;
-}
+            <div class="input-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" autocomplete="email" required>
+            </div>
 
-.visual-title {
-    margin: 0 0 6px;
-    font-size: 1.4rem;
-}
+            <div class="input-group">
+                <label for="phone">Telefone (opcional)</label>
+                <input type="tel" id="phone" name="phone" autocomplete="tel">
+            </div>
 
-.visual-subtitle {
-    margin: 0 0 18px;
-    font-size: 13px;
-    opacity: 0.85;
-}
+            <div class="input-group">
+                <label for="password-register">Crie uma senha</label>
+                <input type="password" id="password-register" name="password-register" required>
+            </div>
 
-.visual-register-form {
-    text-align: left;
-}
+            <button type="submit" class="visual-btn">
+                Finalizar cadastro
+            </button>
+        </form>
+    </div>
+</div>
 
-.visual-register-form .input-group {
-    margin-bottom: 14px;
-}
+<!-- Barra inferior de voz já usada pelo script -->
+<div id="chatbot-container">
+    <div class="bot-icon">🤖</div>
+    <p id="chatbot-message">Preparando assistente de voz...</p>
+    <div class="sound-wave"></div>
+</div>
 
-.visual-register-form label {
-    display: block;
-    font-size: 13px;
-    margin-bottom: 4px;
-}
-
-.visual-register-form input {
-    width: 100%;
-    padding: 9px 11px;
-    border-radius: 10px;
-    border: 1px solid #d0d3e6;
-    font-size: 14px;
-    background: #f7f7ff;
-}
-
-.visual-register-form input:focus {
-    outline: none;
-    border-color: #4a4ae6;
-    box-shadow: 0 0 0 2px rgba(74,74,230,0.35);
-    background: #ffffff;
-}
-
-.visual-btn {
-    width: 100%;
-    margin-top: 6px;
-    border: none;
-    border-radius: 999px;
-    padding: 10px 0;
-    background: linear-gradient(135deg, #4a4ae6, #6366f1);
-    color: #ffffff;
-    font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
-}
+<script src="script.js"></script>
+</body>
+</html>
