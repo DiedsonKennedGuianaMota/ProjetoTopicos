@@ -736,4 +736,114 @@ body.af-contrast-smart a{color:#ffd166}
     cursor: pointer;
 }
 
+/* ===== CADASTRO PADRÃO ===== */
+
+.register-container.standard-layout {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+    background: radial-gradient(circle at top, #e3e6ff 0, #ffffff 55%);
+}
+
+.register-card {
+    width: 100%;
+    max-width: 380px;
+    background: #ffffff;
+    border-radius: 22px;
+    padding: 28px 26px 22px;
+    box-shadow: 0 14px 30px rgba(0,0,0,0.12);
+    text-align: center;
+}
+
+.register-logo {
+    width: 150px;
+    margin-bottom: 10px;
+}
+
+.register-title {
+    margin: 0 0 4px;
+    font-size: 1.4rem;
+}
+
+.register-subtitle {
+    margin: 0 0 18px;
+    font-size: 13px;
+    opacity: 0.75;
+}
+
+.register-form {
+    text-align: left;
+}
+
+.register-input-group {
+    margin-bottom: 14px;
+}
+
+.register-input-group label {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+.register-input-group input {
+    width: 100%;
+    padding: 9px 11px;
+    border-radius: 10px;
+    border: 1px solid #d0d3e6;
+    font-size: 14px;
+    transition: border-color .15s ease, box-shadow .15s ease, transform .1s ease;
+    background: #f9f9ff;
+}
+
+.register-input-group input:focus {
+    outline: none;
+    border-color: #4a4ae6;
+    box-shadow: 0 0 0 2px rgba(74,74,230,0.25);
+    background: #ffffff;
+    transform: translateY(-1px);
+}
+
+.register-btn {
+    width: 100%;
+    margin-top: 6px;
+    border: none;
+    border-radius: 999px;
+    padding: 10px 0;
+    background: linear-gradient(135deg, #4a4ae6, #6366f1);
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 10px 18px rgba(74,74,230,0.35);
+    transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+}
+
+.register-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 24px rgba(74,74,230,0.45);
+    filter: brightness(1.03);
+}
+
+.register-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 8px 14px rgba(74,74,230,0.35);
+}
+
+.register-link {
+    margin-top: 14px;
+    font-size: 13px;
+}
+
+.register-link a {
+    color: #4a4ae6;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
 
