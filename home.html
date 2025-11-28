@@ -11,9 +11,9 @@
 </head>
 <body id="page-body">
 
-<!-- WIDGET DE ACESSIBILIDADE (já atualizado) -->
+<!-- WIDGET DE ACESSIBILIDADE -->
 <div id="accessibility-widget" class="ac-widget ac-hidden" aria-hidden="true">
-    <!-- cabeçalho, perfis, botões, etc. mantêm o que você já tem aí -->
+    <!-- aqui vai o mesmo conteúdo do widget usado nas outras telas -->
 </div>
 <button id="accessibility-btn" class="ac-fab" aria-label="Abrir menu de acessibilidade">
     <img src="https://api.iconify.design/material-symbols/accessibility-new.svg?color=%23ffffff"
@@ -23,10 +23,10 @@
 <div class="dashboard-layout">
     <div class="sidebar">
         <div class="profile-box">
-    <img id="aluno-foto" src="https://i.imgur.com/gKjG1o2.png" alt="Foto de perfil do Aluno">
-    <p id="aluno-nome" class="aluno-name" style="font-weight: 600;">Aluno</p>
-    <p id="aluno-email" class="aluno-email">aluno.ic9@educ.edu.br</p>
-</div>
+            <img id="aluno-foto" src="https://i.imgur.com/gKjG1o2.png" alt="Foto de perfil do Aluno">
+            <p id="aluno-nome" class="aluno-name" style="font-weight: 600;">Aluno</p>
+            <p id="aluno-email" class="aluno-email">aluno.ic9@educ.edu.br</p>
+        </div>
 
         <nav class="sidebar-nav">
             <div class="nav-item active"><a href="home.html"><i class="icon">🏠</i>Home</a></div>
@@ -37,84 +37,199 @@
             <div class="nav-item"><a href="configuracoes.html"><i class="icon">⚙️</i>Configurações</a></div>
             <div class="nav-item"><a href="certificados.html"><i class="icon">🏅</i>Certificados</a></div>
         </nav>
+
         <input type="text" placeholder="Pesquisar" aria-label="Pesquisar na plataforma"
                style="margin: 20px 15px; padding: 8px; border-radius: 10px; border: none;
                       width: calc(100% - 30px); opacity: 0.8;">
     </div>
 
     <div class="main-content">
-        <div class="main-content-area">
+        <div class="main-content-area home-main">
             <h1>Programação de Computadores e Algoritmos</h1>
+            <p class="home-subtitle">Acompanhe seu progresso e veja o que estudar em seguida.</p>
 
-            <div class="home-grid">
+            <div class="home-grid home-grid-elegant">
 
-    <!-- Card 1: Progresso em PCA -->
-    <div class="card-simple progress-card" tabindex="0"
-         aria-label="Seu progresso em Programação de Computadores e Algoritmos">
-        <h3 style="margin-bottom: 15px;">Progresso em PCA</h3>
+                <!-- Card 1: Progresso em PCA -->
+                <div class="card-simple progress-card" tabindex="0"
+                     aria-label="Seu progresso em Programação de Computadores e Algoritmos">
+                    <h3>Progresso em PCA</h3>
 
-        <div class="progress-item">
-            <p>Fundamentos de Programação</p>
-            <div class="progress-bar-container">
-                <div class="progress-bar success" style="width: 70%;"></div>
+                    <div class="progress-item">
+                        <p>1. Fundamentos de Programação</p>
+                        <div class="progress-bar-container">
+                            <div id="prog-mod1" class="progress-bar success" style="width: 0%;"></div>
+                        </div>
+                        <span id="prog-mod1-text" class="progress-percent">0%</span>
+                    </div>
+
+                    <div class="progress-item">
+                        <p>2. Construção de Algoritmos</p>
+                        <div class="progress-bar-container">
+                            <div id="prog-mod2" class="progress-bar success" style="width: 0%;"></div>
+                        </div>
+                        <span id="prog-mod2-text" class="progress-percent">0%</span>
+                    </div>
+
+                    <div class="progress-item">
+                        <p>3. Estruturas de Dados Básicas</p>
+                        <div class="progress-bar-container">
+                            <div id="prog-mod3" class="progress-bar success" style="width: 0%;"></div>
+                        </div>
+                        <span id="prog-mod3-text" class="progress-percent">0%</span>
+                    </div>
+
+                    <hr style="margin: 10px 0; border:none; border-top:1px solid #eceff7;">
+
+                    <p class="progress-total">
+                        Progresso geral no curso:
+                        <strong><span id="prog-total-text">0%</span></strong>
+                    </p>
+                    <div class="progress-bar-container">
+                        <div id="prog-total" class="progress-bar primary" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Conteúdos em estudo -->
+                <div class="card-simple theories-card" tabindex="0"
+                     aria-label="Tópicos em estudo em programação de computadores e algoritmos">
+                    <h3>Conteúdos em estudo</h3>
+                    <ul class="home-list">
+                        <li>Tipos de dados, variáveis e operadores.</li>
+                        <li>Estruturas de decisão e repetição.</li>
+                        <li>Pseudocódigo, fluxogramas e testes de mesa.</li>
+                    </ul>
+                    <button class="home-link-btn" onclick="window.location.href='conteudos.html'">
+                        Ver materiais detalhados
+                    </button>
+                </div>
+
+                <!-- Card 3: Módulo em destaque -->
+                <div class="card-simple highlight-card" tabindex="0"
+                     aria-label="Módulo em destaque de Programação de Computadores e Algoritmos">
+                    <h2>Módulo em destaque</h2>
+                    <p id="mod-destaque-text">Fundamentos de Programação</p>
+                    <div class="progress-bar-container" style="margin-top: 10px;">
+                        <div id="prog-destaque" class="progress-bar primary" style="width: 0%;"></div>
+                    </div>
+                    <button class="home-link-btn" style="margin-top: 10px;"
+                            onclick="window.location.href='aulas.html'">
+                        Ir para as aulas
+                    </button>
+                </div>
+
+                <!-- Card 4: Próximos passos -->
+                <div class="card-simple" tabindex="0"
+                     aria-label="Próximos passos em programação de computadores e algoritmos">
+                    <h3>Próximos passos</h3>
+                    <ul class="home-list">
+                        <li>Concluir o módulo atual (aulas e exercícios).</li>
+                        <li>Rever exercícios com maior dificuldade.</li>
+                        <li>Aplicar os algoritmos em pequenos projetos pessoais.</li>
+                    </ul>
+                    <button class="home-link-btn"
+                            onclick="window.location.href='exercicios.html'">
+                        Ir para exercícios
+                    </button>
+                </div>
+
             </div>
         </div>
-
-        <div class="progress-item">
-            <p>Construção de Algoritmos</p>
-            <div class="progress-bar-container">
-                <div class="progress-bar success" style="width: 40%;"></div>
-            </div>
-        </div>
-
-        <div class="progress-item">
-            <p>Estruturas de Dados Básicas</p>
-            <div class="progress-bar-container">
-                <div class="progress-bar success" style="width: 20%;"></div>
-            </div>
-        </div>
     </div>
-
-    <!-- Card 2: Conteúdos em estudo -->
-    <div class="card-simple theories-card" tabindex="0"
-         aria-label="Tópicos em estudo em programação de computadores e algoritmos">
-        <h3 style="margin-bottom: 15px;">Conteúdos em estudo</h3>
-        <p>• Tipos de dados, variáveis e operadores.</p>
-        <p>• Estruturas de decisão e repetição.</p>
-        <p>• Pseudocódigo e fluxogramas.</p>
-    </div>
-
-    <!-- Card 3: Módulo em destaque -->
-    <div class="card-simple highlight-card" tabindex="0"
-         aria-label="Módulo em destaque: resolução de problemas com algoritmos, quarenta e cinco por cento completo">
-        <h2>Módulo em destaque</h2>
-        <p>Resolução de Problemas com Algoritmos</p>
-        <div class="progress-bar-container" style="margin-top: 10px;">
-            <div class="progress-bar primary" style="width: 45%;"></div>
-        </div>
-    </div>
-
-    <!-- Card 4: Próximos passos -->
-    <div class="card-simple" tabindex="0"
-         aria-label="Próximos passos em programação de computadores e algoritmos">
-        <h3 style="margin-bottom: 15px;">Próximos passos</h3>
-        <p>• Implementar algoritmos em uma linguagem de programação.</p>
-        <p>• Praticar laços aninhados com vetores e matrizes.</p>
-        <p>• Criar pequenos projetos integrando entrada, processamento e saída de dados.</p>
-    </div>
-
 </div>
-
-        </div>
-    </div>
-</div>
-
 
 <script src="script.js"></script>
+<script>
+// Estilo extra para deixar a home mais elegante (opcional)
+const homeStyle = document.createElement('style');
+homeStyle.textContent = `
+.home-main h1 { margin-bottom: 4px; }
+.home-subtitle { font-size: 13px; opacity: .8; margin-bottom: 16px; }
+.home-grid-elegant {
+    display: grid;
+    grid-template-columns: 2fr 1.3fr;
+    grid-template-rows: auto auto;
+    gap: 18px;
+}
+.home-list { padding-left: 18px; font-size: 14px; }
+.home-list li { margin-bottom: 4px; }
+.progress-item { margin-bottom: 10px; position: relative; padding-right: 40px; }
+.progress-percent {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 12px;
+    opacity: 0.8;
+}
+.progress-total { font-size: 13px; margin-top: 4px; margin-bottom: 4px; }
+.home-link-btn {
+    margin-top: 8px;
+    border: none;
+    border-radius: 999px;
+    padding: 7px 12px;
+    background: #4a4ae6;
+    color: #fff;
+    font-size: 13px;
+    cursor: pointer;
+}
+.home-link-btn:hover { opacity: .95; }
+`;
+document.head.appendChild(homeStyle);
+
+// --- PROGRESSO VIA localStorage ---
+// Chaves esperadas (você já usa em exercícios/aulas):
+// pca_mod1_concluido, pca_mod2_concluido, pca_mod3_concluido  -> "true" ou não definido
+// pca_mod1_progresso, pca_mod2_progresso, pca_mod3_progresso -> 0..100 (opcional)
+
+function lerProgressoModulo(chaveConcluido, chaveParcial) {
+    if (localStorage.getItem(chaveConcluido) === 'true') return 100;
+    const parcial = parseInt(localStorage.getItem(chaveParcial) || '0', 10);
+    return Math.max(0, Math.min(100, parcial));
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Perfil (se estiver salvo)
+    const nome  = localStorage.getItem('perfil_nome');
+    const email = localStorage.getItem('perfil_email');
+    const foto  = localStorage.getItem('perfil_foto');
+    if (nome)  document.getElementById('aluno-nome').textContent  = nome;
+    if (email) document.getElementById('aluno-email').textContent = email;
+    if (foto)  document.getElementById('aluno-foto').src          = foto;
+
+    // Progresso de cada módulo
+    const m1 = lerProgressoModulo('pca_mod1_concluido', 'pca_mod1_progresso');
+    const m2 = lerProgressoModulo('pca_mod2_concluido', 'pca_mod2_progresso');
+    const m3 = lerProgressoModulo('pca_mod3_concluido', 'pca_mod3_progresso');
+
+    const total = Math.round((m1 + m2 + m3) / 3);
+
+    document.getElementById('prog-mod1').style.width = m1 + '%';
+    document.getElementById('prog-mod1-text').textContent = m1 + '%';
+
+    document.getElementById('prog-mod2').style.width = m2 + '%';
+    document.getElementById('prog-mod2-text').textContent = m2 + '%';
+
+    document.getElementById('prog-mod3').style.width = m3 + '%';
+    document.getElementById('prog-mod3-text').textContent = m3 + '%';
+
+    document.getElementById('prog-total').style.width = total + '%';
+    document.getElementById('prog-total-text').textContent = total + '%';
+
+    // Módulo em destaque = o de menor progresso > 0, senão o primeiro
+    let destaqueIndex = 1;
+    let destaqueValor = m1;
+    if (m2 < destaqueValor) { destaqueIndex = 2; destaqueValor = m2; }
+    if (m3 < destaqueValor) { destaqueIndex = 3; destaqueValor = m3; }
+
+    const nomes = {
+        1: 'Fundamentos de Programação',
+        2: 'Construção de Algoritmos',
+        3: 'Estruturas de Dados Básicas'
+    };
+
+    document.getElementById('mod-destaque-text').textContent = nomes[destaqueIndex];
+    document.getElementById('prog-destaque').style.width = destaqueValor + '%';
+});
+</script>
 </body>
 </html>
-
-
-
-
-
