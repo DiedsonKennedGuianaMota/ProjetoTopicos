@@ -168,9 +168,6 @@
             <div class="card-simple" style="margin-bottom: 20px;">
                 <h2 style="font-size: 1.5rem; margin-bottom: 10px;">Dados do Perfil</h2>
                 <form id="profile-form">
-                    <label for="perfil-foto">URL da foto de perfil (opcional)</label>
-                        <input id="perfil-foto" type="url"
-                               style="width:100%; padding:8px; border-radius:8px; border:1px solid #ccc; margin-bottom:8px;">
 
                     <label for="perfil-nome">Nome</label>
                     <input id="perfil-nome" type="text"
@@ -179,6 +176,11 @@
                     <label for="perfil-email">E-mail</label>
                     <input id="perfil-email" type="email"
                            style="width:100%; padding:8px; border-radius:8px; border:1px solid #ccc; margin-bottom:8px;">
+                    <label for="perfil-foto">URL da foto de perfil (da internet)</label>
+<input id="perfil-foto" type="url"
+       placeholder="https://exemplo.com/minha-foto.png"
+       style="width:100%; padding:8px; border-radius:8px; border:1px solid #ccc; margin-bottom:8px;">
+
 
                     <label for="perfil-turma">Turma / Série</label>
                     <input id="perfil-turma" type="text"
@@ -234,7 +236,9 @@
     localStorage.setItem('perfil_email', document.getElementById('perfil-email').value.trim());
     localStorage.setItem('perfil_turma', document.getElementById('perfil-turma').value.trim());
     localStorage.setItem('perfil_objetivo', document.getElementById('perfil-objetivo').value.trim());
-    localStorage.setItem('perfil_foto', document.getElementById('perfil-foto').value.trim());
+    const foto = localStorage.getItem('perfil_foto');
+if (foto) document.getElementById('perfil-foto').value = foto;
+
 
     document.getElementById('perfil-feedback').textContent =
         'Dados do perfil salvos somente neste navegador.';
@@ -314,8 +318,10 @@
     document.getElementById('perfil-feedback').style.color = '#2e7d32';
 }
 
+
 </script>
 </body>
 </html>
+
 
 
