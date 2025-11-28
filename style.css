@@ -985,3 +985,83 @@ body.af-contrast-smart a{color:#ffd166}
     text-decoration: underline;
 }
 
+/* ===== CADASTRO VISUAL (CEGOS) ===== */
+
+.visual-register-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+    background: radial-gradient(circle at top, #000428 0, #004e92 55%);
+}
+
+.visual-register-card {
+    max-width: 420px;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 22px;
+    padding: 26px 24px 22px;
+    box-shadow: 0 16px 32px rgba(0,0,0,0.4);
+    text-align: center;
+}
+
+.visual-logo {
+    width: 150px;
+    margin-bottom: 10px;
+}
+
+.visual-title {
+    margin: 0 0 6px;
+    font-size: 1.4rem;
+}
+
+.visual-subtitle {
+    margin: 0 0 18px;
+    font-size: 13px;
+    opacity: 0.85;
+}
+
+.visual-register-form {
+    text-align: left;
+}
+
+.visual-register-form .input-group {
+    margin-bottom: 14px;
+}
+
+.visual-register-form label {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+.visual-register-form input {
+    width: 100%;
+    padding: 9px 11px;
+    border-radius: 10px;
+    border: 1px solid #d0d3e6;
+    font-size: 14px;
+    background: #f7f7ff;
+}
+
+.visual-register-form input:focus {
+    outline: none;
+    border-color: #4a4ae6;
+    box-shadow: 0 0 0 2px rgba(74,74,230,0.35);
+    background: #ffffff;
+}
+
+.visual-btn {
+    width: 100%;
+    margin-top: 6px;
+    border: none;
+    border-radius: 999px;
+    padding: 10px 0;
+    background: linear-gradient(135deg, #4a4ae6, #6366f1);
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
