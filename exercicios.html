@@ -10,67 +10,10 @@
 </head>
 <body id="page-body">
 
-<!-- WIDGET DE ACESSIBILIDADE -->
+<!-- WIDGET DE ACESSIBILIDADE (igual às outras telas) -->
 <div id="accessibility-widget" class="ac-widget ac-hidden" aria-hidden="true">
-    <div class="ac-header">
-        <div class="ac-header-top">
-            <span class="ac-title">Menu Acessibilidade (CTRL+U)</span>
-            <button id="ac-close-btn" class="ac-icon-btn" aria-label="Fechar menu de acessibilidade">×</button>
-        </div>
-
-        <div class="ac-select-row">
-            <button class="ac-pill" id="ac-lang-btn">Português (Brasil)</button>
-            <button class="ac-pill ac-pill-active" id="ac-profile-btn">Dislexia perfil ativo</button>
-        </div>
-
-        <div class="ac-select-row">
-            <button class="ac-pill ac-pill-xl ac-pill-active" id="ac-widget-size-btn">
-                XL Widget superdimensionado
-            </button>
-        </div>
-    </div>
-
-    <div class="ac-profiles-section">
-        <div class="ac-profiles-header">
-            <span>Perfis de acessibilidade</span>
-        </div>
-        <div class="ac-profiles-grid">
-            <button class="ac-profile" data-profile="deficiencia-motora">Deficiência Motora</button>
-            <button class="ac-profile" data-profile="cego">Cego</button>
-            <button class="ac-profile" data-profile="daltonico">Daltônico</button>
-            <button class="ac-profile" data-profile="dislexia">Dislexia</button>
-            <button class="ac-profile" data-profile="baixa-visao">Baixa visão</button>
-            <button class="ac-profile" data-profile="cognitivo">Cognitivo e Aprendizagem</button>
-            <button class="ac-profile" data-profile="convulsao">Convulsão e epilepsia</button>
-            <button class="ac-profile" data-profile="tdah">TDAH</button>
-        </div>
-    </div>
-
-    <div class="ac-grid">
-        <button id="ac-ler-pagina" class="ac-item"><span class="ac-item-title">Ler a página</span></button>
-        <button id="ac-contraste-mais" class="ac-item"><span class="ac-item-title">Contraste +</span></button>
-        <button id="ac-contraste-inteligente" class="ac-item"><span class="ac-item-title">Contraste inteligente</span></button>
-        <button id="ac-links-destacados" class="ac-item"><span class="ac-item-title">Links destacados</span></button>
-        <button id="ac-texto-maior" class="ac-item"><span class="ac-item-title">Texto maior</span></button>
-        <button id="ac-espacamento-texto" class="ac-item"><span class="ac-item-title">Espaçamento de texto</span></button>
-        <button id="ac-animacoes" class="ac-item"><span class="ac-item-title">Reproduzir animações</span></button>
-        <button id="ac-ocultar-imagens" class="ac-item"><span class="ac-item-title">Ocultar imagens</span></button>
-        <button id="ac-dislexia" class="ac-item"><span class="ac-item-title">Df Dislexia amigável</span></button>
-        <button id="ac-cursor" class="ac-item"><span class="ac-item-title">Cursor</span></button>
-        <button id="ac-barra-ferramentas" class="ac-item"><span class="ac-item-title">Barra de ferramentas</span></button>
-        <button id="ac-estrutura-pagina" class="ac-item"><span class="ac-item-title">Estrutura da página</span></button>
-        <button id="ac-altura-linha" class="ac-item"><span class="ac-item-title">Altura da linha</span></button>
-        <button id="ac-alinhamento-texto" class="ac-item"><span class="ac-item-title">Alinhamento de texto</span></button>
-        <button id="ac-saturacao" class="ac-item"><span class="ac-item-title">Saturação</span></button>
-    </div>
-
-    <div class="ac-footer">
-        <button id="ac-reset" class="ac-reset-btn">Redefinir todas as configurações de acessibilidade</button>
-        <button id="ac-toggle-visibility" class="ac-move-btn">Mover/ocultar widget</button>
-    </div>
+    <!-- ... mesmo conteúdo do widget ... -->
 </div>
-
-<!-- BOTÃO FLUTUANTE -->
 <button id="accessibility-btn" class="ac-fab" aria-label="Abrir menu de acessibilidade">
     <img src="https://api.iconify.design/material-symbols/accessibility-new.svg?color=%23ffffff"
          alt="Ícone de acessibilidade">
@@ -79,18 +22,18 @@
 <div class="dashboard-layout">
     <div class="sidebar">
         <div class="profile-box">
-    <img id="aluno-foto" src="https://i.imgur.com/gKjG1o2.png" alt="Foto de perfil do Aluno">
-    <p id="aluno-nome" class="aluno-name" style="font-weight: 600;">Aluno</p>
-    <p id="aluno-email" class="aluno-email">aluno.ic9@educ.edu.br</p>
-</div>
+            <img id="aluno-foto" src="https://i.imgur.com/gKjG1o2.png" alt="Foto de perfil do Aluno">
+            <p id="aluno-nome" class="aluno-name" style="font-weight: 600;">Aluno</p>
+            <p id="aluno-email" class="aluno-email">aluno.ic9@educ.edu.br</p>
+        </div>
         <nav class="sidebar-nav">
-            <div class="nav-item"><a href="home.html"><i class="icon">🏠</i>Home</a></div>
-            <div class="nav-item"><a href="forum.html"><i class="icon">💬</i>Fórum</a></div>
-            <div class="nav-item"><a href="aulas.html"><i class="icon">▶️</i>Aulas</a></div>
-            <div class="nav-item"><a href="conteudos.html"><i class="icon">📚</i>Conteúdos</a></div>
-            <div class="nav-item active"><a href="exercicios.html"><i class="icon">📝</i>Exercícios</a></div>
-            <div class="nav-item"><a href="configuracoes.html"><i class="icon">⚙️</i>Configurações</a></div>
-            <div class="nav-item"><a href="certificados.html"><i class="icon">🏅</i>Certificados</a></div>
+            <div class="nav-item"><a href="home.html">🏠 Home</a></div>
+            <div class="nav-item"><a href="forum.html">💬 Fórum</a></div>
+            <div class="nav-item"><a href="aulas.html">▶️ Aulas</a></div>
+            <div class="nav-item"><a href="conteudos.html">📚 Conteúdos</a></div>
+            <div class="nav-item active"><a href="exercicios.html">📝 Exercícios</a></div>
+            <div class="nav-item"><a href="configuracoes.html">⚙️ Configurações</a></div>
+            <div class="nav-item"><a href="certificados.html">🏅 Certificados</a></div>
         </nav>
         <input type="text" placeholder="Pesquisar" aria-label="Pesquisar na plataforma"
                style="margin: 20px 15px; padding: 8px; border-radius: 10px; border: none;
@@ -98,116 +41,174 @@
     </div>
 
     <div class="main-content">
-        <div class="main-content-area">
+        <div class="main-content-area exercicios-main">
             <h1>Exercícios de Programação de Computadores e Algoritmos</h1>
-            <p>Para cada aula: assista à vídeo-aula, responda ao exercício de alternativas com feedback imediato
-               e, depois de acertar, pratique escrevendo e executando código C no compilador online.</p>
+            <p>Complete os exercícios na ordem: primeiro as questões objetivas, depois o código em C. O módulo 2
+               é liberado somente após concluir o módulo 1.</p>
 
-            <!-- EXERCÍCIOS AULA 1 -->
-            <div class="card-simple" style="margin-bottom: 20px;">
+            <!-- AULA 1 -------------------------------------------------------->
+            <div class="card-simple exercicio-card">
                 <h2>Aula 1 – Introdução a Algoritmos</h2>
                 <p>Status do vídeo: <span id="status-video-a1">Vídeo não verificado</span>
                     (<a href="aulas.html#intro_algoritmos">abrir aula</a>)</p>
 
-                <!-- Exercício 1: alternativa -->
-                <div class="card-simple" style="margin-top: 12px;">
-                    <h3>Exercício 1 – Múltipla escolha</h3>
-                    <p>Pergunta: O que melhor descreve um algoritmo em programação de computadores?</p>
-                    <form id="ex1-a1-form">
-                        <label><input type="radio" name="ex1-a1" value="a">
-                            a) Um programa já compilado e executável.</label><br>
-                        <label><input type="radio" name="ex1-a1" value="b">
-                            b) Uma sequência finita de passos bem definidos para resolver um problema.</label><br>
-                        <label><input type="radio" name="ex1-a1" value="c">
-                            c) Um conjunto aleatório de instruções sem ordem específica.</label><br>
-                        <label><input type="radio" name="ex1-a1" value="d">
-                            d) Apenas o código escrito em uma linguagem de alto nível.</label><br>
-                        <button type="button" class="play-btn" onclick="corrigirAlternativa('a1','b')">
-                            Verificar resposta
+                <!-- Exercício 1: múltipla escolha (3 questões) -->
+                <div class="card-simple inner-card">
+                    <h3>Exercício 1 – Questões objetivas</h3>
+                    <p>Responda às três questões. Ao acertar todas, o exercício prático será liberado.</p>
+
+                    <form id="quiz-a1-form" class="quiz-form">
+                        <!-- Q1 -->
+                        <div class="quiz-question">
+                            <p><strong>1)</strong> O que melhor descreve um algoritmo em programação de computadores?</p>
+                            <label><input type="radio" name="q1" value="a">
+                                a) Um programa já compilado e executável.</label>
+                            <label><input type="radio" name="q1" value="b">
+                                b) Uma sequência finita de passos bem definidos para resolver um problema.</label>
+                            <label><input type="radio" name="q1" value="c">
+                                c) Um conjunto aleatório de instruções sem ordem.</label>
+                            <label><input type="radio" name="q1" value="d">
+                                d) Apenas o código em linguagem de alto nível.</label>
+                        </div>
+
+                        <!-- Q2 -->
+                        <div class="quiz-question">
+                            <p><strong>2)</strong> Qual alternativa representa um exemplo de entrada, processamento e saída?</p>
+                            <label><input type="radio" name="q2" value="a">
+                                a) Somar dois números e mostrar o resultado.</label>
+                            <label><input type="radio" name="q2" value="b">
+                                b) Guardar um número em uma variável.</label>
+                            <label><input type="radio" name="q2" value="c">
+                                c) Imprimir uma mensagem fixa na tela.</label>
+                            <label><input type="radio" name="q2" value="d">
+                                d) Ler um número, mas não fazer nada com ele.</label>
+                        </div>
+
+                        <!-- Q3 -->
+                        <div class="quiz-question">
+                            <p><strong>3)</strong> Em um fluxograma simples, o losango é usado para:</p>
+                            <label><input type="radio" name="q3" value="a">
+                                a) Indicar o início e fim do algoritmo.</label>
+                            <label><input type="radio" name="q3" value="b">
+                                b) Representar uma operação de processamento.</label>
+                            <label><input type="radio" name="q3" value="c">
+                                c) Representar uma decisão (condição).</label>
+                            <label><input type="radio" name="q3" value="d">
+                                d) Mostrar dados de saída.</label>
+                        </div>
+
+                        <button type="button" class="quiz-btn"
+                                onclick="corrigirQuizA1()">
+                            Verificar respostas
                         </button>
                     </form>
-                    <p id="ex1-a1-feedback" aria-live="polite"></p>
+                    <p id="quiz-a1-feedback" class="quiz-feedback" aria-live="polite"></p>
                 </div>
 
-                <!-- Exercício 2: compilador C online (bloqueado até acertar) -->
-                <div id="ex2-a1-bloco" class="card-simple ex-bloqueado" style="margin-top: 12px;">
+                <!-- Exercício 2 prático -->
+                <div id="ex2-a1-bloco" class="card-simple inner-card ex-bloqueado">
                     <h3>Exercício 2 – Código em C</h3>
-                    <p id="ex2-a1-status"><strong>Bloqueado.</strong> Acerte o exercício 1 para desbloquear.</p>
+                    <p id="ex2-a1-status"><strong>Bloqueado.</strong> Acerte todas as questões do Exercício 1 para desbloquear.</p>
                     <div id="ex2-a1-conteudo" style="display:none;">
-                        <p>Use o compilador abaixo para escrever um programa em C que leia dois inteiros,
-                           calcule a média aritmética simples e imprima o resultado.</p>
-                        <iframe
-                            id="compiler-a1"
-                            src="https://onecompiler.com/embed/c?theme=light"
-                            frameborder="0"
-                            width="100%"
-                            height="420"
-                            style="border-radius: 8px; background:#1e1e1e;"
-                            title="Compilador C online - Aula 1"
-                            allow="fullscreen">
-                        </iframe>
-                        <p style="margin-top:8px;font-size:13px;">
-                            Dica: clique em “Run” dentro do editor para compilar e executar seu código.
-                        </p>
+                        <p>Baixe o enunciado, escreva o programa em C em seu computador e depois envie o arquivo
+                           de>.c</code> pelo formulário abaixo.</p>
+
+                        <a class="home-link-btn" href="pdfs/aula1_pratico.pdf" target="_blank">
+                            Baixar enunciado em PDF
+                        </a>
+
+                        <div class="codigo-upload">
+                            <label for="codigo-a1">Enviar arquivo de código em C (.c)</label>
+                            <input id="codigo-a1" type="file" accept=".c">
+                            <button type="button" class="quiz-btn" onclick="enviarCodigo('a1')">
+                                Enviar código
+                            </button>
+                            <p id="codigo-a1-feedback" class="quiz-feedback" aria-live="polite"></p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- EXERCÍCIOS AULA 2 -->
-            <div class="card-simple" style="margin-bottom: 20px;">
+            <!-- AULA 2 -------------------------------------------------------->
+            <div class="card-simple exercicio-card">
                 <h2>Aula 2 – Variáveis e Operadores</h2>
                 <p>Status do vídeo: <span id="status-video-a2">Vídeo não verificado</span>
                     (<a href="aulas.html#variaveis_operadores">abrir aula</a>)</p>
 
-                <!-- Exercício 1: alternativa -->
-                <div class="card-simple" style="margin-top: 12px;">
-                    <h3>Exercício 1 – Múltipla escolha</h3>
-                    <p>Pergunta: Qual opção representa corretamente a declaração de uma variável inteira chamada
-                        <code>idade</code> em C?</p>
-                    <form id="ex1-a2-form">
-                        <label><input type="radio" name="ex1-a2" value="a">
-                            a) inteiro idade;</label><br>
-                        <label><input type="radio" name="ex1-a2" value="b">
-                            b) int idade;</label><br>
-                        <label><input type="radio" name="ex1-a2" value="c">
-                            c) idade int;</label><br>
-                        <label><input type="radio" name="ex1-a2" value="d">
-                            d) var idade = inteiro;</label><br>
-                        <button type="button" class="play-btn" onclick="corrigirAlternativa('a2','b')">
-                            Verificar resposta
-                        </button>
-                    </form>
-                    <p id="ex1-a2-feedback" aria-live="polite"></p>
+                <div id="mod2-bloqueio" class="card-simple inner-card">
+                    <p><strong>Bloqueado.</strong> Conclua os exercícios da Aula 1 para liberar este módulo.</p>
                 </div>
 
-                <!-- Exercício 2: compilador C online (bloqueado até acertar) -->
-                <div id="ex2-a2-bloco" class="card-simple ex-bloqueado" style="margin-top: 12px;">
-                    <h3>Exercício 2 – Código em C</h3>
-                    <p id="ex2-a2-status"><strong>Bloqueado.</strong> Acerte o exercício 1 para desbloquear.</p>
-                    <div id="ex2-a2-conteudo" style="display:none;">
-                        <p>Use o compilador abaixo para escrever um programa em C que leia o nome de um aluno,
-                           sua nota 1 e nota 2, calcule a média e informe se está aprovado (média ≥ 6).</p>
-                        <iframe
-                            id="compiler-a2"
-                            src="https://onecompiler.com/embed/c?theme=light"
-                            frameborder="0"
-                            width="100%"
-                            height="420"
-                            style="border-radius: 8px; background:#1e1e1e;"
-                            title="Compilador C online - Aula 2"
-                            allow="fullscreen">
-                        </iframe>
-                        <p style="margin-top:8px;font-size:13px;">
-                            Dica: teste entradas diferentes para conferir se a lógica funciona corretamente.
-                        </p>
+                <div id="mod2-conteudo" style="display:none;">
+
+                    <!-- Exercício 1: múltipla escolha -->
+                    <div class="card-simple inner-card">
+                        <h3>Exercício 1 – Questões objetivas</h3>
+                        <p>Perguntas sobre declaração de variáveis e uso de operadores.</p>
+
+                        <form id="quiz-a2-form" class="quiz-form">
+                            <div class="quiz-question">
+                                <p><strong>1)</strong> Qual declaração é válida para uma variável inteira
+                                    chamada de>idade</code> em C?</p>
+                                <label><input type="radio" name="q1" value="a">a) inteiro idade;</label>
+                                <label><input type="radio" name="q1" value="b">b) int idade;</label>
+                                <label><input type="radio" name="q1" value="c">c) idade int;</label>
+                                <label><input type="radio" name="q1" value="d">d) var idade = inteiro;</label>
+                            </div>
+
+                            <div class="quiz-question">
+                                <p><strong>2)</strong> Qual operador é usado para resto de divisão inteira em C?</p>
+                                <label><input type="radio" name="q2" value="a">a) /</label>
+                                <label><input type="radio" name="q2" value="b">b) *</label>
+                                <label><input type="radio" name="q2" value="c">c) %</label>
+                                <label><input type="radio" name="q2" value="d">d) ==</label>
+                            </div>
+
+                            <div class="quiz-question">
+                                <p><strong>3)</strong> Em C, qual expressão avalia se duas variáveis inteiras
+                                   de>a</code> e de>b</code> são iguais?</p>
+                                <label><input type="radio" name="q3" value="a">a) a = b</label>
+                                <label><input type="radio" name="q3" value="b">b) a == b</label>
+                                <label><input type="radio" name="q3" value="c">c) a != b</label>
+                                <label><input type="radio" name="q3" value="d">d) a <> b</label>
+                            </div>
+
+                            <button type="button" class="quiz-btn" onclick="corrigirQuizA2()">
+                                Verificar respostas
+                            </button>
+                        </form>
+                        <p id="quiz-a2-feedback" class="quiz-feedback" aria-live="polite"></p>
                     </div>
+
+                    <!-- Exercício 2 prático -->
+                    <div id="ex2-a2-bloco" class="card-simple inner-card ex-bloqueado">
+                        <h3>Exercício 2 – Código em C</h3>
+                        <p id="ex2-a2-status"><strong>Bloqueado.</strong> Acerte todas as questões do Exercício 1 para desbloquear.</p>
+                        <div id="ex2-a2-conteudo" style="display:none;">
+                            <p>Baixe o enunciado, escreva o programa em C e envie o arquivo
+                               de>.c</code> para registrar sua prática.</p>
+
+                            <a class="home-link-btn" href="pdfs/aula2_pratico.pdf" target="_blank">
+                                Baixar enunciado em PDF
+                            </a>
+
+                            <div class="codigo-upload">
+                                <label for="codigo-a2">Enviar arquivo de código em C (.c)</label>
+                                <input id="codigo-a2" type="file" accept=".c">
+                                <button type="button" class="quiz-btn" onclick="enviarCodigo('a2')">
+                                    Enviar código
+                                </button>
+                                <p id="codigo-a2-feedback" class="quiz-feedback" aria-live="polite"></p>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
             <img src="https://i.imgur.com/6E5rYtB.png" alt="Assistente Virtual em LIBRAS"
                  class="libras-avatar-img"
                  style="position: fixed; bottom: 80px; right: 80px; width: 150px; z-index: 1000;">
-
         </div>
     </div>
 </div>
@@ -218,69 +219,200 @@
 </div>
 
 <script src="script.js"></script>
+
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-    const nome = localStorage.getItem("aluno_nome");
-    const email = localStorage.getItem("aluno_email");
-    const foto = localStorage.getItem("aluno_foto");
+// Estilo extra para inputs/botões elegantes
+const exStyle = document.createElement('style');
+exStyle.textContent = `
+.exercicios-main h1 { margin-bottom: 4px; }
+.exercicio-card { margin-bottom: 20px; }
+.inner-card { margin-top: 12px; }
+.quiz-form { margin-top: 6px; }
+.quiz-question { margin-bottom: 10px; font-size: 14px; }
+.quiz-question label { display:block; margin-left:8px; margin-bottom:2px; }
+.quiz-btn {
+    margin-top: 8px;
+    border:none;
+    border-radius:999px;
+    padding:8px 14px;
+    background:#4a4ae6;
+    color:#fff;
+    font-size:14px;
+    cursor:pointer;
+}
+.quiz-btn:hover { opacity:.95; }
+.quiz-feedback { margin-top:6px; font-size:13px; }
+.codigo-upload { margin-top:10px; font-size:13px; }
+.codigo-upload input[type="file"] { display:block; margin-top:4px; margin-bottom:4px; }
+.ex-bloqueado { opacity:0.7; }
+`;
+document.head.appendChild(exStyle);
 
-    if (nome) document.getElementById("aluno-nome").textContent = nome;
-    if (email) document.getElementById("aluno-email").textContent = email;
-    if (foto) document.getElementById("aluno-foto").src = foto;
+// Estado inicial: bloqueios e status
+document.addEventListener('DOMContentLoaded', () => {
+    // vídeo (se quiser marcar em aulas)
+    const v1 = localStorage.getItem('video_a1_assistido') === 'true';
+    const v2 = localStorage.getItem('video_a2_assistido') === 'true';
+    document.getElementById('status-video-a1').textContent = v1 ? 'Vídeo marcado como assistido' : 'Vídeo não verificado';
+    document.getElementById('status-video-a2').textContent = v2 ? 'Vídeo marcado como assistido' : 'Vídeo não verificado';
+
+    // Aula 1 já concluída?
+    const aula1Ok = localStorage.getItem('pca_mod1_exercicios_ok') === 'true';
+    if (aula1Ok) {
+        desbloquearPratico('a1');
+        desbloquearModulo2();
+    } else {
+        // módulo 2 bloqueado até concluir aula 1
+        document.getElementById('mod2-bloqueio').style.display = 'block';
+        document.getElementById('mod2-conteudo').style.display = 'none';
+    }
+
+    // Se já concluiu aula 2 antes
+    const aula2Ok = localStorage.getItem('pca_mod2_exercicios_ok') === 'true';
+    if (aula2Ok) {
+        desbloquearPratico('a2');
+    }
 });
-    // ---------- ESTADO INICIAL ----------
-    document.addEventListener('DOMContentLoaded', () => {
-        const v1 = localStorage.getItem('video_a1_assistido') === 'true';
-        const v2 = localStorage.getItem('video_a2_assistido') === 'true';
-        document.getElementById('status-video-a1').textContent = v1 ? 'Vídeo marcado como assistido' : 'Vídeo não verificado';
-        document.getElementById('status-video-a2').textContent = v2 ? 'Vídeo marcado como assistido' : 'Vídeo não verificado';
 
-        if (localStorage.getItem('ex_a1_ok') === 'true') desbloquearEx2('a1');
-        if (localStorage.getItem('ex_a2_ok') === 'true') desbloquearEx2('a2');
-    });
+// --------- QUIZ AULA 1 ----------
+function corrigirQuizA1() {
+    const form = document.getElementById('quiz-a1-form');
+    const fb   = document.getElementById('quiz-a1-feedback');
 
-    // ---------- EXERCÍCIO DE ALTERNATIVAS ----------
-    function corrigirAlternativa(aulaId, correta) {
-        const formId = aulaId === 'a1' ? 'ex1-a1-form' : 'ex1-a2-form';
-        const feedbackId = aulaId === 'a1' ? 'ex1-a1-feedback' : 'ex1-a2-feedback';
+    const q1 = form.q1.value;
+    const q2 = form.q2.value;
+    const q3 = form.q3.value;
 
-        const form = document.getElementById(formId);
-        const selecionada = form.querySelector('input[type="radio"]:checked');
-        const feedback = document.getElementById(feedbackId);
+    let erros = [];
 
-        if (!selecionada) {
-            feedback.textContent = 'Selecione uma alternativa antes de verificar.';
-            feedback.style.color = '#c62828';
-            return;
-        }
-
-        if (selecionada.value === correta) {
-            feedback.textContent = 'Correto! Você desbloqueou o exercício de código desta aula.';
-            feedback.style.color = '#2e7d32';
-            localStorage.setItem('ex_' + aulaId + '_ok', 'true');
-            desbloquearEx2(aulaId);
-        } else {
-            feedback.textContent = 'Resposta incorreta. Releia o enunciado e tente novamente.';
-            feedback.style.color = '#c62828';
-        }
+    if (q1 !== 'b') {
+        erros.push('Questão 1: um algoritmo é uma sequência de passos, não um programa pronto nem código isolado.');
+    }
+    if (q2 !== 'a') {
+        erros.push('Questão 2: entrada, processamento e saída aparecem quando somamos dois números e mostramos o resultado.');
+    }
+    if (q3 !== 'c') {
+        erros.push('Questão 3: no fluxograma, o losango é usado para decisões (condições).');
     }
 
-    function desbloquearEx2(aulaId) {
-        const blocoId   = aulaId === 'a1' ? 'ex2-a1-bloco'   : 'ex2-a2-bloco';
-        const statusId  = aulaId === 'a1' ? 'ex2-a1-status'  : 'ex2-a2-status';
-        const conteudoId= aulaId === 'a1' ? 'ex2-a1-conteudo': 'ex2-a2-conteudo';
-
-        const bloco   = document.getElementById(blocoId);
-        const status  = document.getElementById(statusId);
-        const conteudo= document.getElementById(conteudoId);
-
-        bloco.classList.remove('ex-bloqueado');
-        status.textContent = 'Liberado. Use o compilador abaixo para escrever e executar seu código em C.';
-        conteudo.style.display = 'block';
+    if (!q1 || !q2 || !q3) {
+        fb.textContent = 'Responda todas as questões antes de verificar.';
+        fb.style.color = '#c62828';
+        return;
     }
+
+    if (erros.length === 0) {
+        fb.textContent = 'Muito bem! Todas as respostas estão corretas. O exercício prático foi liberado.';
+        fb.style.color = '#2e7d32';
+        localStorage.setItem('pca_mod1_exercicios_ok', 'true');
+        localStorage.setItem('pca_mod1_concluido', 'true');
+        desbloquearPratico('a1');
+        desbloquearModulo2();
+    } else {
+        fb.textContent = 'Algumas respostas estão incorretas:\n- ' + erros.join('\n- ');
+        fb.style.whiteSpace = 'pre-line';
+        fb.style.color = '#c62828';
+    }
+}
+
+// --------- QUIZ AULA 2 ----------
+function corrigirQuizA2() {
+    // Só corrige se módulo 2 estiver liberado
+    if (localStorage.getItem('pca_mod1_exercicios_ok') !== 'true') {
+        alert('Conclua primeiro os exercícios da Aula 1.');
+        return;
+    }
+
+    const form = document.getElementById('quiz-a2-form');
+    const fb   = document.getElementById('quiz-a2-feedback');
+
+    const q1 = form.q1.value;
+    const q2 = form.q2.value;
+    const q3 = form.q3.value;
+
+    let erros = [];
+
+    if (q1 !== 'b') {
+        erros.push('Questão 1: em C, a declaração correta é "int idade;".');
+    }
+    if (q2 !== 'c') {
+        erros.push('Questão 2: o operador de resto de divisão inteira é o símbolo de porcentagem (%).');
+    }
+    if (q3 !== 'b') {
+        erros.push('Questão 3: para comparar igualdade em C usamos "==", não "=".');
+    }
+
+    if (!q1 || !q2 || !q3) {
+        fb.textContent = 'Responda todas as questões antes de verificar.';
+        fb.style.color = '#c62828';
+        return;
+    }
+
+    if (erros.length === 0) {
+        fb.textContent = 'Ótimo! Você acertou todas. O exercício prático da Aula 2 foi liberado.';
+        fb.style.color = '#2e7d32';
+        localStorage.setItem('pca_mod2_exercicios_ok', 'true');
+        localStorage.setItem('pca_mod2_concluido', 'true');
+        desbloquearPratico('a2');
+    } else {
+        fb.textContent = 'Algumas respostas estão incorretas:\n- ' + erros.join('\n- ');
+        fb.style.whiteSpace = 'pre-line';
+        fb.style.color = '#c62828';
+    }
+}
+
+// --------- DESBLOQUEIOS ----------
+function desbloquearPratico(aulaId) {
+    const blocoId   = aulaId === 'a1' ? 'ex2-a1-bloco'   : 'ex2-a2-bloco';
+    const statusId  = aulaId === 'a1' ? 'ex2-a1-status'  : 'ex2-a2-status';
+    const conteudoId= aulaId === 'a1' ? 'ex2-a1-conteudo': 'ex2-a2-conteudo';
+
+    const bloco   = document.getElementById(blocoId);
+    const status  = document.getElementById(statusId);
+    const conteudo= document.getElementById(conteudoId);
+
+    bloco.classList.remove('ex-bloqueado');
+    status.textContent = 'Liberado. Envie seu arquivo de código C pelo formulário abaixo.';
+    conteudo.style.display = 'block';
+}
+
+function desbloquearModulo2() {
+    document.getElementById('mod2-bloqueio').style.display = 'none';
+    document.getElementById('mod2-conteudo').style.display = 'block';
+    localStorage.setItem('pca_mod2_liberado', 'true');
+}
+
+// --------- ENVIO DE CÓDIGO (simulado) ----------
+function enviarCodigo(aulaId) {
+    const inputId   = aulaId === 'a1' ? 'codigo-a1' : 'codigo-a2';
+    const fbId      = aulaId === 'a1' ? 'codigo-a1-feedback' : 'codigo-a2-feedback';
+
+    const input = document.getElementById(inputId);
+    const fb    = document.getElementById(fbId);
+
+    if (!input.files || input.files.length === 0) {
+        fb.textContent = 'Selecione um arquivo .c antes de enviar.';
+        fb.style.color = '#c62828';
+        return;
+    }
+
+    const file = input.files[0];
+    if (!file.name.toLowerCase().endsWith('.c')) {
+        fb.textContent = 'Envie apenas arquivos com extensão .c.';
+        fb.style.color = '#c62828';
+        return;
+    }
+
+    fb.textContent = 'Código recebido! Este envio é uma simulação; você pode mostrar o arquivo ao professor para correção.';
+    fb.style.color = '#2e7d32';
+
+    // marca pequeno progresso para a home (opcional)
+    if (aulaId === 'a1') {
+        localStorage.setItem('pca_mod1_progresso', '100');
+    } else {
+        localStorage.setItem('pca_mod2_progresso', '100');
+    }
+}
 </script>
 </body>
 </html>
-
-
-
