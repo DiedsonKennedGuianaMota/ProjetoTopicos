@@ -594,6 +594,21 @@ function setupAccessibilityWidget() {
         }
     };
 });
+// --- 7. FUNÇÃO DE SELEÇÃO DE MODO (index.html) ---
+window.selectAccessibility = (mode) => {
+    localStorage.setItem('accessibilityMode', mode);
+
+    if (mode === 'visual') {
+        // cadastro para pessoas com deficiência visual
+        window.location.href = 'cadastro-visual.html';
+    } else if (mode === 'auditory') {
+        // (se no futuro tiver cadastro-auditivo.html)
+        window.location.href = 'cadastro-auditivo.html';
+    } else {
+        // cadastro padrão, sem acessibilidade específica
+        window.location.href = 'cadastro-padrao.html';
+    }
+};
 
 
 
