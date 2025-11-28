@@ -10,7 +10,7 @@
 </head>
 <body id="page-body">
 
-<!-- WIDGET DE ACESSIBILIDADE -->
+<!-- WIDGET DE ACESSIBILIDADE (NOVO) -->
 <div id="accessibility-widget" class="ac-widget ac-hidden" aria-hidden="true">
     <div class="ac-header">
         <div class="ac-header-top">
@@ -77,12 +77,12 @@
 
 <div class="dashboard-layout">
 
-    <!-- SIDEBAR CORRIGIDA -->
+    <!-- SIDEBAR -->
     <div class="sidebar">
         <div class="profile-box">
             <img id="aluno-foto" src="https://i.imgur.com/gKjG1o2.png" alt="Foto do aluno">
-            <p id="aluno-nome" class="aluno-name">Carregando...</p>
-            <p id="aluno-email" class="aluno-email">Carregando...</p>
+            <p id="aluno-nome" class="aluno-name">Aluno</p>
+            <p id="aluno-email" class="aluno-email">aluno.ic9@educ.edu.br</p>
         </div>
 
         <nav class="sidebar-nav">
@@ -95,95 +95,309 @@
             <div class="nav-item"><a href="certificados.html">🏅 Certificados</a></div>
         </nav>
 
-        <input type="text" placeholder="Pesquisar">
+        <input type="text" placeholder="Pesquisar no fórum"
+               style="margin: 20px 15px; padding: 8px; border-radius: 10px; border: none; width: calc(100% - 30px); opacity: 0.8;">
     </div>
 
     <!-- MAIN CONTENT -->
     <div class="main-content">
-        <div class="main-content-area">
+        <div class="main-content-area forum-main">
             <h1>Fórum de Programação de Computadores e Algoritmos</h1>
-            <p aria-live="polite">Espaço para tirar dúvidas, compartilhar soluções e discutir conteúdos.</p>
+            <p aria-live="polite">Tire dúvidas, compartilhe soluções e ajude outros colegas.</p>
 
-            <div class="home-grid">
-                <div class="card-simple">
-                    <h3>Tópicos recentes</h3>
-
-                    <div class="forum-topic">
-                        <h4>Dúvida na média com laço de repetição</h4>
-                        <p>Como calcular média usando while?</p>
-                        <p class="forum-meta">Ana · Aula 4</p>
-                    </div>
-
-                    <div class="forum-topic">
-                        <h4>Vetores: maior valor</h4>
-                        <p>Exemplo para achar maior número do vetor?</p>
-                        <p class="forum-meta">Bruno · Aula 5</p>
-                    </div>
+            <div class="forum-layout">
+                <!-- LISTA DE TÓPICOS -->
+                <div class="card-simple forum-list-card">
+                    <h3>Tópicos do fórum</h3>
+                    <div id="forum-topics"></div>
                 </div>
 
-                <div class="card-simple">
+                <!-- FORMULÁRIO DE NOVO TÓPICO -->
+                <div class="card-simple forum-form-card">
                     <h3>Criar novo tópico</h3>
 
                     <form id="forum-form">
-                        <label>Título</label>
-                        <input id="forum-title" required>
+                        <div class="forum-input-group">
+                            <label for="forum-title">Título do tópico</label>
+                            <input id="forum-title" type="text" required>
+                        </div>
 
-                        <label>Aula</label>
-                        <select id="forum-aula">
-                            <option value="geral">Geral</option>
-                            <option value="a4">Aula 4</option>
-                            <option value="a5">Aula 5</option>
-                        </select>
+                        <div class="forum-input-group">
+                            <label for="forum-aula">Relacionado à aula</label>
+                            <select id="forum-aula" required>
+                                <option value="Geral">Geral</option>
+                                <option value="Aula 1 – Introdução a Algoritmos">Aula 1 – Introdução a Algoritmos</option>
+                                <option value="Aula 2 – Variáveis e Operadores">Aula 2 – Variáveis e Operadores</option>
+                                <option value="Aula 3 – Estruturas de Decisão">Aula 3 – Estruturas de Decisão</option>
+                                <option value="Aula 4 – Estruturas de Repetição">Aula 4 – Estruturas de Repetição</option>
+                                <option value="Aula 5 – Vetores e Matrizes">Aula 5 – Vetores e Matrizes</option>
+                                <option value="Aula 6 – Resolução de Problemas">Aula 6 – Resolução de Problemas</option>
+                            </select>
+                        </div>
 
-                        <label>Mensagem</label>
-                        <textarea id="forum-message" required></textarea>
+                        <div class="forum-input-group">
+                            <label for="forum-message">Mensagem</label>
+                            <textarea id="forum-message" rows="5" required></textarea>
+                        </div>
 
-                        <button class="play-btn">Publicar</button>
+                        <button type="submit" class="forum-btn">Publicar tópico</button>
                     </form>
 
-                    <p id="forum-feedback"></p>
+                    <p id="forum-feedback" aria-live="polite" class="forum-feedback"></p>
                 </div>
-
             </div>
         </div>
     </div>
 
 </div>
 
+<div id="talkback-container" class="hidden">
+    <div class="bot-icon">🔊</div>
+    <p id="talkback-message">Talkback ativado.</p>
+</div>
+
 <script src="script.js"></script>
 
 <script>
-// CARREGAR INFORMAÇÕES DO ALUNO LOGADO
-document.addEventListener("DOMContentLoaded", () => {
-    const nome = localStorage.getItem("aluno_nome");
-    const email = localStorage.getItem("aluno_email");
-    const foto = localStorage.getItem("aluno_foto");
+// Layout extra do forum (inputs e botões mais bonitos)
+const style = document.createElement('style');
+style.textContent = `
+.forum-main h1 { margin-bottom: 4px; }
+.forum-layout {
+    display: grid;
+    grid-template-columns: 2fr 1.2fr;
+    gap: 18px;
+    margin-top: 14px;
+}
+.forum-list-card, .forum-form-card { min-height: 300px; }
+.forum-topic {
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+    padding: 10px 12px;
+    margin-bottom: 10px;
+    background: #fafbff;
+}
+.forum-topic-title {
+    font-weight: 600;
+    margin: 0 0 4px;
+}
+.forum-topic-meta {
+    font-size: 12px;
+    opacity: 0.8;
+    margin-bottom: 6px;
+}
+.forum-reply {
+    margin-left: 10px;
+    margin-top: 4px;
+    padding-left: 8px;
+    border-left: 2px solid #d0d0ff;
+    font-size: 13px;
+}
+.forum-input-group {
+    margin-bottom: 10px;
+}
+.forum-input-group label {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+.forum-input-group input,
+.forum-input-group select,
+.forum-input-group textarea {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid #d0d3e6;
+    font-size: 14px;
+}
+.forum-input-group input:focus,
+.forum-input-group select:focus,
+.forum-input-group textarea:focus {
+    outline: none;
+    border-color: #4a4ae6;
+    box-shadow: 0 0 0 2px rgba(74,74,230,0.25);
+}
+.forum-btn {
+    width: 100%;
+    border: none;
+    border-radius: 999px;
+    padding: 9px 0;
+    background: linear-gradient(135deg, #4a4ae6, #6366f1);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.forum-btn:hover {
+    opacity: 0.95;
+}
+.forum-feedback {
+    margin-top: 8px;
+    font-size: 13px;
+}
+.forum-reply-form {
+    margin-top: 6px;
+}
+.forum-reply-form textarea {
+    width: 100%;
+    padding: 6px 8px;
+    border-radius: 6px;
+    border: 1px solid #d0d3e6;
+    font-size: 13px;
+}
+.forum-reply-form button {
+    margin-top: 4px;
+    border: none;
+    border-radius: 999px;
+    padding: 4px 10px;
+    background: #4a4ae6;
+    color: #fff;
+    font-size: 12px;
+    cursor: pointer;
+}
+`;
+document.head.appendChild(style);
 
-    if (nome) document.getElementById("aluno-nome").textContent = nome;
-    if (email) document.getElementById("aluno-email").textContent = email;
-    if (foto) document.getElementById("aluno-foto").src = foto;
-});
+// Dados do aluno para exibir como autor padrão
+const alunoNome  = localStorage.getItem('perfil_nome')  || 'Aluno';
+const alunoFoto  = localStorage.getItem('perfil_foto')  || 'https://i.imgur.com/gKjG1o2.png';
+const alunoEmail = localStorage.getItem('perfil_email') || 'aluno.ic9@educ.edu.br';
+document.getElementById('aluno-nome').textContent  = alunoNome;
+document.getElementById('aluno-email').textContent = alunoEmail;
+document.getElementById('aluno-foto').src         = alunoFoto;
 
-// SALVAR TÓPICO (simples)
-document.addEventListener("DOMContentLoaded", () => {
+// --- FÓRUM FUNCIONAL COM localStorage ---
+const TOPICS_KEY = 'forum_topicos_v1';
+
+// Estrutura: [{id, titulo, aula, msg, autor, data, respostas: [{autor, msg, data}]}]
+
+function carregarTopicos() {
+    const raw = localStorage.getItem(TOPICS_KEY);
+    try {
+        return raw ? JSON.parse(raw) : [];
+    } catch {
+        return [];
+    }
+}
+
+function salvarTopicos(lista) {
+    localStorage.setItem(TOPICS_KEY, JSON.stringify(lista));
+}
+
+function renderizarTopicos() {
+    const container = document.getElementById('forum-topics');
+    container.innerHTML = '';
+
+    const topicos = carregarTopicos();
+    if (topicos.length === 0) {
+        const vazio = document.createElement('p');
+        vazio.textContent = 'Nenhum tópico criado ainda. Seja o primeiro a perguntar!';
+        vazio.style.fontSize = '13px';
+        vazio.style.opacity = '0.8';
+        container.appendChild(vazio);
+        return;
+    }
+
+    topicos.forEach((topico, index) => {
+        const div = document.createElement('div');
+        div.className = 'forum-topic';
+
+        const h4 = document.createElement('h4');
+        h4.className = 'forum-topic-title';
+        h4.textContent = topico.titulo;
+        div.appendChild(h4);
+
+        const meta = document.createElement('p');
+        meta.className = 'forum-topic-meta';
+        meta.textContent = `${topico.autor} · ${topico.aula} · ${topico.data}`;
+        div.appendChild(meta);
+
+        const msg = document.createElement('p');
+        msg.textContent = topico.msg;
+        div.appendChild(msg);
+
+        // respostas
+        if (topico.respostas && topico.respostas.length > 0) {
+            topico.respostas.forEach(r => {
+                const rDiv = document.createElement('div');
+                rDiv.className = 'forum-reply';
+                rDiv.textContent = `${r.autor} (${r.data}): ${r.msg}`;
+                div.appendChild(rDiv);
+            });
+        }
+
+        // formulário de resposta
+        const replyForm = document.createElement('form');
+        replyForm.className = 'forum-reply-form';
+        replyForm.onsubmit = (e) => {
+            e.preventDefault();
+            const textarea = replyForm.querySelector('textarea');
+            const texto = textarea.value.trim();
+            if (!texto) return;
+
+            const lista = carregarTopicos();
+            const t = lista[index];
+            if (!t.respostas) t.respostas = [];
+            t.respostas.push({
+                autor: alunoNome,
+                msg: texto,
+                data: new Date().toLocaleString('pt-BR')
+            });
+            salvarTopicos(lista);
+            renderizarTopicos();
+        };
+
+        const replyTextarea = document.createElement('textarea');
+        replyTextarea.rows = 2;
+        replyTextarea.placeholder = 'Responder a este tópico...';
+        replyForm.appendChild(replyTextarea);
+
+        const replyBtn = document.createElement('button');
+        replyBtn.type = 'submit';
+        replyBtn.textContent = 'Responder';
+        replyForm.appendChild(replyBtn);
+
+        div.appendChild(replyForm);
+
+        container.appendChild(div);
+    });
+}
+
+// Inicializar
+document.addEventListener('DOMContentLoaded', () => {
+    renderizarTopicos();
+
     const form = document.getElementById('forum-form');
     const feedback = document.getElementById('forum-feedback');
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
+        const titulo  = document.getElementById('forum-title').value.trim();
+        const aula    = document.getElementById('forum-aula').value;
+        const mensagem= document.getElementById('forum-message').value.trim();
 
-        const title = forum-title.value.trim();
-        const message = forum-message.value.trim();
-
-        if (!title || !message) {
-            feedback.textContent = "Preencha tudo antes de publicar.";
-            feedback.style.color = "red";
+        if (!titulo || !mensagem) {
+            feedback.textContent = 'Preencha título e mensagem antes de publicar.';
+            feedback.style.color = '#c62828';
             return;
         }
 
-        feedback.textContent = "Tópico publicado!";
-        feedback.style.color = "green";
+        const lista = carregarTopicos();
+        lista.unshift({
+            id: Date.now(),
+            titulo,
+            aula,
+            msg: mensagem,
+            autor: alunoNome,
+            data: new Date().toLocaleString('pt-BR'),
+            respostas: []
+        });
+        salvarTopicos(lista);
+
+        feedback.textContent = 'Tópico publicado com sucesso!';
+        feedback.style.color = '#2e7d32';
         form.reset();
+        renderizarTopicos();
     });
 });
 </script>
