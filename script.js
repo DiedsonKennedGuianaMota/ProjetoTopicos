@@ -404,7 +404,7 @@ function setupAccessibilityWidget() {
         : chatbotState.loginFields;
 
     // Atalho: Ctrl + D liga/desliga talkback de digitação
-    if (event.ctrlKey && (event.key === 'd' || event.key === 'D')) {
+    if (event.ctrlKey && (event.key === 'g' || event.key === 'G')) {
         event.preventDefault();
         typingTalkbackEnabled = !typingTalkbackEnabled;
         const msg = typingTalkbackEnabled
@@ -631,6 +631,7 @@ window.selectAccessibility = (mode) => {
         window.location.href = 'cadastro-padrao.html';
     }
 };
+
 
 
 
