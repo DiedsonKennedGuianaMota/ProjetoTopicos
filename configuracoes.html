@@ -11,17 +11,75 @@
 </head>
 <body id="page-body">
 
-<div id="accessibility-widget" class="hidden">
-    <button id="accessibility-btn">
-        <img src="https://api.iconify.design/material-symbols/accessibility-new.svg?color=%23ffffff" alt="Ícone de acessibilidade">
-    </button>
-    <div class="accessibility-menu">
-        <button id="increase-font">Aumentar Fonte</button>
-        <button id="decrease-font">Diminuir Fonte</button>
-        <button id="high-contrast">Alto Contraste</button>
-        <button id="daltonism-toggle">Ajuste para Daltonismo</button>
+<!-- WIDGET DE ACESSIBILIDADE (NOVO) -->
+<div id="accessibility-widget" class="ac-widget ac-hidden" aria-hidden="true">
+    <div class="ac-header">
+        <div class="ac-header-top">
+            <span class="ac-title">Menu Acessibilidade (CTRL+U)</span>
+            <button id="ac-close-btn" class="ac-icon-btn" aria-label="Fechar menu de acessibilidade">×</button>
+        </div>
+
+        <div class="ac-select-row">
+            <button class="ac-pill" id="ac-lang-btn">Português (Brasil)</button>
+            <button class="ac-pill ac-pill-active" id="ac-profile-btn">Dislexia perfil ativo</button>
+        </div>
+
+        <div class="ac-select-row">
+            <button class="ac-pill ac-pill-xl ac-pill-active" id="ac-widget-size-btn">
+                XL Widget superdimensionado
+            </button>
+        </div>
+    </div>
+
+    <div class="ac-profiles-section">
+        <div class="ac-profiles-header">
+            <span>Perfis de acessibilidade</span>
+        </div>
+        <div class="ac-profiles-grid">
+            <button class="ac-profile" data-profile="deficiencia-motora">Deficiência Motora</button>
+            <button class="ac-profile" data-profile="cego">Cego</button>
+            <button class="ac-profile" data-profile="daltonico">Daltônico</button>
+            <button class="ac-profile" data-profile="dislexia">Dislexia</button>
+            <button class="ac-profile" data-profile="baixa-visao">Baixa visão</button>
+            <button class="ac-profile" data-profile="cognitivo">Cognitivo e Aprendizagem</button>
+            <button class="ac-profile" data-profile="convulsao">Convulsão e epilepsia</button>
+            <button class="ac-profile" data-profile="tdah">TDAH</button>
+        </div>
+    </div>
+
+    <div class="ac-grid">
+        <button id="ac-ler-pagina" class="ac-item"><span class="ac-item-title">Ler a página</span></button>
+        <button id="ac-contraste-mais" class="ac-item"><span class="ac-item-title">Contraste +</span></button>
+        <button id="ac-contraste-inteligente" class="ac-item"><span class="ac-item-title">Contraste inteligente</span></button>
+        <button id="ac-links-destacados" class="ac-item"><span class="ac-item-title">Links destacados</span></button>
+        <button id="ac-texto-maior" class="ac-item"><span class="ac-item-title">Texto maior</span></button>
+        <button id="ac-espacamento-texto" class="ac-item"><span class="ac-item-title">Espaçamento de texto</span></button>
+        <button id="ac-animacoes" class="ac-item"><span class="ac-item-title">Reproduzir animações</span></button>
+        <button id="ac-ocultar-imagens" class="ac-item"><span class="ac-item-title">Ocultar imagens</span></button>
+        <button id="ac-dislexia" class="ac-item"><span class="ac-item-title">Df Dislexia amigável</span></button>
+        <button id="ac-cursor" class="ac-item"><span class="ac-item-title">Cursor</span></button>
+        <button id="ac-barra-ferramentas" class="ac-item"><span class="ac-item-title">Barra de ferramentas</span></button>
+        <button id="ac-estrutura-pagina" class="ac-item"><span class="ac-item-title">Estrutura da página</span></button>
+        <button id="ac-altura-linha" class="ac-item"><span class="ac-item-title">Altura da linha</span></button>
+        <button id="ac-alinhamento-texto" class="ac-item"><span class="ac-item-title">Alinhamento de texto</span></button>
+        <button id="ac-saturacao" class="ac-item"><span class="ac-item-title">Saturação</span></button>
+    </div>
+
+    <div class="ac-footer">
+        <button id="ac-reset" class="ac-reset-btn">
+            Redefinir todas as configurações de acessibilidade
+        </button>
+        <button id="ac-toggle-visibility" class="ac-move-btn">
+            Mover/ocultar widget
+        </button>
     </div>
 </div>
+
+<!-- BOTÃO FLUTUANTE -->
+<button id="accessibility-btn" class="ac-fab" aria-label="Abrir menu de acessibilidade">
+    <img src="https://api.iconify.design/material-symbols/accessibility-new.svg?color=%23ffffff"
+         alt="Ícone de acessibilidade">
+</button>
 
 <div class="dashboard-layout">
     <div class="sidebar">
@@ -31,34 +89,203 @@
             <p class="aluno-email">aluno.ic9@educ.edu.br</p>
         </div>
         <nav class="sidebar-nav">
-            <div class="nav-item active"><a href="home.html"><i class="icon">🏠</i>Home</a></div>
+            <div class="nav-item"><a href="home.html"><i class="icon">🏠</i>Home</a></div>
             <div class="nav-item"><a href="forum.html"><i class="icon">💬</i>Fórum</a></div>
             <div class="nav-item"><a href="aulas.html"><i class="icon">▶️</i>Aulas</a></div>
             <div class="nav-item"><a href="conteudos.html"><i class="icon">📚</i>Conteúdos</a></div>
             <div class="nav-item"><a href="exercicios.html"><i class="icon">📝</i>Exercícios</a></div>
-            <div class="nav-item"><a href="configuracoes.html"><i class="icon">⚙️</i>Configurações</a></div>
+            <div class="nav-item active"><a href="configuracoes.html"><i class="icon">⚙️</i>Configurações</a></div>
             <div class="nav-item"><a href="certificados.html"><i class="icon">🏅</i>Certificados</a></div>
         </nav>
-        <input type="text" placeholder="Pesquisar" aria-label="Pesquisar na plataforma" style="margin: 20px 15px; padding: 8px; border-radius: 10px; border: none; width: calc(100% - 30px); opacity: 0.8;">
+        <input type="text" placeholder="Pesquisar" aria-label="Pesquisar na plataforma"
+               style="margin: 20px 15px; padding: 8px; border-radius: 10px; border: none;
+                      width: calc(100% - 30px); opacity: 0.8;">
     </div>
+
     <div class="main-content">
         <div class="main-content-area">
             <h1 style="margin-bottom: 25px;">Configurações de Acessibilidade e Perfil</h1>
 
+            <!-- Bloco resumo de acessibilidade -->
             <div class="card-simple" style="margin-bottom: 20px;">
-                <h2 style="font-size: 1.5rem; color: var(--heading-color); margin-bottom: 10px;">Acessibilidade (Contraste, Fontes)</h2>
-                <p style="color: var(--text-color);">Estas opções também estão disponíveis no botão flutuante. Use-as para personalizar sua experiência.</p>
+                <h2 style="font-size: 1.5rem; margin-bottom: 10px;">Resumo de acessibilidade</h2>
+                <p>Personalize como o EducaFácil se adapta às suas necessidades. As mesmas opções também podem ser
+                   acessadas rapidamente pelo botão flutuante de acessibilidade no canto da tela.</p>
+                <ul style="margin-top:8px; font-size:14px;">
+                    <li>Ative um perfil de acessibilidade (ex.: Cego, Daltônico, Dislexia).</li>
+                    <li>Ajuste contraste, tamanho de texto, espaçamento e saturação das cores.</li>
+                    <li>Ative leitura da página em voz alta e Talkback para teclado e mouse.</li>
+                </ul>
             </div>
 
-            <div class="card-simple">
-                <h2 style="font-size: 1.5rem; color: var(--heading-color); margin-bottom: 10px;">Dados do Perfil</h2>
+            <!-- Preferências de acessibilidade -->
+            <div class="card-simple" style="margin-bottom: 20px;">
+                <h2 style="font-size: 1.5rem; margin-bottom: 10px;">Preferências de acessibilidade</h2>
+
+                <form id="ac-preferences-form">
+                    <label for="pref-profile">Perfil padrão ao entrar na plataforma</label>
+                    <select id="pref-profile"
+                            style="width:100%; padding:8px; border-radius:8px; border:1px solid #ccc; margin-bottom:10px;">
+                        <option value="padrao">Nenhum (padrão visual)</option>
+                        <option value="visual">Visual (leitura de tela reforçada)</option>
+                        <option value="auditory">Auditivo (LIBRAS + Talkback)</option>
+                    </select>
+
+                    <label for="pref-voice">Preferência de voz</label>
+                    <select id="pref-voice"
+                            style="width:100%; padding:8px; border-radius:8px; border:1px solid #ccc; margin-bottom:10px;">
+                        <option value="desligada">Desligada</option>
+                        <option value="leitura-pagina">Somente leitura da página</option>
+                        <option value="talkback">Somente Talkback</option>
+                        <option value="ambos">Leitura da página e Talkback</option>
+                    </select>
+
+                    <label for="pref-font">Estilo de fonte preferido</label>
+                    <select id="pref-font"
+                            style="width:100%; padding:8px; border-radius:8px; border:1px solid #ccc; margin-bottom:10px;">
+                        <option value="padrão">Padrão</option>
+                        <option value="sans">Sans-serif maior</option>
+                        <option value="dislexia">Fonte amigável para dislexia</option>
+                    </select>
+
+                    <label>
+                        <input type="checkbox" id="pref-reduzir-animacoes">
+                        Reduzir animações por padrão (recomendado para pessoas com epilepsia ou sensibilidade visual).
+                    </label><br>
+                    <label>
+                        <input type="checkbox" id="pref-alto-contraste">
+                        Iniciar sempre com contraste reforçado.
+                    </label>
+
+                    <button type="button" class="play-btn" style="margin-top:10px;" onclick="salvarPreferenciasAcessibilidade()">
+                        Salvar preferências de acessibilidade
+                    </button>
+                    <p id="pref-ac-feedback" aria-live="polite" style="margin-top:8px;"></p>
+                </form>
             </div>
+
+            <!-- Dados do perfil -->
+            <div class="card-simple" style="margin-bottom: 20px;">
+                <h2 style="font-size: 1.5rem; margin-bottom: 10px;">Dados do Perfil</h2>
+                <form id="profile-form">
+                    <label for="perfil-nome">Nome</label>
+                    <input id="perfil-nome" type="text"
+                           style="width:100%; padding:8px; border-radius:8px; border:1px solid #ccc; margin-bottom:8px;">
+
+                    <label for="perfil-email">E-mail</label>
+                    <input id="perfil-email" type="email"
+                           style="width:100%; padding:8px; border-radius:8px; border:1px solid #ccc; margin-bottom:8px;">
+
+                    <label for="perfil-turma">Turma / Série</label>
+                    <input id="perfil-turma" type="text"
+                           style="width:100%; padding:8px; border-radius:8px; border:1px solid #ccc; margin-bottom:8px;">
+
+                    <label for="perfil-objetivo">Objetivo de estudo</label>
+                    <textarea id="perfil-objetivo" rows="3"
+                              style="width:100%; padding:8px; border-radius:8px; border:1px solid #ccc; margin-bottom:8px;"></textarea>
+
+                    <button type="button" class="play-btn" onclick="salvarPerfil()">
+                        Salvar dados do perfil
+                    </button>
+                    <p id="perfil-feedback" aria-live="polite" style="margin-top:8px;"></p>
+                </form>
+            </div>
+
+            <!-- Outras configurações -->
+            <div class="card-simple">
+                <h2 style="font-size: 1.5rem; margin-bottom: 10px;">Outras configurações</h2>
+                <label>
+                    <input type="checkbox" id="pref-notificacoes" checked>
+                    Receber notificações sobre novas atividades, exercícios e respostas no fórum.
+                </label><br>
+                <label>
+                    <input type="checkbox" id="pref-som-interface" checked>
+                    Ativar sons simples de interface (cliques, confirmação de envio).
+                </label><br>
+                <button type="button" class="play-btn" style="margin-top:10px;" onclick="salvarOutrasPreferencias()">
+                    Salvar outras configurações
+                </button>
+                <p id="outras-feedback" aria-live="polite" style="margin-top:8px;"></p>
+            </div>
+
+            <img src="https://i.imgur.com/6E5rYtB.png" alt="Assistente Virtual em LIBRAS"
+                 class="libras-avatar-img"
+                 style="position: fixed; bottom: 80px; right: 80px; width: 150px; z-index: 1000;">
+
         </div>
     </div>
 </div>
 
-<div id="talkback-container" class="hidden">...</div>
+<div id="talkback-container" class="hidden">
+    <div class="bot-icon">🔊</div>
+    <p id="talkback-message">Talkback ativado.</p>
+</div>
 
 <script src="script.js"></script>
+<script>
+    // Carrega e salva preferências simples no localStorage para configurar a experiência do usuário
+    document.addEventListener('DOMContentLoaded', () => {
+        // Acessibilidade
+        const prof = localStorage.getItem('pref_profile_mode');
+        const voice = localStorage.getItem('pref_voice_mode');
+        const font = localStorage.getItem('pref_font_style');
+        const redAnim = localStorage.getItem('pref_reduce_anim') === 'true';
+        const highC = localStorage.getItem('pref_high_contrast') === 'true';
+
+        if (prof) document.getElementById('pref-profile').value = prof;
+        if (voice) document.getElementById('pref-voice').value = voice;
+        if (font) document.getElementById('pref-font').value = font;
+        document.getElementById('pref-reduzir-animacoes').checked = redAnim;
+        document.getElementById('pref-alto-contraste').checked = highC;
+
+        // Perfil
+        const nome = localStorage.getItem('perfil_nome');
+        const email = localStorage.getItem('perfil_email');
+        const turma = localStorage.getItem('perfil_turma');
+        const objetivo = localStorage.getItem('perfil_objetivo');
+        if (nome) document.getElementById('perfil-nome').value = nome;
+        if (email) document.getElementById('perfil-email').value = email;
+        if (turma) document.getElementById('perfil-turma').value = turma;
+        if (objetivo) document.getElementById('perfil-objetivo').value = objetivo;
+
+        // Outras
+        const notif = localStorage.getItem('pref_notificacoes');
+        const som = localStorage.getItem('pref_som_interface');
+        if (notif !== null) document.getElementById('pref-notificacoes').checked = notif === 'true';
+        if (som !== null) document.getElementById('pref-som-interface').checked = som === 'true';
+    });
+
+    function salvarPreferenciasAcessibilidade() {
+        localStorage.setItem('pref_profile_mode', document.getElementById('pref-profile').value);
+        localStorage.setItem('pref_voice_mode', document.getElementById('pref-voice').value);
+        localStorage.setItem('pref_font_style', document.getElementById('pref-font').value);
+        localStorage.setItem('pref_reduce_anim', document.getElementById('pref-reduzir-animacoes').checked);
+        localStorage.setItem('pref_high_contrast', document.getElementById('pref-alto-contraste').checked);
+
+        document.getElementById('pref-ac-feedback').textContent =
+            'Preferências de acessibilidade salvas. Elas serão aplicadas nas próximas páginas.';
+        document.getElementById('pref-ac-feedback').style.color = '#2e7d32';
+    }
+
+    function salvarPerfil() {
+        localStorage.setItem('perfil_nome', document.getElementById('perfil-nome').value.trim());
+        localStorage.setItem('perfil_email', document.getElementById('perfil-email').value.trim());
+        localStorage.setItem('perfil_turma', document.getElementById('perfil-turma').value.trim());
+        localStorage.setItem('perfil_objetivo', document.getElementById('perfil-objetivo').value.trim());
+
+        document.getElementById('perfil-feedback').textContent =
+            'Dados do perfil salvos somente neste navegador.';
+        document.getElementById('perfil-feedback').style.color = '#2e7d32';
+    }
+
+    function salvarOutrasPreferencias() {
+        localStorage.setItem('pref_notificacoes', document.getElementById('pref-notificacoes').checked);
+        localStorage.setItem('pref_som_interface', document.getElementById('pref-som-interface').checked);
+
+        document.getElementById('outras-feedback').textContent =
+            'Outras configurações salvas.';
+        document.getElementById('outras-feedback').style.color = '#2e7d32';
+    }
+</script>
 </body>
 </html>
