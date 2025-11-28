@@ -1,4 +1,38 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // --- 6. CADASTRO PADRÃO/AUDITIVO ---
+if (registerForm && !currentPage.includes('visual')) {
+    registerForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const fullname = document.getElementById('fullname').value.trim();
+        const email    = document.getElementById('email').value.trim();
+        const password = document.getElementById('password-register').value.trim();
+
+        if (!fullname || !email || !password) {
+            const message = 'Por favor, preencha todos os campos do cadastro.';
+            alert(message);
+            if (accessibilityMode === 'auditory') {
+                speak(message);
+            }
+            return;
+        }
+
+        const successMessage =
+            'Cadastro efetuado com sucesso! Redirecionando para a área de login...';
+
+        // opcional: gravar nome/email como perfil padrão
+        localStorage.setItem('perfil_nome', fullname);
+        localStorage.setItem('perfil_email', email);
+
+        alert(successMessage);
+
+        if (accessibilityMode === 'auditory') {
+            speak(successMessage, () => { window.location.href = 'login.html'; });
+        } else {
+            window.location.href = 'login.html';
+        }
+    });
+}
     // --- PERFIL NO DASHBOARD (NOME, EMAIL, FOTO) ---
 function atualizarPerfilDashboard() {
     const nome  = localStorage.getItem('perfil_nome');
@@ -658,6 +692,7 @@ window.selectAccessibility = (mode) => {
         window.location.href = 'cadastro-padrao.html';
     }
 };
+
 
 
 
