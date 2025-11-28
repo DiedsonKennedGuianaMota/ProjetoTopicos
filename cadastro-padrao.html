@@ -81,34 +81,40 @@
          alt="Ícone de acessibilidade">
 </button>
 
-<!-- LAYOUT DO CADASTRO PADRÃO -->
+<!-- CONTAINER DO CADASTRO PADRÃO -->
 <div class="register-container standard-layout">
-    <div class="register-form-box">
-        <img src="logo.png" alt="Logo EducaFácil" class="logo-form">
-        <h3>Crie sua Conta</h3>
+    <div class="register-card">
+        <img src="logo.png" alt="Logo EducaFácil" class="register-logo">
+        <h2 class="register-title">Criar conta EducaFácil</h2>
         <p class="register-subtitle">
-            Cadastro padrão com acesso ao menu de acessibilidade em todas as telas.
+            Preencha seus dados para acessar os conteúdos de Programação de Computadores e Algoritmos.
         </p>
 
-        <form id="register-form">
-            <div class="input-group">
-                <label for="fullname">Nome Completo</label>
+        <form id="register-form" class="register-form">
+            <div class="register-input-group">
+                <label for="fullname">Nome completo</label>
                 <input type="text" id="fullname" name="fullname" required>
             </div>
-            <div class="input-group">
+
+            <div class="register-input-group">
                 <label for="email">E-mail</label>
                 <input type="email" id="email" name="email" required>
             </div>
-            <div class="input-group">
-                <label for="password-register">Crie uma Senha</label>
+
+            <div class="register-input-group">
+                <label for="password-register">Crie uma senha</label>
                 <input type="password" id="password-register" name="password-register" required>
             </div>
-            <button type="submit" class="form-btn form-btn-animated">
+
+            <button type="submit" class="register-btn">
                 Continuar
             </button>
         </form>
 
-        <p class="form-link">Já tem uma conta? <a href="login.html">Faça Login</a></p>
+        <p class="register-link">
+            Já tem uma conta?
+            <a href="login.html">Entrar</a>
+        </p>
     </div>
 </div>
 
