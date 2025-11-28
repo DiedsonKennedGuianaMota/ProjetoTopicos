@@ -12,10 +12,13 @@
 <body class="index-body">
 
     <!-- BOTÃO DE ACESSIBILIDADE GLOBAL (CANTO SUPERIOR DIREITO) -->
-    <button class="index-access-btn" aria-label="Abrir configurações de acessibilidade básicas">
-        <img src="https://api.iconify.design/material-symbols/accessibility-new.svg?color=%23ffffff"
-             alt="Ícone de acessibilidade" />
-    </button>
+    <div id="accessibility-widget" class="ac-widget ac-hidden" aria-hidden="true">
+    <!-- cabeçalho, perfis, botões, etc. mantêm o que você já tem aí -->
+</div>
+<button id="accessibility-btn" class="ac-fab" aria-label="Abrir menu de acessibilidade">
+    <img src="https://api.iconify.design/material-symbols/accessibility-new.svg?color=%23ffffff"
+         alt="Ícone de acessibilidade">
+</button>
 
     <main class="index-main">
         <!-- LOGO CENTRAL SUPERIOR -->
@@ -67,4 +70,5 @@
     <script src="script.js"></script>
 </body>
 </html>
+
 
