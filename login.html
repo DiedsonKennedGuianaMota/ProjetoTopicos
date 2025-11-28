@@ -123,6 +123,7 @@
 
 <script src="script.js"></script>
 <script>
+    document.addEventListener('DOMContentLoaded', () => {
     // --- 6. SUBMISSÃO LOGIN PADRÃO/AUDITIVO ---
 if (loginForm && !currentPage.includes('visual')) {
     loginForm.addEventListener('submit', function (event) {
@@ -150,8 +151,10 @@ if (loginForm && !currentPage.includes('visual')) {
         }
     });
 }
+    }
 
 </script>
 </body>
 </html>
+
 
