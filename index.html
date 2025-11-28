@@ -1,100 +1,69 @@
-.index-body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: #ffffff;
-}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EducaFácil - Acessibilidade</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="index-body">
 
-.index-main {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 16px 28px;
-}
+    <!-- BOTÃO DE ACESSIBILIDADE GLOBAL (CANTO SUPERIOR DIREITO) -->
+    <button class="index-access-btn" aria-label="Abrir configurações de acessibilidade básicas">
+        <img src="https://api.iconify.design/material-symbols/accessibility-new.svg?color=%23ffffff"
+             alt="Ícone de acessibilidade" />
+    </button>
 
-.index-header {
-    margin-top: 10px;
-    margin-bottom: 20px;
-}
+    <main class="index-main">
+        <!-- LOGO CENTRAL SUPERIOR -->
+        <header class="index-header">
+            <img src="logo-educafacil.png" alt="Logo EducaFácil" class="index-logo">
+        </header>
 
-.index-logo {
-    max-width: 260px;
-}
+        <!-- LINHA DOS 3 CARDS -->
+        <section class="index-cards-row" aria-label="Escolha o modo de acesso">
+            <button class="index-card" type="button"
+                    onclick="selectAccessibility('visual')"
+                    aria-label="Entrar como deficiente visual, com assistente de voz">
+                <img src="acessibilidade-visual.png"
+                     alt="Pessoa com óculos escuros segurando bengala"
+                     class="index-card-img">
+                <span class="index-card-title">Deficiente Visual</span>
+            </button>
 
-/* Botão acessibilidade topo direito */
-.index-access-btn {
-    position: fixed;
-    top: 10px;
-    right: 10px;
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    border: none;
-    background: #0057b8;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 100;
-}
-.index-access-btn img {
-    width: 24px;
-    height: 24px;
-}
+            <button class="index-card" type="button"
+                    onclick="selectAccessibility('auditory')"
+                    aria-label="Entrar como deficiente auditivo, com apoio em Libras">
+                <img src="acessibilidade-auditiva.png"
+                     alt="Pessoa fazendo sinal de eu te amo em Libras"
+                     class="index-card-img">
+                <span class="index-card-title">Deficiente Auditivo</span>
+            </button>
 
-/* Cards centrais */
-.index-cards-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 24px;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
-}
+            <button class="index-card" type="button"
+                    onclick="selectAccessibility('standard')"
+                    aria-label="Entrar sem acessibilidade específica, com menu opcional">
+                <img src="sem-acessibilidade.png"
+                     alt="Pessoa sorrindo, acesso padrão"
+                     class="index-card-img">
+                <span class="index-card-title">Entrar<br>Sem Acessibilidade</span>
+            </button>
+        </section>
 
-.index-card {
-    width: 210px;
-    height: 230px;
-    background: #251b64;
-    border-radius: 12px;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.25);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: #ffffff;
-    text-align: center;
-    padding: 12px 8px;
-}
+        <!-- RODAPÉ COM ÍCONES (EXEMPLO) -->
+        <footer class="index-footer">
+            <div class="index-audio-icon">
+                <img src="ondas-audio.png" alt="Ícone de ondas de áudio">
+            </div>
+            <div class="index-bot-icon">
+                <img src="assistente-bot.png" alt="Ícone do assistente virtual EducaFácil">
+            </div>
+        </footer>
+    </main>
 
-.index-card-img {
-    width: 120px;
-    height: auto;
-    margin-bottom: 8px;
-}
-
-.index-card-title {
-    font-weight: 600;
-    font-size: 15px;
-}
-
-/* Rodapé ícones */
-.index-footer {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    width: 100%;
-    gap: 16px;
-    margin-top: 24px;
-}
-
-.index-audio-icon img {
-    height: 32px;
-}
-
-.index-bot-icon img {
-    height: 42px;
-}
+    <script src="script.js"></script>
+</body>
+</html>
