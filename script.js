@@ -32,6 +32,7 @@ function atualizarPerfilDashboard() {
         registerFields: ['fullname', 'email', 'phone', 'password-register'],
         loginFields: ['username', 'password']
     };
+    let typingTalkbackEnabled = true; // novo: controla se fala as teclas
 
     // --- 2. INICIALIZAÇÃO PRINCIPAL ---
     if (accessibilityMode) {
@@ -398,32 +399,53 @@ function setupAccessibilityWidget() {
     }
 
     function handleKeyboardInput(event) {
-        const fields = chatbotState.currentPage.startsWith('cadastro') ? chatbotState.registerFields : chatbotState.loginFields;
+    const fields = chatbotState.currentPage.startsWith('cadastro')
+        ? chatbotState.registerFields
+        : chatbotState.loginFields;
 
-        if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
-            event.preventDefault();
-            advanceToNextField(chatbotState.currentPage, chatbotState.currentField);
-            return;
-        }
-        if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
-            event.preventDefault();
-            advanceToPreviousField(chatbotState.currentPage, chatbotState.currentField);
-            return;
-        }
+    // Atalho: Ctrl + D liga/desliga talkback de digitação
+    if (event.ctrlKey && (event.key === 'd' || event.key === 'D')) {
+        event.preventDefault();
+        typingTalkbackEnabled = !typingTalkbackEnabled;
+        const msg = typingTalkbackEnabled
+            ? 'Talkback de digitação ativado.'
+            : 'Talkback de digitação desativado.';
+        speak(msg);
+        return;
+    }
 
+    // -- 1. NAVEGAÇÃO POR SETAS --
+    if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
+        event.preventDefault();
+        advanceToNextField(chatbotState.currentPage, chatbotState.currentField);
+        return;
+    }
+    if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
+        event.preventDefault();
+        advanceToPreviousField(chatbotState.currentPage, chatbotState.currentField);
+        return;
+    }
+
+    // -- 2. TALKBACK POR LETRA (apenas se estiver ligado) --
+    if (typingTalkbackEnabled) {
         if (event.key.length === 1) {
             if (event.key.match(/^[a-zA-Z0-9\s@\.]*$/)) {
                 speak(event.key);
             }
         } else if (event.key === 'Backspace') {
             speak('Apagar');
-        } else if (event.key === 'Enter' || event.key === 'Tab') {
-            if (fields.indexOf(chatbotState.currentField) < fields.length - 1) {
-                event.preventDefault();
-                advanceToNextField(chatbotState.currentPage, chatbotState.currentField);
-            }
         }
     }
+
+    // -- 3. Enter / Tab para avançar --
+    if (event.key === 'Enter' || event.key === 'Tab') {
+        if (fields.indexOf(chatbotState.currentField) < fields.length - 1) {
+            event.preventDefault();
+            advanceToNextField(chatbotState.currentPage, chatbotState.currentField);
+        }
+    }
+}
+
 
     function handleVoiceCommand(event) {
         const command = event.results[0][0].transcript.trim();
@@ -609,6 +631,7 @@ window.selectAccessibility = (mode) => {
         window.location.href = 'cadastro-padrao.html';
     }
 };
+
 
 
 
