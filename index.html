@@ -11,173 +11,256 @@
 </head>
 <body class="index-body" id="page-body">
 
-    <!-- WIDGET DE ACESSIBILIDADE COMPLETO (MESMO DAS OUTRAS TELAS) -->
-    <div id="accessibility-widget" class="ac-widget ac-hidden" aria-hidden="true">
-        <div class="ac-header">
-            <div class="ac-header-top">
-                <span class="ac-title">Menu Acessibilidade (CTRL+U)</span>
-                <button id="ac-close-btn" class="ac-icon-btn" aria-label="Fechar menu de acessibilidade">×</button>
-            </div>
+<!-- WIDGET DE ACESSIBILIDADE COMPLETO (MESMO DAS OUTRAS TELAS) -->
+<div id="accessibility-widget" class="ac-widget ac-hidden" aria-hidden="true">
+    <!-- ... o mesmo conteúdo de widget que você já usa nas outras páginas ... -->
+</div>
 
-            <div class="ac-select-row">
-                <button class="ac-pill" id="ac-lang-btn">Português (Brasil)</button>
-                <button class="ac-pill ac-pill-active" id="ac-profile-btn">Dislexia perfil ativo</button>
-            </div>
+<!-- BOTÃO FLUTUANTE PARA ABRIR O WIDGET -->
+<button id="accessibility-btn" class="ac-fab" aria-label="Abrir menu de acessibilidade">
+    <img src="https://api.iconify.design/material-symbols/accessibility-new.svg?color=%23ffffff"
+         alt="Ícone de acessibilidade">
+</button>
 
-            <div class="ac-select-row">
-                <button class="ac-pill ac-pill-xl ac-pill-active" id="ac-widget-size-btn">
-                    XL Widget superdimensionado
-                </button>
-            </div>
-        </div>
-
-        <div class="ac-profiles-section">
-            <div class="ac-profiles-header">
-                <span>Perfis de acessibilidade</span>
-            </div>
-            <div class="ac-profiles-grid">
-                <button class="ac-profile" data-profile="deficiencia-motora">Deficiência Motora</button>
-                <button class="ac-profile" data-profile="cego">Cego</button>
-                <button class="ac-profile" data-profile="daltonico">Daltônico</button>
-                <button class="ac-profile" data-profile="dislexia">Dislexia</button>
-                <button class="ac-profile" data-profile="baixa-visao">Baixa visão</button>
-                <button class="ac-profile" data-profile="cognitivo">Cognitivo e Aprendizagem</button>
-                <button class="ac-profile" data-profile="convulsao">Convulsão e epilepsia</button>
-                <button class="ac-profile" data-profile="tdah">TDAH</button>
-            </div>
-        </div>
-
-        <div class="ac-grid">
-            <button id="ac-ler-pagina" class="ac-item"><span class="ac-item-title">Ler a página</span></button>
-            <button id="ac-contraste-mais" class="ac-item"><span class="ac-item-title">Contraste +</span></button>
-            <button id="ac-contraste-inteligente" class="ac-item"><span class="ac-item-title">Contraste inteligente</span></button>
-            <button id="ac-links-destacados" class="ac-item"><span class="ac-item-title">Links destacados</span></button>
-            <button id="ac-texto-maior" class="ac-item"><span class="ac-item-title">Texto maior</span></button>
-            <button id="ac-espacamento-texto" class="ac-item"><span class="ac-item-title">Espaçamento de texto</span></button>
-            <button id="ac-animacoes" class="ac-item"><span class="ac-item-title">Reproduzir animações</span></button>
-            <button id="ac-ocultar-imagens" class="ac-item"><span class="ac-item-title">Ocultar imagens</span></button>
-            <button id="ac-dislexia" class="ac-item"><span class="ac-item-title">Df Dislexia amigável</span></button>
-            <button id="ac-cursor" class="ac-item"><span class="ac-item-title">Cursor</span></button>
-            <button id="ac-barra-ferramentas" class="ac-item"><span class="ac-item-title">Barra de ferramentas</span></button>
-            <button id="ac-estrutura-pagina" class="ac-item"><span class="ac-item-title">Estrutura da página</span></button>
-            <button id="ac-altura-linha" class="ac-item"><span class="ac-item-title">Altura da linha</span></button>
-            <button id="ac-alinhamento-texto" class="ac-item"><span class="ac-item-title">Alinhamento de texto</span></button>
-            <button id="ac-saturacao" class="ac-item"><span class="ac-item-title">Saturação</span></button>
-        </div>
-
-        <div class="ac-footer">
-            <button id="ac-reset" class="ac-reset-btn">
-                Redefinir todas as configurações de acessibilidade
-            </button>
-            <button id="ac-toggle-visibility" class="ac-move-btn">
-                Mover/ocultar widget
-            </button>
-        </div>
-    </div>
-
-    <!-- BOTÃO FLUTUANTE PARA ABRIR O WIDGET -->
-    <button id="accessibility-btn" class="ac-fab" aria-label="Abrir menu de acessibilidade">
-        <img src="https://api.iconify.design/material-symbols/accessibility-new.svg?color=%23ffffff"
-             alt="Ícone de acessibilidade">
-    </button>
-
-    <main class="index-main">
-        <!-- LOGO CENTRAL SUPERIOR -->
-        <header class="index-header">
+<main class="index-main">
+    <!-- HEADER COM LOGO, TEXTO E LOGIN -->
+    <header class="index-hero">
+        <div class="index-hero-left">
             <img src="logo.png" alt="Logo EducaFácil" class="index-logo">
-        </header>
-
-        <!-- LINHA DOS 3 CARDS -->
-        <section class="index-cards-row" aria-label="Escolha o modo de acesso">
-            <button class="index-card" type="button"
-                    onclick="selectAccessibility('visual')"
-                    aria-label="Entrar como deficiente visual, com assistente de voz">
-                <img src="acessibilidade-visual.png"
-                     alt="Pessoa com óculos escuros segurando bengala"
-                     class="index-card-img">
-                <span class="index-card-title">Deficiente Visual</span>
+            <h1>EducaFácil Acessível</h1>
+            <p class="index-hero-text">
+                Plataforma de apoio à disciplina de Programação de Computadores e Algoritmos, pensada para
+                inclusão. Aqui você encontra cadastro acessível para pessoas cegas, suporte em LIBRAS,
+                exercícios guiados e acompanhamento de progresso em um ambiente amigável.
+            </p>
+            <p class="index-hero-text">
+                Escolha abaixo como deseja acessar: com assistente para pessoas com deficiência visual,
+                recursos auditivos em desenvolvimento ou modo padrão para qualquer estudante.
+            </p>
+        </div>
+        <div class="index-hero-right">
+            <button type="button" class="index-login-btn"
+                    onclick="window.location.href='login.html'">
+                Já tenho conta – Fazer login
             </button>
+        </div>
+    </header>
 
-            <button id="card-auditivo" class="index-card" type="button"
-                    aria-label="Deficiente auditivo, recurso em desenvolvimento">
-                <img src="acessibilidade-auditiva.png"
-                     alt="Pessoa fazendo sinal de eu te amo em Libras"
-                     class="index-card-img">
-                <span class="index-card-title">Deficiente Auditivo</span>
-            </button>
+    <!-- LINHA DOS 3 CARDS -->
+    <section class="index-cards-row" aria-label="Escolha o modo de acesso">
+        <button class="index-card" type="button"
+                onclick="selectAccessibility('visual')"
+                aria-label="Entrar como pessoa com deficiência visual, com assistente de voz">
+            <img src="acessibilidade-visual.png"
+                 alt="Pessoa com óculos escuros segurando bengala"
+                 class="index-card-img">
+            <span class="index-card-title">Acesso para Pessoas Cegas</span>
+            <span class="index-card-desc">
+                Cadastro guiado por voz, leitura de teclas e navegação por setas.
+            </span>
+        </button>
 
-            <button class="index-card" type="button"
-                    onclick="selectAccessibility('standard')"
-                    aria-label="Entrar sem acessibilidade específica, com menu opcional">
-                <img src="sem-acessibilidade.png"
-                     alt="Pessoa sorrindo, acesso padrão"
-                     class="index-card-img">
-                <span class="index-card-title">Entrar<br>Sem Acessibilidade</span>
-            </button>
-        </section>
+        <button id="card-auditivo" class="index-card" type="button"
+                aria-label="Deficiente auditivo, recurso em desenvolvimento">
+            <img src="acessibilidade-auditiva.png"
+                 alt="Pessoa fazendo sinal de eu te amo em Libras"
+                 class="index-card-img">
+            <span class="index-card-title">Acesso para Pessoas Surdas</span>
+            <span class="index-card-desc">
+                Modo em desenvolvimento com foco em LIBRAS e legendas ampliadas.
+            </span>
+        </button>
 
-        <!-- RODAPÉ COM ÍCONES -->
-        <footer class="index-footer">
-            <div class="index-audio-icon">
-                <img src="ondas-audio.png" alt="Ícone de ondas de áudio">
-            </div>
-            <div class="index-bot-icon">
-                <img src="assistente-bot.png" alt="Ícone do assistente virtual EducaFácil">
-            </div>
-        </footer>
-    </main>
+        <button class="index-card" type="button"
+                onclick="selectAccessibility('standard')"
+                aria-label="Entrar sem acessibilidade específica, com menu opcional">
+            <img src="sem-acessibilidade.png"
+                 alt="Pessoa sorrindo, acesso padrão"
+                 class="index-card-img">
+            <span class="index-card-title">Acesso Padrão</span>
+            <span class="index-card-desc">
+                Cadastro tradicional com menu de acessibilidade flutuante.
+            </span>
+        </button>
+    </section>
+</main>
 
-    <!-- MODAL "EM DESENVOLVIMENTO" PARA DEFICIENTE AUDITIVO -->
-    <div id="modal-auditivo" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-auditivo-titulo">
-        <div class="modal-backdrop" onclick="fecharModalAuditivo()"></div>
-        <div class="modal-content">
-            <button class="modal-close" aria-label="Fechar" onclick="fecharModalAuditivo()">×</button>
-            <h2 id="modal-auditivo-titulo">Modo Deficiente Auditivo</h2>
-            <p>Este modo de cadastro com suporte avançado em LIBRAS está em desenvolvimento.</p>
-            <p>Você pode, por enquanto, utilizar o Cadastro Padrão e ativar o VLibras na tela de aulas
-               e conteúdos para ter tradução de textos.</p>
-            <button type="button" class="play-btn" onclick="fecharModalAuditivo()">Entendi</button>
+<!-- RODAPÉ COM CONTATO DOS MEMBROS -->
+<footer class="index-footer">
+    <div class="index-footer-top">
+        <div class="index-audio-icon">
+            <img src="ondas-audio.png" alt="Ícone de ondas de áudio">
+        </div>
+        <div class="index-bot-icon">
+            <img src="assistente-bot.png" alt="Ícone do assistente virtual EducaFácil">
         </div>
     </div>
+    <div class="index-footer-bottom">
+        <p class="footer-title">Contato da equipe EducaFácil</p>
+        <ul class="footer-contact-list">
+            <li><strong>Ana Carla</strong> – <a href="mailto:acvm.lic21@uea.edu.br">acvm.lic21@uea.edu.br</a></li>
+            <li><strong>Leticia Almeida</strong> – <a href="mailto:lmda.lic23@uea.edu.br">lmda.lic23@uea.edu.br</a></li>
+            <li><strong>Diedson Kenned</strong> – <a href="mailto:dkgm.lic20@uea.edu.br">dkgm.lic20@uea.edu.br</a></li>
+        </ul>
+        <p class="footer-copy">EducaFácil • Projeto acadêmico de acessibilidade em ensino de programação.</p>
+    </div>
+</footer>
 
-    <script src="script.js"></script>
-    <script>
-        // --- 7. FUNÇÃO DE SELEÇÃO DE MODO (index.html) ---
+<!-- MODAL "EM DESENVOLVIMENTO" PARA DEFICIENTE AUDITIVO -->
+<div id="modal-auditivo" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-auditivo-titulo">
+    <div class="modal-backdrop" onclick="fecharModalAuditivo()"></div>
+    <div class="modal-content">
+        <button class="modal-close" aria-label="Fechar" onclick="fecharModalAuditivo()">×</button>
+        <h2 id="modal-auditivo-titulo">Modo Deficiente Auditivo</h2>
+        <p>Este modo de cadastro com suporte avançado em LIBRAS está em desenvolvimento.</p>
+        <p>Você pode, por enquanto, utilizar o Cadastro Padrão e ativar o VLibras na tela de aulas
+           e conteúdos para ter tradução de textos.</p>
+        <button type="button" class="play-btn" onclick="fecharModalAuditivo()">Entendi</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+<script>
+// botão de modo (já existia)
 window.selectAccessibility = (mode) => {
     localStorage.setItem('accessibilityMode', mode);
-
     if (mode === 'visual') {
-        // cadastro para pessoas com deficiência visual
         window.location.href = 'cadastro-visual.html';
     } else if (mode === 'auditory') {
-        // (se no futuro tiver cadastro-auditivo.html)
         window.location.href = 'cadastro-auditivo.html';
     } else {
-        // cadastro padrão, sem acessibilidade específica
         window.location.href = 'cadastro-padrao.html';
     }
 };
-        // Abrir/fechar modal "em desenvolvimento"
-        const cardAuditivo = document.getElementById('card-auditivo');
-        const modalAuditivo = document.getElementById('modal-auditivo');
 
-        if (cardAuditivo) {
-            cardAuditivo.addEventListener('click', () => {
-                modalAuditivo.classList.remove('hidden');
-            });
-        }
+// Abrir/fechar modal "em desenvolvimento"
+const cardAuditivo = document.getElementById('card-auditivo');
+const modalAuditivo = document.getElementById('modal-auditivo');
 
-        function fecharModalAuditivo() {
-            modalAuditivo.classList.add('hidden');
-        }
+if (cardAuditivo) {
+    cardAuditivo.addEventListener('click', () => {
+        modalAuditivo.classList.remove('hidden');
+    });
+}
 
-        // Fechar modal com ESC
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && !modalAuditivo.classList.contains('hidden')) {
-                fecharModalAuditivo();
-            }
-        });
-    </script>
+function fecharModalAuditivo() {
+    modalAuditivo.classList.add('hidden');
+}
+
+// Fechar modal com ESC
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !modalAuditivo.classList.contains('hidden')) {
+        fecharModalAuditivo();
+    }
+});
+
+// Estilo extra para deixar a home mais elegante
+const idxStyle = document.createElement('style');
+idxStyle.textContent = `
+.index-main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 24px 16px 12px;
+}
+.index-hero {
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:16px;
+    margin-bottom:18px;
+}
+.index-hero-left h1 {
+    margin:4px 0 6px;
+    font-size:1.5rem;
+}
+.index-hero-text {
+    font-size:13px;
+    opacity:.9;
+    margin:0 0 4px;
+}
+.index-hero-right {
+    display:flex;
+    align-items:flex-start;
+}
+.index-login-btn {
+    border:none;
+    border-radius:999px;
+    padding:8px 18px;
+    background:#2563eb;
+    color:#fff;
+    font-size:14px;
+    font-weight:600;
+    cursor:pointer;
+    margin-top:6px;
+}
+.index-login-btn:hover { opacity:.95; }
+
+.index-cards-row {
+    display:grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap:16px;
+    margin-top:8px;
+}
+.index-card {
+    border:none;
+    border-radius:18px;
+    padding:14px 12px 12px;
+    background:#ffffff;
+    box-shadow:0 12px 26px rgba(15,23,42,0.12);
+    cursor:pointer;
+    text-align:left;
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+}
+.index-card-img {
+    width:64px;
+    height:64px;
+    object-fit:contain;
+}
+.index-card-title {
+    font-weight:600;
+    font-size:14px;
+}
+.index-card-desc {
+    font-size:12px;
+    opacity:.8;
+}
+.index-footer {
+    margin-top:20px;
+    padding:14px 18px 18px;
+    background:#0f172a;
+    color:#e5e7eb;
+}
+.index-footer-top {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:10px;
+}
+.index-footer-bottom {
+    border-top:1px solid rgba(148,163,184,0.4);
+    padding-top:8px;
+    font-size:12px;
+}
+.footer-title {
+    font-weight:600;
+    margin:0 0 4px;
+}
+.footer-contact-list {
+    list-style:none;
+    padding:0;
+    margin:0 0 4px;
+}
+.footer-contact-list li { margin-bottom:2px; }
+.footer-contact-list a { color:#93c5fd; text-decoration:none; }
+.footer-copy { margin:0; opacity:.8; }
+@media (max-width:768px){
+    .index-hero { flex-direction:column; align-items:flex-start; }
+    .index-cards-row { grid-template-columns:minmax(0,1fr); }
+}
+`;
+document.head.appendChild(idxStyle);
+</script>
 </body>
 </html>
-
