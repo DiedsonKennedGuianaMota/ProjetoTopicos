@@ -169,6 +169,17 @@
 <script>
 // Lógica de certificados PCA
 document.addEventListener('DOMContentLoaded', () => {
+    const nome  = localStorage.getItem("perfil_nome");
+    const email = localStorage.getItem("perfil_email");
+    const foto  = localStorage.getItem("perfil_foto");
+
+    const nomeEl  = document.getElementById("aluno-nome");
+    const emailEl = document.getElementById("aluno-email");
+    const fotoEl  = document.getElementById("aluno-foto");
+
+    if (nome && nomeEl)  nomeEl.textContent  = nome;
+    if (email && emailEl) emailEl.textContent = email;
+    if (foto && fotoEl && foto.trim() !== "") fotoEl.src = foto;
     // Leitura das flags de conclusão que você já usa nas outras telas
     const modConcluido = {
         1: localStorage.getItem('pca_mod1_concluido') === 'true',
@@ -234,3 +245,4 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 </body>
 </html>
+
