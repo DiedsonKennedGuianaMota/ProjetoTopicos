@@ -12,7 +12,7 @@
 
 <!-- WIDGET DE ACESSIBILIDADE (MESMA ESTRUTURA DAS OUTRAS TELAS) -->
 <div id="accessibility-widget" class="ac-widget ac-hidden" aria-hidden="true">
-    <!-- ... mantém o mesmo conteúdo do widget já usado nas outras telas ... -->
+    <!-- ... mantenha aqui o mesmo widget já usado nas outras telas ... -->
 </div>
 
 <button id="accessibility-btn" class="ac-fab" aria-label="Abrir menu de acessibilidade">
@@ -28,13 +28,13 @@
             <p id="aluno-email" class="aluno-email">aluno.ic9@educ.edu.br</p>
         </div>
         <nav class="sidebar-nav">
-            <div class="nav-item"><a href="home.html"><i class="icon">🏠</i>Home</a></div>
-            <div class="nav-item"><a href="forum.html"><i class="icon">💬</i>Fórum</a></div>
-            <div class="nav-item"><a href="aulas.html"><i class="icon">▶️</i>Aulas</a></div>
-            <div class="nav-item active"><a href="conteudos.html"><i class="icon">📚</i>Conteúdos</a></div>
-            <div class="nav-item"><a href="exercicios.html"><i class="icon">📝</i>Exercícios</a></div>
-            <div class="nav-item"><a href="configuracoes.html"><i class="icon">⚙️</i>Configurações</a></div>
-            <div class="nav-item"><a href="certificados.html"><i class="icon">🏅</i>Certificados</a></div>
+            <div class="nav-item"><a href="home.html">🏠 Home</a></div>
+            <div class="nav-item"><a href="forum.html">💬 Fórum</a></div>
+            <div class="nav-item"><a href="aulas.html">▶️ Aulas</a></div>
+            <div class="nav-item active"><a href="conteudos.html">📚 Conteúdos</a></div>
+            <div class="nav-item"><a href="exercicios.html">📝 Exercícios</a></div>
+            <div class="nav-item"><a href="configuracoes.html">⚙️ Configurações</a></div>
+            <div class="nav-item"><a href="certificados.html">🏅 Certificados</a></div>
         </nav>
         <input type="text" placeholder="Pesquisar" aria-label="Pesquisar na plataforma"
                style="margin: 20px 15px; padding: 8px; border-radius: 10px; border: none;
@@ -42,191 +42,290 @@
     </div>
 
     <div class="main-content">
-        <div class="main-content-area conteudos-main">
-            <h1>Conteúdos de Programação de Computadores e Algoritmos</h1>
-            <p class="conteudos-subtitle" aria-live="polite">
-                Acompanhe as unidades do curso, veja materiais de apoio e saiba o que já foi finalizado.
-            </p>
-
-            <!-- Faixa com unidade atual -->
-            <div class="card-simple unidade-atual-card" tabindex="0"
-                 aria-label="Unidade atual de estudo em programação de computadores e algoritmos">
-                <p class="unidade-atual-label">Você está na</p>
-                <p id="unidade-atual-nome" class="unidade-atual-nome">Unidade 1 – Introdução a Algoritmos</p>
-                <p id="unidade-atual-status" class="unidade-atual-status">Em andamento</p>
-            </div>
-
-            <!-- Grid de unidades -->
-            <div class="unidades-grid">
-
-                <!-- Mapa da disciplina / gerais -->
-                <div class="card-simple mapa-card" tabindex="0"
-                     aria-label="Mapa geral da disciplina de programação de computadores e algoritmos">
-                    <h3>Mapa da disciplina</h3>
-                    <ul class="conteudos-list">
-                        <li>Unidade 1 – Introdução a algoritmos e lógica de programação.</li>
-                        <li>Unidade 2 – Variáveis, tipos de dados e operadores.</li>
-                        <li>Unidade 3 – Estruturas de decisão.</li>
-                        <li>Unidade 4 – Estruturas de repetição.</li>
-                        <li>Unidade 5 – Vetores e matrizes.</li>
-                        <li>Unidade 6 – Resolução de problemas integrando os conteúdos.</li>
-                    </ul>
-                    <h4>Materiais gerais</h4>
-                    <button type="button" class="home-link-btn"
-                            onclick="window.open('pdfs/apostila_pca.pdf','_blank')">
-                        Apostila completa
-                    </button>
-                    <button type="button" class="home-link-btn"
-                            onclick="window.open('pdfs/plano_estudo_pca.pdf','_blank')">
-                        Plano de estudo
-                    </button>
+        <div class="main-content-area jornada-main">
+            <!-- Cabeçalho Jornada -->
+            <div class="jornada-top-card">
+                <div class="jornada-icon">🚀</div>
+                <div>
+                    <h1>Início da Jornada</h1>
+                    <p>Construa seu conhecimento unidade por unidade.</p>
                 </div>
+            </div>
+            <p class="jornada-voce-aqui" id="jornada-voce-aqui">Você está aqui</p>
 
+            <!-- Linha vertical da jornada -->
+            <div class="jornada-flow">
                 <!-- Unidade 1 -->
-                <div class="card-simple unidade-card" data-unidade="1" tabindex="0">
-                    <div class="unidade-header">
-                        <span class="unidade-tag">Unidade 1</span>
-                        <span id="badge-u1" class="unidade-badge">Em andamento</span>
-                    </div>
-                    <h3>Introdução a Algoritmos</h3>
-                    <p>Algoritmo, problema computável, pseudocódigo e fluxogramas.</p>
-                    <div class="unidade-actions">
-                        <button type="button" class="home-link-btn"
-                                onclick="window.open('pdfs/u1_resumo.pdf','_blank')">
-                            Resumo em PDF
-                        </button>
-                        <button type="button" class="home-link-btn"
-                                onclick="window.open('pdfs/u1_exercicios.pdf','_blank')">
-                            Exercícios
-                        </button>
-                        <button type="button" class="home-link-btn"
-                                onclick="window.location.href='aulas.html#intro_algoritmos'">
-                            Aula em vídeo
-                        </button>
+                <div class="jornada-step" data-unidade="1">
+                    <div class="jornada-connector"></div>
+                    <div class="jornada-card" id="card-u1">
+                        <div class="jornada-card-header">
+                            <div class="jornada-number">01</div>
+                            <div class="jornada-header-text">
+                                <span class="jornada-etapa">Fundação</span>
+                                <span class="jornada-status" id="status-u1">Em andamento</span>
+                            </div>
+                            <div class="jornada-target">🎯</div>
+                        </div>
+                        <h2>Unidade 1 – Introdução a Algoritmos</h2>
+                        <p class="jornada-desc">
+                            Entenda o que é um algoritmo, como representar soluções em pseudocódigo e fluxogramas.
+                        </p>
+                        <div class="jornada-progress">
+                            <div class="jornada-progress-bar">
+                                <div class="jornada-progress-fill" id="prog-u1" style="width:0%;"></div>
+                            </div>
+                            <span id="prog-u1-text">0%</span>
+                        </div>
+                        <div class="jornada-actions">
+                            <button type="button" class="jornada-btn"
+                                    onclick="window.location.href='aulas.html#intro_algoritmos'">
+                                Ver aulas da unidade
+                            </button>
+                            <button type="button" class="jornada-secondary-btn"
+                                    onclick="window.location.href='exercicios.html'">
+                                Ir para exercícios
+                            </button>
+                        </div>
+                        <div class="jornada-links">
+                            <button type="button" class="jornada-link-btn"
+                                    onclick="window.open('pdfs/u1_resumo.pdf','_blank')">
+                                Resumo em PDF
+                            </button>
+                            <button type="button" class="jornada-link-btn"
+                                    onclick="window.open('pdfs/u1_exercicios.pdf','_blank')">
+                                Lista de exercícios
+                            </button>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Unidade 2 -->
-                <div class="card-simple unidade-card" data-unidade="2" tabindex="0">
-                    <div class="unidade-header">
-                        <span class="unidade-tag">Unidade 2</span>
-                        <span id="badge-u2" class="unidade-badge">Bloqueada</span>
-                    </div>
-                    <h3>Variáveis e Operadores</h3>
-                    <p>Tipos de dados, declaração, atribuição e operadores.</p>
-                    <div class="unidade-actions">
-                        <button type="button" class="home-link-btn"
-                                onclick="window.open('pdfs/u2_resumo.pdf','_blank')">
-                            Resumo em PDF
-                        </button>
-                        <button type="button" class="home-link-btn"
-                                onclick="window.open('pdfs/u2_exercicios.pdf','_blank')">
-                            Exercícios
-                        </button>
-                        <button type="button" class="home-link-btn"
-                                onclick="window.location.href='aulas.html#variaveis_operadores'">
-                            Aula em vídeo
-                        </button>
+                <div class="jornada-step" data-unidade="2">
+                    <div class="jornada-connector"></div>
+                    <div class="jornada-card jornada-card-locked" id="card-u2">
+                        <div class="jornada-card-header">
+                            <div class="jornada-number">02</div>
+                            <div class="jornada-header-text">
+                                <span class="jornada-etapa">Fundação</span>
+                                <span class="jornada-status" id="status-u2">Bloqueada</span>
+                            </div>
+                            <div class="jornada-target">🔒</div>
+                        </div>
+                        <h2>Unidade 2 – Variáveis e Operadores</h2>
+                        <p class="jornada-desc">
+                            Trabalhe com tipos de dados, variáveis e operadores aritméticos, relacionais e lógicos.
+                        </p>
+                        <div class="jornada-progress">
+                            <div class="jornada-progress-bar">
+                                <div class="jornada-progress-fill" id="prog-u2" style="width:0%;"></div>
+                            </div>
+                            <span id="prog-u2-text">0%</span>
+                        </div>
+                        <div class="jornada-actions">
+                            <button type="button" class="jornada-btn"
+                                    onclick="window.location.href='aulas.html#variaveis_operadores'">
+                                Ver aulas da unidade
+                            </button>
+                            <button type="button" class="jornada-secondary-btn"
+                                    onclick="window.location.href='exercicios.html'">
+                                Ir para exercícios
+                            </button>
+                        </div>
+                        <div class="jornada-links">
+                            <button type="button" class="jornada-link-btn"
+                                    onclick="window.open('pdfs/u2_resumo.pdf','_blank')">
+                                Resumo em PDF
+                            </button>
+                            <button type="button" class="jornada-link-btn"
+                                    onclick="window.open('pdfs/u2_exercicios.pdf','_blank')">
+                                Lista de exercícios
+                            </button>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Unidade 3 -->
-                <div class="card-simple unidade-card" data-unidade="3" tabindex="0">
-                    <div class="unidade-header">
-                        <span class="unidade-tag">Unidade 3</span>
-                        <span id="badge-u3" class="unidade-badge">Bloqueada</span>
-                    </div>
-                    <h3>Estruturas de Decisão</h3>
-                    <p>Condicionais simples, compostas e seleção múltipla.</p>
-                    <div class="unidade-actions">
-                        <button type="button" class="home-link-btn"
-                                onclick="window.open('pdfs/u3_resumo.pdf','_blank')">
-                            Resumo em PDF
-                        </button>
-                        <button type="button" class="home-link-btn"
-                                onclick="window.open('pdfs/u3_exercicios.pdf','_blank')">
-                            Exercícios
-                        </button>
-                        <button type="button" class="home-link-btn"
-                                onclick="window.location.href='aulas.html#estruturas_decisao'">
-                            Aula em vídeo
-                        </button>
+                <div class="jornada-step" data-unidade="3">
+                    <div class="jornada-connector"></div>
+                    <div class="jornada-card jornada-card-locked" id="card-u3">
+                        <div class="jornada-card-header">
+                            <div class="jornada-number">03</div>
+                            <div class="jornada-header-text">
+                                <span class="jornada-etapa">Fundação</span>
+                                <span class="jornada-status" id="status-u3">Bloqueada</span>
+                            </div>
+                            <div class="jornada-target">🔒</div>
+                        </div>
+                        <h2>Unidade 3 – Estruturas de Decisão</h2>
+                        <p class="jornada-desc">
+                            Condicionais simples, compostas e múltiplas para tomada de decisão.
+                        </p>
+                        <div class="jornada-progress">
+                            <div class="jornada-progress-bar">
+                                <div class="jornada-progress-fill" id="prog-u3" style="width:0%;"></div>
+                            </div>
+                            <span id="prog-u3-text">0%</span>
+                        </div>
+                        <div class="jornada-actions">
+                            <button type="button" class="jornada-btn"
+                                    onclick="window.location.href='aulas.html#estruturas_decisao'">
+                                Ver aulas da unidade
+                            </button>
+                            <button type="button" class="jornada-secondary-btn"
+                                    onclick="window.location.href='exercicios.html'">
+                                Ir para exercícios
+                            </button>
+                        </div>
+                        <div class="jornada-links">
+                            <button type="button" class="jornada-link-btn"
+                                    onclick="window.open('pdfs/u3_resumo.pdf','_blank')">
+                                Resumo em PDF
+                            </button>
+                            <button type="button" class="jornada-link-btn"
+                                    onclick="window.open('pdfs/u3_exercicios.pdf','_blank')">
+                                Lista de exercícios
+                            </button>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Unidade 4 -->
-                <div class="card-simple unidade-card" data-unidade="4" tabindex="0">
-                    <div class="unidade-header">
-                        <span class="unidade-tag">Unidade 4</span>
-                        <span id="badge-u4" class="unidade-badge">Bloqueada</span>
-                    </div>
-                    <h3>Estruturas de Repetição</h3>
-                    <p>Laços contados e condicionais com acumuladores e contadores.</p>
-                    <div class="unidade-actions">
-                        <button type="button" class="home-link-btn"
-                                onclick="window.open('pdfs/u4_resumo.pdf','_blank')">
-                            Resumo em PDF
-                        </button>
-                        <button type="button" class="home-link-btn"
-                                onclick="window.open('pdfs/u4_exercicios.pdf','_blank')">
-                            Exercícios
-                        </button>
-                        <button type="button" class="home-link-btn"
-                                onclick="window.location.href='aulas.html#estruturas_repeticao'">
-                            Aula em vídeo
-                        </button>
+                <div class="jornada-step" data-unidade="4">
+                    <div class="jornada-connector"></div>
+                    <div class="jornada-card jornada-card-locked" id="card-u4">
+                        <div class="jornada-card-header">
+                            <div class="jornada-number">04</div>
+                            <div class="jornada-header-text">
+                                <span class="jornada-etapa">Fundação</span>
+                                <span class="jornada-status" id="status-u4">Bloqueada</span>
+                            </div>
+                            <div class="jornada-target">🔒</div>
+                        </div>
+                        <h2>Unidade 4 – Estruturas de Repetição</h2>
+                        <p class="jornada-desc">
+                            Laços contados e condicionais, acumuladores e contadores.
+                        </p>
+                        <div class="jornada-progress">
+                            <div class="jornada-progress-bar">
+                                <div class="jornada-progress-fill" id="prog-u4" style="width:0%;"></div>
+                            </div>
+                            <span id="prog-u4-text">0%</span>
+                        </div>
+                        <div class="jornada-actions">
+                            <button type="button" class="jornada-btn"
+                                    onclick="window.location.href='aulas.html#estruturas_repeticao'">
+                                Ver aulas da unidade
+                            </button>
+                            <button type="button" class="jornada-secondary-btn"
+                                    onclick="window.location.href='exercicios.html'">
+                                Ir para exercícios
+                            </button>
+                        </div>
+                        <div class="jornada-links">
+                            <button type="button" class="jornada-link-btn"
+                                    onclick="window.open('pdfs/u4_resumo.pdf','_blank')">
+                                Resumo em PDF
+                            </button>
+                            <button type="button" class="jornada-link-btn"
+                                    onclick="window.open('pdfs/u4_exercicios.pdf','_blank')">
+                                Lista de exercícios
+                            </button>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Unidade 5 -->
-                <div class="card-simple unidade-card" data-unidade="5" tabindex="0">
-                    <div class="unidade-header">
-                        <span class="unidade-tag">Unidade 5</span>
-                        <span id="badge-u5" class="unidade-badge">Bloqueada</span>
-                    </div>
-                    <h3>Vetores e Matrizes</h3>
-                    <p>Declaração e varredura de coleções de dados em vetores e matrizes.</p>
-                    <div class="unidade-actions">
-                        <button type="button" class="home-link-btn"
-                                onclick="window.open('pdfs/u5_resumo.pdf','_blank')">
-                            Resumo em PDF
-                        </button>
-                        <button type="button" class="home-link-btn"
-                                onclick="window.open('pdfs/u5_exercicios.pdf','_blank')">
-                            Exercícios
-                        </button>
-                        <button type="button" class="home-link-btn"
-                                onclick="window.location.href='aulas.html#vetores_matrizes'">
-                            Aula em vídeo
-                        </button>
+                <div class="jornada-step" data-unidade="5">
+                    <div class="jornada-connector"></div>
+                    <div class="jornada-card jornada-card-locked" id="card-u5">
+                        <div class="jornada-card-header">
+                            <div class="jornada-number">05</div>
+                            <div class="jornada-header-text">
+                                <span class="jornada-etapa">Aplicação</span>
+                                <span class="jornada-status" id="status-u5">Bloqueada</span>
+                            </div>
+                            <div class="jornada-target">🔒</div>
+                        </div>
+                        <h2>Unidade 5 – Vetores e Matrizes</h2>
+                        <p class="jornada-desc">
+                            Organização de coleções de dados em memória usando vetores e matrizes.
+                        </p>
+                        <div class="jornada-progress">
+                            <div class="jornada-progress-bar">
+                                <div class="jornada-progress-fill" id="prog-u5" style="width:0%;"></div>
+                            </div>
+                            <span id="prog-u5-text">0%</span>
+                        </div>
+                        <div class="jornada-actions">
+                            <button type="button" class="jornada-btn"
+                                    onclick="window.location.href='aulas.html#vetores_matrizes'">
+                                Ver aulas da unidade
+                            </button>
+                            <button type="button" class="jornada-secondary-btn"
+                                    onclick="window.location.href='exercicios.html'">
+                                Ir para exercícios
+                            </button>
+                        </div>
+                        <div class="jornada-links">
+                            <button type="button" class="jornada-link-btn"
+                                    onclick="window.open('pdfs/u5_resumo.pdf','_blank')">
+                                Resumo em PDF
+                            </button>
+                            <button type="button" class="jornada-link-btn"
+                                    onclick="window.open('pdfs/u5_exercicios.pdf','_blank')">
+                                Lista de exercícios
+                            </button>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Unidade 6 -->
-                <div class="card-simple unidade-card" data-unidade="6" tabindex="0">
-                    <div class="unidade-header">
-                        <span class="unidade-tag">Unidade 6</span>
-                        <span id="badge-u6" class="unidade-badge">Bloqueada</span>
-                    </div>
-                    <h3>Resolução de Problemas</h3>
-                    <p>Integração de todos os tópicos em pequenos projetos.</p>
-                    <div class="unidade-actions">
-                        <button type="button" class="home-link-btn"
-                                onclick="window.open('pdfs/u6_resumo.pdf','_blank')">
-                            Resumo em PDF
-                        </button>
-                        <button type="button" class="home-link-btn"
-                                onclick="window.open('pdfs/u6_exercicios.pdf','_blank')">
-                            Exercícios
-                        </button>
-                        <button type="button" class="home-link-btn"
-                                onclick="window.location.href='aulas.html#resolucao_problemas'">
-                            Aula em vídeo
-                        </button>
+                <div class="jornada-step" data-unidade="6">
+                    <div class="jornada-connector jornada-connector-last"></div>
+                    <div class="jornada-card jornada-card-locked" id="card-u6">
+                        <div class="jornada-card-header">
+                            <div class="jornada-number">06</div>
+                            <div class="jornada-header-text">
+                                <span class="jornada-etapa">Aplicação</span>
+                                <span class="jornada-status" id="status-u6">Bloqueada</span>
+                            </div>
+                            <div class="jornada-target">🎓</div>
+                        </div>
+                        <h2>Unidade 6 – Resolução de Problemas</h2>
+                        <p class="jornada-desc">
+                            Integração de todos os conteúdos em projetos aplicados ao cotidiano.
+                        </p>
+                        <div class="jornada-progress">
+                            <div class="jornada-progress-bar">
+                                <div class="jornada-progress-fill" id="prog-u6" style="width:0%;"></div>
+                            </div>
+                            <span id="prog-u6-text">0%</span>
+                        </div>
+                        <div class="jornada-actions">
+                            <button type="button" class="jornada-btn"
+                                    onclick="window.location.href='aulas.html#resolucao_problemas'">
+                                Ver aulas da unidade
+                            </button>
+                            <button type="button" class="jornada-secondary-btn"
+                                    onclick="window.location.href='exercicios.html'">
+                                Ir para exercícios
+                            </button>
+                        </div>
+                        <div class="jornada-links">
+                            <button type="button" class="jornada-link-btn"
+                                    onclick="window.open('pdfs/u6_resumo.pdf','_blank')">
+                                Resumo em PDF
+                            </button>
+                            <button type="button" class="jornada-link-btn"
+                                    onclick="window.open('pdfs/u6_exercicios.pdf','_blank')">
+                                Lista de exercícios
+                            </button>
+                        </div>
                     </div>
                 </div>
 
-            </div>
+            </div> <!-- fim jornada-flow -->
         </div>
     </div>
 </div>
@@ -239,89 +338,199 @@
 <script src="script.js"></script>
 
 <script>
-// Estilo extra para centralizar e deixar em grid elegante
-const conteudosStyle = document.createElement('style');
-conteudosStyle.textContent = `
-.conteudos-main h1 { margin-bottom: 4px; }
-.conteudos-subtitle { font-size: 13px; opacity:.8; margin-bottom: 16px; }
-.unidade-atual-card {
-    margin-bottom: 16px;
+// Estilo extra inspirado no fluxo vertical do exemplo
+const jornadaStyle = document.createElement('style');
+jornadaStyle.textContent = `
+.jornada-main {
+    max-width: 780px;
+    margin: 0 auto;
+}
+.jornada-top-card {
+    border-radius: 18px;
+    border: 1px dashed #cbd5ff;
+    background: #f9fbff;
+    padding: 18px 22px;
     display:flex;
-    flex-direction:column;
-    align-items:flex-start;
-    justify-content:center;
-    gap:2px;
-}
-.unidade-atual-label { font-size: 13px; opacity:.8; margin:0; }
-.unidade-atual-nome { font-size: 1.1rem; font-weight:600; margin:0; }
-.unidade-atual-status { font-size: 13px; margin:0; color:#4a4ae6; }
-.unidades-grid {
-    display:grid;
-    grid-template-columns: minmax(0, 2fr) minmax(0, 2fr) minmax(0, 2fr);
-    gap:16px;
-    align-items:start;
-}
-@media (max-width: 1024px){
-    .unidades-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
-}
-@media (max-width: 768px){
-    .unidades-grid { grid-template-columns: minmax(0,1fr); }
-}
-.mapa-card { grid-row: span 2; }
-.conteudos-list { padding-left:18px; font-size:14px; margin-bottom:10px; }
-.conteudos-list li { margin-bottom:3px; }
-.unidade-card h3 { margin:4px 0; }
-.unidade-header {
-    display:flex;
-    justify-content:space-between;
     align-items:center;
+    gap:12px;
     margin-bottom:4px;
 }
-.unidade-tag {
-    font-size:11px;
-    padding:2px 8px;
+.jornada-top-card h1 {
+    margin:0;
+    font-size:1.2rem;
+}
+.jornada-top-card p {
+    margin:2px 0 0;
+    font-size:13px;
+    opacity:.85;
+}
+.jornada-icon {
+    width:40px;
+    height:40px;
     border-radius:999px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     background:#eef2ff;
-    color:#3730a3;
+    font-size:20px;
 }
-.unidade-badge {
+.jornada-voce-aqui {
+    text-align:center;
     font-size:11px;
-    padding:2px 8px;
+    text-transform:uppercase;
+    color:#2563eb;
+    margin:4px 0 10px;
+}
+.jornada-flow {
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+}
+.jornada-step {
+    position:relative;
+}
+.jornada-connector {
+    position:absolute;
+    left:28px;
+    top:-10px;
+    bottom:100%;
+    width:2px;
+    background:linear-gradient(to bottom, #2563eb, #bfdbfe);
+}
+.jornada-step:first-child .jornada-connector {
+    display:none;
+}
+.jornada-connector-last {
+    bottom:40%;
+}
+.jornada-card {
+    margin-left:40px;
+    border-radius:16px;
+    border:1px solid #dbeafe;
+    background:#ffffff;
+    box-shadow:0 12px 25px rgba(15,23,42,0.08);
+    padding:16px 20px 16px;
+}
+.jornada-card-locked {
+    opacity:.65;
+}
+.jornada-card-header {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:8px;
+}
+.jornada-number {
+    width:40px;
+    height:40px;
+    border-radius:14px;
+    background:#2563eb;
+    color:#fff;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:16px;
+}
+.jornada-header-text {
+    flex:1;
+    margin-left:10px;
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+}
+.jornada-etapa {
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    opacity:.7;
+}
+.jornada-status {
+    font-size:12px;
+    font-weight:600;
+}
+.jornada-target {
+    font-size:20px;
+}
+.jornada-card h2 {
+    margin:4px 0 2px;
+    font-size:1.05rem;
+}
+.jornada-desc {
+    margin:0 0 10px;
+    font-size:13px;
+    opacity:.9;
+}
+.jornada-progress {
+    display:flex;
+    align-items:center;
+    gap:6px;
+    margin-bottom:8px;
+}
+.jornada-progress-bar {
+    flex:1;
+    height:6px;
     border-radius:999px;
-    background:#f3f4f6;
+    background:#e5e7eb;
+    overflow:hidden;
 }
-.unidade-badge.done {
-    background:#dcfce7;
-    color:#166534;
+.jornada-progress-fill {
+    height:100%;
+    border-radius:999px;
+    background:linear-gradient(90deg,#2563eb,#4f46e5);
 }
-.unidade-badge.current {
-    background:#dbeafe;
-    color:#1d4ed8;
+.jornada-progress span,
+#prog-u1-text,#prog-u2-text,#prog-u3-text,#prog-u4-text,#prog-u5-text,#prog-u6-text {
+    font-size:11px;
+    opacity:.75;
 }
-.unidade-badge.locked {
-    background:#fef3c7;
-    color:#92400e;
+.jornada-actions {
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:6px;
 }
-.unidade-actions {
-    margin-top:10px;
+.jornada-btn {
+    border:none;
+    border-radius:999px;
+    padding:8px 18px;
+    background:#2563eb;
+    color:#fff;
+    font-size:13px;
+    font-weight:600;
+    cursor:pointer;
+}
+.jornada-secondary-btn {
+    border:none;
+    border-radius:999px;
+    padding:8px 14px;
+    background:#eef2ff;
+    color:#1e293b;
+    font-size:12px;
+    cursor:pointer;
+}
+.jornada-link-btn {
+    border:none;
+    border-radius:999px;
+    padding:6px 10px;
+    background:#f3f4ff;
+    color:#1e293b;
+    font-size:11px;
+    cursor:pointer;
+}
+.jornada-links {
     display:flex;
     flex-wrap:wrap;
     gap:6px;
 }
-.home-link-btn {
-    border:none;
-    border-radius:999px;
-    padding:6px 10px;
-    background:#4a4ae6;
-    color:#fff;
-    font-size:12px;
-    cursor:pointer;
+@media (max-width:768px){
+    .jornada-card { margin-left:24px; }
 }
-.home-link-btn:hover { opacity:.95; }
 `;
-document.head.appendChild(conteudosStyle);
+document.head.appendChild(jornadaStyle);
 
-// Atualizar perfil básico se salvo
+// Perfil
 document.addEventListener('DOMContentLoaded', () => {
     const nome  = localStorage.getItem('perfil_nome');
     const email = localStorage.getItem('perfil_email');
@@ -330,56 +539,75 @@ document.addEventListener('DOMContentLoaded', () => {
     if (email) document.getElementById('aluno-email').textContent = email;
     if (foto)  document.getElementById('aluno-foto').src          = foto;
 
-    atualizarUnidadesConteudos();
+    atualizarJornada();
 });
 
-// Lê flags de progresso e ajusta badges / unidade atual
-function atualizarUnidadesConteudos() {
-    const u1Done = localStorage.getItem('pca_mod1_concluido') === 'true';
-    const u2Done = localStorage.getItem('pca_mod2_concluido') === 'true';
-    const u3Done = localStorage.getItem('pca_mod3_concluido') === 'true';
-    const u4Done = localStorage.getItem('pca_mod4_concluido') === 'true';
-    const u5Done = localStorage.getItem('pca_mod5_concluido') === 'true';
-    const u6Done = localStorage.getItem('pca_mod6_concluido') === 'true';
+// Lê progresso salvo (mesmas chaves usadas na home/exercícios)
+function lerPct(chaveConcluido, chaveParcial) {
+    if (localStorage.getItem(chaveConcluido) === 'true') return 100;
+    const parcial = parseInt(localStorage.getItem(chaveParcial) || '0', 10);
+    return Math.max(0, Math.min(100, parcial));
+}
 
-    const badges = {
-        1: document.getElementById('badge-u1'),
-        2: document.getElementById('badge-u2'),
-        3: document.getElementById('badge-u3'),
-        4: document.getElementById('badge-u4'),
-        5: document.getElementById('badge-u5'),
-        6: document.getElementById('badge-u6')
+function atualizarJornada() {
+    const unidades = [1,2,3,4,5,6];
+
+    const pct = {
+        1: lerPct('pca_mod1_concluido','pca_mod1_progresso'),
+        2: lerPct('pca_mod2_concluido','pca_mod2_progresso'),
+        3: lerPct('pca_mod3_concluido','pca_mod3_progresso'),
+        4: lerPct('pca_mod4_concluido','pca_mod4_progresso'),
+        5: lerPct('pca_mod5_concluido','pca_mod5_progresso'),
+        6: lerPct('pca_mod6_concluido','pca_mod6_progresso')
     };
 
-    const concluido = {1:u1Done,2:u2Done,3:u3Done,4:u4Done,5:u5Done,6:u6Done};
+    const concluido = {
+        1: localStorage.getItem('pca_mod1_concluido') === 'true',
+        2: localStorage.getItem('pca_mod2_concluido') === 'true',
+        3: localStorage.getItem('pca_mod3_concluido') === 'true',
+        4: localStorage.getItem('pca_mod4_concluido') === 'true',
+        5: localStorage.getItem('pca_mod5_concluido') === 'true',
+        6: localStorage.getItem('pca_mod6_concluido') === 'true'
+    };
 
     let unidadeAtual = 1;
+
+    unidades.forEach(i => {
+        const progBar = document.getElementById('prog-u'+i);
+        const progTxt = document.getElementById('prog-u'+i+'-text');
+        const status  = document.getElementById('status-u'+i);
+        const card    = document.getElementById('card-u'+i);
+
+        const valor = pct[i];
+        if (progBar) progBar.style.width = valor + '%';
+        if (progTxt) progTxt.textContent = valor + '%';
+
+        if (card) card.classList.add('jornada-card-locked');
+        if (status) {
+            status.textContent = 'Bloqueada';
+        }
+    });
+
+    // Libera na sequência: primeira não concluída é atual, anteriores finalizadas
     for (let i=1;i<=6;i++){
-        const b = badges[i];
-        if (!b) continue;
-        b.classList.remove('done','current','locked');
+        const card   = document.getElementById('card-u'+i);
+        const status = document.getElementById('status-u'+i);
+
+        if (!card || !status) continue;
 
         if (concluido[i]) {
-            b.textContent = 'Finalizada';
-            b.classList.add('done');
-            unidadeAtual = Math.max(unidadeAtual, i+1);
+            card.classList.remove('jornada-card-locked');
+            status.textContent = 'Finalizada';
+            unidadeAtual = Math.min(unidadeAtual+1, 6);
         } else {
-            b.textContent = 'Em andamento';
-            b.classList.add('current');
-            // unidades depois da primeira não concluída ficam “bloqueadas” visualmente
-            for (let j=i+1;j<=6;j++){
-                const bj = badges[j];
-                if (bj && !concluido[j]) {
-                    bj.textContent = 'Bloqueada';
-                    bj.classList.remove('done','current');
-                    bj.classList.add('locked');
-                }
-            }
+            // esta é a atual
+            card.classList.remove('jornada-card-locked');
+            status.textContent = 'Em andamento';
+            unidadeAtual = i;
+            // as próximas ficam bloqueadas (já estão marcadas como bloqueadas acima)
             break;
         }
     }
-
-    if (unidadeAtual>6) unidadeAtual = 6;
 
     const nomesUnidades = {
         1:'Unidade 1 – Introdução a Algoritmos',
@@ -390,13 +618,9 @@ function atualizarUnidadesConteudos() {
         6:'Unidade 6 – Resolução de Problemas'
     };
 
-    document.getElementById('unidade-atual-nome').textContent = nomesUnidades[unidadeAtual];
-
-    const statusSpan = document.getElementById('unidade-atual-status');
-    if (concluido[unidadeAtual]) {
-        statusSpan.textContent = 'Finalizada';
-    } else {
-        statusSpan.textContent = 'Em andamento';
+    const labelAtual = document.getElementById('jornada-voce-aqui');
+    if (labelAtual) {
+        labelAtual.textContent = 'Você está na ' + nomesUnidades[unidadeAtual];
     }
 }
 </script>
