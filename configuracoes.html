@@ -217,34 +217,19 @@
 <script src="script.js"></script>
 <script>
 // carregar valores salvos e atualizar formulário
-document.addEventListener('DOMContentLoaded', () => {
-    // Acessibilidade
-    const prof   = localStorage.getItem('pref_profile_mode');
-    const voice  = localStorage.getItem('pref_voice_mode');
-    const font   = localStorage.getItem('pref_font_style');
-    const redAnim = localStorage.getItem('pref_reduce_anim') === 'true';
-    const highC   = localStorage.getItem('pref_high_contrast') === 'true';
+document.addEventListener("DOMContentLoaded", () => {
+    const nome  = localStorage.getItem("perfil_nome");
+    const email = localStorage.getItem("perfil_email");
+    const foto  = localStorage.getItem("perfil_foto");
 
-    if (prof)  document.getElementById('pref-profile').value = prof;
-    if (voice) document.getElementById('pref-voice').value   = voice;
-    if (font)  document.getElementById('pref-font').value    = font;
-    document.getElementById('pref-reduzir-animacoes').checked = redAnim;
-    document.getElementById('pref-alto-contraste').checked    = highC;
+    const nomeEl  = document.getElementById("aluno-nome");
+    const emailEl = document.getElementById("aluno-email");
+    const fotoEl  = document.getElementById("aluno-foto");
 
-    // Perfil
-    const nome     = localStorage.getItem('perfil_nome');
-    const email    = localStorage.getItem('perfil_email');
-    const turma    = localStorage.getItem('perfil_turma');
-    const objetivo = localStorage.getItem('perfil_objetivo');
-    const foto     = localStorage.getItem('perfil_foto');
-
-    if (nome)  document.getElementById('perfil-nome').value      = nome;
-    if (email) document.getElementById('perfil-email').value     = email;
-    if (turma) document.getElementById('perfil-turma').value     = turma;
-    if (objetivo) document.getElementById('perfil-objetivo').value = objetivo;
-    if (foto)  document.getElementById('perfil-foto').value      = foto;
+    if (nome && nomeEl)  nomeEl.textContent  = nome;
+    if (email && emailEl) emailEl.textContent = email;
+    if (foto && fotoEl && foto.trim() !== "") fotoEl.src = foto;
 });
-
 // salvar acessibilidade
 function salvarPreferenciasAcessibilidade() {
     localStorage.setItem('pref_profile_mode', document.getElementById('pref-profile').value);
@@ -344,3 +329,4 @@ body {
 
 </body>
 </html>
+
