@@ -37,6 +37,111 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 2. FUNÇÃO INICIALIZADORA PRINCIPAL ---
     initializePage(accessibilityMode || 'standard', currentPage);
+        // --- WIDGET DE ACESSIBILIDADE FLUTUANTE (itens do menu) ---
+    const acWidget  = document.getElementById('accessibility-widget');
+    const acClose   = document.getElementById('ac-close-btn');
+    const acToggle  = document.getElementById('ac-toggle-visibility');
+    const acReadBtn = document.getElementById('ac-ler-pagina');
+    const acHighContrastBtn   = document.getElementById('ac-contraste-mais');
+    const acSmartContrastBtn  = document.getElementById('ac-contraste-inteligente');
+    const acLinksBtn          = document.getElementById('ac-links-destacados');
+    const acTextBigBtn        = document.getElementById('ac-texto-maior');
+    const acSpacingBtn        = document.getElementById('ac-espacamento-texto');
+    const acAnimBtn           = document.getElementById('ac-animacoes');
+    const acHideImgBtn        = document.getElementById('ac-ocultar-imagens');
+    const acDislexiaBtn       = document.getElementById('ac-dislexia');
+    const acCursorBtn         = document.getElementById('ac-cursor');
+    const acToolbarBtn        = document.getElementById('ac-barra-ferramentas');
+    const acStructureBtn      = document.getElementById('ac-estrutura-pagina');
+    const acLineHeightBtn     = document.getElementById('ac-altura-linha');
+    const acAlignBtn          = document.getElementById('ac-alinhamento-texto');
+    const acSaturationBtn     = document.getElementById('ac-saturacao');
+    const acResetBtn          = document.getElementById('ac-reset');
+
+    // Aplica estados salvos
+    (function aplicarPreferenciasAcessibilidade() {
+        const body = document.body;
+        if (localStorage.getItem('ac_high_contrast') === 'true') body.classList.add('ac-high-contrast');
+        if (localStorage.getItem('ac_smart_contrast') === 'true') body.classList.add('ac-smart-contrast');
+        if (localStorage.getItem('ac_links') === 'true') body.classList.add('ac-links-highlight');
+        if (localStorage.getItem('ac_text_big') === 'true') body.classList.add('ac-text-big');
+        if (localStorage.getItem('ac_spacing') === 'true') body.classList.add('ac-text-spacing');
+        if (localStorage.getItem('ac_anim_off') === 'true') body.classList.add('ac-anim-off');
+        if (localStorage.getItem('ac_hide_img') === 'true') body.classList.add('ac-hide-images');
+        if (localStorage.getItem('ac_dislexia') === 'true') body.classList.add('ac-dislexia-font');
+        if (localStorage.getItem('ac_cursor') === 'true') body.classList.add('ac-big-cursor');
+        if (localStorage.getItem('ac_toolbar') === 'true') body.classList.add('ac-toolbar-top');
+        if (localStorage.getItem('ac_structure') === 'true') body.classList.add('ac-outline-structure');
+        if (localStorage.getItem('ac_line_height') === 'true') body.classList.add('ac-line-height');
+        if (localStorage.getItem('ac_align') === 'true') body.classList.add('ac-align-left');
+        if (localStorage.getItem('ac_saturation') === 'true') body.classList.add('ac-low-saturation');
+    })();
+
+    const toggleClassPref = (btn, cls, key) => {
+        if (!btn) return;
+        btn.addEventListener('click', () => {
+            document.body.classList.toggle(cls);
+            const ativo = document.body.classList.contains(cls);
+            localStorage.setItem(key, ativo ? 'true' : 'false');
+        });
+    };
+
+    // Abrir/fechar widget (se ainda não fez isso em outro lugar)
+    const accessibilityBtn = document.getElementById('accessibility-btn');
+    if (accessibilityBtn && acWidget) {
+        accessibilityBtn.addEventListener('click', () => {
+            acWidget.classList.toggle('ac-hidden');
+        });
+    }
+    if (acClose && acWidget) {
+        acClose.addEventListener('click', () => acWidget.classList.add('ac-hidden'));
+    }
+    if (acToggle && acWidget) {
+        acToggle.addEventListener('click', () => acWidget.classList.toggle('ac-hidden'));
+    }
+
+    // Ler página (usa sua função speak)
+    if (acReadBtn) {
+        acReadBtn.addEventListener('click', () => {
+            const texto = document.body.innerText.slice(0, 1200); // limita para não ficar infinito
+            speak('Leitura da página iniciada. ' + texto);
+        });
+    }
+
+    // Liga cada botão a uma classe no body
+    toggleClassPref(acHighContrastBtn,  'ac-high-contrast',     'ac_high_contrast');
+    toggleClassPref(acSmartContrastBtn, 'ac-smart-contrast',    'ac_smart_contrast');
+    toggleClassPref(acLinksBtn,         'ac-links-highlight',   'ac_links');
+    toggleClassPref(acTextBigBtn,       'ac-text-big',          'ac_text_big');
+    toggleClassPref(acSpacingBtn,       'ac-text-spacing',      'ac_spacing');
+    toggleClassPref(acAnimBtn,          'ac-anim-off',          'ac_anim_off');
+    toggleClassPref(acHideImgBtn,       'ac-hide-images',       'ac_hide_img');
+    toggleClassPref(acDislexiaBtn,      'ac-dislexia-font',     'ac_dislexia');
+    toggleClassPref(acCursorBtn,        'ac-big-cursor',        'ac_cursor');
+    toggleClassPref(acToolbarBtn,       'ac-toolbar-top',       'ac_toolbar');
+    toggleClassPref(acStructureBtn,     'ac-outline-structure', 'ac_structure');
+    toggleClassPref(acLineHeightBtn,    'ac-line-height',       'ac_line_height');
+    toggleClassPref(acAlignBtn,         'ac-align-left',        'ac_align');
+    toggleClassPref(acSaturationBtn,    'ac-low-saturation',    'ac_saturation');
+
+    // Reset geral
+    if (acResetBtn) {
+        acResetBtn.addEventListener('click', () => {
+            const body = document.body;
+            body.classList.remove(
+                'ac-high-contrast','ac-smart-contrast','ac-links-highlight','ac-text-big',
+                'ac-text-spacing','ac-anim-off','ac-hide-images','ac-dislexia-font',
+                'ac-big-cursor','ac-toolbar-top','ac-outline-structure','ac-line-height',
+                'ac-align-left','ac-low-saturation'
+            );
+            [
+                'ac_high_contrast','ac_smart_contrast','ac_links','ac_text_big','ac_spacing',
+                'ac_anim_off','ac_hide_img','ac_dislexia','ac_cursor','ac_toolbar',
+                'ac_structure','ac_line_height','ac_align','ac_saturation'
+            ].forEach(k => localStorage.removeItem(k));
+        });
+    }
+
 
     function initializePage(mode, page) {
         const body = document.getElementById('page-body');
@@ -400,4 +505,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
+
 
