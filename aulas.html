@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="style" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body id="page-body">
@@ -114,10 +113,10 @@
 <div class="dashboard-layout">
     <div class="sidebar">
         <div class="profile-box">
-    <img id="aluno-foto" src="https://i.imgur.com/gKjG1o2.png" alt="Foto de perfil do Aluno">
-    <p id="aluno-nome" class="aluno-name" style="font-weight: 600;">Aluno</p>
-    <p id="aluno-email" class="aluno-email">aluno.ic9@educ.edu.br</p>
-</div>
+            <img id="aluno-foto" src="https://i.imgur.com/gKjG1o2.png" alt="Foto de perfil do Aluno">
+            <p id="aluno-nome" class="aluno-name" style="font-weight: 600;">Aluno</p>
+            <p id="aluno-email" class="aluno-email">aluno.ic9@educ.edu.br</p>
+        </div>
         <nav class="sidebar-nav">
             <div class="nav-item"><a href="home.html"><i class="icon">🏠</i>Home</a></div>
             <div class="nav-item"><a href="forum.html"><i class="icon">💬</i>Fórum</a></div>
@@ -140,13 +139,12 @@
                 O avatar de LIBRAS está disponível para traduzir legendas.
             </p>
 
-            <div class="video-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
-
+            <div class="video-grid">
                 <div class="card-simple video-card" tabindex="0" role="button"
                      onclick="openLesson('intro_algoritmos')"
                      aria-label="Abrir Aula 1: Introdução a algoritmos.">
                     <img src="Introdução a Algoritmos.png"
-     alt="Thumbnail da aula de introdução a algoritmos">
+                         alt="Thumbnail da aula de introdução a algoritmos">
                     <h3>Aula 1: Introdução a Algoritmos</h3>
                     <p>Conceitos de algoritmo, problema computável e passos de resolução.</p>
                     <button class="play-btn" type="button">Assistir</button>
@@ -196,7 +194,6 @@
                     <p>Integração de estruturas de controle e vetores em pequenos projetos.</p>
                     <button class="play-btn" type="button">Assistir</button>
                 </div>
-
             </div>
 
         </div>
@@ -228,113 +225,159 @@
 </div>
 
 <script src="script.js"></script>
+
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-    const nome = localStorage.getItem("aluno_nome");
-    const email = localStorage.getItem("aluno_email");
-    const foto = localStorage.getItem("aluno_foto");
+// aplica perfil vindo do cadastro (mesmas chaves usadas no script.js)
+document.addEventListener("DOMContentLoaded", () => {
+    const nome  = localStorage.getItem("perfil_nome");
+    const email = localStorage.getItem("perfil_email");
+    const foto  = localStorage.getItem("perfil_foto");
 
-    if (nome) document.getElementById("aluno-nome").textContent = nome;
-    if (email) document.getElementById("aluno-email").textContent = email;
-    if (foto) document.getElementById("aluno-foto").src = foto;
+    const nomeEl  = document.getElementById("aluno-nome");
+    const emailEl = document.getElementById("aluno-email");
+    const fotoEl  = document.getElementById("aluno-foto");
+
+    if (nome && nomeEl)  nomeEl.textContent  = nome;
+    if (email && emailEl) emailEl.textContent = email;
+    if (foto && fotoEl && foto.trim() !== "") fotoEl.src = foto;
 });
-    const lessons = {
-        intro_algoritmos: {
-            title: 'Aula 1: Introdução a Algoritmos',
-            description: 'Conceitos básicos de algoritmo, problema computável e passos de resolução.',
-            videoUrl: 'https://www.youtube.com/embed/8mei6uVttho',
-            pdfs: [
-                { label: 'PDF - Conceitos de Algoritmos', url: 'pdfs/algoritmos_conceitos.pdf' }
-            ]
-        },
-        variaveis_operadores: {
-            title: 'Aula 2: Variáveis e Operadores',
-            description: 'Tipos de dados, declaração de variáveis e operadores aritméticos e lógicos.',
-            videoUrl: 'https://www.youtube.com/embed/MQMm7JuCJCc',
-            pdfs: [
-                { label: 'PDF - Variáveis e Tipos de Dados', url: 'pdfs/variaveis_tipos.pdf' }
-            ]
-        },
-        estruturas_decisao: {
-            title: 'Aula 3: Estruturas de Decisão',
-            description: 'Uso de condições simples e compostas em algoritmos de decisão.',
-            videoUrl: 'https://www.youtube.com/embed/D9DsLAoHt5U',
-            pdfs: [
-                { label: 'PDF - Estruturas de decisão', url: 'pdfs/estruturas_decisao.pdf' }
-            ]
-        },
-        estruturas_repeticao: {
-            title: 'Aula 4: Estruturas de Repetição',
-            description: 'Laços contados e condicionais aplicados a problemas de repetição.',
-            videoUrl: 'https://www.youtube.com/embed/rTq13xgI_fA',
-            pdfs: [
-                { label: 'PDF - Laços de repetição', url: 'pdfs/estruturas_repeticao.pdf' }
-            ]
-        },
-        vetores_matrizes: {
-            title: 'Aula 5: Vetores e Matrizes',
-            description: 'Representação de coleções de dados em vetores e matrizes.',
-            videoUrl: 'https://www.youtube.com/embed/A-mzU40uolc',
-            pdfs: [
-                { label: 'PDF - Vetores e Matrizes', url: 'pdfs/vetores_matrizes.pdf' }
-            ]
-        },
-        resolucao_problemas: {
-            title: 'Aula 6: Resolução de Problemas',
-            description: 'Integração de estruturas de controle e vetores em pequenos projetos.',
-            videoUrl: 'https://www.youtube.com/embed/A-mzU40uolc',
-            pdfs: [
-                { label: 'PDF - Resolução de problemas', url: 'pdfs/resolucao_problemas.pdf' }
-            ]
-        }
-    };
 
-    function openLesson(id) {
-        const data = lessons[id];
-        if (!data) return;
-
-        const modal = document.getElementById('video-modal');
-        const titleEl = document.getElementById('modal-title');
-        const descEl = document.getElementById('modal-description');
-        const videoEl = document.getElementById('modal-video');
-        const pdfsEl = document.getElementById('modal-pdfs');
-
-        titleEl.textContent = data.title;
-        descEl.textContent = data.description;
-        videoEl.src = data.videoUrl;
-
-        pdfsEl.innerHTML = '';
-        data.pdfs.forEach(pdf => {
-            const link = document.createElement('a');
-            link.href = pdf.url;
-            link.target = '_blank';
-            const btn = document.createElement('button');
-            btn.type = 'button';
-            btn.textContent = pdf.label;
-            link.appendChild(btn);
-            pdfsEl.appendChild(link);
-        });
-
-        modal.classList.remove('hidden');
+// dados das aulas
+const lessons = {
+    intro_algoritmos: {
+        title: 'Aula 1: Introdução a Algoritmos',
+        description: 'Conceitos básicos de algoritmo, problema computável e passos de resolução.',
+        videoUrl: 'https://www.youtube.com/embed/8mei6uVttho',
+        pdfs: [
+            { label: 'PDF - Conceitos de Algoritmos', url: 'pdfs/algoritmos_conceitos.pdf' }
+        ]
+    },
+    variaveis_operadores: {
+        title: 'Aula 2: Variáveis e Operadores',
+        description: 'Tipos de dados, declaração de variáveis e operadores aritméticos e lógicos.',
+        videoUrl: 'https://www.youtube.com/embed/MQMm7JuCJCc',
+        pdfs: [
+            { label: 'PDF - Variáveis e Tipos de Dados', url: 'pdfs/variaveis_tipos.pdf' }
+        ]
+    },
+    estruturas_decisao: {
+        title: 'Aula 3: Estruturas de Decisão',
+        description: 'Uso de condições simples e compostas em algoritmos de decisão.',
+        videoUrl: 'https://www.youtube.com/embed/D9DsLAoHt5U',
+        pdfs: [
+            { label: 'PDF - Estruturas de decisão', url: 'pdfs/estruturas_decisao.pdf' }
+        ]
+    },
+    estruturas_repeticao: {
+        title: 'Aula 4: Estruturas de Repetição',
+        description: 'Laços contados e condicionais aplicados a problemas de repetição.',
+        videoUrl: 'https://www.youtube.com/embed/rTq13xgI_fA',
+        pdfs: [
+            { label: 'PDF - Laços de repetição', url: 'pdfs/estruturas_repeticao.pdf' }
+        ]
+    },
+    vetores_matrizes: {
+        title: 'Aula 5: Vetores e Matrizes',
+        description: 'Representação de coleções de dados em vetores e matrizes.',
+        videoUrl: 'https://www.youtube.com/embed/A-mzU40uolc',
+        pdfs: [
+            { label: 'PDF - Vetores e Matrizes', url: 'pdfs/vetores_matrizes.pdf' }
+        ]
+    },
+    resolucao_problemas: {
+        title: 'Aula 6: Resolução de Problemas',
+        description: 'Integração de estruturas de controle e vetores em pequenos projetos.',
+        videoUrl: 'https://www.youtube.com/embed/A-mzU40uolc',
+        pdfs: [
+            { label: 'PDF - Resolução de problemas', url: 'pdfs/resolucao_problemas.pdf' }
+        ]
     }
+};
 
-    function closeModal() {
-        const modal = document.getElementById('video-modal');
-        const videoEl = document.getElementById('modal-video');
-        videoEl.src = '';
-        modal.classList.add('hidden');
-    }
+function openLesson(id) {
+    const data = lessons[id];
+    if (!data) return;
 
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            closeModal();
-        }
+    const modal = document.getElementById('video-modal');
+    const titleEl = document.getElementById('modal-title');
+    const descEl = document.getElementById('modal-description');
+    const videoEl = document.getElementById('modal-video');
+    const pdfsEl = document.getElementById('modal-pdfs');
+
+    titleEl.textContent = data.title;
+    descEl.textContent = data.description;
+    videoEl.src = data.videoUrl;
+
+    pdfsEl.innerHTML = '';
+    data.pdfs.forEach(pdf => {
+        const link = document.createElement('a');
+        link.href = pdf.url;
+        link.target = '_blank';
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.textContent = pdf.label;
+        link.appendChild(btn);
+        pdfsEl.appendChild(link);
     });
+
+    modal.classList.remove('hidden');
+}
+
+function closeModal() {
+    const modal = document.getElementById('video-modal');
+    const videoEl = document.getElementById('modal-video');
+    videoEl.src = '';
+    modal.classList.add('hidden');
+}
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closeModal();
+    }
+});
 </script>
+
+<style>
+body {
+    background:#f4f6fb;
+}
+.video-grid {
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:20px;
+    margin-top:16px;
+}
+.video-card {
+    border-radius:18px;
+    padding:10px 10px 14px;
+    background:#fdf4ff;
+}
+.video-card:nth-child(2) { background:#ecfeff; }
+.video-card:nth-child(3) { background:#fefce8; }
+.video-card:nth-child(4) { background:#e0f2fe; }
+.video-card:nth-child(5) { background:#fce7f3; }
+.video-card:nth-child(6) { background:#ddf7e8; }
+
+.video-card img {
+    width:100%;
+    border-radius:12px;
+    margin-bottom:6px;
+}
+.play-btn {
+    margin-top:6px;
+    border:none;
+    border-radius:999px;
+    padding:6px 12px;
+    background:#2563eb;
+    color:#fff;
+    font-size:13px;
+    cursor:pointer;
+}
+.play-btn:hover { opacity:.95; }
+
+/* utilizada pelo widget */
+.ac-hidden { display:none; }
+</style>
+
 </body>
 </html>
-
-
-
-
-
