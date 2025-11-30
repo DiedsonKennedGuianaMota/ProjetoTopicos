@@ -386,5 +386,18 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = 'cadastro-padrao.html';
         }
     };
+    // --- 10. WIDGET DE ACESSIBILIDADE PADRÃO (BOTÃO FLUTUANTE) ---
+    const accessibilityBtn = document.getElementById('accessibility-btn');
+    const accessibilityWidget = document.getElementById('accessibility-widget');
+
+    if (accessibilityBtn && accessibilityWidget) {
+        // começa escondido
+        accessibilityWidget.classList.add('ac-hidden');
+
+        accessibilityBtn.addEventListener('click', () => {
+            accessibilityWidget.classList.toggle('ac-hidden');
+        });
+    }
 
 });
+
