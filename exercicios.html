@@ -42,9 +42,11 @@
 
     <div class="main-content">
         <div class="main-content-area exercicios-main">
-            <h1>Exercícios de Programação de Computadores e Algoritmos</h1>
-            <p>Complete os exercícios na ordem: primeiro as questões objetivas, depois o código em C. O módulo 2
-               é liberado somente após concluir o módulo 1.</p>
+            <h1 class="ex-title">Exercícios de Programação de Computadores e Algoritmos</h1>
+            <p class="ex-subtitle">
+                Complete os exercícios na ordem. Primeiro as questões objetivas da Unidade 1, depois o código em C.
+                A Unidade 2 é liberada somente após concluir a Unidade 1.
+            </p>
 
             <!-- AULA 1 -------------------------------------------------------->
             <div class="card-simple exercicio-card">
@@ -52,63 +54,92 @@
                 <p>Status do vídeo: <span id="status-video-a1">Vídeo não verificado</span>
                     (<a href="aulas.html#intro_algoritmos">abrir aula</a>)</p>
 
-                <!-- Exercício 1: múltipla escolha (3 questões) -->
+                <!-- Exercício 1: carrossel de 3 questões -->
                 <div class="card-simple inner-card">
-                    <h3>Exercício 1 – Questões objetivas</h3>
-                    <p>Responda às três questões. Ao acertar todas, o exercício prático será liberado.</p>
+                    <div class="ex-header-row">
+                        <h3>Exercício 1 – Questões objetivas</h3>
+                        <span id="ex1-a1-progresso" class="ex-steps-indicator">Questão 1 de 3</span>
+                    </div>
+                    <p>Responda questão por questão. Ao acertar as três, o exercício prático será liberado.</p>
 
-                    <form id="quiz-a1-form" class="quiz-form">
-                        <!-- Q1 -->
-                        <div class="quiz-question">
+                    <div class="ex-carousel" aria-live="polite">
+                        <!-- Slide 1 -->
+                        <div class="ex-slide active" data-index="0">
                             <p><strong>1)</strong> O que melhor descreve um algoritmo em programação de computadores?</p>
-                            <label><input type="radio" name="q1" value="a">
-                                a) Um programa já compilado e executável.</label>
-                            <label><input type="radio" name="q1" value="b">
-                                b) Uma sequência finita de passos bem definidos para resolver um problema.</label>
-                            <label><input type="radio" name="q1" value="c">
-                                c) Um conjunto aleatório de instruções sem ordem.</label>
-                            <label><input type="radio" name="q1" value="d">
-                                d) Apenas o código em linguagem de alto nível.</label>
+                            <form class="quiz-slide-form" data-q="1">
+                                <label><input type="radio" name="q1" value="a">
+                                    a) Um programa já compilado e executável.</label>
+                                <label><input type="radio" name="q1" value="b">
+                                    b) Uma sequência finita de passos bem definidos para resolver um problema.</label>
+                                <label><input type="radio" name="q1" value="c">
+                                    c) Um conjunto aleatório de instruções sem ordem.</label>
+                                <label><input type="radio" name="q1" value="d">
+                                    d) Apenas o código em linguagem de alto nível.</label>
+                            </form>
+                            <p class="quiz-feedback" id="fb-q1"></p>
+                            <div class="ex-nav-row">
+                                <button type="button" class="quiz-btn" onclick="verificarQuestao(1,'b')">
+                                    Verificar e ir para próxima
+                                </button>
+                            </div>
                         </div>
 
-                        <!-- Q2 -->
-                        <div class="quiz-question">
+                        <!-- Slide 2 -->
+                        <div class="ex-slide" data-index="1">
                             <p><strong>2)</strong> Qual alternativa representa um exemplo de entrada, processamento e saída?</p>
-                            <label><input type="radio" name="q2" value="a">
-                                a) Somar dois números e mostrar o resultado.</label>
-                            <label><input type="radio" name="q2" value="b">
-                                b) Guardar um número em uma variável.</label>
-                            <label><input type="radio" name="q2" value="c">
-                                c) Imprimir uma mensagem fixa na tela.</label>
-                            <label><input type="radio" name="q2" value="d">
-                                d) Ler um número, mas não fazer nada com ele.</label>
+                            <form class="quiz-slide-form" data-q="2">
+                                <label><input type="radio" name="q2" value="a">
+                                    a) Somar dois números e mostrar o resultado.</label>
+                                <label><input type="radio" name="q2" value="b">
+                                    b) Guardar um número em uma variável.</label>
+                                <label><input type="radio" name="q2" value="c">
+                                    c) Imprimir uma mensagem fixa na tela.</label>
+                                <label><input type="radio" name="q2" value="d">
+                                    d) Ler um número, mas não fazer nada com ele.</label>
+                            </form>
+                            <p class="quiz-feedback" id="fb-q2"></p>
+                            <div class="ex-nav-row">
+                                <button type="button" class="quiz-secondary-btn" onclick="voltarSlide()">
+                                    Voltar
+                                </button>
+                                <button type="button" class="quiz-btn" onclick="verificarQuestao(2,'a')">
+                                    Verificar e ir para próxima
+                                </button>
+                            </div>
                         </div>
 
-                        <!-- Q3 -->
-                        <div class="quiz-question">
+                        <!-- Slide 3 -->
+                        <div class="ex-slide" data-index="2">
                             <p><strong>3)</strong> Em um fluxograma simples, o losango é usado para:</p>
-                            <label><input type="radio" name="q3" value="a">
-                                a) Indicar o início e fim do algoritmo.</label>
-                            <label><input type="radio" name="q3" value="b">
-                                b) Representar uma operação de processamento.</label>
-                            <label><input type="radio" name="q3" value="c">
-                                c) Representar uma decisão (condição).</label>
-                            <label><input type="radio" name="q3" value="d">
-                                d) Mostrar dados de saída.</label>
+                            <form class="quiz-slide-form" data-q="3">
+                                <label><input type="radio" name="q3" value="a">
+                                    a) Indicar o início e fim do algoritmo.</label>
+                                <label><input type="radio" name="q3" value="b">
+                                    b) Representar uma operação de processamento.</label>
+                                <label><input type="radio" name="q3" value="c">
+                                    c) Representar uma decisão (condição).</label>
+                                <label><input type="radio" name="q3" value="d">
+                                    d) Mostrar dados de saída.</label>
+                            </form>
+                            <p class="quiz-feedback" id="fb-q3"></p>
+                            <div class="ex-nav-row">
+                                <button type="button" class="quiz-secondary-btn" onclick="voltarSlide()">
+                                    Voltar
+                                </button>
+                                <button type="button" class="quiz-btn" onclick="finalizarQuizA1()">
+                                    Verificar e finalizar
+                                </button>
+                            </div>
                         </div>
+                    </div>
 
-                        <button type="button" class="quiz-btn"
-                                onclick="corrigirQuizA1()">
-                            Verificar respostas
-                        </button>
-                    </form>
                     <p id="quiz-a1-feedback" class="quiz-feedback" aria-live="polite"></p>
                 </div>
 
                 <!-- Exercício 2 prático -->
                 <div id="ex2-a1-bloco" class="card-simple inner-card ex-bloqueado">
                     <h3>Exercício 2 – Código em C</h3>
-                    <p id="ex2-a1-status"><strong>Bloqueado.</strong> Acerte todas as questões do Exercício 1 para desbloquear.</p>
+                    <p id="ex2-a1-status"><strong>Bloqueado.</strong> Complete corretamente todas as questões do Exercício 1.</p>
                     <div id="ex2-a1-conteudo" style="display:none;">
                         <p>Baixe o enunciado, escreva o programa em C em seu computador e depois envie o arquivo
                            de>.c</code> pelo formulário abaixo.</p>
@@ -141,7 +172,6 @@
 
                 <div id="mod2-conteudo" style="display:none;">
 
-                    <!-- Exercício 1: múltipla escolha -->
                     <div class="card-simple inner-card">
                         <h3>Exercício 1 – Questões objetivas</h3>
                         <p>Perguntas sobre declaração de variáveis e uso de operadores.</p>
@@ -165,7 +195,7 @@
                             </div>
 
                             <div class="quiz-question">
-                                <p><strong>3)</strong> Em C, qual expressão avalia se duas variáveis inteiras
+                                <p><strong>3)</strong> Em C, qual expressão avalia se duas variáveis
                                    de>a</code> e de>b</code> são iguais?</p>
                                 <label><input type="radio" name="q3" value="a">a) a = b</label>
                                 <label><input type="radio" name="q3" value="b">b) a == b</label>
@@ -180,7 +210,6 @@
                         <p id="quiz-a2-feedback" class="quiz-feedback" aria-live="polite"></p>
                     </div>
 
-                    <!-- Exercício 2 prático -->
                     <div id="ex2-a2-bloco" class="card-simple inner-card ex-bloqueado">
                         <h3>Exercício 2 – Código em C</h3>
                         <p id="ex2-a2-status"><strong>Bloqueado.</strong> Acerte todas as questões do Exercício 1 para desbloquear.</p>
@@ -218,15 +247,53 @@
 <script src="script.js"></script>
 
 <script>
-// Estilo extra para inputs/botões elegantes
+// Layout mais centralizado, sem scroll extra
 const exStyle = document.createElement('style');
 exStyle.textContent = `
-.exercicios-main h1 { margin-bottom: 4px; }
-.exercicio-card { margin-bottom: 20px; }
-.inner-card { margin-top: 12px; }
-.quiz-form { margin-top: 6px; }
-.quiz-question { margin-bottom: 10px; font-size: 14px; }
-.quiz-question label { display:block; margin-left:8px; margin-bottom:2px; }
+.exercicios-main {
+    max-width: 780px;
+    margin: 0 auto;
+}
+.ex-title {
+    margin-top: 8px;
+    margin-bottom: 4px;
+    text-align: center;
+}
+.ex-subtitle {
+    text-align: center;
+    font-size: 13px;
+    opacity: .85;
+    margin-bottom: 18px;
+}
+.exercicio-card { margin-bottom: 18px; }
+.inner-card { margin-top: 10px; }
+.ex-header-row {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:8px;
+}
+.ex-steps-indicator {
+    font-size:12px;
+    opacity:.8;
+}
+.ex-carousel {
+    margin-top: 10px;
+    position: relative;
+    overflow: hidden;
+    min-height: 140px;
+}
+.ex-slide {
+    display:none;
+}
+.ex-slide.active {
+    display:block;
+}
+.quiz-slide-form label {
+    display:block;
+    margin-left:8px;
+    margin-bottom:2px;
+}
 .quiz-btn {
     margin-top: 8px;
     border:none;
@@ -237,8 +304,24 @@ exStyle.textContent = `
     font-size:14px;
     cursor:pointer;
 }
-.quiz-btn:hover { opacity:.95; }
+.quiz-secondary-btn {
+    margin-top: 8px;
+    border:none;
+    border-radius:999px;
+    padding:8px 12px;
+    background:#eef2ff;
+    color:#111827;
+    font-size:13px;
+    cursor:pointer;
+}
+.quiz-btn:hover,
+.quiz-secondary-btn:hover { opacity:.95; }
 .quiz-feedback { margin-top:6px; font-size:13px; }
+.ex-nav-row {
+    margin-top:4px;
+    display:flex;
+    gap:8px;
+}
 .codigo-upload { margin-top:10px; font-size:13px; }
 .codigo-upload input[type="file"] { display:block; margin-top:4px; margin-bottom:4px; }
 .ex-bloqueado { opacity:0.7; }
@@ -247,74 +330,100 @@ document.head.appendChild(exStyle);
 
 // Estado inicial: bloqueios e status
 document.addEventListener('DOMContentLoaded', () => {
-    // vídeo (se quiser marcar em aulas)
     const v1 = localStorage.getItem('video_a1_assistido') === 'true';
     const v2 = localStorage.getItem('video_a2_assistido') === 'true';
     document.getElementById('status-video-a1').textContent = v1 ? 'Vídeo marcado como assistido' : 'Vídeo não verificado';
     document.getElementById('status-video-a2').textContent = v2 ? 'Vídeo marcado como assistido' : 'Vídeo não verificado';
 
-    // Aula 1 já concluída?
     const aula1Ok = localStorage.getItem('pca_mod1_exercicios_ok') === 'true';
     if (aula1Ok) {
         desbloquearPratico('a1');
         desbloquearModulo2();
     } else {
-        // módulo 2 bloqueado até concluir aula 1
         document.getElementById('mod2-bloqueio').style.display = 'block';
         document.getElementById('mod2-conteudo').style.display = 'none';
     }
 
-    // Se já concluiu aula 2 antes
     const aula2Ok = localStorage.getItem('pca_mod2_exercicios_ok') === 'true';
     if (aula2Ok) {
         desbloquearPratico('a2');
     }
+
+    atualizarIndicadorEx1(0);
 });
 
-// --------- QUIZ AULA 1 ----------
-function corrigirQuizA1() {
-    const form = document.getElementById('quiz-a1-form');
-    const fb   = document.getElementById('quiz-a1-feedback');
+// ----- carrossel de questões da Aula 1 -----
+let slideAtual = 0; // 0,1,2
+const totalSlides = 3;
+const respostasCorretas = {1:false,2:false,3:false};
 
-    const q1 = form.q1.value;
-    const q2 = form.q2.value;
-    const q3 = form.q3.value;
+function mostrarSlide(idx) {
+    const slides = document.querySelectorAll('.ex-slide');
+    slides.forEach(s => s.classList.remove('active'));
+    const alvo = slides[idx];
+    if (alvo) alvo.classList.add('active');
+    slideAtual = idx;
+    atualizarIndicadorEx1(idx);
+}
 
-    let erros = [];
+function atualizarIndicadorEx1(idx){
+    const span = document.getElementById('ex1-a1-progresso');
+    span.textContent = `Questão ${idx+1} de ${totalSlides}`;
+}
 
-    if (q1 !== 'b') {
-        erros.push('Questão 1: um algoritmo é uma sequência de passos, não um programa pronto nem código isolado.');
+function voltarSlide(){
+    if (slideAtual > 0) {
+        mostrarSlide(slideAtual - 1);
     }
-    if (q2 !== 'a') {
-        erros.push('Questão 2: entrada, processamento e saída aparecem quando somamos dois números e mostramos o resultado.');
-    }
-    if (q3 !== 'c') {
-        erros.push('Questão 3: no fluxograma, o losango é usado para decisões (condições).');
-    }
+}
 
-    if (!q1 || !q2 || !q3) {
-        fb.textContent = 'Responda todas as questões antes de verificar.';
+function verificarQuestao(num, correta) {
+    const form = document.querySelector(`.quiz-slide-form[data-q="${num}"]`);
+    const fb   = document.getElementById(`fb-q${num}`);
+    const selecionada = form.querySelector('input[type="radio"]:checked');
+
+    if (!selecionada) {
+        fb.textContent = 'Selecione uma alternativa antes de continuar.';
         fb.style.color = '#c62828';
         return;
     }
 
-    if (erros.length === 0) {
-        fb.textContent = 'Muito bem! Todas as respostas estão corretas. O exercício prático foi liberado.';
+    if (selecionada.value === correta) {
+        respostasCorretas[num] = true;
+        fb.textContent = 'Correto! Pode avançar para a próxima questão.';
         fb.style.color = '#2e7d32';
-        localStorage.setItem('pca_mod1_exercicios_ok', 'true');
-        localStorage.setItem('pca_mod1_concluido', 'true');
-        desbloquearPratico('a1');
-        desbloquearModulo2();
+        if (slideAtual < totalSlides - 1) {
+            setTimeout(() => mostrarSlide(slideAtual + 1), 400);
+        }
     } else {
-        fb.textContent = 'Algumas respostas estão incorretas:\n- ' + erros.join('\n- ');
-        fb.style.whiteSpace = 'pre-line';
+        respostasCorretas[num] = false;
+        let motivo = '';
+        if (num === 1) {
+            motivo = 'Um algoritmo é uma sequência de passos para resolver um problema, não um programa pronto.';
+        } else if (num === 2) {
+            motivo = 'Entrada, processamento e saída aparecem quando somamos dois números e mostramos o resultado.';
+        }
+        fb.textContent = 'Resposta incorreta. ' + motivo;
         fb.style.color = '#c62828';
     }
 }
 
-// --------- QUIZ AULA 2 ----------
+function finalizarQuizA1() {
+    verificarQuestao(3,'c');
+    if (respostasCorretas[1] && respostasCorretas[2] && respostasCorretas[3]) {
+        const fbGeral = document.getElementById('quiz-a1-feedback');
+        fbGeral.textContent = 'Muito bem! Você concluiu todas as questões. O exercício prático foi liberado.';
+        fbGeral.style.color = '#2e7d32';
+        localStorage.setItem('pca_mod1_exercicios_ok', 'true');
+        localStorage.setItem('pca_mod1_concluido', 'true');
+        localStorage.setItem('pca_mod1_progresso', '100');
+        desbloquearPratico('a1');
+        desbloquearModulo2();
+    }
+}
+
+// --------- QUIZ AULA 2 (igual antes) ----------
 function corrigirQuizA2() {
-    // Só corrige se módulo 2 estiver liberado
     if (localStorage.getItem('pca_mod1_exercicios_ok') !== 'true') {
         alert('Conclua primeiro os exercícios da Aula 1.');
         return;
@@ -333,7 +442,7 @@ function corrigirQuizA2() {
         erros.push('Questão 1: em C, a declaração correta é "int idade;".');
     }
     if (q2 !== 'c') {
-        erros.push('Questão 2: o operador de resto de divisão inteira é o símbolo de porcentagem (%).');
+        erros.push('Questão 2: o operador de resto de divisão inteira é o símbolo %.');
     }
     if (q3 !== 'b') {
         erros.push('Questão 3: para comparar igualdade em C usamos "==", não "=".');
@@ -350,6 +459,7 @@ function corrigirQuizA2() {
         fb.style.color = '#2e7d32';
         localStorage.setItem('pca_mod2_exercicios_ok', 'true');
         localStorage.setItem('pca_mod2_concluido', 'true');
+        localStorage.setItem('pca_mod2_progresso', '100');
         desbloquearPratico('a2');
     } else {
         fb.textContent = 'Algumas respostas estão incorretas:\n- ' + erros.join('\n- ');
@@ -400,17 +510,9 @@ function enviarCodigo(aulaId) {
         return;
     }
 
-    fb.textContent = 'Código recebido! Este envio é uma simulação; você pode mostrar o arquivo ao professor para correção.';
+    fb.textContent = 'Código recebido! Este envio é uma simulação; mostre o arquivo ao professor para correção.';
     fb.style.color = '#2e7d32';
-
-    // marca pequeno progresso para a home (opcional)
-    if (aulaId === 'a1') {
-        localStorage.setItem('pca_mod1_progresso', '100');
-    } else {
-        localStorage.setItem('pca_mod2_progresso', '100');
-    }
 }
 </script>
 </body>
 </html>
-
