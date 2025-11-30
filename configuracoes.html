@@ -84,10 +84,10 @@
 <div class="dashboard-layout">
     <div class="sidebar">
         <div class="profile-box">
-    <img id="aluno-foto" src="https://i.imgur.com/gKjG1o2.png" alt="Foto de perfil do Aluno">
-    <p id="aluno-nome" class="aluno-name" style="font-weight: 600;">Aluno</p>
-    <p id="aluno-email" class="aluno-email">aluno.ic9@educ.edu.br</p>
-</div>
+            <img id="aluno-foto" src="https://i.imgur.com/gKjG1o2.png" alt="Foto de perfil do Aluno">
+            <p id="aluno-nome" class="aluno-name" style="font-weight: 600;">Aluno</p>
+            <p id="aluno-email" class="aluno-email">aluno.ic9@educ.edu.br</p>
+        </div>
         <nav class="sidebar-nav">
             <div class="nav-item"><a href="home.html"><i class="icon">🏠</i>Home</a></div>
             <div class="nav-item"><a href="forum.html"><i class="icon">💬</i>Fórum</a></div>
@@ -103,15 +103,15 @@
     </div>
 
     <div class="main-content">
-        <div class="main-content-area">
-            <h1 style="margin-bottom: 25px;">Configurações de Acessibilidade e Perfil</h1>
+        <div class="main-content-area config-main">
+            <h1 style="margin-bottom: 20px;">Configurações de Acessibilidade e Perfil</h1>
 
             <!-- Bloco resumo de acessibilidade -->
-            <div class="card-simple" style="margin-bottom: 20px;">
-                <h2 style="font-size: 1.5rem; margin-bottom: 10px;">Resumo de acessibilidade</h2>
+            <div class="card-simple config-card c1">
+                <h2>Resumo de acessibilidade</h2>
                 <p>Personalize como o EducaFácil se adapta às suas necessidades. As mesmas opções também podem ser
                    acessadas rapidamente pelo botão flutuante de acessibilidade no canto da tela.</p>
-                <ul style="margin-top:8px; font-size:14px;">
+                <ul>
                     <li>Ative um perfil de acessibilidade (ex.: Cego, Daltônico, Dislexia).</li>
                     <li>Ajuste contraste, tamanho de texto, espaçamento e saturação das cores.</li>
                     <li>Ative leitura da página em voz alta e Talkback para teclado e mouse.</li>
@@ -119,21 +119,19 @@
             </div>
 
             <!-- Preferências de acessibilidade -->
-            <div class="card-simple" style="margin-bottom: 20px;">
-                <h2 style="font-size: 1.5rem; margin-bottom: 10px;">Preferências de acessibilidade</h2>
+            <div class="card-simple config-card c2">
+                <h2>Preferências de acessibilidade</h2>
 
                 <form id="ac-preferences-form">
                     <label for="pref-profile">Perfil padrão ao entrar na plataforma</label>
-                    <select id="pref-profile"
-                            style="width:100%; padding:8px; border-radius:8px; border:1px solid #ccc; margin-bottom:10px;">
+                    <select id="pref-profile">
                         <option value="padrao">Nenhum (padrão visual)</option>
                         <option value="visual">Visual (leitura de tela reforçada)</option>
                         <option value="auditory">Auditivo (LIBRAS + Talkback)</option>
                     </select>
 
                     <label for="pref-voice">Preferência de voz</label>
-                    <select id="pref-voice"
-                            style="width:100%; padding:8px; border-radius:8px; border:1px solid #ccc; margin-bottom:10px;">
+                    <select id="pref-voice">
                         <option value="desligada">Desligada</option>
                         <option value="leitura-pagina">Somente leitura da página</option>
                         <option value="talkback">Somente Talkback</option>
@@ -141,79 +139,71 @@
                     </select>
 
                     <label for="pref-font">Estilo de fonte preferido</label>
-                    <select id="pref-font"
-                            style="width:100%; padding:8px; border-radius:8px; border:1px solid #ccc; margin-bottom:10px;">
+                    <select id="pref-font">
                         <option value="padrão">Padrão</option>
                         <option value="sans">Sans-serif maior</option>
                         <option value="dislexia">Fonte amigável para dislexia</option>
                     </select>
 
-                    <label>
+                    <label class="check-row">
                         <input type="checkbox" id="pref-reduzir-animacoes">
-                        Reduzir animações por padrão (recomendado para pessoas com epilepsia ou sensibilidade visual).
-                    </label><br>
-                    <label>
+                        Reduzir animações por padrão.
+                    </label>
+                    <label class="check-row">
                         <input type="checkbox" id="pref-alto-contraste">
                         Iniciar sempre com contraste reforçado.
                     </label>
 
-                    <button type="button" class="play-btn" style="margin-top:10px;" onclick="salvarPreferenciasAcessibilidade()">
+                    <button type="button" class="play-btn" onclick="salvarPreferenciasAcessibilidade()">
                         Salvar preferências de acessibilidade
                     </button>
-                    <p id="pref-ac-feedback" aria-live="polite" style="margin-top:8px;"></p>
+                    <p id="pref-ac-feedback" aria-live="polite"></p>
                 </form>
             </div>
 
             <!-- Dados do perfil -->
-            <div class="card-simple" style="margin-bottom: 20px;">
-                <h2 style="font-size: 1.5rem; margin-bottom: 10px;">Dados do Perfil</h2>
+            <div class="card-simple config-card c3">
+                <h2>Dados do Perfil</h2>
                 <form id="profile-form">
 
                     <label for="perfil-nome">Nome</label>
-                    <input id="perfil-nome" type="text"
-                           style="width:100%; padding:8px; border-radius:8px; border:1px solid #ccc; margin-bottom:8px;">
+                    <input id="perfil-nome" type="text">
 
                     <label for="perfil-email">E-mail</label>
-                    <input id="perfil-email" type="email"
-                           style="width:100%; padding:8px; border-radius:8px; border:1px solid #ccc; margin-bottom:8px;">
-                    <label for="perfil-foto">URL da foto de perfil (da internet)</label>
-<input id="perfil-foto" type="url"
-       placeholder="https://exemplo.com/minha-foto.png"
-       style="width:100%; padding:8px; border-radius:8px; border:1px solid #ccc; margin-bottom:8px;">
+                    <input id="perfil-email" type="email">
 
+                    <label for="perfil-foto">URL da foto de perfil (da internet)</label>
+                    <input id="perfil-foto" type="url" placeholder="https://exemplo.com/minha-foto.png">
 
                     <label for="perfil-turma">Turma / Série</label>
-                    <input id="perfil-turma" type="text"
-                           style="width:100%; padding:8px; border-radius:8px; border:1px solid #ccc; margin-bottom:8px;">
+                    <input id="perfil-turma" type="text">
 
                     <label for="perfil-objetivo">Objetivo de estudo</label>
-                    <textarea id="perfil-objetivo" rows="3"
-                              style="width:100%; padding:8px; border-radius:8px; border:1px solid #ccc; margin-bottom:8px;"></textarea>
+                    <textarea id="perfil-objetivo" rows="3"></textarea>
 
                     <button type="button" class="play-btn" onclick="salvarPerfil()">
                         Salvar dados do perfil
                     </button>
-                    <p id="perfil-feedback" aria-live="polite" style="margin-top:8px;"></p>
+                    <p id="perfil-feedback" aria-live="polite"></p>
                 </form>
             </div>
 
             <!-- Outras configurações -->
-            <div class="card-simple">
-                <h2 style="font-size: 1.5rem; margin-bottom: 10px;">Outras configurações</h2>
-                <label>
+            <div class="card-simple config-card c4">
+                <h2>Outras configurações</h2>
+                <label class="check-row">
                     <input type="checkbox" id="pref-notificacoes" checked>
                     Receber notificações sobre novas atividades, exercícios e respostas no fórum.
-                </label><br>
-                <label>
+                </label>
+                <label class="check-row">
                     <input type="checkbox" id="pref-som-interface" checked>
                     Ativar sons simples de interface (cliques, confirmação de envio).
-                </label><br>
-                <button type="button" class="play-btn" style="margin-top:10px;" onclick="salvarOutrasPreferencias()">
+                </label>
+                <button type="button" class="play-btn" onclick="salvarOutrasPreferencias()">
                     Salvar outras configurações
                 </button>
-                <p id="outras-feedback" aria-live="polite" style="margin-top:8px;"></p>
+                <p id="outras-feedback" aria-live="polite"></p>
             </div>
-
 
         </div>
     </div>
@@ -226,101 +216,131 @@
 
 <script src="script.js"></script>
 <script>
-    // Carrega e salva preferências simples no localStorage para configurar a experiência do usuário
-    document.addEventListener('DOMContentLoaded', () => {
-        function salvarPerfil() {
-    localStorage.setItem('perfil_nome', document.getElementById('perfil-nome').value.trim());
-    localStorage.setItem('perfil_email', document.getElementById('perfil-email').value.trim());
-    localStorage.setItem('perfil_turma', document.getElementById('perfil-turma').value.trim());
-    localStorage.setItem('perfil_objetivo', document.getElementById('perfil-objetivo').value.trim());
-    const foto = localStorage.getItem('perfil_foto');
-if (foto) document.getElementById('perfil-foto').value = foto;
+// carregar valores salvos e atualizar formulário
+document.addEventListener('DOMContentLoaded', () => {
+    // Acessibilidade
+    const prof   = localStorage.getItem('pref_profile_mode');
+    const voice  = localStorage.getItem('pref_voice_mode');
+    const font   = localStorage.getItem('pref_font_style');
+    const redAnim = localStorage.getItem('pref_reduce_anim') === 'true';
+    const highC   = localStorage.getItem('pref_high_contrast') === 'true';
 
+    if (prof)  document.getElementById('pref-profile').value = prof;
+    if (voice) document.getElementById('pref-voice').value   = voice;
+    if (font)  document.getElementById('pref-font').value    = font;
+    document.getElementById('pref-reduzir-animacoes').checked = redAnim;
+    document.getElementById('pref-alto-contraste').checked    = highC;
 
-    document.getElementById('perfil-feedback').textContent =
-        'Dados do perfil salvos somente neste navegador.';
-    document.getElementById('perfil-feedback').style.color = '#2e7d32';
+    // Perfil
+    const nome     = localStorage.getItem('perfil_nome');
+    const email    = localStorage.getItem('perfil_email');
+    const turma    = localStorage.getItem('perfil_turma');
+    const objetivo = localStorage.getItem('perfil_objetivo');
+    const foto     = localStorage.getItem('perfil_foto');
+
+    if (nome)  document.getElementById('perfil-nome').value      = nome;
+    if (email) document.getElementById('perfil-email').value     = email;
+    if (turma) document.getElementById('perfil-turma').value     = turma;
+    if (objetivo) document.getElementById('perfil-objetivo').value = objetivo;
+    if (foto)  document.getElementById('perfil-foto').value      = foto;
+});
+
+// salvar acessibilidade
+function salvarPreferenciasAcessibilidade() {
+    localStorage.setItem('pref_profile_mode', document.getElementById('pref-profile').value);
+    localStorage.setItem('pref_voice_mode',   document.getElementById('pref-voice').value);
+    localStorage.setItem('pref_font_style',   document.getElementById('pref-font').value);
+    localStorage.setItem('pref_reduce_anim',  document.getElementById('pref-reduzir-animacoes').checked);
+    localStorage.setItem('pref_high_contrast',document.getElementById('pref-alto-contraste').checked);
+
+    const fb = document.getElementById('pref-ac-feedback');
+    fb.textContent = 'Preferências de acessibilidade salvas. Elas serão aplicadas nas próximas páginas.';
+    fb.style.color = '#2e7d32';
 }
 
-        // Acessibilidade
-        const prof = localStorage.getItem('pref_profile_mode');
-        const voice = localStorage.getItem('pref_voice_mode');
-        const font = localStorage.getItem('pref_font_style');
-        const redAnim = localStorage.getItem('pref_reduce_anim') === 'true';
-        const highC = localStorage.getItem('pref_high_contrast') === 'true';
-
-        if (prof) document.getElementById('pref-profile').value = prof;
-        if (voice) document.getElementById('pref-voice').value = voice;
-        if (font) document.getElementById('pref-font').value = font;
-        document.getElementById('pref-reduzir-animacoes').checked = redAnim;
-        document.getElementById('pref-alto-contraste').checked = highC;
-
-        // Perfil
-        const nome = localStorage.getItem('perfil_nome');
-        const email = localStorage.getItem('perfil_email');
-        const turma = localStorage.getItem('perfil_turma');
-        const objetivo = localStorage.getItem('perfil_objetivo');
-        if (nome) document.getElementById('perfil-nome').value = nome;
-        if (email) document.getElementById('perfil-email').value = email;
-        if (turma) document.getElementById('perfil-turma').value = turma;
-        if (objetivo) document.getElementById('perfil-objetivo').value = objetivo;
-
-        // Outras
-        const notif = localStorage.getItem('pref_notificacoes');
-        const som = localStorage.getItem('pref_som_interface');
-        if (notif !== null) document.getElementById('pref-notificacoes').checked = notif === 'true';
-        if (som !== null) document.getElementById('pref-som-interface').checked = som === 'true';
-    });
-
-    function salvarPreferenciasAcessibilidade() {
-        localStorage.setItem('pref_profile_mode', document.getElementById('pref-profile').value);
-        localStorage.setItem('pref_voice_mode', document.getElementById('pref-voice').value);
-        localStorage.setItem('pref_font_style', document.getElementById('pref-font').value);
-        localStorage.setItem('pref_reduce_anim', document.getElementById('pref-reduzir-animacoes').checked);
-        localStorage.setItem('pref_high_contrast', document.getElementById('pref-alto-contraste').checked);
-
-        document.getElementById('pref-ac-feedback').textContent =
-            'Preferências de acessibilidade salvas. Elas serão aplicadas nas próximas páginas.';
-        document.getElementById('pref-ac-feedback').style.color = '#2e7d32';
-    }
-
-    function salvarPerfil() {
-        localStorage.setItem('perfil_nome', document.getElementById('perfil-nome').value.trim());
-        localStorage.setItem('perfil_email', document.getElementById('perfil-email').value.trim());
-        localStorage.setItem('perfil_turma', document.getElementById('perfil-turma').value.trim());
-        localStorage.setItem('perfil_objetivo', document.getElementById('perfil-objetivo').value.trim());
-
-        document.getElementById('perfil-feedback').textContent =
-            'Dados do perfil salvos somente neste navegador.';
-        document.getElementById('perfil-feedback').style.color = '#2e7d32';
-    }
-
-    function salvarOutrasPreferencias() {
-        localStorage.setItem('pref_notificacoes', document.getElementById('pref-notificacoes').checked);
-        localStorage.setItem('pref_som_interface', document.getElementById('pref-som-interface').checked);
-
-        document.getElementById('outras-feedback').textContent =
-            'Outras configurações salvas.';
-        document.getElementById('outras-feedback').style.color = '#2e7d32';
-    }
-    function salvarPerfil() {
-    localStorage.setItem('perfil_nome', document.getElementById('perfil-nome').value.trim());
-    localStorage.setItem('perfil_email', document.getElementById('perfil-email').value.trim());
-    localStorage.setItem('perfil_turma', document.getElementById('perfil-turma').value.trim());
+// salvar perfil (usado também pelo script.js para mostrar na sidebar)
+function salvarPerfil() {
+    localStorage.setItem('perfil_nome',     document.getElementById('perfil-nome').value.trim());
+    localStorage.setItem('perfil_email',    document.getElementById('perfil-email').value.trim());
+    localStorage.setItem('perfil_turma',    document.getElementById('perfil-turma').value.trim());
     localStorage.setItem('perfil_objetivo', document.getElementById('perfil-objetivo').value.trim());
-    localStorage.setItem('perfil_foto', document.getElementById('perfil-foto').value.trim());
+    localStorage.setItem('perfil_foto',     document.getElementById('perfil-foto').value.trim());
 
-    document.getElementById('perfil-feedback').textContent =
-        'Dados do perfil salvos somente neste navegador.';
-    document.getElementById('perfil-feedback').style.color = '#2e7d32';
+    const fb = document.getElementById('perfil-feedback');
+    fb.textContent = 'Dados do perfil salvos somente neste navegador.';
+    fb.style.color = '#2e7d32';
 }
 
+// salvar outras preferências
+function salvarOutrasPreferencias() {
+    localStorage.setItem('pref_notificacoes', document.getElementById('pref-notificacoes').checked);
+    localStorage.setItem('pref_som_interface', document.getElementById('pref-som-interface').checked);
 
+    const fb = document.getElementById('outras-feedback');
+    fb.textContent = 'Outras configurações salvas.';
+    fb.style.color = '#2e7d32';
+}
 </script>
+
+<style>
+body {
+    background:#f4f6fb;
+}
+.config-main {
+    max-width:900px;
+    margin:0 auto;
+}
+.config-main h1 {
+    margin-top:18px;
+}
+.config-card {
+    margin-bottom:18px;
+    border-radius:18px;
+    padding:16px 18px 18px;
+}
+.config-card.c1 { background:#fdf4ff; }
+.config-card.c2 { background:#ecfeff; }
+.config-card.c3 { background:#fefce8; }
+.config-card.c4 { background:#e0f2fe; }
+
+.config-card h2 {
+    font-size:1.3rem;
+    margin-bottom:8px;
+}
+.config-card ul {
+    margin-top:6px;
+    font-size:14px;
+}
+#ac-preferences-form select,
+#profile-form input,
+#profile-form textarea {
+    width:100%;
+    padding:8px;
+    border-radius:8px;
+    border:1px solid #d1d5db;
+    margin-bottom:8px;
+    font-size:14px;
+}
+.check-row {
+    display:block;
+    margin:4px 0;
+    font-size:14px;
+}
+.play-btn {
+    margin-top:8px;
+    border:none;
+    border-radius:999px;
+    padding:7px 14px;
+    background:#2563eb;
+    color:#fff;
+    font-size:13px;
+    cursor:pointer;
+}
+.play-btn:hover { opacity:.96; }
+
+/* classe usada pelo widget */
+.ac-hidden { display:none; }
+</style>
+
 </body>
 </html>
-
-
-
-
-
