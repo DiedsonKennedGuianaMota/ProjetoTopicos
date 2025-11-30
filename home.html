@@ -51,7 +51,7 @@
             <div class="home-grid home-grid-elegant">
 
                 <!-- Card 1: Progresso em PCA -->
-                <div class="card-simple progress-card" tabindex="0"
+                <div class="card-simple progress-card home-card-a1" tabindex="0"
                      aria-label="Seu progresso em Programação de Computadores e Algoritmos">
                     <h3>Progresso em PCA</h3>
 
@@ -91,7 +91,7 @@
                 </div>
 
                 <!-- Card 2: Conteúdos em estudo -->
-                <div class="card-simple theories-card" tabindex="0"
+                <div class="card-simple theories-card home-card-a2" tabindex="0"
                      aria-label="Tópicos em estudo em programação de computadores e algoritmos">
                     <h3>Conteúdos em estudo</h3>
                     <ul class="home-list">
@@ -105,7 +105,7 @@
                 </div>
 
                 <!-- Card 3: Módulo em destaque -->
-                <div class="card-simple highlight-card" tabindex="0"
+                <div class="card-simple highlight-card home-card-a3" tabindex="0"
                      aria-label="Módulo em destaque de Programação de Computadores e Algoritmos">
                     <h2>Módulo em destaque</h2>
                     <p id="mod-destaque-text">Fundamentos de Programação</p>
@@ -119,7 +119,7 @@
                 </div>
 
                 <!-- Card 4: Próximos passos -->
-                <div class="card-simple" tabindex="0"
+                <div class="card-simple home-card-a4" tabindex="0"
                      aria-label="Próximos passos em programação de computadores e algoritmos">
                     <h3>Próximos passos</h3>
                     <ul class="home-list">
@@ -140,9 +140,12 @@
 
 <script src="script.js"></script>
 <script>
-// Estilo extra para deixar a home mais elegante (opcional)
+// Estilo extra: cards com cores pastel e grid
 const homeStyle = document.createElement('style');
 homeStyle.textContent = `
+body {
+    background:#f4f6fb;
+}
 .home-main h1 { margin-bottom: 4px; }
 .home-subtitle { font-size: 13px; opacity: .8; margin-bottom: 16px; }
 .home-grid-elegant {
@@ -151,6 +154,13 @@ homeStyle.textContent = `
     grid-template-rows: auto auto;
     gap: 18px;
 }
+
+/* cores pastel dos cards */
+.home-card-a1 { background:#fdf4ff; }
+.home-card-a2 { background:#ecfeff; }
+.home-card-a3 { background:#fefce8; }
+.home-card-a4 { background:#e0f2fe; }
+
 .home-list { padding-left: 18px; font-size: 14px; }
 .home-list li { margin-bottom: 4px; }
 .progress-item { margin-bottom: 10px; position: relative; padding-right: 40px; }
@@ -173,14 +183,13 @@ homeStyle.textContent = `
     cursor: pointer;
 }
 .home-link-btn:hover { opacity: .95; }
+
+/* classe utilitária: esconder widget */
+.ac-hidden { display:none; }
 `;
 document.head.appendChild(homeStyle);
 
-// --- PROGRESSO VIA localStorage ---
-// Chaves esperadas (você já usa em exercícios/aulas):
-// pca_mod1_concluido, pca_mod2_concluido, pca_mod3_concluido  -> "true" ou não definido
-// pca_mod1_progresso, pca_mod2_progresso, pca_mod3_progresso -> 0..100 (opcional)
-
+// Progresso via localStorage
 function lerProgressoModulo(chaveConcluido, chaveParcial) {
     if (localStorage.getItem(chaveConcluido) === 'true') return 100;
     const parcial = parseInt(localStorage.getItem(chaveParcial) || '0', 10);
@@ -188,7 +197,7 @@ function lerProgressoModulo(chaveConcluido, chaveParcial) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Perfil (se estiver salvo)
+    // Perfil
     const nome  = localStorage.getItem('perfil_nome');
     const email = localStorage.getItem('perfil_email');
     const foto  = localStorage.getItem('perfil_foto');
@@ -196,7 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (email) document.getElementById('aluno-email').textContent = email;
     if (foto)  document.getElementById('aluno-foto').src          = foto;
 
-    // Progresso de cada módulo
+    // Progresso módulos
     const m1 = lerProgressoModulo('pca_mod1_concluido', 'pca_mod1_progresso');
     const m2 = lerProgressoModulo('pca_mod2_concluido', 'pca_mod2_progresso');
     const m3 = lerProgressoModulo('pca_mod3_concluido', 'pca_mod3_progresso');
@@ -215,7 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('prog-total').style.width = total + '%';
     document.getElementById('prog-total-text').textContent = total + '%';
 
-    // Módulo em destaque = o de menor progresso > 0, senão o primeiro
+    // Módulo em destaque
     let destaqueIndex = 1;
     let destaqueValor = m1;
     if (m2 < destaqueValor) { destaqueIndex = 2; destaqueValor = m2; }
@@ -229,6 +238,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('mod-destaque-text').textContent = nomes[destaqueIndex];
     document.getElementById('prog-destaque').style.width = destaqueValor + '%';
+
+    // Widget flutuante: toggle simples (reforço além do script.js)
+    const accessibilityBtn = document.getElementById('accessibility-btn');
+    const accessibilityWidget = document.getElementById('accessibility-widget');
+    if (accessibilityBtn && accessibilityWidget) {
+        accessibilityBtn.addEventListener('click', () => {
+            accessibilityWidget.classList.toggle('ac-hidden');
+        });
+    }
 });
 </script>
 </body>
