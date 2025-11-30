@@ -11,7 +11,7 @@
 </head>
 <body id="page-body">
 
-<!-- WIDGET DE ACESSIBILIDADE (NOVO) -->
+<!-- WIDGET DE ACESSIBILIDADE -->
 <div id="accessibility-widget" class="ac-widget ac-hidden" aria-hidden="true">
     <div class="ac-header">
         <div class="ac-header-top">
@@ -84,10 +84,10 @@
 <div class="dashboard-layout">
     <div class="sidebar">
         <div class="profile-box">
-    <img id="aluno-foto" src="https://i.imgur.com/gKjG1o2.png" alt="Foto de perfil do Aluno">
-    <p id="aluno-nome" class="aluno-name" style="font-weight: 600;">Aluno</p>
-    <p id="aluno-email" class="aluno-email">aluno.ic9@educ.edu.br</p>
-</div>
+            <img id="aluno-foto" src="https://i.imgur.com/gKjG1o2.png" alt="Foto de perfil do Aluno">
+            <p id="aluno-nome" class="aluno-name" style="font-weight: 600;">Aluno</p>
+            <p id="aluno-email" class="aluno-email">aluno.ic9@educ.edu.br</p>
+        </div>
         <nav class="sidebar-nav">
             <div class="nav-item"><a href="home.html"><i class="icon">🏠</i>Home</a></div>
             <div class="nav-item"><a href="forum.html"><i class="icon">💬</i>Fórum</a></div>
@@ -104,50 +104,36 @@
 
     <div class="main-content">
         <div class="main-content-area">
-            <h1 style="margin-bottom: 10px;">Meus Certificados</h1>
-            <p style="margin-bottom: 30px;">
-                Parabéns por sua dedicação! Aqui você encontra os certificados emitidos pelas atividades
-                de Programação de Computadores e Algoritmos e por outros módulos concluídos.
+            <h1 style="margin: 18px 0 10px;">Meus Certificados</h1>
+            <p style="margin-bottom: 24px;">
+                Acompanhe aqui seus certificados da disciplina de Programação de Computadores e Algoritmos (PCA).
+                O certificado final é liberado automaticamente quando todas as unidades e exercícios forem concluídos.
             </p>
 
-            <!-- Resumo de progresso -->
+            <!-- Resumo de progresso PCA -->
             <div class="card-simple" style="margin-bottom: 20px;">
-                <h2 style="font-size:1.4rem; margin-bottom:8px;">Resumo de conclusão</h2>
-                <p>Certificados conquistados: <strong>1</strong> de <strong>6</strong> módulos planejados.</p>
+                <h2 style="font-size:1.3rem; margin-bottom:6px;">Resumo de conclusão de PCA</h2>
+                <p>
+                    Módulos concluídos: <strong id="pca-modulos-ok">0</strong> de <strong>6</strong> ·
+                    Exercícios práticos entregues: <strong id="pca-praticos-ok">0</strong> de <strong>2</strong>.
+                </p>
                 <div class="progress-bar-container" style="margin-top:8px;">
-                    <div class="progress-bar primary" style="width: 16%;"></div>
+                    <div id="pca-progress-bar" class="progress-bar primary" style="width: 0%;"></div>
                 </div>
             </div>
 
-            <!-- Certificado 1 - exemplo antigo adaptado -->
+            <!-- Certificado PCA -->
             <div class="card-simple" style="padding: 24px; margin-bottom: 20px;">
                 <h2 style="font-size: 1.4rem; margin-bottom: 5px;">
-                    Certificado: Introdução à Psicologia da Educação
-                </h2>
-                <p style="margin-bottom: 8px;">Concluído em: 17 de janeiro de 2019</p>
-                <p style="font-size: 14px; margin-bottom: 16px;">
-                    Carga horária: 20h · Situação: Concluído.
-                </p>
-                <button class="form-btn"
-                        style="width: 100%; padding: 12px 0;"
-                        type="button"
-                        onclick="window.open('certificados/psicologia_educacao.pdf','_blank')"
-                        aria-label="Baixar certificado de Introdução à Psicologia da Educação em PDF">
-                    Baixar Certificado (PDF)
-                </button>
-            </div>
-
-            <!-- Certificado PCA - quando concluir todos os módulos -->
-            <div class="card-simple" style="padding: 24px; margin-bottom: 20px;">
-                <h2 style="font-size: 1.4rem; margin-bottom: 5px;">
-                    Certificado: Programação de Computadores e Algoritmos
+                    Certificado: Programação de Computadores e Algoritmos (PCA)
                 </h2>
                 <p id="cert-pca-status" style="margin-bottom: 8px;">
                     Situação: Em andamento. Conclua todas as aulas e exercícios para liberar o certificado.
                 </p>
                 <p style="font-size: 14px; margin-bottom: 16px;">
-                    Carga horária prevista: 40h · Requisitos: assistir às 6 aulas, atingir 70% ou mais
-                    nos exercícios e entregar pelo menos 2 códigos práticos.
+                    Carga horária prevista: 40h · Conteúdos incluídos:
+                    introdução a algoritmos, variáveis e operadores, estruturas de decisão e repetição,
+                    vetores/matrizes e resolução de problemas com projetos práticos.
                 </p>
                 <button id="cert-pca-btn" class="form-btn"
                         style="width: 100%; padding: 12px 0;"
@@ -159,13 +145,14 @@
                 </button>
             </div>
 
-            <!-- Orientações de acessibilidade do certificado -->
+            <!-- Orientações -->
             <div class="card-simple" style="padding: 20px;">
-                <h2 style="font-size: 1.3rem; margin-bottom: 6px;">Dicas de acessibilidade para certificados</h2>
+                <h2 style="font-size: 1.2rem; margin-bottom: 6px;">Como completar o curso PCA</h2>
                 <ul style="font-size: 14px; margin-top:4px;">
-                    <li>Use o botão de contraste no menu de acessibilidade se o certificado estiver difícil de ler.</li>
-                    <li>Ative “Ler a página” para que o texto do certificado seja lido em voz alta.</li>
-                    <li>Se preferir, você pode imprimir em papel com alto contraste ou ampliar a visualização no leitor de PDF.</li>
+                    <li>Assista às 6 aulas na página “Aulas”.</li>
+                    <li>Acerta todas as questões dos Exercícios 1 das Aulas 1 e 2.</li>
+                    <li>Envie pelo menos 2 códigos práticos (.c) nos Exercícios 2 das Aulas 1 e 2.</li>
+                    <li>Ao cumprir todos os requisitos, esta tela será atualizada automaticamente e o botão de download do certificado será ativado.</li>
                 </ul>
             </div>
 
@@ -180,24 +167,70 @@
 
 <script src="script.js"></script>
 <script>
-    // Exemplo simples: liberar certificado PCA quando um flag é salvo no localStorage
-    document.addEventListener('DOMContentLoaded', () => {
-        const concluidoPCA = localStorage.getItem('pca_concluido') === 'true';
+// Lógica de certificados PCA
+document.addEventListener('DOMContentLoaded', () => {
+    // Leitura das flags de conclusão que você já usa nas outras telas
+    const modConcluido = {
+        1: localStorage.getItem('pca_mod1_concluido') === 'true',
+        2: localStorage.getItem('pca_mod2_concluido') === 'true',
+        3: localStorage.getItem('pca_mod3_concluido') === 'true',
+        4: localStorage.getItem('pca_mod4_concluido') === 'true',
+        5: localStorage.getItem('pca_mod5_concluido') === 'true',
+        6: localStorage.getItem('pca_mod6_concluido') === 'true'
+    };
 
-        const statusEl = document.getElementById('cert-pca-status');
-        const btn = document.getElementById('cert-pca-btn');
+    // Exercícios práticos: marque essas flags quando receber o .c nas telas de exercícios
+    const praticoA1 = localStorage.getItem('pca_pratico_a1_ok') === 'true';
+    const praticoA2 = localStorage.getItem('pca_pratico_a2_ok') === 'true';
 
-        if (concluidoPCA) {
+    const totalModulos = 6;
+    const concluidos = Object.values(modConcluido).filter(v => v).length;
+    const praticosOk = [praticoA1, praticoA2].filter(v => v).length;
+
+    // Atualiza resumo
+    const modulosEl = document.getElementById('pca-modulos-ok');
+    const praticosEl = document.getElementById('pca-praticos-ok');
+    const barraEl = document.getElementById('pca-progress-bar');
+
+    if (modulosEl)  modulosEl.textContent  = concluidos.toString();
+    if (praticosEl) praticosEl.textContent = praticosOk.toString();
+
+    const progressoPercent = Math.round(((concluidos / totalModulos) * 0.8 + (praticosOk / 2) * 0.2) * 100);
+    if (barraEl) barraEl.style.width = Math.min(100, progressoPercent) + '%';
+
+    const statusEl = document.getElementById('cert-pca-status');
+    const btn = document.getElementById('cert-pca-btn');
+
+    const todosModulos = concluidos === totalModulos;
+    const todosPraticos = praticosOk === 2;
+
+    if (todosModulos && todosPraticos) {
+        // Marca curso como concluído
+        localStorage.setItem('pca_concluido', 'true');
+
+        if (statusEl) {
             statusEl.textContent = 'Situação: Concluído. Seu certificado está disponível para download.';
+        }
+        if (btn) {
             btn.textContent = 'Baixar Certificado PCA (PDF)';
             btn.disabled = false;
             btn.removeAttribute('aria-disabled');
+            btn.setAttribute('aria-label','Baixar certificado de Programação de Computadores e Algoritmos em PDF');
             btn.onclick = () => {
                 window.open('certificados/pca_concluido.pdf','_blank');
             };
         }
-    });
+    } else {
+        if (statusEl) {
+            statusEl.textContent = 'Situação: Em andamento. Conclua os 6 módulos e envie os 2 exercícios práticos para liberar o certificado.';
+        }
+        if (btn) {
+            btn.disabled = true;
+            btn.setAttribute('aria-disabled','true');
+            btn.textContent = 'Certificado ainda não disponível';
+        }
+    }
+});
 </script>
 </body>
 </html>
-
