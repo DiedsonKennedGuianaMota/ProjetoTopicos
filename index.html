@@ -13,7 +13,7 @@
 
 <!-- WIDGET DE ACESSIBILIDADE (mesmo das outras telas) -->
 <div id="accessibility-widget" class="ac-widget ac-hidden" aria-hidden="true">
-    <!-- mantém aqui o conteúdo já existente do widget -->
+    <!-- coloque aqui o mesmo conteúdo do widget que já está nas outras páginas -->
 </div>
 
 <!-- BOTÃO FLUTUANTE PARA ABRIR O WIDGET -->
@@ -44,24 +44,33 @@
             </p>
         </div>
 
-        <!-- DIREITA: APENAS 3 BOTÕES EM COLUNA -->
+        <!-- DIREITA: 3 BOTÕES COM IMAGENS EM COLUNA -->
         <div class="landing-right" aria-label="Escolha o modo de acesso">
             <button class="access-main-btn"
                     type="button"
                     onclick="selectAccessibility('visual')">
-                👁‍🗨 Acesso para pessoas cegas
+                <img src="acessibilidade-visual.png"
+                     alt="Pessoa com óculos escuros segurando bengala"
+                     class="access-btn-img">
+                <span>Acesso para pessoas cegas</span>
             </button>
 
             <button class="access-main-btn"
                     type="button"
                     id="btn-auditivo">
-                🤟 Acesso para pessoas surdas (em desenvolvimento)
+                <img src="acessibilidade-auditiva.png"
+                     alt="Pessoa fazendo sinal de eu te amo em Libras"
+                     class="access-btn-img">
+                <span>Acesso para pessoas surdas (em desenvolvimento)</span>
             </button>
 
             <button class="access-main-btn"
                     type="button"
                     onclick="selectAccessibility('standard')">
-                🙂 Acesso padrão
+                <img src="sem-acessibilidade.png"
+                     alt="Pessoa sorrindo, acesso padrão"
+                     class="access-btn-img">
+                <span>Acesso padrão</span>
             </button>
         </div>
     </section>
@@ -196,9 +205,17 @@ body.index-body {
     font-size:14px;
     text-align:left;
     cursor:pointer;
+    display:flex;
+    align-items:center;
+    gap:10px;
 }
 .access-main-btn:hover {
     background:#eef2ff;
+}
+.access-btn-img {
+    width:48px;
+    height:48px;
+    object-fit:contain;
 }
 @media (max-width:800px){
     .landing-simple-layout {
