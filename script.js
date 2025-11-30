@@ -37,7 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- 2. FUNÇÃO INICIALIZADORA PRINCIPAL ---
     initializePage(accessibilityMode || 'standard', currentPage);
-        // --- WIDGET DE ACESSIBILIDADE FLUTUANTE (itens do menu) ---
+
+    // --- 2.1 WIDGET DE ACESSIBILIDADE FLUTUANTE (itens do menu) ---
     const acWidget  = document.getElementById('accessibility-widget');
     const acClose   = document.getElementById('ac-close-btn');
     const acToggle  = document.getElementById('ac-toggle-visibility');
@@ -58,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const acSaturationBtn     = document.getElementById('ac-saturacao');
     const acResetBtn          = document.getElementById('ac-reset');
 
-    // Aplica estados salvos
+    // Aplica estados salvos de acessibilidade
     (function aplicarPreferenciasAcessibilidade() {
         const body = document.body;
         if (localStorage.getItem('ac_high_contrast') === 'true') body.classList.add('ac-high-contrast');
@@ -86,10 +87,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // Abrir/fechar widget (se ainda não fez isso em outro lugar)
-    const accessibilityBtn = document.getElementById('accessibility-btn');
-    if (accessibilityBtn && acWidget) {
-        accessibilityBtn.addEventListener('click', () => {
+    // Abrir/fechar widget
+    const accessibilityBtnFab = document.getElementById('accessibility-btn');
+    if (accessibilityBtnFab && acWidget) {
+        acWidget.classList.add('ac-hidden');
+        accessibilityBtnFab.addEventListener('click', () => {
             acWidget.classList.toggle('ac-hidden');
         });
     }
@@ -100,10 +102,10 @@ document.addEventListener('DOMContentLoaded', () => {
         acToggle.addEventListener('click', () => acWidget.classList.toggle('ac-hidden'));
     }
 
-    // Ler página (usa sua função speak)
+    // Ler página
     if (acReadBtn) {
         acReadBtn.addEventListener('click', () => {
-            const texto = document.body.innerText.slice(0, 1200); // limita para não ficar infinito
+            const texto = document.body.innerText.slice(0, 1200);
             speak('Leitura da página iniciada. ' + texto);
         });
     }
@@ -142,15 +144,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-
+    // --- 3. FUNÇÃO initializePage ---
     function initializePage(mode, page) {
         const body = document.getElementById('page-body');
         if (!body) return;
 
-        // INICIALIZAÇÃO OBRIGATÓRIA DO WIDGET DE ACESSIBILIDADE
         if (dashboardPages.includes(page) || page === 'login.html' || page.startsWith('cadastro-')) {
-            // aqui você deixou o widget novo; se quiser, pode comentar esta linha
-            // setupAccessibilityWidget();  // se estiver usando a versão avançada
+            // se quiser, pode chamar aqui funções extras do widget
         }
 
         switch (mode) {
@@ -166,12 +166,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 break;
             default:
-                // padrão: nada extra
                 break;
         }
     }
 
-    // --- 3. FUNÇÕES GERAIS DE ACESSIBILIDADE ---
+    // --- 4. FUNÇÕES GERAIS DE ACESSIBILIDADE (fala) ---
     function speak(text, callback) {
         window.speechSynthesis.cancel();
         const utterance = new SpeechSynthesisUtterance(text);
@@ -199,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- 4. VLIBRAS ---
+    // --- 5. VLIBRAS ---
     function setupAuditoryMode() {
         const vlibrasDiv = document.createElement('div');
         vlibrasDiv.id = 'vlibras-plugin';
@@ -210,9 +209,9 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.appendChild(vlibrasScript);
     }
 
-    // --- 5. MODO VISUAL (CADASTRO CEGO/LOGIN) ---
+    // --- 6. MODO VISUAL (CADASTRO CEGO/LOGIN) ---
     function setupVisualMode(page) {
-        const chatbotContainer = page === 'login.html' ? document.getElementById('chatbot-container') : document.getElementById('chatbot-container');
+        const chatbotContainer = document.getElementById('chatbot-container');
         if (chatbotContainer) chatbotContainer.classList.remove('hidden');
 
         if (SpeechRecognition) {
@@ -274,7 +273,6 @@ document.addEventListener('DOMContentLoaded', () => {
             ? chatbotState.registerFields
             : chatbotState.loginFields;
 
-        // Ctrl + D liga/desliga talkback de digitação
         if (event.ctrlKey && (event.key === 'd' || event.key === 'D')) {
             event.preventDefault();
             typingTalkbackEnabled = !typingTalkbackEnabled;
@@ -377,7 +375,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- 6. TALKBACK AUDITIVO (DASHBOARD) ---
+    // --- 7. TALKBACK AUDITIVO (DASHBOARD) ---
     function setupAuditoryTalkback() {
         const talkbackContainer = document.getElementById('talkback-container');
         if (talkbackContainer) {
@@ -422,7 +420,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- 7. SUBMISSÃO DE FORMULÁRIO PADRÃO (CADASTRO) ---
+    // --- 8. SUBMISSÃO DE FORMULÁRIO PADRÃO (CADASTRO) ---
     if (registerForm && !currentPage.includes('visual')) {
         registerForm.addEventListener('submit', function (event) {
             event.preventDefault();
@@ -455,7 +453,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 8. LOGIN PADRÃO ---
+    // --- 9. LOGIN PADRÃO ---
     if (loginForm && !currentPage.includes('visual')) {
         loginForm.addEventListener('submit', function (event) {
             event.preventDefault();
@@ -480,7 +478,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 9. SELEÇÃO DE MODO (index.html) ---
+    // --- 10. SELEÇÃO DE MODO (index.html) ---
     window.selectAccessibility = (mode) => {
         localStorage.setItem('accessibilityMode', mode);
         if (mode === 'visual') {
@@ -491,19 +489,4 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = 'cadastro-padrao.html';
         }
     };
-    // --- 10. WIDGET DE ACESSIBILIDADE PADRÃO (BOTÃO FLUTUANTE) ---
-    const accessibilityBtn = document.getElementById('accessibility-btn');
-    const accessibilityWidget = document.getElementById('accessibility-widget');
-
-    if (accessibilityBtn && accessibilityWidget) {
-        // começa escondido
-        accessibilityWidget.classList.add('ac-hidden');
-
-        accessibilityBtn.addEventListener('click', () => {
-            accessibilityWidget.classList.toggle('ac-hidden');
-        });
-    }
-
 });
-
-
