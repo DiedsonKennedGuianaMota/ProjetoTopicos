@@ -11,118 +11,114 @@
 </head>
 <body class="index-body" id="page-body">
 
-<!-- WIDGET DE ACESSIBILIDADE COMPLETO (MESMO DAS OUTRAS TELAS) -->
+<!-- WIDGET DE ACESSIBILIDADE (MESMO DAS OUTRAS TELAS) -->
 <div id="accessibility-widget" class="ac-widget ac-hidden" aria-hidden="true">
-    <!-- mantém aqui o mesmo conteúdo do widget que já está funcionando nas outras páginas -->
+    <!-- mantém aqui o mesmo conteúdo funcional do widget -->
 </div>
 
-<!-- BOTÃO FLUTUANTE PARA ABRIR O WIDGET -->
-<button id="accessibility-btn" class="ac-fab" aria-label="Abrir menu de acessibilidade">
-    <img src="https://api.iconify.design/material-symbols/accessibility-new.svg?color=%23ffffff"
-         alt="Ícone de acessibilidade">
-</button>
+<!-- HEADER FIXO -->
+<header class="landing-header">
+    <div class="landing-header-left">
+        <img src="logo.png" alt="Logo EducaFácil" class="landing-logo">
+    </div>
+    <nav class="landing-nav">
+        <a href="#sobre">Sobre</a>
+        <a href="#como-funciona">Curso</a>
+        <a href="#acessibilidade">Acessibilidade</a>
+    </nav>
+    <div class="landing-header-right">
+        <button type="button" class="landing-link-btn"
+                onclick="window.location.href='cadastro-padrao.html'">
+            Cadastre-se
+        </button>
+        <button type="button" class="landing-login-btn"
+                onclick="window.location.href='login.html'">
+            Login
+        </button>
+    </div>
+</header>
 
-<main class="index-main">
-
-    <!-- LAYOUT EM DUAS COLUNAS: ESQUERDA ACESSO, DIREITA TEXTO/LOGO -->
-    <section class="index-layout">
-        <!-- COLUNA ESQUERDA: ESCOLHA DO MODO DE ACESSO -->
-        <div class="index-left" aria-label="Escolha o modo de acesso">
-            <h2 class="index-left-title">Como você deseja acessar?</h2>
-            <p class="index-left-subtitle">
-                Selecione o modo mais adequado para o seu perfil de acessibilidade.
+<main class="landing-main">
+    <section class="landing-hero" id="sobre">
+        <!-- COLUNA ESQUERDA: TEXTO + BOTÕES ACESSIBILIDADE PEQUENOS -->
+        <div class="hero-left">
+            <h1>Aprenda Programação de forma acessível com o EducaFácil</h1>
+            <p class="hero-subtitle">
+                Plataforma inclusiva para estudar Programação de Computadores e Algoritmos, com recursos
+                específicos para pessoas cegas, suporte em LIBRAS e acompanhamento de progresso.
             </p>
 
-            <div class="index-cards-column">
-                <button class="index-card" type="button"
-                        onclick="selectAccessibility('visual')"
-                        aria-label="Entrar como pessoa com deficiência visual, com assistente de voz">
-                    <img src="acessibilidade-visual.png"
-                         alt="Pessoa com óculos escuros segurando bengala"
-                         class="index-card-img">
-                    <div class="index-card-text">
-                        <span class="index-card-title">Acesso para Pessoas Cegas</span>
-                        <span class="index-card-desc">
-                            Cadastro guiado por voz, leitura de teclas e navegação por setas.
-                        </span>
-                    </div>
+            <div class="hero-cta-row">
+                <button type="button" class="hero-primary-btn"
+                        onclick="selectAccessibility('visual')">
+                    Começar em modo acessível
                 </button>
-
-                <button id="card-auditivo" class="index-card" type="button"
-                        aria-label="Modo para pessoas surdas em desenvolvimento">
-                    <img src="acessibilidade-auditiva.png"
-                         alt="Pessoa fazendo sinal de eu te amo em Libras"
-                         class="index-card-img">
-                    <div class="index-card-text">
-                        <span class="index-card-title">Acesso para Pessoas Surdas</span>
-                        <span class="index-card-desc">
-                            Modo em desenvolvimento com foco em LIBRAS e legendas ampliadas.
-                        </span>
-                    </div>
-                </button>
-
-                <button class="index-card" type="button"
-                        onclick="selectAccessibility('standard')"
-                        aria-label="Entrar no modo padrão, com menu de acessibilidade opcional">
-                    <img src="sem-acessibilidade.png"
-                         alt="Pessoa sorrindo, acesso padrão"
-                         class="index-card-img">
-                    <div class="index-card-text">
-                        <span class="index-card-title">Acesso Padrão</span>
-                        <span class="index-card-desc">
-                            Cadastro tradicional com o menu de acessibilidade disponível em todas as telas.
-                        </span>
-                    </div>
+                <button type="button" class="hero-secondary-btn"
+                        onclick="window.location.href='conteudos.html'">
+                    Explorar conteúdos
                 </button>
             </div>
+
+            <!-- BOTÕES DE ACESSIBILIDADE (MENORES, COM TEXTO) -->
+            <div class="hero-access-row" id="acessibilidade">
+                <span class="hero-access-label">Escolha o modo de acesso:</span>
+                <button type="button" class="access-pill"
+                        onclick="selectAccessibility('visual')">
+                    👁‍🗨 Modo para pessoas cegas
+                </button>
+                <button type="button" class="access-pill"
+                        id="btn-auditivo">
+                    🤟 Modo para pessoas surdas (em desenvolvimento)
+                </button>
+                <button type="button" class="access-pill"
+                        onclick="selectAccessibility('standard')">
+                    🙂 Modo padrão
+                </button>
+            </div>
+
+            <ul class="hero-bullets" id="como-funciona">
+                <li>Curso gratuito e pensado para estudantes do ensino médio e superior.</li>
+                <li>Cadastros e exercícios adaptados para diferentes perfis de acessibilidade.</li>
+                <li>Acompanhe seu progresso por unidades e exercícios concluídos.</li>
+            </ul>
         </div>
 
-        <!-- COLUNA DIREITA: LOGO, DESCRIÇÃO E LOGIN -->
-        <div class="index-right">
-            <header class="index-header">
-                <img src="logo.png" alt="Logo EducaFácil" class="index-logo">
-            </header>
-            <h1>EducaFácil Acessível</h1>
-            <p class="index-hero-text">
-                Plataforma de apoio à disciplina de Programação de Computadores e Algoritmos, pensada para inclusão.
-            </p>
-            <p class="index-hero-text">
-                Aqui você encontra cadastro acessível para pessoas cegas, suporte em LIBRAS, exercícios guiados
-                e acompanhamento de progresso em um ambiente amigável.
-            </p>
-            <button type="button" class="index-login-btn"
-                    onclick="window.location.href='login.html'">
-                Já tenho conta – Fazer login
-            </button>
-
-            <div class="index-contacts">
-                <p class="contacts-title">Contato da equipe</p>
-                <p><strong>Ana Carla</strong> – <a href="mailto:acvm.lic21@uea.edu.br">acvm.lic21@uea.edu.br</a></p>
-                <p><strong>Leticia Almeida</strong> – <a href="mailto:lmda.lic23@uea.edu.br">lmda.lic23@uea.edu.br</a></p>
-                <p><strong>Diedson Kenned</strong> – <a href="mailto:dkgm.lic20@uea.edu.br">dkgm.lic20@uea.edu.br</a></p>
+        <!-- COLUNA DIREITA: IMAGEM HERO -->
+        <div class="hero-right">
+            <div class="hero-card">
+                <img src="hero-programacao.png" alt="Ilustração de estudante aprendendo programação"
+                     class="hero-image">
             </div>
         </div>
     </section>
+
+    <!-- RODAPÉ SIMPLES COM CONTATOS -->
+    <footer class="landing-footer">
+        <div class="footer-contacts">
+            <span class="footer-title">Contato da equipe EducaFácil</span>
+            <span>Ana Carla – <a href="mailto:acvm.lic21@uea.edu.br">acvm.lic21@uea.edu.br</a></span>
+            <span>Leticia Almeida – <a href="mailto:lmda.lic23@uea.edu.br">lmda.lic23@uea.edu.br</a></span>
+            <span>Diedson Kenned – <a href="mailto:dkgm.lic20@uea.edu.br">dkgm.lic20@uea.edu.br</a></span>
+        </div>
+        <span class="footer-copy">EducaFácil • Projeto acadêmico de acessibilidade em ensino de programação.</span>
+    </footer>
 </main>
 
-<!-- REMOVIDOS: ícones de som e assistente no rodapé -->
-
-<!-- MODAL "EM DESENVOLVIMENTO" PARA DEFICIENTE AUDITIVO -->
+<!-- MODAL AUDITIVO -->
 <div id="modal-auditivo" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-auditivo-titulo">
     <div class="modal-backdrop" onclick="fecharModalAuditivo()"></div>
     <div class="modal-content">
         <button class="modal-close" aria-label="Fechar" onclick="fecharModalAuditivo()">×</button>
-        <h2 id="modal-auditivo-titulo">Modo Deficiente Auditivo</h2>
-        <p>Este modo de cadastro com suporte avançado em LIBRAS está em desenvolvimento.</p>
-        <p>Você pode, por enquanto, utilizar o Cadastro Padrão e ativar o VLibras na tela de aulas
-           e conteúdos para ter tradução de textos.</p>
+        <h2 id="modal-auditivo-titulo">Modo para pessoas surdas</h2>
+        <p>O modo com suporte avançado em LIBRAS ainda está em desenvolvimento.</p>
+        <p>Use o modo padrão e ative o VLibras nas telas de aulas e conteúdos para tradução de textos.</p>
         <button type="button" class="play-btn" onclick="fecharModalAuditivo()">Entendi</button>
     </div>
 </div>
 
 <script src="script.js"></script>
 <script>
-// seleção de modo
+// Seleção de modo
 window.selectAccessibility = (mode) => {
     localStorage.setItem('accessibilityMode', mode);
     if (mode === 'visual') {
@@ -134,145 +130,205 @@ window.selectAccessibility = (mode) => {
     }
 };
 
-// modal auditivo
-const cardAuditivo = document.getElementById('card-auditivo');
+// Modal auditivo
+const btnAuditivo = document.getElementById('btn-auditivo');
 const modalAuditivo = document.getElementById('modal-auditivo');
-
-if (cardAuditivo) {
-    cardAuditivo.addEventListener('click', () => {
+if (btnAuditivo) {
+    btnAuditivo.addEventListener('click', () => {
         modalAuditivo.classList.remove('hidden');
     });
 }
-
 function fecharModalAuditivo() {
     modalAuditivo.classList.add('hidden');
 }
-
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && !modalAuditivo.classList.contains('hidden')) {
         fecharModalAuditivo();
     }
 });
 
-// CSS complementar para o layout pedido
-const idxStyle = document.createElement('style');
-idxStyle.textContent = `
+// Estilo complementar para ficar mais próximo do exemplo
+const landingStyle = document.createElement('style');
+landingStyle.textContent = `
 html, body {
     height: 100%;
 }
 body.index-body {
     margin: 0;
     padding: 0;
-    overflow-y: hidden; /* sem barra de rolagem vertical */
+    background: #f3f5fb;
+    font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
-.index-main {
-    height: 100vh;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 24px 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.index-layout {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1.2fr 1.4fr; /* esquerda acessibilidade, direita logo/texto */
-    gap: 32px;
-    align-items: center;
-}
-.index-left-title {
-    margin: 0 0 4px;
-    font-size: 1.2rem;
-}
-.index-left-subtitle {
-    margin: 0 0 10px;
-    font-size: 13px;
-    opacity: .85;
-}
-.index-cards-column {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-.index-card {
-    border: none;
-    border-radius: 18px;
-    padding: 10px 12px;
+.landing-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 56px;
     background: #ffffff;
-    box-shadow: 0 10px 24px rgba(15,23,42,0.12);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-align: left;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 32px;
+    box-shadow:0 1px 4px rgba(15,23,42,0.06);
+    z-index:100;
 }
-.index-card-img {
-    width: 52px;
-    height: 52px;
-    object-fit: contain;
+.landing-logo {
+    height: 30px;
 }
-.index-card-text {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
+.landing-nav a {
+    margin:0 8px;
+    font-size:13px;
+    text-decoration:none;
+    color:#111827;
 }
-.index-card-title {
-    font-weight: 600;
-    font-size: 14px;
+.landing-header-right {
+    display:flex;
+    gap:8px;
 }
-.index-card-desc {
-    font-size: 12px;
-    opacity: .8;
+.landing-link-btn {
+    border:none;
+    background:transparent;
+    font-size:13px;
+    cursor:pointer;
+}
+.landing-login-btn {
+    border:none;
+    border-radius:999px;
+    padding:6px 16px;
+    background:#2563eb;
+    color:#fff;
+    font-size:13px;
+    font-weight:600;
+    cursor:pointer;
+}
+.landing-login-btn:hover { opacity:.95; }
+
+.landing-main {
+    padding-top:56px;
+}
+.landing-hero {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 40px 24px 32px;
+    display:grid;
+    grid-template-columns: minmax(0,1.4fr) minmax(0,1.2fr);
+    gap:32px;
+    align-items:center;
+}
+.hero-left h1 {
+    font-size: 2rem;
+    margin: 4px 0 6px;
+}
+.hero-subtitle {
+    font-size:14px;
+    opacity:.85;
+    margin:0 0 10px;
+}
+.hero-cta-row {
+    display:flex;
+    gap:8px;
+    margin-bottom:10px;
+}
+.hero-primary-btn {
+    border:none;
+    border-radius:999px;
+    padding:9px 18px;
+    background:#f97316;
+    color:#fff;
+    font-size:14px;
+    font-weight:600;
+    cursor:pointer;
+}
+.hero-secondary-btn {
+    border:1px solid #d1d5db;
+    border-radius:999px;
+    padding:9px 16px;
+    background:#fff;
+    color:#111827;
+    font-size:13px;
+    cursor:pointer;
+}
+.hero-primary-btn:hover,
+.hero-secondary-btn:hover { opacity:.96; }
+
+.hero-access-row {
+    margin-top:6px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    align-items:center;
+}
+.hero-access-label {
+    font-size:12px;
+    opacity:.85;
+    margin-right:4px;
+}
+.access-pill {
+    border-radius:999px;
+    border:1px solid #e5e7eb;
+    padding:4px 10px;
+    background:#ffffff;
+    font-size:11px;
+    cursor:pointer;
+}
+.access-pill:hover { background:#eef2ff; }
+
+.hero-bullets {
+    margin-top:10px;
+    padding-left:18px;
+    font-size:12px;
+    opacity:.9;
 }
 
-.index-right h1 {
-    margin: 8px 0 6px;
-    font-size: 1.6rem;
+.hero-right {
+    display:flex;
+    justify-content:center;
 }
-.index-hero-text {
-    font-size: 13px;
-    opacity: .9;
-    margin: 0 0 4px;
+.hero-card {
+    width:100%;
+    max-width:480px;
+    border-radius:24px;
+    background:#ffffff;
+    box-shadow:0 18px 40px rgba(15,23,42,0.18);
+    padding:14px;
 }
-.index-logo {
-    max-width: 220px;
+.hero-image {
+    width:100%;
+    border-radius:18px;
+    object-fit:cover;
 }
-.index-login-btn {
-    margin-top: 10px;
-    border: none;
-    border-radius: 999px;
-    padding: 8px 18px;
-    background: #2563eb;
-    color: #fff;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
+
+.landing-footer {
+    max-width:1120px;
+    margin: 0 auto 12px;
+    padding:0 24px 8px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:11px;
+    color:#4b5563;
 }
-.index-login-btn:hover { opacity: .95; }
-.index-contacts {
-    margin-top: 16px;
-    font-size: 12px;
+.footer-contacts {
+    display:flex;
+    flex-direction:column;
+    gap:2px;
 }
-.index-contacts a {
-    color: #2563eb;
-    text-decoration: none;
-}
-.index-contacts a:hover { text-decoration: underline; }
-.contacts-title {
-    font-weight: 600;
-    margin: 0 0 4px;
-}
+.footer-title { font-weight:600; }
+.footer-contacts a { color:#2563eb; text-decoration:none; }
+.footer-contacts a:hover { text-decoration:underline; }
 
 @media (max-width: 900px) {
-    body.index-body { overflow-y: auto; } /* em telas pequenas, permite rolar */
-    .index-layout {
-        grid-template-columns: 1fr;
-        gap: 20px;
+    .landing-hero {
+        grid-template-columns: minmax(0,1fr);
+        padding-top:24px;
+    }
+    .hero-right {
+        order:-1;
     }
 }
 `;
-document.head.appendChild(idxStyle);
+document.head.appendChild(landingStyle);
 </script>
 </body>
 </html>
