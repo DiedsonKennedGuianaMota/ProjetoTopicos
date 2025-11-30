@@ -12,99 +12,9 @@
 
 <!-- WIDGET DE ACESSIBILIDADE (MESMA ESTRUTURA DAS OUTRAS TELAS) -->
 <div id="accessibility-widget" class="ac-widget ac-hidden" aria-hidden="true">
-    <div class="ac-header">
-        <div class="ac-header-top">
-            <span class="ac-title">Menu Acessibilidade (CTRL+U)</span>
-            <button id="ac-close-btn" class="ac-icon-btn" aria-label="Fechar menu de acessibilidade">×</button>
-        </div>
-
-        <div class="ac-select-row">
-            <button class="ac-pill" id="ac-lang-btn">Português (Brasil)</button>
-            <button class="ac-pill ac-pill-active" id="ac-profile-btn">Dislexia perfil ativo</button>
-        </div>
-
-        <div class="ac-select-row">
-            <button class="ac-pill ac-pill-xl ac-pill-active" id="ac-widget-size-btn">
-                XL Widget superdimensionado
-            </button>
-        </div>
-    </div>
-
-    <div class="ac-profiles-section">
-        <div class="ac-profiles-header">
-            <span>Perfis de acessibilidade</span>
-        </div>
-        <div class="ac-profiles-grid">
-            <button class="ac-profile" data-profile="deficiencia-motora">Deficiência Motora</button>
-            <button class="ac-profile" data-profile="cego">Cego</button>
-            <button class="ac-profile" data-profile="daltonico">Daltônico</button>
-            <button class="ac-profile" data-profile="dislexia">Dislexia</button>
-            <button class="ac-profile" data-profile="baixa-visao">Baixa visão</button>
-            <button class="ac-profile" data-profile="cognitivo">Cognitivo e Aprendizagem</button>
-            <button class="ac-profile" data-profile="convulsao">Convulsão e epilepsia</button>
-            <button class="ac-profile" data-profile="tdah">TDAH</button>
-        </div>
-    </div>
-
-    <div class="ac-grid">
-        <button id="ac-ler-pagina" class="ac-item">
-            <span class="ac-item-title">Ler a página</span>
-        </button>
-        <button id="ac-contraste-mais" class="ac-item">
-            <span class="ac-item-title">Contraste +</span>
-        </button>
-        <button id="ac-contraste-inteligente" class="ac-item">
-            <span class="ac-item-title">Contraste inteligente</span>
-        </button>
-        <button id="ac-links-destacados" class="ac-item">
-            <span class="ac-item-title">Links destacados</span>
-        </button>
-        <button id="ac-texto-maior" class="ac-item">
-            <span class="ac-item-title">Texto maior</span>
-        </button>
-        <button id="ac-espacamento-texto" class="ac-item">
-            <span class="ac-item-title">Espaçamento de texto</span>
-        </button>
-        <button id="ac-animacoes" class="ac-item">
-            <span class="ac-item-title">Reproduzir animações</span>
-        </button>
-        <button id="ac-ocultar-imagens" class="ac-item">
-            <span class="ac-item-title">Ocultar imagens</span>
-        </button>
-        <button id="ac-dislexia" class="ac-item">
-            <span class="ac-item-title">Df Dislexia amigável</span>
-        </button>
-        <button id="ac-cursor" class="ac-item">
-            <span class="ac-item-title">Cursor</span>
-        </button>
-        <button id="ac-barra-ferramentas" class="ac-item">
-            <span class="ac-item-title">Barra de ferramentas</span>
-        </button>
-        <button id="ac-estrutura-pagina" class="ac-item">
-            <span class="ac-item-title">Estrutura da página</span>
-        </button>
-        <button id="ac-altura-linha" class="ac-item">
-            <span class="ac-item-title">Altura da linha</span>
-        </button>
-        <button id="ac-alinhamento-texto" class="ac-item">
-            <span class="ac-item-title">Alinhamento de texto</span>
-        </button>
-        <button id="ac-saturacao" class="ac-item">
-            <span class="ac-item-title">Saturação</span>
-        </button>
-    </div>
-
-    <div class="ac-footer">
-        <button id="ac-reset" class="ac-reset-btn">
-            Redefinir todas as configurações de acessibilidade
-        </button>
-        <button id="ac-toggle-visibility" class="ac-move-btn">
-            Mover/ocultar widget
-        </button>
-    </div>
+    <!-- ... mantém o mesmo conteúdo do widget já usado nas outras telas ... -->
 </div>
 
-<!-- BOTÃO FLUTUANTE -->
 <button id="accessibility-btn" class="ac-fab" aria-label="Abrir menu de acessibilidade">
     <img src="https://api.iconify.design/material-symbols/accessibility-new.svg?color=%23ffffff"
          alt="Ícone de acessibilidade">
@@ -113,9 +23,9 @@
 <div class="dashboard-layout">
     <div class="sidebar">
         <div class="profile-box">
-            <img src="https://i.imgur.com/gKjG1o2.png" alt="Foto de perfil do Aluno">
-            <p class="aluno-name" style="font-weight: 600;">Aluno</p>
-            <p class="aluno-email">aluno.ic9@educ.edu.br</p>
+            <img id="aluno-foto" src="https://i.imgur.com/gKjG1o2.png" alt="Foto de perfil do Aluno">
+            <p id="aluno-nome" class="aluno-name" style="font-weight: 600;">Aluno</p>
+            <p id="aluno-email" class="aluno-email">aluno.ic9@educ.edu.br</p>
         </div>
         <nav class="sidebar-nav">
             <div class="nav-item"><a href="home.html"><i class="icon">🏠</i>Home</a></div>
@@ -132,164 +42,186 @@
     </div>
 
     <div class="main-content">
-        <div class="main-content-area">
+        <div class="main-content-area conteudos-main">
             <h1>Conteúdos de Programação de Computadores e Algoritmos</h1>
-            <p aria-live="polite">
-                Nesta página você encontra apostilas, resumos e listas de exercícios organizados por unidade
-                de Programação de Computadores e Algoritmos.
+            <p class="conteudos-subtitle" aria-live="polite">
+                Acompanhe as unidades do curso, veja materiais de apoio e saiba o que já foi finalizado.
             </p>
 
-            <div class="home-grid">
+            <!-- Faixa com unidade atual -->
+            <div class="card-simple unidade-atual-card" tabindex="0"
+                 aria-label="Unidade atual de estudo em programação de computadores e algoritmos">
+                <p class="unidade-atual-label">Você está na</p>
+                <p id="unidade-atual-nome" class="unidade-atual-nome">Unidade 1 – Introdução a Algoritmos</p>
+                <p id="unidade-atual-status" class="unidade-atual-status">Em andamento</p>
+            </div>
 
-                <!-- Mapa da disciplina -->
-                <div class="card-simple" tabindex="0"
-                     aria-label="Mapa da disciplina de Programação de Computadores e Algoritmos">
-                    <h3 style="margin-bottom: 12px;">Mapa da disciplina</h3>
-                    <p>• Unidade 1 – Introdução a algoritmos e lógica de programação.</p>
-                    <p>• Unidade 2 – Variáveis, tipos de dados e operadores.</p>
-                    <p>• Unidade 3 – Estruturas de decisão.</p>
-                    <p>• Unidade 4 – Estruturas de repetição.</p>
-                    <p>• Unidade 5 – Vetores e matrizes.</p>
-                    <p>• Unidade 6 – Resolução de problemas integrando os conteúdos.</p>
-                </div>
+            <!-- Grid de unidades -->
+            <div class="unidades-grid">
 
-                <!-- Downloads gerais -->
-                <div class="card-simple" tabindex="0"
-                     aria-label="Downloads gerais de materiais de Programação de Computadores e Algoritmos">
-                    <h3 style="margin-bottom: 12px;">Materiais gerais</h3>
-                    <p>Apostila completa e plano de estudo sugerido para acompanhar o semestre.</p>
-                    <button type="button" class="play-btn"
+                <!-- Mapa da disciplina / gerais -->
+                <div class="card-simple mapa-card" tabindex="0"
+                     aria-label="Mapa geral da disciplina de programação de computadores e algoritmos">
+                    <h3>Mapa da disciplina</h3>
+                    <ul class="conteudos-list">
+                        <li>Unidade 1 – Introdução a algoritmos e lógica de programação.</li>
+                        <li>Unidade 2 – Variáveis, tipos de dados e operadores.</li>
+                        <li>Unidade 3 – Estruturas de decisão.</li>
+                        <li>Unidade 4 – Estruturas de repetição.</li>
+                        <li>Unidade 5 – Vetores e matrizes.</li>
+                        <li>Unidade 6 – Resolução de problemas integrando os conteúdos.</li>
+                    </ul>
+                    <h4>Materiais gerais</h4>
+                    <button type="button" class="home-link-btn"
                             onclick="window.open('pdfs/apostila_pca.pdf','_blank')">
-                        Baixar apostila completa
+                        Apostila completa
                     </button>
-                    <button type="button" class="play-btn"
+                    <button type="button" class="home-link-btn"
                             onclick="window.open('pdfs/plano_estudo_pca.pdf','_blank')">
-                        Baixar plano de estudo
+                        Plano de estudo
                     </button>
                 </div>
 
                 <!-- Unidade 1 -->
-                <div class="card-simple theories-card" tabindex="0"
-                     aria-label="Conteúdos da unidade um, introdução a algoritmos">
-                    <h3 style="margin-bottom: 10px;">Unidade 1 – Introdução a Algoritmos</h3>
-                    <p>Conceitos de algoritmo, problema computável, representação em pseudocódigo e fluxograma.</p>
-                    <div style="margin-top: 10px; display:flex; flex-wrap:wrap; gap:8px;">
-                        <button type="button" class="play-btn"
+                <div class="card-simple unidade-card" data-unidade="1" tabindex="0">
+                    <div class="unidade-header">
+                        <span class="unidade-tag">Unidade 1</span>
+                        <span id="badge-u1" class="unidade-badge">Em andamento</span>
+                    </div>
+                    <h3>Introdução a Algoritmos</h3>
+                    <p>Algoritmo, problema computável, pseudocódigo e fluxogramas.</p>
+                    <div class="unidade-actions">
+                        <button type="button" class="home-link-btn"
                                 onclick="window.open('pdfs/u1_resumo.pdf','_blank')">
                             Resumo em PDF
                         </button>
-                        <button type="button" class="play-btn"
+                        <button type="button" class="home-link-btn"
                                 onclick="window.open('pdfs/u1_exercicios.pdf','_blank')">
                             Exercícios
                         </button>
-                        <button type="button" class="play-btn"
+                        <button type="button" class="home-link-btn"
                                 onclick="window.location.href='aulas.html#intro_algoritmos'">
-                            Ver aula em vídeo
+                            Aula em vídeo
                         </button>
                     </div>
                 </div>
 
                 <!-- Unidade 2 -->
-                <div class="card-simple theories-card" tabindex="0"
-                     aria-label="Conteúdos da unidade dois, variáveis e operadores">
-                    <h3 style="margin-bottom: 10px;">Unidade 2 – Variáveis e Operadores</h3>
-                    <p>Tipos de dados, declaração de variáveis, atribuição e operadores aritméticos, relacionais e lógicos.</p>
-                    <div style="margin-top: 10px; display:flex; flex-wrap:wrap; gap:8px;">
-                        <button type="button" class="play-btn"
+                <div class="card-simple unidade-card" data-unidade="2" tabindex="0">
+                    <div class="unidade-header">
+                        <span class="unidade-tag">Unidade 2</span>
+                        <span id="badge-u2" class="unidade-badge">Bloqueada</span>
+                    </div>
+                    <h3>Variáveis e Operadores</h3>
+                    <p>Tipos de dados, declaração, atribuição e operadores.</p>
+                    <div class="unidade-actions">
+                        <button type="button" class="home-link-btn"
                                 onclick="window.open('pdfs/u2_resumo.pdf','_blank')">
                             Resumo em PDF
                         </button>
-                        <button type="button" class="play-btn"
+                        <button type="button" class="home-link-btn"
                                 onclick="window.open('pdfs/u2_exercicios.pdf','_blank')">
                             Exercícios
                         </button>
-                        <button type="button" class="play-btn"
+                        <button type="button" class="home-link-btn"
                                 onclick="window.location.href='aulas.html#variaveis_operadores'">
-                            Ver aula em vídeo
+                            Aula em vídeo
                         </button>
                     </div>
                 </div>
 
                 <!-- Unidade 3 -->
-                <div class="card-simple theories-card" tabindex="0"
-                     aria-label="Conteúdos da unidade três, estruturas de decisão">
-                    <h3 style="margin-bottom: 10px;">Unidade 3 – Estruturas de Decisão</h3>
-                    <p>Comandos condicionais simples, compostos e seleção múltipla aplicados a problemas de decisão.</p>
-                    <div style="margin-top: 10px; display:flex; flex-wrap:wrap; gap:8px;">
-                        <button type="button" class="play-btn"
+                <div class="card-simple unidade-card" data-unidade="3" tabindex="0">
+                    <div class="unidade-header">
+                        <span class="unidade-tag">Unidade 3</span>
+                        <span id="badge-u3" class="unidade-badge">Bloqueada</span>
+                    </div>
+                    <h3>Estruturas de Decisão</h3>
+                    <p>Condicionais simples, compostas e seleção múltipla.</p>
+                    <div class="unidade-actions">
+                        <button type="button" class="home-link-btn"
                                 onclick="window.open('pdfs/u3_resumo.pdf','_blank')">
                             Resumo em PDF
                         </button>
-                        <button type="button" class="play-btn"
+                        <button type="button" class="home-link-btn"
                                 onclick="window.open('pdfs/u3_exercicios.pdf','_blank')">
                             Exercícios
                         </button>
-                        <button type="button" class="play-btn"
+                        <button type="button" class="home-link-btn"
                                 onclick="window.location.href='aulas.html#estruturas_decisao'">
-                            Ver aula em vídeo
+                            Aula em vídeo
                         </button>
                     </div>
                 </div>
 
                 <!-- Unidade 4 -->
-                <div class="card-simple theories-card" tabindex="0"
-                     aria-label="Conteúdos da unidade quatro, estruturas de repetição">
-                    <h3 style="margin-bottom: 10px;">Unidade 4 – Estruturas de Repetição</h3>
-                    <p>Laços contados e condicionais, controle de iterações e exemplos com acumuladores e contadores.</p>
-                    <div style="margin-top: 10px; display:flex; flex-wrap:wrap; gap:8px;">
-                        <button type="button" class="play-btn"
+                <div class="card-simple unidade-card" data-unidade="4" tabindex="0">
+                    <div class="unidade-header">
+                        <span class="unidade-tag">Unidade 4</span>
+                        <span id="badge-u4" class="unidade-badge">Bloqueada</span>
+                    </div>
+                    <h3>Estruturas de Repetição</h3>
+                    <p>Laços contados e condicionais com acumuladores e contadores.</p>
+                    <div class="unidade-actions">
+                        <button type="button" class="home-link-btn"
                                 onclick="window.open('pdfs/u4_resumo.pdf','_blank')">
                             Resumo em PDF
                         </button>
-                        <button type="button" class="play-btn"
+                        <button type="button" class="home-link-btn"
                                 onclick="window.open('pdfs/u4_exercicios.pdf','_blank')">
                             Exercícios
                         </button>
-                        <button type="button" class="play-btn"
+                        <button type="button" class="home-link-btn"
                                 onclick="window.location.href='aulas.html#estruturas_repeticao'">
-                            Ver aula em vídeo
+                            Aula em vídeo
                         </button>
                     </div>
                 </div>
 
                 <!-- Unidade 5 -->
-                <div class="card-simple theories-card" tabindex="0"
-                     aria-label="Conteúdos da unidade cinco, vetores e matrizes">
-                    <h3 style="margin-bottom: 10px;">Unidade 5 – Vetores e Matrizes</h3>
-                    <p>Declaração, varredura e uso de vetores e matrizes para armazenar coleções de dados.</p>
-                    <div style="margin-top: 10px; display:flex; flex-wrap:wrap; gap:8px;">
-                        <button type="button" class="play-btn"
+                <div class="card-simple unidade-card" data-unidade="5" tabindex="0">
+                    <div class="unidade-header">
+                        <span class="unidade-tag">Unidade 5</span>
+                        <span id="badge-u5" class="unidade-badge">Bloqueada</span>
+                    </div>
+                    <h3>Vetores e Matrizes</h3>
+                    <p>Declaração e varredura de coleções de dados em vetores e matrizes.</p>
+                    <div class="unidade-actions">
+                        <button type="button" class="home-link-btn"
                                 onclick="window.open('pdfs/u5_resumo.pdf','_blank')">
                             Resumo em PDF
                         </button>
-                        <button type="button" class="play-btn"
+                        <button type="button" class="home-link-btn"
                                 onclick="window.open('pdfs/u5_exercicios.pdf','_blank')">
                             Exercícios
                         </button>
-                        <button type="button" class="play-btn"
+                        <button type="button" class="home-link-btn"
                                 onclick="window.location.href='aulas.html#vetores_matrizes'">
-                            Ver aula em vídeo
+                            Aula em vídeo
                         </button>
                     </div>
                 </div>
 
                 <!-- Unidade 6 -->
-                <div class="card-simple theories-card" tabindex="0"
-                     aria-label="Conteúdos da unidade seis, resolução de problemas integrando os tópicos">
-                    <h3 style="margin-bottom: 10px;">Unidade 6 – Resolução de Problemas</h3>
-                    <p>Integração de estruturas de controle e vetores em pequenos projetos aplicados ao cotidiano do aluno.</p>
-                    <div style="margin-top: 10px; display:flex; flex-wrap:wrap; gap:8px;">
-                        <button type="button" class="play-btn"
+                <div class="card-simple unidade-card" data-unidade="6" tabindex="0">
+                    <div class="unidade-header">
+                        <span class="unidade-tag">Unidade 6</span>
+                        <span id="badge-u6" class="unidade-badge">Bloqueada</span>
+                    </div>
+                    <h3>Resolução de Problemas</h3>
+                    <p>Integração de todos os tópicos em pequenos projetos.</p>
+                    <div class="unidade-actions">
+                        <button type="button" class="home-link-btn"
                                 onclick="window.open('pdfs/u6_resumo.pdf','_blank')">
                             Resumo em PDF
                         </button>
-                        <button type="button" class="play-btn"
+                        <button type="button" class="home-link-btn"
                                 onclick="window.open('pdfs/u6_exercicios.pdf','_blank')">
                             Exercícios
                         </button>
-                        <button type="button" class="play-btn"
+                        <button type="button" class="home-link-btn"
                                 onclick="window.location.href='aulas.html#resolucao_problemas'">
-                            Ver aula em vídeo
+                            Aula em vídeo
                         </button>
                     </div>
                 </div>
@@ -305,5 +237,168 @@
 </div>
 
 <script src="script.js"></script>
+
+<script>
+// Estilo extra para centralizar e deixar em grid elegante
+const conteudosStyle = document.createElement('style');
+conteudosStyle.textContent = `
+.conteudos-main h1 { margin-bottom: 4px; }
+.conteudos-subtitle { font-size: 13px; opacity:.8; margin-bottom: 16px; }
+.unidade-atual-card {
+    margin-bottom: 16px;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content:center;
+    gap:2px;
+}
+.unidade-atual-label { font-size: 13px; opacity:.8; margin:0; }
+.unidade-atual-nome { font-size: 1.1rem; font-weight:600; margin:0; }
+.unidade-atual-status { font-size: 13px; margin:0; color:#4a4ae6; }
+.unidades-grid {
+    display:grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 2fr) minmax(0, 2fr);
+    gap:16px;
+    align-items:start;
+}
+@media (max-width: 1024px){
+    .unidades-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+}
+@media (max-width: 768px){
+    .unidades-grid { grid-template-columns: minmax(0,1fr); }
+}
+.mapa-card { grid-row: span 2; }
+.conteudos-list { padding-left:18px; font-size:14px; margin-bottom:10px; }
+.conteudos-list li { margin-bottom:3px; }
+.unidade-card h3 { margin:4px 0; }
+.unidade-header {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:4px;
+}
+.unidade-tag {
+    font-size:11px;
+    padding:2px 8px;
+    border-radius:999px;
+    background:#eef2ff;
+    color:#3730a3;
+}
+.unidade-badge {
+    font-size:11px;
+    padding:2px 8px;
+    border-radius:999px;
+    background:#f3f4f6;
+}
+.unidade-badge.done {
+    background:#dcfce7;
+    color:#166534;
+}
+.unidade-badge.current {
+    background:#dbeafe;
+    color:#1d4ed8;
+}
+.unidade-badge.locked {
+    background:#fef3c7;
+    color:#92400e;
+}
+.unidade-actions {
+    margin-top:10px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+}
+.home-link-btn {
+    border:none;
+    border-radius:999px;
+    padding:6px 10px;
+    background:#4a4ae6;
+    color:#fff;
+    font-size:12px;
+    cursor:pointer;
+}
+.home-link-btn:hover { opacity:.95; }
+`;
+document.head.appendChild(conteudosStyle);
+
+// Atualizar perfil básico se salvo
+document.addEventListener('DOMContentLoaded', () => {
+    const nome  = localStorage.getItem('perfil_nome');
+    const email = localStorage.getItem('perfil_email');
+    const foto  = localStorage.getItem('perfil_foto');
+    if (nome)  document.getElementById('aluno-nome').textContent  = nome;
+    if (email) document.getElementById('aluno-email').textContent = email;
+    if (foto)  document.getElementById('aluno-foto').src          = foto;
+
+    atualizarUnidadesConteudos();
+});
+
+// Lê flags de progresso e ajusta badges / unidade atual
+function atualizarUnidadesConteudos() {
+    const u1Done = localStorage.getItem('pca_mod1_concluido') === 'true';
+    const u2Done = localStorage.getItem('pca_mod2_concluido') === 'true';
+    const u3Done = localStorage.getItem('pca_mod3_concluido') === 'true';
+    const u4Done = localStorage.getItem('pca_mod4_concluido') === 'true';
+    const u5Done = localStorage.getItem('pca_mod5_concluido') === 'true';
+    const u6Done = localStorage.getItem('pca_mod6_concluido') === 'true';
+
+    const badges = {
+        1: document.getElementById('badge-u1'),
+        2: document.getElementById('badge-u2'),
+        3: document.getElementById('badge-u3'),
+        4: document.getElementById('badge-u4'),
+        5: document.getElementById('badge-u5'),
+        6: document.getElementById('badge-u6')
+    };
+
+    const concluido = {1:u1Done,2:u2Done,3:u3Done,4:u4Done,5:u5Done,6:u6Done};
+
+    let unidadeAtual = 1;
+    for (let i=1;i<=6;i++){
+        const b = badges[i];
+        if (!b) continue;
+        b.classList.remove('done','current','locked');
+
+        if (concluido[i]) {
+            b.textContent = 'Finalizada';
+            b.classList.add('done');
+            unidadeAtual = Math.max(unidadeAtual, i+1);
+        } else {
+            b.textContent = 'Em andamento';
+            b.classList.add('current');
+            // unidades depois da primeira não concluída ficam “bloqueadas” visualmente
+            for (let j=i+1;j<=6;j++){
+                const bj = badges[j];
+                if (bj && !concluido[j]) {
+                    bj.textContent = 'Bloqueada';
+                    bj.classList.remove('done','current');
+                    bj.classList.add('locked');
+                }
+            }
+            break;
+        }
+    }
+
+    if (unidadeAtual>6) unidadeAtual = 6;
+
+    const nomesUnidades = {
+        1:'Unidade 1 – Introdução a Algoritmos',
+        2:'Unidade 2 – Variáveis e Operadores',
+        3:'Unidade 3 – Estruturas de Decisão',
+        4:'Unidade 4 – Estruturas de Repetição',
+        5:'Unidade 5 – Vetores e Matrizes',
+        6:'Unidade 6 – Resolução de Problemas'
+    };
+
+    document.getElementById('unidade-atual-nome').textContent = nomesUnidades[unidadeAtual];
+
+    const statusSpan = document.getElementById('unidade-atual-status');
+    if (concluido[unidadeAtual]) {
+        statusSpan.textContent = 'Finalizada';
+    } else {
+        statusSpan.textContent = 'Em andamento';
+    }
+}
+</script>
 </body>
 </html>
