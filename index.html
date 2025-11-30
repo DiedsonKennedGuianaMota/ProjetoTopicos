@@ -13,7 +13,7 @@
 
 <!-- WIDGET DE ACESSIBILIDADE COMPLETO (MESMO DAS OUTRAS TELAS) -->
 <div id="accessibility-widget" class="ac-widget ac-hidden" aria-hidden="true">
-    <!-- ... o mesmo conteúdo de widget que você já usa nas outras páginas ... -->
+    <!-- mantém aqui o mesmo conteúdo do widget que já está funcionando nas outras páginas -->
 </div>
 
 <!-- BOTÃO FLUTUANTE PARA ABRIR O WIDGET -->
@@ -23,88 +23,89 @@
 </button>
 
 <main class="index-main">
-    <!-- HEADER COM LOGO, TEXTO E LOGIN -->
-    <header class="index-hero">
-        <div class="index-hero-left">
-            <img src="logo.png" alt="Logo EducaFácil" class="index-logo">
+
+    <!-- LAYOUT EM DUAS COLUNAS: ESQUERDA ACESSO, DIREITA TEXTO/LOGO -->
+    <section class="index-layout">
+        <!-- COLUNA ESQUERDA: ESCOLHA DO MODO DE ACESSO -->
+        <div class="index-left" aria-label="Escolha o modo de acesso">
+            <h2 class="index-left-title">Como você deseja acessar?</h2>
+            <p class="index-left-subtitle">
+                Selecione o modo mais adequado para o seu perfil de acessibilidade.
+            </p>
+
+            <div class="index-cards-column">
+                <button class="index-card" type="button"
+                        onclick="selectAccessibility('visual')"
+                        aria-label="Entrar como pessoa com deficiência visual, com assistente de voz">
+                    <img src="acessibilidade-visual.png"
+                         alt="Pessoa com óculos escuros segurando bengala"
+                         class="index-card-img">
+                    <div class="index-card-text">
+                        <span class="index-card-title">Acesso para Pessoas Cegas</span>
+                        <span class="index-card-desc">
+                            Cadastro guiado por voz, leitura de teclas e navegação por setas.
+                        </span>
+                    </div>
+                </button>
+
+                <button id="card-auditivo" class="index-card" type="button"
+                        aria-label="Modo para pessoas surdas em desenvolvimento">
+                    <img src="acessibilidade-auditiva.png"
+                         alt="Pessoa fazendo sinal de eu te amo em Libras"
+                         class="index-card-img">
+                    <div class="index-card-text">
+                        <span class="index-card-title">Acesso para Pessoas Surdas</span>
+                        <span class="index-card-desc">
+                            Modo em desenvolvimento com foco em LIBRAS e legendas ampliadas.
+                        </span>
+                    </div>
+                </button>
+
+                <button class="index-card" type="button"
+                        onclick="selectAccessibility('standard')"
+                        aria-label="Entrar no modo padrão, com menu de acessibilidade opcional">
+                    <img src="sem-acessibilidade.png"
+                         alt="Pessoa sorrindo, acesso padrão"
+                         class="index-card-img">
+                    <div class="index-card-text">
+                        <span class="index-card-title">Acesso Padrão</span>
+                        <span class="index-card-desc">
+                            Cadastro tradicional com o menu de acessibilidade disponível em todas as telas.
+                        </span>
+                    </div>
+                </button>
+            </div>
+        </div>
+
+        <!-- COLUNA DIREITA: LOGO, DESCRIÇÃO E LOGIN -->
+        <div class="index-right">
+            <header class="index-header">
+                <img src="logo.png" alt="Logo EducaFácil" class="index-logo">
+            </header>
             <h1>EducaFácil Acessível</h1>
             <p class="index-hero-text">
-                Plataforma de apoio à disciplina de Programação de Computadores e Algoritmos, pensada para
-                inclusão. Aqui você encontra cadastro acessível para pessoas cegas, suporte em LIBRAS,
-                exercícios guiados e acompanhamento de progresso em um ambiente amigável.
+                Plataforma de apoio à disciplina de Programação de Computadores e Algoritmos, pensada para inclusão.
             </p>
             <p class="index-hero-text">
-                Escolha abaixo como deseja acessar: com assistente para pessoas com deficiência visual,
-                recursos auditivos em desenvolvimento ou modo padrão para qualquer estudante.
+                Aqui você encontra cadastro acessível para pessoas cegas, suporte em LIBRAS, exercícios guiados
+                e acompanhamento de progresso em um ambiente amigável.
             </p>
-        </div>
-        <div class="index-hero-right">
             <button type="button" class="index-login-btn"
                     onclick="window.location.href='login.html'">
                 Já tenho conta – Fazer login
             </button>
+
+            <div class="index-contacts">
+                <p class="contacts-title">Contato da equipe</p>
+                <p><strong>Ana Carla</strong> – <a href="mailto:acvm.lic21@uea.edu.br">acvm.lic21@uea.edu.br</a></p>
+                <p><strong>Leticia Almeida</strong> – <a href="mailto:lmda.lic23@uea.edu.br">lmda.lic23@uea.edu.br</a></p>
+                <p><strong>Diedson Kenned</strong> – <a href="mailto:dkgm.lic20@uea.edu.br">dkgm.lic20@uea.edu.br</a></p>
+            </div>
         </div>
-    </header>
-
-    <!-- LINHA DOS 3 CARDS -->
-    <section class="index-cards-row" aria-label="Escolha o modo de acesso">
-        <button class="index-card" type="button"
-                onclick="selectAccessibility('visual')"
-                aria-label="Entrar como pessoa com deficiência visual, com assistente de voz">
-            <img src="acessibilidade-visual.png"
-                 alt="Pessoa com óculos escuros segurando bengala"
-                 class="index-card-img">
-            <span class="index-card-title">Acesso para Pessoas Cegas</span>
-            <span class="index-card-desc">
-                Cadastro guiado por voz, leitura de teclas e navegação por setas.
-            </span>
-        </button>
-
-        <button id="card-auditivo" class="index-card" type="button"
-                aria-label="Deficiente auditivo, recurso em desenvolvimento">
-            <img src="acessibilidade-auditiva.png"
-                 alt="Pessoa fazendo sinal de eu te amo em Libras"
-                 class="index-card-img">
-            <span class="index-card-title">Acesso para Pessoas Surdas</span>
-            <span class="index-card-desc">
-                Modo em desenvolvimento com foco em LIBRAS e legendas ampliadas.
-            </span>
-        </button>
-
-        <button class="index-card" type="button"
-                onclick="selectAccessibility('standard')"
-                aria-label="Entrar sem acessibilidade específica, com menu opcional">
-            <img src="sem-acessibilidade.png"
-                 alt="Pessoa sorrindo, acesso padrão"
-                 class="index-card-img">
-            <span class="index-card-title">Acesso Padrão</span>
-            <span class="index-card-desc">
-                Cadastro tradicional com menu de acessibilidade flutuante.
-            </span>
-        </button>
     </section>
 </main>
 
-<!-- RODAPÉ COM CONTATO DOS MEMBROS -->
-<footer class="index-footer">
-    <div class="index-footer-top">
-        <div class="index-audio-icon">
-            <img src="ondas-audio.png" alt="Ícone de ondas de áudio">
-        </div>
-        <div class="index-bot-icon">
-            <img src="assistente-bot.png" alt="Ícone do assistente virtual EducaFácil">
-        </div>
-    </div>
-    <div class="index-footer-bottom">
-        <p class="footer-title">Contato da equipe EducaFácil</p>
-        <ul class="footer-contact-list">
-            <li><strong>Ana Carla</strong> – <a href="mailto:acvm.lic21@uea.edu.br">acvm.lic21@uea.edu.br</a></li>
-            <li><strong>Leticia Almeida</strong> – <a href="mailto:lmda.lic23@uea.edu.br">lmda.lic23@uea.edu.br</a></li>
-            <li><strong>Diedson Kenned</strong> – <a href="mailto:dkgm.lic20@uea.edu.br">dkgm.lic20@uea.edu.br</a></li>
-        </ul>
-        <p class="footer-copy">EducaFácil • Projeto acadêmico de acessibilidade em ensino de programação.</p>
-    </div>
-</footer>
+<!-- REMOVIDOS: ícones de som e assistente no rodapé -->
 
 <!-- MODAL "EM DESENVOLVIMENTO" PARA DEFICIENTE AUDITIVO -->
 <div id="modal-auditivo" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-auditivo-titulo">
@@ -121,7 +122,7 @@
 
 <script src="script.js"></script>
 <script>
-// botão de modo (já existia)
+// seleção de modo
 window.selectAccessibility = (mode) => {
     localStorage.setItem('accessibilityMode', mode);
     if (mode === 'visual') {
@@ -133,7 +134,7 @@ window.selectAccessibility = (mode) => {
     }
 };
 
-// Abrir/fechar modal "em desenvolvimento"
+// modal auditivo
 const cardAuditivo = document.getElementById('card-auditivo');
 const modalAuditivo = document.getElementById('modal-auditivo');
 
@@ -147,117 +148,128 @@ function fecharModalAuditivo() {
     modalAuditivo.classList.add('hidden');
 }
 
-// Fechar modal com ESC
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && !modalAuditivo.classList.contains('hidden')) {
         fecharModalAuditivo();
     }
 });
 
-// Estilo extra para deixar a home mais elegante
+// CSS complementar para o layout pedido
 const idxStyle = document.createElement('style');
 idxStyle.textContent = `
+html, body {
+    height: 100%;
+}
+body.index-body {
+    margin: 0;
+    padding: 0;
+    overflow-y: hidden; /* sem barra de rolagem vertical */
+}
 .index-main {
-    max-width: 960px;
+    height: 100vh;
+    max-width: 1100px;
     margin: 0 auto;
-    padding: 24px 16px 12px;
+    padding: 24px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.index-hero {
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    gap:16px;
-    margin-bottom:18px;
+.index-layout {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1.2fr 1.4fr; /* esquerda acessibilidade, direita logo/texto */
+    gap: 32px;
+    align-items: center;
 }
-.index-hero-left h1 {
-    margin:4px 0 6px;
-    font-size:1.5rem;
+.index-left-title {
+    margin: 0 0 4px;
+    font-size: 1.2rem;
 }
-.index-hero-text {
-    font-size:13px;
-    opacity:.9;
-    margin:0 0 4px;
+.index-left-subtitle {
+    margin: 0 0 10px;
+    font-size: 13px;
+    opacity: .85;
 }
-.index-hero-right {
-    display:flex;
-    align-items:flex-start;
-}
-.index-login-btn {
-    border:none;
-    border-radius:999px;
-    padding:8px 18px;
-    background:#2563eb;
-    color:#fff;
-    font-size:14px;
-    font-weight:600;
-    cursor:pointer;
-    margin-top:6px;
-}
-.index-login-btn:hover { opacity:.95; }
-
-.index-cards-row {
-    display:grid;
-    grid-template-columns: repeat(3, minmax(0,1fr));
-    gap:16px;
-    margin-top:8px;
+.index-cards-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 .index-card {
-    border:none;
-    border-radius:18px;
-    padding:14px 12px 12px;
-    background:#ffffff;
-    box-shadow:0 12px 26px rgba(15,23,42,0.12);
-    cursor:pointer;
-    text-align:left;
-    display:flex;
-    flex-direction:column;
-    gap:6px;
+    border: none;
+    border-radius: 18px;
+    padding: 10px 12px;
+    background: #ffffff;
+    box-shadow: 0 10px 24px rgba(15,23,42,0.12);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-align: left;
 }
 .index-card-img {
-    width:64px;
-    height:64px;
-    object-fit:contain;
+    width: 52px;
+    height: 52px;
+    object-fit: contain;
+}
+.index-card-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
 }
 .index-card-title {
-    font-weight:600;
-    font-size:14px;
+    font-weight: 600;
+    font-size: 14px;
 }
 .index-card-desc {
-    font-size:12px;
-    opacity:.8;
+    font-size: 12px;
+    opacity: .8;
 }
-.index-footer {
-    margin-top:20px;
-    padding:14px 18px 18px;
-    background:#0f172a;
-    color:#e5e7eb;
+
+.index-right h1 {
+    margin: 8px 0 6px;
+    font-size: 1.6rem;
 }
-.index-footer-top {
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:10px;
+.index-hero-text {
+    font-size: 13px;
+    opacity: .9;
+    margin: 0 0 4px;
 }
-.index-footer-bottom {
-    border-top:1px solid rgba(148,163,184,0.4);
-    padding-top:8px;
-    font-size:12px;
+.index-logo {
+    max-width: 220px;
 }
-.footer-title {
-    font-weight:600;
-    margin:0 0 4px;
+.index-login-btn {
+    margin-top: 10px;
+    border: none;
+    border-radius: 999px;
+    padding: 8px 18px;
+    background: #2563eb;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
 }
-.footer-contact-list {
-    list-style:none;
-    padding:0;
-    margin:0 0 4px;
+.index-login-btn:hover { opacity: .95; }
+.index-contacts {
+    margin-top: 16px;
+    font-size: 12px;
 }
-.footer-contact-list li { margin-bottom:2px; }
-.footer-contact-list a { color:#93c5fd; text-decoration:none; }
-.footer-copy { margin:0; opacity:.8; }
-@media (max-width:768px){
-    .index-hero { flex-direction:column; align-items:flex-start; }
-    .index-cards-row { grid-template-columns:minmax(0,1fr); }
+.index-contacts a {
+    color: #2563eb;
+    text-decoration: none;
+}
+.index-contacts a:hover { text-decoration: underline; }
+.contacts-title {
+    font-weight: 600;
+    margin: 0 0 4px;
+}
+
+@media (max-width: 900px) {
+    body.index-body { overflow-y: auto; } /* em telas pequenas, permite rolar */
+    .index-layout {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
 }
 `;
 document.head.appendChild(idxStyle);
