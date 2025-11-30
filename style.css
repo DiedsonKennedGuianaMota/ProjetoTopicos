@@ -1064,4 +1064,10 @@ body.af-contrast-smart a{color:#ffd166}
     font-weight: 600;
     cursor: pointer;
 }
+#acessibility-widget.ac-hidden,
+.ac-hidden {
+    display: none;
+}
+
+
 
