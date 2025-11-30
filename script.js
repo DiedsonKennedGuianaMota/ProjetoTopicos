@@ -17,13 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
         loginFields: ['username', 'password']
     };
     let typingTalkbackEnabled = true;
-    const accessibilityBtnFab = document.getElementById('accessibility-btn');
-if (accessibilityBtnFab && acWidget) {
-    acWidget.classList.add('ac-hidden');
-    accessibilityBtnFab.addEventListener('click', () => {
-        acWidget.classList.toggle('ac-hidden');
-    });
-}
 
     // --- PERFIL NO DASHBOARD (NOME, EMAIL, FOTO) ---
     (function atualizarPerfilDashboard() {
@@ -42,10 +35,7 @@ if (accessibilityBtnFab && acWidget) {
         }
     })();
 
-    // --- 2. FUNÇÃO INICIALIZADORA PRINCIPAL ---
-    initializePage(accessibilityMode || 'standard', currentPage);
-
-    // --- 2.1 WIDGET DE ACESSIBILIDADE FLUTUANTE (itens do menu) ---
+    // --- 2. WIDGET DE ACESSIBILIDADE (elementos) ---
     const acWidget  = document.getElementById('accessibility-widget');
     const acClose   = document.getElementById('ac-close-btn');
     const acToggle  = document.getElementById('ac-toggle-visibility');
@@ -66,7 +56,22 @@ if (accessibilityBtnFab && acWidget) {
     const acSaturationBtn     = document.getElementById('ac-saturacao');
     const acResetBtn          = document.getElementById('ac-reset');
 
-    // Aplica estados salvos de acessibilidade
+    // --- 2.1 Botão flutuante abre/fecha widget (agora com acWidget já definido) ---
+    const accessibilityBtnFab = document.getElementById('accessibility-btn');
+    if (accessibilityBtnFab && acWidget) {
+        acWidget.classList.add('ac-hidden');
+        accessibilityBtnFab.addEventListener('click', () => {
+            acWidget.classList.toggle('ac-hidden');
+        });
+    }
+    if (acClose && acWidget) {
+        acClose.addEventListener('click', () => acWidget.classList.add('ac-hidden'));
+    }
+    if (acToggle && acWidget) {
+        acToggle.addEventListener('click', () => acWidget.classList.toggle('ac-hidden'));
+    }
+
+    // --- 2.2 Aplicar estados salvos ---
     (function aplicarPreferenciasAcessibilidade() {
         const body = document.body;
         if (localStorage.getItem('ac_high_contrast') === 'true') body.classList.add('ac-high-contrast');
@@ -93,21 +98,6 @@ if (accessibilityBtnFab && acWidget) {
             localStorage.setItem(key, ativo ? 'true' : 'false');
         });
     };
-
-    // Abrir/fechar widget
-    const accessibilityBtnFab = document.getElementById('accessibility-btn');
-    if (accessibilityBtnFab && acWidget) {
-        acWidget.classList.add('ac-hidden');
-        accessibilityBtnFab.addEventListener('click', () => {
-            acWidget.classList.toggle('ac-hidden');
-        });
-    }
-    if (acClose && acWidget) {
-        acClose.addEventListener('click', () => acWidget.classList.add('ac-hidden'));
-    }
-    if (acToggle && acWidget) {
-        acToggle.addEventListener('click', () => acWidget.classList.toggle('ac-hidden'));
-    }
 
     // Ler página
     if (acReadBtn) {
@@ -151,13 +141,15 @@ if (accessibilityBtnFab && acWidget) {
         });
     }
 
-    // --- 3. FUNÇÃO initializePage ---
+    // --- 3. initializePage ---
+    initializePage(accessibilityMode || 'standard', currentPage);
+
     function initializePage(mode, page) {
         const body = document.getElementById('page-body');
         if (!body) return;
 
         if (dashboardPages.includes(page) || page === 'login.html' || page.startsWith('cadastro-')) {
-            // se quiser, pode chamar aqui funções extras do widget
+            // ponto centralizado para futuras integrações
         }
 
         switch (mode) {
@@ -497,4 +489,3 @@ if (accessibilityBtnFab && acWidget) {
         }
     };
 });
-
