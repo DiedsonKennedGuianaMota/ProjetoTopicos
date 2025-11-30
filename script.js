@@ -17,6 +17,13 @@ document.addEventListener('DOMContentLoaded', () => {
         loginFields: ['username', 'password']
     };
     let typingTalkbackEnabled = true;
+    const accessibilityBtnFab = document.getElementById('accessibility-btn');
+if (accessibilityBtnFab && acWidget) {
+    acWidget.classList.add('ac-hidden');
+    accessibilityBtnFab.addEventListener('click', () => {
+        acWidget.classList.toggle('ac-hidden');
+    });
+}
 
     // --- PERFIL NO DASHBOARD (NOME, EMAIL, FOTO) ---
     (function atualizarPerfilDashboard() {
@@ -490,3 +497,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 });
+
