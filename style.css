@@ -1068,6 +1068,87 @@ body.af-contrast-smart a{color:#ffd166}
 .ac-hidden {
     display: none;
 }
+/* Contraste alto */
+.ac-high-contrast {
+    background:#000 !important;
+    color:#fff !important;
+}
+.ac-high-contrast a { color:#7dd3fc !important; }
+
+/* Contraste inteligente (apenas fundo mais escuro) */
+.ac-smart-contrast {
+    background:#111827 !important;
+    color:#f9fafb !important;
+}
+
+/* Links destacados */
+.ac-links-highlight a {
+    text-decoration: underline !important;
+    font-weight: 600;
+}
+
+/* Texto maior */
+.ac-text-big {
+    font-size: 110%;
+}
+
+/* Mais espaçamento entre linhas e parágrafos */
+.ac-text-spacing p,
+.ac-text-spacing li {
+    line-height: 1.6;
+    letter-spacing: 0.03em;
+}
+
+/* Desativar animações simples */
+.ac-anim-off * {
+    animation: none !important;
+    transition: none !important;
+}
+
+/* Ocultar imagens decorativas */
+.ac-hide-images img {
+    filter: grayscale(1) brightness(0.1);
+}
+
+/* Fonte amigável para dislexia (exemplo genérico) */
+.ac-dislexia-font {
+    font-family: 'OpenDyslexic', 'Poppins', system-ui, sans-serif;
+}
+
+/* Cursor grande */
+.ac-big-cursor {
+    cursor: url('https://cur.cursors-4u.net/cursors/cur-2/cur116.cur'), auto;
+}
+
+/* Barra de ferramentas fixa (pode adaptar) */
+.ac-toolbar-top .sidebar {
+    position: sticky;
+    top: 0;
+}
+
+/* Destacar estrutura da página */
+.ac-outline-structure main,
+.ac-outline-structure .card-simple {
+    outline: 2px dashed #f97316;
+}
+
+/* Altura de linha maior */
+.ac-line-height p,
+.ac-line-height li {
+    line-height: 1.8;
+}
+
+/* Alinhamento de texto à esquerda */
+.ac-align-left p,
+.ac-align-left li {
+    text-align: left !important;
+}
+
+/* Saturação reduzida */
+.ac-low-saturation {
+    filter: saturate(0.6);
+}
+
 
 
 
