@@ -1198,3 +1198,130 @@ html,body{font-family:'Poppins',sans-serif;font-size:var(--font-size);line-heigh
 .ac-hidden {
     display: none;
 }
+/* Chat de exercícios */
+
+.exercise-chat {
+    margin-top: 20px;
+    border-radius: 18px;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    max-height: 420px;
+}
+
+.exercise-chat-header h2 {
+    margin: 0 0 4px;
+    font-size: 1.2rem;
+}
+
+.exercise-chat-header p {
+    margin: 0 0 10px;
+    font-size: 13px;
+    opacity: 0.8;
+}
+
+.exercise-chat-messages {
+    flex: 1;
+    border-radius: 12px;
+    background: #f3f4ff;
+    padding: 8px 10px;
+    overflow-y: auto;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+.exercise-chat-message {
+    margin-bottom: 6px;
+    line-height: 1.4;
+}
+
+.exercise-chat-message.user {
+    text-align: right;
+}
+
+.exercise-chat-message.user span {
+    display: inline-block;
+    background: #4a4ae6;
+    color: #ffffff;
+    padding: 5px 8px;
+    border-radius: 12px 12px 2px 12px;
+}
+
+.exercise-chat-message.bot span {
+    display: inline-block;
+    background: #ffffff;
+    color: #111827;
+    padding: 5px 8px;
+    border-radius: 12px 12px 12px 2px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.exercise-chat-input-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+#exercise-chat-input {
+    flex: 1;
+    padding: 8px 10px;
+    border-radius: 999px;
+    border: 1px solid #d1d5db;
+    font-size: 14px;
+}
+
+.chat-send-btn {
+    border: none;
+    border-radius: 999px;
+    padding: 8px 14px;
+    background: #4a4ae6;
+    color: #fff;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.chat-send-btn:hover {
+    opacity: 0.95;
+}
+
+.chat-mic-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid #d1d5db;
+    background: #ffffff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+}
+
+.chat-mic-btn.recording {
+    border-color: #ef4444;
+    background: #fee2e2;
+}
+
+.exercise-chat-status {
+    font-size: 12px;
+    margin-top: 4px;
+    min-height: 16px;
+    opacity: 0.8;
+}
+
+/* garantir legibilidade em modos de contraste */
+body.ac-high-contrast .exercise-chat-messages {
+    background:#000000 !important;
+}
+body.ac-high-contrast .exercise-chat-message.bot span {
+    background:#ffffff !important;
+    color:#000000 !important;
+}
+body.ac-high-contrast .exercise-chat-message.user span {
+    background:#ffeb3b !important;
+    color:#000000 !important;
+}
+body.ac-smart-contrast .exercise-chat-messages {
+    background:#020617 !important;
+}
+
