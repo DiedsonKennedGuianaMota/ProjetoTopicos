@@ -47,6 +47,24 @@
                 Complete os exercícios na ordem. Primeiro as questões objetivas da Unidade 1, depois o código em C.
                 A Unidade 2 é liberada somente após concluir a Unidade 1.
             </p>
+            <!-- CHATBOT DE DÚVIDAS (EXERCÍCIOS) -->
+<div class="exercise-chat card-simple" id="exercise-chat" aria-label="Chat de ajuda com inteligência artificial">
+    <div class="exercise-chat-header">
+        <h2>Assistente de exercícios</h2>
+        <p>Tire dúvidas sobre os exercícios digitando ou falando no microfone.</p>
+    </div>
+
+    <div class="exercise-chat-messages" id="exercise-chat-messages" aria-live="polite"></div>
+
+    <div class="exercise-chat-input-row">
+        <button type="button" class="chat-mic-btn" id="chat-mic-btn" aria-label="Gravar pergunta pelo microfone">
+            🎤
+        </button>
+        <input type="text" id="exercise-chat-input" placeholder="Digite sua dúvida aqui..." aria-label="Digite sua dúvida">
+        <button type="button" class="chat-send-btn" id="exercise-chat-send">Enviar</button>
+    </div>
+    <p id="exercise-chat-status" class="exercise-chat-status" aria-live="polite"></p>
+</div>
 
             <!-- AULA 1 -------------------------------------------------------->
             <div class="card-simple exercicio-card ex-card-a1">
@@ -664,5 +682,6 @@ function enviarCodigo(aulaId) {
 </script>
 </body>
 </html>
+
 
 
