@@ -7,6 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const accessibilityMode = localStorage.getItem('accessibilityMode');
     const dashboardPages = ['home.html', 'forum.html', 'aulas.html', 'conteudos.html', 'exercicios.html', 'configuracoes.html', 'certificados.html'];
 
+    const currentPage = window.location.pathname.split('/').pop();
+    if (currentPage === 'exercicios.html') {
+        setupExerciseChatbot();
+    }
     // Variáveis para o MODO VISUAL E TALKBACK
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     let recognition;
@@ -33,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (foto && fotoEl && foto.trim() !== '') {
             fotoEl.src = foto;
         }
+        
     })();
 
     // --- 2. WIDGET DE ACESSIBILIDADE (elementos) ---
@@ -489,3 +494,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 });
+
