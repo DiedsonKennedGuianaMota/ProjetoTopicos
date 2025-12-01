@@ -1,4 +1,458 @@
 /* ===========================
+   ESTILOS GERAIS
+   =========================== */
+
+:root {
+    --bg-color: #f5f7fb;
+    --primary-color: #4a4ae6;
+    --sidebar-bg: #ffffff;
+    --card-bg: #ffffff;
+    --text-color: #333333;
+    --border-radius: 16px;
+    --font-size-base: 16px;
+    --shadow-soft: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+    font-size: var(--font-size-base);
+}
+
+.dashboard-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+    width: 260px;
+    background: var(--sidebar-bg);
+    box-shadow: 2px 0 8px rgba(0,0,0,0.06);
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-box {
+    text-align: center;
+    padding: 0 20px 10px;
+}
+
+.profile-box img {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    margin-bottom: 6px;
+}
+
+.aluno-email {
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+.sidebar-nav {
+    margin-top: 20px;
+}
+
+.nav-item a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    color: #444;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.nav-item.active a {
+    background: rgba(74,74,230,0.08);
+    border-left: 3px solid var(--primary-color);
+}
+
+/* CONTEÚDO PRINCIPAL */
+
+.main-content {
+    flex: 1;
+    padding: 24px 32px;
+}
+
+.main-content-area h1 {
+    margin: 0 0 16px;
+}
+
+.home-grid {
+    display: grid;
+    grid-template-columns: 2fr 1.3fr;
+    grid-template-rows: auto auto;
+    gap: 16px;
+}
+
+.card-simple {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 18px 16px;
+    box-shadow: var(--shadow-soft);
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 8px;
+    border-radius: 999px;
+    background: #e8ecf5;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    border-radius: inherit;
+}
+
+.progress-bar.success {
+    background: #27ae60;
+}
+
+.progress-bar.primary {
+    background: var(--primary-color);
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    font-size: 11px;
+    text-align: center;
+}
+
+.day-label {
+    font-weight: 600;
+    opacity: 0.7;
+}
+
+.today {
+    background: var(--primary-color);
+    color: #fff;
+    border-radius: 50%;
+}
+
+/* LIBRAS AVATAR */
+
+.libras-avatar-img {
+    pointer-events: none;
+}
+
+/* TALKBACK */
+
+#talkback-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #222;
+    color: #fff;
+    padding: 6px 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    z-index: 1050;
+}
+
+#talkback-container.hidden {
+    display: none;
+}
+
+.bot-icon {
+    font-size: 18px;
+}
+
+/* ===========================
+   WIDGET DE ACESSIBILIDADE
+   =========================== */
+
+#acessibility-widget,
+#acessibility-widget * {
+    box-sizing: border-box;
+}
+
+/* Barra lateral do widget */
+.ac-widget {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 340px;
+    height: 100vh;
+    background: #ffffff;
+    box-shadow: 2px 0 12px rgba(0,0,0,0.18);
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    z-index: 1100;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+}
+
+.ac-hidden {
+    display: none;
+}
+
+/* Cabeçalho */
+
+.ac-header {
+    margin-bottom: 4px;
+}
+
+.ac-header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ac-title {
+    font-weight: 600;
+    font-size: 13px;
+}
+
+.ac-icon-btn {
+    border: none;
+    background: transparent;
+    font-size: 18px;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.ac-select-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 4px;
+}
+
+.ac-pill {
+    border-radius: 20px;
+    border: 1px solid #d0d0d0;
+    padding: 4px 10px;
+    background: #f9f9fb;
+    font-size: 11px;
+    cursor: default;
+}
+
+.ac-pill-active {
+    border-color: #c62828;
+    background: #ffe7ea;
+}
+
+.ac-pill-xl {
+    width: 100%;
+    text-align: left;
+}
+
+/* Perfis de acessibilidade */
+
+.ac-profiles-section {
+    margin-top: 6px;
+    padding-top: 4px;
+    border-top: 1px solid #e3e3e3;
+}
+
+.ac-profiles-header {
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.ac-profiles-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+}
+
+.ac-profile {
+    border-radius: 10px;
+    border: 1px solid #dddddd;
+    background: #fafafa;
+    padding: 6px 8px;
+    font-size: 11px;
+    cursor: pointer;
+    text-align: left;
+}
+
+.ac-profile-active {
+    border-color: #c62828;
+    background: #ffe7ea;
+}
+
+/* Grid de opções individuais */
+
+.ac-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-top: 8px;
+    padding-right: 4px;
+    overflow-y: auto;
+    max-height: 55vh;
+}
+
+.ac-item {
+    border-radius: 8px;
+    border: 1px solid #dddddd;
+    background: #ffffff;
+    padding: 6px 6px;
+    font-size: 11px;
+    cursor: pointer;
+    text-align: left;
+    line-height: 1.2;
+}
+
+.ac-item:hover {
+    border-color: #c62828;
+}
+
+.ac-item-active {
+    border-color: #c62828;
+    background: #ffe7ea;
+}
+
+.ac-item-title {
+    display: block;
+}
+
+/* Rodapé */
+
+.ac-footer {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-top: 6px;
+    border-top: 1px solid #e3e3e3;
+}
+
+.ac-reset-btn {
+    width: 100%;
+    border-radius: 6px;
+    border: none;
+    background: #c62828;
+    color: #ffffff;
+    padding: 6px 8px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.ac-move-btn {
+    width: 100%;
+    border-radius: 6px;
+    border: 1px solid #d0d0d0;
+    background: #ffffff;
+    padding: 6px 8px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+/* Botão flutuante */
+
+.ac-fab {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: none;
+    background: #4a4ae6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1200;
+}
+
+.ac-fab img {
+    width: 28px;
+    height: 28px;
+}
+
+/* ===========================
+   EFEITOS DAS OPÇÕES ATIVADAS
+   =========================== */
+
+/* Texto maior */
+.ac-text-big {
+    font-size: 110%;
+}
+
+/* Mais espaçamento entre linhas e parágrafos */
+.ac-text-spacing p,
+.ac-text-spacing li {
+    line-height: 1.6;
+    letter-spacing: 0.03em;
+}
+
+/* Desativar animações simples */
+.ac-anim-off * {
+    animation: none !important;
+    transition: none !important;
+}
+
+/* Ocultar imagens (escurece bastante) */
+.ac-hide-images img {
+    filter: grayscale(1) brightness(0.1);
+}
+
+/* Fonte amigável para dislexia (exemplo genérico) */
+.ac-dislexia-font {
+    font-family: 'OpenDyslexic', 'Poppins', system-ui, sans-serif;
+}
+
+/* Cursor grande */
+.ac-big-cursor {
+    cursor: url('https://cur.cursors-4u.net/cursors/cur-2/cur116.cur'), auto;
+}
+
+/* Barra de ferramentas fixa */
+.ac-toolbar-top .sidebar {
+    position: sticky;
+    top: 0;
+}
+
+/* Destacar estrutura da página */
+.ac-outline-structure main,
+.ac-outline-structure .card-simple {
+    outline: 2px dashed #f97316;
+}
+
+/* Altura de linha maior */
+.ac-line-height p,
+.ac-line-height li {
+    line-height: 1.8;
+}
+
+/* Alinhamento de texto à esquerda */
+.ac-align-left p,
+.ac-align-left li {
+    text-align: left !important;
+}
+
+/* Saturação reduzida */
+.ac-low-saturation {
+    filter: saturate(0.6);
+}
+
+/* Links destacados */
+.ac-links-highlight a {
+    text-decoration: underline !important;
+    font-weight: 600;
+}
+
+/* ===========================
    CONTRASTE ALTO (CONTRASTE +)
    =========================== */
 
@@ -84,4 +538,663 @@ body.ac-high-contrast .ac-item:hover,
 body.ac-high-contrast .ac-profile-active {
     background:#ffffff !important;
     color:#000000 !important;
+}
+
+/* ===========================
+   CONTRASTE INTELIGENTE
+   =========================== */
+
+body.ac-smart-contrast {
+    background:#020617 !important;
+    color:#e5e7eb !important;
+}
+
+/* cartões, sidebar e conteúdo com cinza-azulado escuro */
+body.ac-smart-contrast .sidebar,
+body.ac-smart-contrast .card-simple,
+body.ac-smart-contrast .main-content,
+body.ac-smart-contrast .main-content-area,
+body.ac-smart-contrast .home-card-a1,
+body.ac-smart-contrast .home-card-a2,
+body.ac-smart-contrast .home-card-a3,
+body.ac-smart-contrast .home-card-a4 {
+    background:#020617 !important;
+    color:#e5e7eb !important;
+    box-shadow:none !important;
+}
+
+/* títulos e textos sempre bem claros */
+body.ac-smart-contrast h1,
+body.ac-smart-contrast h2,
+body.ac-smart-contrast h3,
+body.ac-smart-contrast p,
+body.ac-smart-contrast li,
+body.ac-smart-contrast label,
+body.ac-smart-contrast span {
+    color:#f9fafb !important;
+}
+
+/* barras e botões em azul forte, texto branco */
+body.ac-smart-contrast .progress-bar.primary,
+body.ac-smart-contrast .home-link-btn,
+body.ac-smart-contrast .play-btn,
+body.ac-smart-contrast .register-btn,
+body.ac-smart-contrast .login-btn,
+body.ac-smart-contrast .ac-reset-btn {
+    background:#2563eb !important;
+    color:#ffffff !important;
+}
+
+/* barra de sucesso em verde vivo */
+body.ac-smart-contrast .progress-bar.success {
+    background:#22c55e !important;
+}
+
+/* containers das barras em cinza médio */
+body.ac-smart-contrast .progress-bar-container {
+    background:#1f2937 !important;
+}
+
+/* links em azul claro */
+body.ac-smart-contrast a {
+    color:#60a5fa !important;
+}
+
+/* inputs com fundo bem escuro, borda azul clara e texto claro */
+body.ac-smart-contrast input,
+body.ac-smart-contrast textarea,
+body.ac-smart-contrast select {
+    background:#020617 !important;
+    color:#e5e7eb !important;
+    border:1px solid #3b82f6 !important;
+}
+
+/* navegação ativa: faixa azul visível */
+body.ac-smart-contrast .sidebar-nav .nav-item.active a {
+    background:#111827 !important;
+    border-left-color:#3b82f6 !important;
+    color:#f9fafb !important;
+}
+
+/* widget em dark mode coerente */
+body.ac-smart-contrast .ac-widget {
+    background:#020617 !important;
+    color:#e5e7eb !important;
+}
+body.ac-smart-contrast .ac-item,
+body.ac-smart-contrast .ac-profile {
+    background:#111827 !important;
+    border:1px solid #374151 !important;
+}
+body.ac-smart-contrast .ac-item:hover,
+body.ac-smart-contrast .ac-profile-active {
+    background:#1f2937 !important;
+    border-color:#3b82f6 !important;
+}
+
+/* ===========================
+   MODAL DE VÍDEO
+   =========================== */
+
+.modal.hidden { display: none; }
+
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+.modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+}
+
+.modal-content {
+    position: relative;
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 16px 18px 18px;
+    max-width: 900px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    z-index: 1;
+}
+
+.modal-close {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    border: none;
+    background: transparent;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.modal-video-wrapper {
+    margin-top: 10px;
+    margin-bottom: 12px;
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+}
+
+.modal-video-wrapper iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.modal-pdfs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.modal-pdfs a {
+    text-decoration: none;
+}
+
+.modal-pdfs button {
+    border-radius: 6px;
+    border: 1px solid #d0d0d0;
+    background: #f5f5f5;
+    padding: 6px 10px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+/* ===========================
+   TELAS INDEX / LOGIN / CADASTRO
+   =========================== */
+
+:root{
+    --font-size:16px;
+    --line-height:1.5;
+    --primary:#2c7be5;
+    --contrast-bg:#111;
+}
+
+html,body{font-family:'Poppins',sans-serif;font-size:var(--font-size);line-height:var(--line-height);margin:0;padding:0;color:#222}
+.dashboard-layout{display:flex;min-height:100vh}
+.sidebar{width:260px;background:#f4f6f9;padding:20px}
+.main-content{flex:1;padding:24px;background:#fff}
+
+/* INDEX */
+
+.index-body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #ffffff;
+}
+
+.index-main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 16px 28px;
+}
+
+.index-header {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.index-logo {
+    max-width: 260px;
+}
+
+/* Botão acessibilidade topo direito */
+.index-access-btn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: none;
+    background: #0057b8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 100;
+}
+.index-access-btn img {
+    width: 24px;
+    height: 24px;
+}
+
+/* Cards centrais */
+.index-cards-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.index-card {
+    width: 210px;
+    height: 230px;
+    background: #251b64;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    text-align: center;
+    padding: 12px 8px;
+}
+
+.index-card-img {
+    width: 120px;
+    height: auto;
+    margin-bottom: 8px;
+}
+
+.index-card-title {
+    font-weight: 600;
+    font-size: 15px;
+}
+
+/* Rodapé ícones */
+.index-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.index-audio-icon img {
+    height: 32px;
+}
+
+.index-bot-icon img {
+    height: 42px;
+}
+
+/* Modal genérico index */
+
+.modal.hidden { display: none; }
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+}
+.modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+}
+.modal-content {
+    position: relative;
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 16px 18px 18px;
+    max-width: 480px;
+    width: 90%;
+    z-index: 1;
+}
+.modal-close {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    border: none;
+    background: transparent;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+/* CADASTRO PADRÃO */
+
+.register-container.standard-layout {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+    background: radial-gradient(circle at top, #e3e6ff 0, #ffffff 55%);
+}
+
+.register-card {
+    width: 100%;
+    max-width: 380px;
+    background: #ffffff;
+    border-radius: 22px;
+    padding: 28px 26px 22px;
+    box-shadow: 0 14px 30px rgba(0,0,0,0.12);
+    text-align: center;
+}
+
+.register-logo {
+    width: 150px;
+    margin-bottom: 10px;
+}
+
+.register-title {
+    margin: 0 0 4px;
+    font-size: 1.4rem;
+}
+
+.register-subtitle {
+    margin: 0 0 18px;
+    font-size: 13px;
+    opacity: 0.75;
+}
+
+.register-form {
+    text-align: left;
+}
+
+.register-input-group {
+    margin-bottom: 14px;
+}
+
+.register-input-group label {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+.register-input-group input {
+    width: 100%;
+    padding: 9px 11px;
+    border-radius: 10px;
+    border: 1px solid #d0d3e6;
+    font-size: 14px;
+    transition: border-color .15s ease, box-shadow .15s ease, transform .1s ease;
+    background: #f9f9ff;
+}
+
+.register-input-group input:focus {
+    outline: none;
+    border-color: #4a4ae6;
+    box-shadow: 0 0 0 2px rgba(74,74,230,0.25);
+    background: #ffffff;
+    transform: translateY(-1px);
+}
+
+.register-btn {
+    width: 100%;
+    margin-top: 6px;
+    border: none;
+    border-radius: 999px;
+    padding: 10px 0;
+    background: linear-gradient(135deg, #4a4ae6, #6366f1);
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 10px 18px rgba(74,74,230,0.35);
+    transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+}
+
+.register-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 24px rgba(74,74,230,0.45);
+    filter: brightness(1.03);
+}
+
+.register-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 8px 14px rgba(74,74,230,0.35);
+}
+
+.register-link {
+    margin-top: 14px;
+    font-size: 13px;
+}
+
+.register-link a {
+    color: #4a4ae6;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+/* LOGIN */
+
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(circle at top, #e0f2ff 0, #ffffff 55%);
+}
+
+.background-shape.shape1,
+.background-shape.shape2 {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(40px);
+    opacity: 0.6;
+}
+
+.background-shape.shape1 {
+    width: 260px;
+    height: 260px;
+    background: #4a4ae6;
+    top: -80px;
+    left: -60px;
+}
+
+.background-shape.shape2 {
+    width: 220px;
+    height: 220px;
+    background: #ff7ab6;
+    bottom: -90px;
+    right: -40px;
+}
+
+.login-card {
+    position: relative;
+    background: #ffffff;
+    border-radius: 22px;
+    padding: 28px 26px 22px;
+    box-shadow: 0 14px 30px rgba(0,0,0,0.14);
+    max-width: 360px;
+    width: 100%;
+    text-align: center;
+    z-index: 1;
+}
+
+.login-logo {
+    width: 140px;
+    margin-bottom: 10px;
+}
+
+.login-title {
+    margin: 0 0 4px;
+    font-size: 1.4rem;
+}
+
+.login-subtitle {
+    margin: 0 0 18px;
+    font-size: 13px;
+    opacity: 0.75;
+}
+
+.login-form {
+    text-align: left;
+}
+
+.login-input-group {
+    margin-bottom: 14px;
+}
+
+.login-input-group label {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+.login-input-group input {
+    width: 100%;
+    padding: 9px 11px;
+    border-radius: 10px;
+    border: 1px solid #d0d3e6;
+    font-size: 14px;
+    background: #f9f9ff;
+    transition: border-color .15s ease, box-shadow .15s ease, transform .1s ease;
+}
+
+.login-input-group input:focus {
+    outline: none;
+    border-color: #4a4ae6;
+    box-shadow: 0 0 0 2px rgba(74,74,230,0.25);
+    background: #ffffff;
+    transform: translateY(-1px);
+}
+
+.login-btn {
+    width: 100%;
+    margin-top: 6px;
+    border: none;
+    border-radius: 999px;
+    padding: 10px 0;
+    background: linear-gradient(135deg, #4a4ae6, #6366f1);
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 10px 18px rgba(74,74,230,0.35);
+    transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+}
+
+.login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 24px rgba(74,74,230,0.45);
+    filter: brightness(1.03);
+}
+
+.login-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 8px 14px rgba(74,74,230,0.35);
+}
+
+.login-link {
+    margin-top: 14px;
+    font-size: 13px;
+}
+
+.login-link a {
+    color: #4a4ae6;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+/* CADASTRO VISUAL (CEGOS) */
+
+.visual-register-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+    background: radial-gradient(circle at top, #000428 0, #004e92 55%);
+}
+
+.visual-register-card {
+    max-width: 420px;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 22px;
+    padding: 26px 24px 22px;
+    box-shadow: 0 16px 32px rgba(0,0,0,0.4);
+    text-align: center;
+}
+
+.visual-logo {
+    width: 150px;
+    margin-bottom: 10px;
+}
+
+.visual-title {
+    margin: 0 0 6px;
+    font-size: 1.4rem;
+}
+
+.visual-subtitle {
+    margin: 0 0 18px;
+    font-size: 13px;
+    opacity: 0.85;
+}
+
+.visual-register-form {
+    text-align: left;
+}
+
+.visual-register-form .input-group {
+    margin-bottom: 14px;
+}
+
+.visual-register-form label {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+.visual-register-form input {
+    width: 100%;
+    padding: 9px 11px;
+    border-radius: 10px;
+    border: 1px solid #d0d3e6;
+    font-size: 14px;
+    background: #f7f7ff;
+}
+
+.visual-register-form input:focus {
+    outline: none;
+    border-color: #4a4ae6;
+    box-shadow: 0 0 0 2px rgba(74,74,230,0.35);
+    background: #ffffff;
+}
+
+.visual-btn {
+    width: 100%;
+    margin-top: 6px;
+    border: none;
+    border-radius: 999px;
+    padding: 10px 0;
+    background: linear-gradient(135deg, #4a4ae6, #6366f1);
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Garantia da classe .ac-hidden no widget antigo */
+#acessibility-widget.ac-hidden,
+.ac-hidden {
+    display: none;
 }
