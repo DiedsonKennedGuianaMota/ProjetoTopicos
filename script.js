@@ -7,13 +7,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const accessibilityMode = localStorage.getItem('accessibilityMode');
     const dashboardPages = ['home.html', 'forum.html', 'aulas.html', 'conteudos.html', 'exercicios.html', 'configuracoes.html', 'certificados.html'];
 
-    const currentPage = window.location.pathname.split('/').pop();
+    // Chatbot de exercícios (somente na página de exercícios)
     if (currentPage === 'exercicios.html') {
         setupExerciseChatbot();
     }
-    // Variáveis para o MODO VISUAL E TALKBACK
+
+    // Variáveis globais de fala/escuta
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    let recognition;
+    let recognition = null;
+    let listening = false;
+
     let chatbotState = {
         currentPage: '',
         currentField: 'fullname',
@@ -37,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (foto && fotoEl && foto.trim() !== '') {
             fotoEl.src = foto;
         }
-        
     })();
 
     // --- 2. WIDGET DE ACESSIBILIDADE (elementos) ---
@@ -61,7 +63,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const acSaturationBtn     = document.getElementById('ac-saturacao');
     const acResetBtn          = document.getElementById('ac-reset');
 
-    // --- 2.1 Botão flutuante abre/fecha widget (agora com acWidget já definido) ---
+    // Perfis
+    const acProfileButtons = document.querySelectorAll('.ac-profile');
+
+    // --- 2.1 Botão flutuante abre/fecha widget ---
     const accessibilityBtnFab = document.getElementById('accessibility-btn');
     if (accessibilityBtnFab && acWidget) {
         acWidget.classList.add('ac-hidden');
@@ -93,6 +98,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if (localStorage.getItem('ac_line_height') === 'true') body.classList.add('ac-line-height');
         if (localStorage.getItem('ac_align') === 'true') body.classList.add('ac-align-left');
         if (localStorage.getItem('ac_saturation') === 'true') body.classList.add('ac-low-saturation');
+
+        // perfil salvo
+        const savedProfile = localStorage.getItem('ac_profile');
+        if (savedProfile && acProfileButtons.length) {
+            applyProfile(savedProfile);
+            acProfileButtons.forEach(btn => {
+                btn.classList.toggle('ac-profile-active', btn.dataset.profile === savedProfile);
+            });
+        }
     })();
 
     const toggleClassPref = (btn, cls, key) => {
@@ -104,15 +118,53 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // Ler página
+    // --- 2.3 Ler página (apenas main, com toggle) ---
+    let readingPage = false;
+    let currentUtterance = null;
+
     if (acReadBtn) {
         acReadBtn.addEventListener('click', () => {
-            const texto = document.body.innerText.slice(0, 1200);
-            speak('Leitura da página iniciada. ' + texto);
+            // se já estiver lendo, parar
+            if (readingPage) {
+                window.speechSynthesis.cancel();
+                readingPage = false;
+                currentUtterance = null;
+                return;
+            }
+
+            // pega só o conteúdo principal
+            const main =
+                document.querySelector('main') ||
+                document.querySelector('.main-content-area') ||
+                document.querySelector('.main-content') ||
+                document.getElementById('page-body') ||
+                document.body;
+
+            let texto = main.innerText || '';
+            texto = texto.replace(/\s+/g, ' ').trim();
+            texto = texto.slice(0, 1500); // limita um pouco
+
+            if (!texto) return;
+
+            readingPage = true;
+            window.speechSynthesis.cancel();
+
+            currentUtterance = new SpeechSynthesisUtterance('Leitura da página. ' + texto);
+            currentUtterance.lang = 'pt-BR';
+            currentUtterance.onend = () => {
+                readingPage = false;
+                currentUtterance = null;
+            };
+            currentUtterance.onerror = () => {
+                readingPage = false;
+                currentUtterance = null;
+            };
+
+            window.speechSynthesis.speak(currentUtterance);
         });
     }
 
-    // Liga cada botão a uma classe no body
+    // Liga cada botão individual a uma classe no body
     toggleClassPref(acHighContrastBtn,  'ac-high-contrast',     'ac_high_contrast');
     toggleClassPref(acSmartContrastBtn, 'ac-smart-contrast',    'ac_smart_contrast');
     toggleClassPref(acLinksBtn,         'ac-links-highlight',   'ac_links');
@@ -128,21 +180,79 @@ document.addEventListener('DOMContentLoaded', () => {
     toggleClassPref(acAlignBtn,         'ac-align-left',        'ac_align');
     toggleClassPref(acSaturationBtn,    'ac-low-saturation',    'ac_saturation');
 
+    // --- 2.4 Perfis de acessibilidade ---
+    function clearAllPrefs() {
+        const body = document.body;
+        body.classList.remove(
+            'ac-high-contrast','ac-smart-contrast','ac-links-highlight','ac-text-big',
+            'ac-text-spacing','ac-anim-off','ac-hide-images','ac-dislexia-font',
+            'ac-big-cursor','ac-toolbar-top','ac-outline-structure','ac-line-height',
+            'ac-align-left','ac-low-saturation'
+        );
+        [
+            'ac_high_contrast','ac_smart_contrast','ac_links','ac_text_big','ac_spacing',
+            'ac_anim_off','ac_hide_img','ac_dislexia','ac_cursor','ac_toolbar',
+            'ac_structure','ac_line_height','ac_align','ac_saturation'
+        ].forEach(k => localStorage.removeItem(k));
+    }
+
+    function applyProfile(profileKey) {
+        clearAllPrefs();
+        const body = document.body;
+
+        // perfis simples: você pode ajustar combinações aqui
+        if (profileKey === 'cego') {
+            body.classList.add('ac-high-contrast','ac-text-big','ac-text-spacing','ac-links-highlight');
+            localStorage.setItem('ac_high_contrast','true');
+            localStorage.setItem('ac_text_big','true');
+            localStorage.setItem('ac_spacing','true');
+            localStorage.setItem('ac_links','true');
+        } else if (profileKey === 'daltonico') {
+            body.classList.add('ac-smart-contrast');
+            localStorage.setItem('ac_smart_contrast','true');
+        } else if (profileKey === 'dislexia') {
+            body.classList.add('ac-dislexia-font','ac-text-spacing');
+            localStorage.setItem('ac_dislexia','true');
+            localStorage.setItem('ac_spacing','true');
+        } else if (profileKey === 'baixa-visao') {
+            body.classList.add('ac-high-contrast','ac-text-big','ac-line-height');
+            localStorage.setItem('ac_high_contrast','true');
+            localStorage.setItem('ac_text_big','true');
+            localStorage.setItem('ac_line_height','true');
+        } else if (profileKey === 'convulsao') {
+            body.classList.add('ac-anim-off','ac-low-saturation');
+            localStorage.setItem('ac_anim_off','true');
+            localStorage.setItem('ac_saturation','true');
+        } else if (profileKey === 'tdah' || profileKey === 'cognitivo') {
+            body.classList.add('ac-text-spacing','ac-line-height');
+            localStorage.setItem('ac_spacing','true');
+            localStorage.setItem('ac_line_height','true');
+        } else if (profileKey === 'deficiencia-motora') {
+            body.classList.add('ac-big-cursor');
+            localStorage.setItem('ac_cursor','true');
+        }
+
+        localStorage.setItem('ac_profile', profileKey);
+    }
+
+    if (acProfileButtons.length) {
+        acProfileButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const key = btn.dataset.profile;
+                applyProfile(key);
+
+                acProfileButtons.forEach(b => b.classList.remove('ac-profile-active'));
+                btn.classList.add('ac-profile-active');
+            });
+        });
+    }
+
     // Reset geral
     if (acResetBtn) {
         acResetBtn.addEventListener('click', () => {
-            const body = document.body;
-            body.classList.remove(
-                'ac-high-contrast','ac-smart-contrast','ac-links-highlight','ac-text-big',
-                'ac-text-spacing','ac-anim-off','ac-hide-images','ac-dislexia-font',
-                'ac-big-cursor','ac-toolbar-top','ac-outline-structure','ac-line-height',
-                'ac-align-left','ac-low-saturation'
-            );
-            [
-                'ac_high_contrast','ac_smart_contrast','ac_links','ac_text_big','ac_spacing',
-                'ac_anim_off','ac_hide_img','ac_dislexia','ac_cursor','ac_toolbar',
-                'ac_structure','ac_line_height','ac_align','ac_saturation'
-            ].forEach(k => localStorage.removeItem(k));
+            clearAllPrefs();
+            localStorage.removeItem('ac_profile');
+            acProfileButtons.forEach(b => b.classList.remove('ac-profile-active'));
         });
     }
 
@@ -192,13 +302,30 @@ document.addEventListener('DOMContentLoaded', () => {
         window.speechSynthesis.speak(utterance);
     }
 
+    function initRecognitionIfNeeded() {
+        if (!SpeechRecognition) return;
+        if (!recognition) {
+            recognition = new SpeechRecognition();
+            recognition.lang = 'pt-BR';
+            recognition.continuous = false;
+            recognition.interimResults = false;
+            recognition.onresult = handleVoiceCommand;
+            recognition.onerror = (event) => console.error(`Erro no reconhecimento: ${event.error}`);
+            recognition.onend = () => {
+                listening = false;
+                if (chatbotState.currentField) listen();
+            };
+        }
+    }
+
     function listen() {
-        if (recognition) {
-            try {
-                recognition.start();
-            } catch (e) {
-                console.error('Reconhecimento já iniciado.');
-            }
+        initRecognitionIfNeeded();
+        if (!recognition || listening) return;
+        try {
+            recognition.start();
+            listening = true;
+        } catch (e) {
+            console.error('Reconhecimento já iniciado.', e);
         }
     }
 
@@ -218,15 +345,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const chatbotContainer = document.getElementById('chatbot-container');
         if (chatbotContainer) chatbotContainer.classList.remove('hidden');
 
-        if (SpeechRecognition) {
-            recognition = new SpeechRecognition();
-            recognition.lang = 'pt-BR';
-            recognition.continuous = false;
-            recognition.interimResults = false;
-            recognition.onresult = handleVoiceCommand;
-            recognition.onerror = (event) => console.error(`Erro no reconhecimento: ${event.error}`);
-            recognition.onend = () => { if (chatbotState.currentField) listen(); };
-        }
+        initRecognitionIfNeeded();
 
         chatbotState.currentPage = page;
         initializeVisualForm();
@@ -494,7 +613,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 });
-// ===== Chatbot de exercícios com voz =====
+
+// ===== Chatbot de exercícios com voz (já existia, mantido) =====
 
 function setupExerciseChatbot() {
     const input = document.getElementById('exercise-chat-input');
@@ -505,7 +625,6 @@ function setupExerciseChatbot() {
 
     if (!input || !sendBtn || !messagesEl) return;
 
-    // função utilitária para adicionar mensagens
     function addMessage(text, who) {
         const div = document.createElement('div');
         div.className = 'exercise-chat-message ' + who;
@@ -516,7 +635,6 @@ function setupExerciseChatbot() {
         messagesEl.scrollTop = messagesEl.scrollHeight;
     }
 
-    // chamada à API de LLM (troque a URL pela sua)
     async function askLLM(question) {
         addMessage(question, 'user');
         statusEl.textContent = 'Pensando...';
@@ -526,7 +644,6 @@ function setupExerciseChatbot() {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    // 'Authorization': 'Bearer SEU_TOKEN_AQUI',
                 },
                 body: JSON.stringify({
                     question,
@@ -543,7 +660,6 @@ function setupExerciseChatbot() {
             addMessage(answer, 'bot');
             statusEl.textContent = '';
 
-            // ler resposta em voz alta (Text‑to‑Speech do navegador)
             if ('speechSynthesis' in window) {
                 const utter = new SpeechSynthesisUtterance(answer);
                 utter.lang = 'pt-BR';
@@ -556,7 +672,6 @@ function setupExerciseChatbot() {
         }
     }
 
-    // envio por texto
     sendBtn.addEventListener('click', () => {
         const q = input.value.trim();
         if (!q) return;
@@ -571,13 +686,12 @@ function setupExerciseChatbot() {
         }
     });
 
-    // ===== Reconhecimento de voz (microfone) =====
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
     let recognition;
     let recording = false;
 
-    if (SpeechRecognition) {
-        recognition = new SpeechRecognition();
+    if (SR) {
+        recognition = new SR();
         recognition.lang = 'pt-BR';
         recognition.continuous = false;
         recognition.interimResults = false;
@@ -620,10 +734,7 @@ function setupExerciseChatbot() {
             }
         });
     } else {
-        // navegador não suporta Web Speech API
         micBtn.disabled = true;
         micBtn.title = 'Seu navegador não suporta captura de voz.';
     }
 }
-
-
