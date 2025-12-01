@@ -99,7 +99,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (localStorage.getItem('ac_align') === 'true') body.classList.add('ac-align-left');
         if (localStorage.getItem('ac_saturation') === 'true') body.classList.add('ac-low-saturation');
 
-        // perfil salvo
         const savedProfile = localStorage.getItem('ac_profile');
         if (savedProfile && acProfileButtons.length) {
             applyProfile(savedProfile);
@@ -124,7 +123,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (acReadBtn) {
         acReadBtn.addEventListener('click', () => {
-            // se já estiver lendo, parar
             if (readingPage) {
                 window.speechSynthesis.cancel();
                 readingPage = false;
@@ -132,7 +130,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // pega só o conteúdo principal
             const main =
                 document.querySelector('main') ||
                 document.querySelector('.main-content-area') ||
@@ -142,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             let texto = main.innerText || '';
             texto = texto.replace(/\s+/g, ' ').trim();
-            texto = texto.slice(0, 1500); // limita um pouco
+            texto = texto.slice(0, 1500);
 
             if (!texto) return;
 
@@ -200,7 +197,6 @@ document.addEventListener('DOMContentLoaded', () => {
         clearAllPrefs();
         const body = document.body;
 
-        // perfis simples: você pode ajustar combinações aqui
         if (profileKey === 'cego') {
             body.classList.add('ac-high-contrast','ac-text-big','ac-text-spacing','ac-links-highlight');
             localStorage.setItem('ac_high_contrast','true');
@@ -240,7 +236,6 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.addEventListener('click', () => {
                 const key = btn.dataset.profile;
                 applyProfile(key);
-
                 acProfileButtons.forEach(b => b.classList.remove('ac-profile-active'));
                 btn.classList.add('ac-profile-active');
             });
@@ -614,8 +609,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 });
 
-// ===== Chatbot de exercícios com voz (já existia, mantido) =====
-
+// ===== Chatbot de exercícios com voz (modo simulado, sem backend) =====
 function setupExerciseChatbot() {
     const input = document.getElementById('exercise-chat-input');
     const sendBtn = document.getElementById('exercise-chat-send');
@@ -639,36 +633,35 @@ function setupExerciseChatbot() {
         addMessage(question, 'user');
         statusEl.textContent = 'Pensando...';
 
-        try {
-            const resp = await fetch('https://sua-api-de-llm.com/chat', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    question,
-                    context: 'Ajude o aluno com dúvidas sobre exercícios de programação da plataforma EducaFácil. Responda em português, de forma simples.'
-                })
-            });
+        await new Promise(r => setTimeout(r, 600));
 
-            if (!resp.ok) {
-                throw new Error('Erro na API: ' + resp.status);
-            }
+        let answer = 'Sou um assistente de exemplo ainda sem conexão a um servidor de IA. ' +
+                     'Tente focar no enunciado, identificar entradas, saídas e passos do algoritmo.';
 
-            const data = await resp.json();
-            const answer = data.answer || data.choices?.[0]?.message?.content || 'Não consegui responder agora. Tente reformular a pergunta.';
-            addMessage(answer, 'bot');
-            statusEl.textContent = '';
+        const qLower = question.toLowerCase();
 
-            if ('speechSynthesis' in window) {
-                const utter = new SpeechSynthesisUtterance(answer);
-                utter.lang = 'pt-BR';
-                window.speechSynthesis.speak(utter);
-            }
-        } catch (e) {
-            console.error(e);
-            addMessage('Ops, ocorreu um erro ao falar com o assistente.', 'bot');
-            statusEl.textContent = 'Erro na conexão com o assistente.';
+        if (qLower.includes('vetor') || qLower.includes('array')) {
+            answer = 'Para exercícios com vetores, comece declarando o vetor com o tamanho correto, ' +
+                     'use um laço para ler os valores e outro laço para processar ou exibir. ' +
+                     'Lembre de usar índices começando em 0 em muitas linguagens.';
+        } else if (qLower.includes('while') || qLower.includes('for') || qLower.includes('repeti')) {
+            answer = 'Em laços de repetição, pense em valor inicial, condição de parada e atualização da variável de controle. ' +
+                     'Isso evita laços infinitos e ajuda a organizar o raciocínio.';
+        } else if (qLower.includes('if') || qLower.includes('condi')) {
+            answer = 'Para estruturas condicionais, escreva primeiro a condição em português, depois traduza para if/else. ' +
+                     'Teste sempre com valores que entrem e que não entrem na condição.';
+        } else if (qLower.includes('erro') || qLower.includes('nao funciona')) {
+            answer = 'Quando algo dá erro, leia com atenção a mensagem e veja a linha indicada. ' +
+                     'Verifique parênteses, chaves, tipos de variáveis e nomes de funções.';
+        }
+
+        addMessage(answer, 'bot');
+        statusEl.textContent = '';
+
+        if ('speechSynthesis' in window) {
+            const utter = new SpeechSynthesisUtterance(answer);
+            utter.lang = 'pt-BR';
+            window.speechSynthesis.speak(utter);
         }
     }
 
