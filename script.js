@@ -632,29 +632,22 @@ function setupExerciseChatbot() {
 
     // NÃO TEM fetch AQUI
     async function askLLM(question) {
-        addMessage(question, 'user');
-        statusEl.textContent = 'Pensando...';
+    addMessage(question, 'user');
+    statusEl.textContent = 'Perguntando ao servidor de IA...';
 
-        await new Promise(r => setTimeout(r, 600));
+    try {
+        const resp = await fetch('https://SEU-SERVIDOR.com/api/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ question })
+        });
 
-        let answer = 'Sou um assistente de exemplo rodando só no navegador. ' +
-                     'Tente identificar entradas, saídas e passos do algoritmo.';
-
-        const qLower = question.toLowerCase();
-
-        if (qLower.includes('vetor') || qLower.includes('array')) {
-            answer = 'Em vetores, declare o tamanho, use um laço para ler os valores e outro para processar. ' +
-                     'Lembre que normalmente os índices começam em 0.';
-        } else if (qLower.includes('while') || qLower.includes('for') || qLower.includes('repeti')) {
-            answer = 'Para laços, pense em valor inicial, condição de parada e incremento/decremento. ' +
-                     'Isso ajuda a evitar laço infinito.';
-        } else if (qLower.includes('if') || qLower.includes('condi')) {
-            answer = 'Escreva a condição em português e depois traduza para if/else. ' +
-                     'Teste com valores que entram e que não entram na condição.';
-        } else if (qLower.includes('erro') || qLower.includes('nao funciona')) {
-            answer = 'Leia a mensagem de erro e veja a linha indicada. ' +
-                     'Confira parênteses, chaves, tipos de variáveis e nomes.';
+        if (!resp.ok) {
+            throw new Error('Status ' + resp.status);
         }
+
+        const data = await resp.json();
+        const answer = data.answer || 'Não consegui responder agora.';
 
         addMessage(answer, 'bot');
         statusEl.textContent = '';
@@ -664,7 +657,13 @@ function setupExerciseChatbot() {
             utter.lang = 'pt-BR';
             window.speechSynthesis.speak(utter);
         }
+    } catch (e) {
+        console.error(e);
+        addMessage('Erro ao falar com o servidor de IA.', 'bot');
+        statusEl.textContent = 'Erro de conexão com o servidor.';
     }
+}
+
 
     sendBtn.addEventListener('click', () => {
         const q = input.value.trim();
@@ -732,3 +731,4 @@ function setupExerciseChatbot() {
         micBtn.title = 'Seu navegador não suporta captura de voz.';
     }
 }
+
