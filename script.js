@@ -610,6 +610,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ===== Chatbot de exercícios com voz (modo simulado, sem backend) =====
+// ===== Chatbot de exercícios com voz (100% local, sem fetch) =====
 function setupExerciseChatbot() {
     const input = document.getElementById('exercise-chat-input');
     const sendBtn = document.getElementById('exercise-chat-send');
@@ -629,30 +630,30 @@ function setupExerciseChatbot() {
         messagesEl.scrollTop = messagesEl.scrollHeight;
     }
 
+    // NÃO TEM fetch AQUI
     async function askLLM(question) {
         addMessage(question, 'user');
         statusEl.textContent = 'Pensando...';
 
         await new Promise(r => setTimeout(r, 600));
 
-        let answer = 'Sou um assistente de exemplo ainda sem conexão a um servidor de IA. ' +
-                     'Tente focar no enunciado, identificar entradas, saídas e passos do algoritmo.';
+        let answer = 'Sou um assistente de exemplo rodando só no navegador. ' +
+                     'Tente identificar entradas, saídas e passos do algoritmo.';
 
         const qLower = question.toLowerCase();
 
         if (qLower.includes('vetor') || qLower.includes('array')) {
-            answer = 'Para exercícios com vetores, comece declarando o vetor com o tamanho correto, ' +
-                     'use um laço para ler os valores e outro laço para processar ou exibir. ' +
-                     'Lembre de usar índices começando em 0 em muitas linguagens.';
+            answer = 'Em vetores, declare o tamanho, use um laço para ler os valores e outro para processar. ' +
+                     'Lembre que normalmente os índices começam em 0.';
         } else if (qLower.includes('while') || qLower.includes('for') || qLower.includes('repeti')) {
-            answer = 'Em laços de repetição, pense em valor inicial, condição de parada e atualização da variável de controle. ' +
-                     'Isso evita laços infinitos e ajuda a organizar o raciocínio.';
+            answer = 'Para laços, pense em valor inicial, condição de parada e incremento/decremento. ' +
+                     'Isso ajuda a evitar laço infinito.';
         } else if (qLower.includes('if') || qLower.includes('condi')) {
-            answer = 'Para estruturas condicionais, escreva primeiro a condição em português, depois traduza para if/else. ' +
-                     'Teste sempre com valores que entrem e que não entrem na condição.';
+            answer = 'Escreva a condição em português e depois traduza para if/else. ' +
+                     'Teste com valores que entram e que não entram na condição.';
         } else if (qLower.includes('erro') || qLower.includes('nao funciona')) {
-            answer = 'Quando algo dá erro, leia com atenção a mensagem e veja a linha indicada. ' +
-                     'Verifique parênteses, chaves, tipos de variáveis e nomes de funções.';
+            answer = 'Leia a mensagem de erro e veja a linha indicada. ' +
+                     'Confira parênteses, chaves, tipos de variáveis e nomes.';
         }
 
         addMessage(answer, 'bot');
