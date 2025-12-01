@@ -494,4 +494,136 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 });
+// ===== Chatbot de exercícios com voz =====
+
+function setupExerciseChatbot() {
+    const input = document.getElementById('exercise-chat-input');
+    const sendBtn = document.getElementById('exercise-chat-send');
+    const micBtn = document.getElementById('chat-mic-btn');
+    const messagesEl = document.getElementById('exercise-chat-messages');
+    const statusEl = document.getElementById('exercise-chat-status');
+
+    if (!input || !sendBtn || !messagesEl) return;
+
+    // função utilitária para adicionar mensagens
+    function addMessage(text, who) {
+        const div = document.createElement('div');
+        div.className = 'exercise-chat-message ' + who;
+        const span = document.createElement('span');
+        span.textContent = text;
+        div.appendChild(span);
+        messagesEl.appendChild(div);
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+    }
+
+    // chamada à API de LLM (troque a URL pela sua)
+    async function askLLM(question) {
+        addMessage(question, 'user');
+        statusEl.textContent = 'Pensando...';
+
+        try {
+            const resp = await fetch('https://sua-api-de-llm.com/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    // 'Authorization': 'Bearer SEU_TOKEN_AQUI',
+                },
+                body: JSON.stringify({
+                    question,
+                    context: 'Ajude o aluno com dúvidas sobre exercícios de programação da plataforma EducaFácil. Responda em português, de forma simples.'
+                })
+            });
+
+            if (!resp.ok) {
+                throw new Error('Erro na API: ' + resp.status);
+            }
+
+            const data = await resp.json();
+            const answer = data.answer || data.choices?.[0]?.message?.content || 'Não consegui responder agora. Tente reformular a pergunta.';
+            addMessage(answer, 'bot');
+            statusEl.textContent = '';
+
+            // ler resposta em voz alta (Text‑to‑Speech do navegador)
+            if ('speechSynthesis' in window) {
+                const utter = new SpeechSynthesisUtterance(answer);
+                utter.lang = 'pt-BR';
+                window.speechSynthesis.speak(utter);
+            }
+        } catch (e) {
+            console.error(e);
+            addMessage('Ops, ocorreu um erro ao falar com o assistente.', 'bot');
+            statusEl.textContent = 'Erro na conexão com o assistente.';
+        }
+    }
+
+    // envio por texto
+    sendBtn.addEventListener('click', () => {
+        const q = input.value.trim();
+        if (!q) return;
+        input.value = '';
+        askLLM(q);
+    });
+
+    input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            sendBtn.click();
+        }
+    });
+
+    // ===== Reconhecimento de voz (microfone) =====
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    let recognition;
+    let recording = false;
+
+    if (SpeechRecognition) {
+        recognition = new SpeechRecognition();
+        recognition.lang = 'pt-BR';
+        recognition.continuous = false;
+        recognition.interimResults = false;
+
+        recognition.addEventListener('start', () => {
+            recording = true;
+            micBtn.classList.add('recording');
+            statusEl.textContent = 'Ouvindo... fale sua dúvida.';
+        });
+
+        recognition.addEventListener('end', () => {
+            recording = false;
+            micBtn.classList.remove('recording');
+            if (!statusEl.textContent.startsWith('Erro')) {
+                statusEl.textContent = '';
+            }
+        });
+
+        recognition.addEventListener('result', (event) => {
+            const transcript = event.results[0][0].transcript.trim();
+            if (transcript) {
+                askLLM(transcript);
+            }
+        });
+
+        recognition.addEventListener('error', (event) => {
+            console.error('Erro no reconhecimento de voz:', event.error);
+            statusEl.textContent = 'Erro no microfone ou permissão negada.';
+        });
+
+        micBtn.addEventListener('click', () => {
+            if (!recording) {
+                try {
+                    recognition.start();
+                } catch (e) {
+                    console.error(e);
+                }
+            } else {
+                recognition.stop();
+            }
+        });
+    } else {
+        // navegador não suporta Web Speech API
+        micBtn.disabled = true;
+        micBtn.title = 'Seu navegador não suporta captura de voz.';
+    }
+}
+
 
