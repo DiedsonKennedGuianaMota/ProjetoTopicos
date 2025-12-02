@@ -630,30 +630,22 @@ function setupExerciseChatbot() {
     }
 
     async function askLLM(question) {
-        addMessage(question, 'user');
-        statusEl.textContent = 'Pensando...';
+    addMessage(question, 'user');
+    statusEl.textContent = 'Perguntando ao servidor de IA...';
 
-        await new Promise(r => setTimeout(r, 600));
+    try {
+        const resp = await fetch('https://diedsonkennedguianamota.github.io/ProjetoTopicos/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ question })
+        });
 
-        let answer = 'Sou um assistente de exemplo ainda sem conexão a um servidor de IA. ' +
-                     'Tente focar no enunciado, identificar entradas, saídas e passos do algoritmo.';
-
-        const qLower = question.toLowerCase();
-
-        if (qLower.includes('vetor') || qLower.includes('array')) {
-            answer = 'Para exercícios com vetores, comece declarando o vetor com o tamanho correto, ' +
-                     'use um laço para ler os valores e outro laço para processar ou exibir. ' +
-                     'Lembre de usar índices começando em 0 em muitas linguagens.';
-        } else if (qLower.includes('while') || qLower.includes('for') || qLower.includes('repeti')) {
-            answer = 'Em laços de repetição, pense em valor inicial, condição de parada e atualização da variável de controle. ' +
-                     'Isso evita laços infinitos e ajuda a organizar o raciocínio.';
-        } else if (qLower.includes('if') || qLower.includes('condi')) {
-            answer = 'Para estruturas condicionais, escreva primeiro a condição em português, depois traduza para if/else. ' +
-                     'Teste sempre com valores que entrem e que não entrem na condição.';
-        } else if (qLower.includes('erro') || qLower.includes('nao funciona')) {
-            answer = 'Quando algo dá erro, leia com atenção a mensagem e veja a linha indicada. ' +
-                     'Verifique parênteses, chaves, tipos de variáveis e nomes de funções.';
+        if (!resp.ok) {
+            throw new Error('Status ' + resp.status);
         }
+
+        const data = await resp.json();
+        const answer = data.answer || 'Não consegui responder agora.';
 
         addMessage(answer, 'bot');
         statusEl.textContent = '';
@@ -663,7 +655,12 @@ function setupExerciseChatbot() {
             utter.lang = 'pt-BR';
             window.speechSynthesis.speak(utter);
         }
+    } catch (e) {
+        console.error(e);
+        addMessage('Erro ao falar com o servidor de IA.', 'bot');
+        statusEl.textContent = 'Erro de conexão com o servidor.';
     }
+
 
     sendBtn.addEventListener('click', () => {
         const q = input.value.trim();
@@ -731,3 +728,4 @@ function setupExerciseChatbot() {
         micBtn.title = 'Seu navegador não suporta captura de voz.';
     }
 }
+
