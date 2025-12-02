@@ -660,6 +660,7 @@ function setupExerciseChatbot() {
         addMessage('Erro ao falar com o servidor de IA.', 'bot');
         statusEl.textContent = 'Erro de conexão com o servidor.';
     }
+}
 
 
     sendBtn.addEventListener('click', () => {
@@ -728,4 +729,5 @@ function setupExerciseChatbot() {
         micBtn.title = 'Seu navegador não suporta captura de voz.';
     }
 }
+
 
